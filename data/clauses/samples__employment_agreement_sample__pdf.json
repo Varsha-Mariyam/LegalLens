@@ -1,0 +1,81 @@
+{
+  "source": "samples/employment_agreement_sample.pdf",
+  "document_type": "employment",
+  "extraction": [
+    "text-layer"
+  ],
+  "clauses": [
+    {
+      "id": 1,
+      "label": null,
+      "title": "Preamble / Parties",
+      "text": "EMPLOYMENT AGREEMENT\n(SYNTHETIC SAMPLE DOCUMENT FOR TESTING — FICTITIOUS PARTIES)\nThis Employment Agreement is made on 1st June 2026 between Nilgiri Softworks Private Limited, a company having its office at Kochi, Kerala (the \"Company\"), and Arjun Menon, residing at Thrissur, Kerala (the \"Employee\")."
+    },
+    {
+      "id": 2,
+      "label": "1",
+      "title": "Appointment",
+      "text": "The Company appoints the Employee as Junior Software Engineer. The Employee shall report to the Engineering Manager and shall perform such duties as the Company may assign from time to time."
+    },
+    {
+      "id": 3,
+      "label": "2",
+      "title": "Salary",
+      "text": "The Employee shall receive a monthly salary of Rs. 45,000 (Rupees Forty-Five Thousand only). The Company may withhold any part of the salary at its sole discretion if it is not satisfied with the Employee's performance."
+    },
+    {
+      "id": 4,
+      "label": "3",
+      "title": "Working Hours",
+      "text": "The Employee shall work from 9:30 AM to 6:30 PM, Monday to Friday, and on Saturdays when required by the Company."
+    },
+    {
+      "id": 5,
+      "label": "4",
+      "title": "Confidentiality",
+      "text": "The Employee shall not disclose any information whatsoever relating to the Company to any person during employment and at any time thereafter, in perpetuity."
+    },
+    {
+      "id": 6,
+      "label": "5",
+      "title": "Non-Compete",
+      "text": "For a period of two (2) years after leaving the Company, the Employee shall not join any competitor or start any competing business anywhere in India."
+    },
+    {
+      "id": 7,
+      "label": "6",
+      "title": "Termination",
+      "text": "The Company may terminate this Agreement at any time by giving seven (7) days' notice. The Employee shall give ninety (90) days' notice to resign."
+    },
+    {
+      "id": 8,
+      "label": "7",
+      "title": "Training Bond",
+      "text": "If the Employee leaves within two years of joining, the Employee shall pay the Company a penalty of Rs. 2,00,000 towards training costs."
+    },
+    {
+      "id": 9,
+      "label": "8",
+      "title": "Liability",
+      "text": "The Employee shall be liable for any and all losses, damages and claims suffered by the Company in connection with the Employee's work, including consequential losses, without any limit."
+    },
+    {
+      "id": 10,
+      "label": "9",
+      "title": "Dispute Resolution",
+      "text": "Any dispute shall be resolved by a sole arbitrator appointed by the Company. The venue of arbitration shall be Kochi."
+    },
+    {
+      "id": 11,
+      "label": "10",
+      "title": "Amendment",
+      "text": "The Company reserves the right to amend the terms of this Agreement at any time without notice to the Employee."
+    },
+    {
+      "id": 12,
+      "label": null,
+      "title": "Execution",
+      "text": "IN WITNESS WHEREOF the parties have signed this Agreement on the date first written above. For Nilgiri Softworks Private Limited Employee"
+    }
+  ]
+}

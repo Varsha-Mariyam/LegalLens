@@ -1,0 +1,26 @@
+PROJECT REFERENCE TEMPLATE — SERVICE AGREEMENT
+(Written for the LegalLens academic project. Not an official legal standard.)
+
+1. Services
+The Service Provider shall provide the services described in the Statement of Work with reasonable skill and care.
+
+2. Fees and Payment
+The Client shall pay the fees stated in the Statement of Work within thirty (30) days of receiving a valid invoice. The Client may dispute an invoice in good faith by written notice within ten (10) days, and shall pay the undisputed part on time. Late payments carry simple interest at one percent (1%) per month.
+
+3. Confidentiality
+Each party shall keep the other party's confidential information confidential, use it only to perform this Agreement and return it on termination. This obligation continues for three (3) years after termination.
+
+4. Term and Termination
+Either party may terminate this Agreement for material breach that is not cured within thirty (30) days of written notice. Either party may terminate for convenience by giving sixty (60) days' written notice. Fees for services performed up to termination remain payable.
+
+5. Limitation of Liability
+Each party's total liability under this Agreement shall not exceed the fees paid or payable in the twelve (12) months before the claim. Neither party is liable for indirect or consequential loss or loss of profit. These limits do not apply to fraud, wilful misconduct or breach of confidentiality.
+
+6. Indemnity
+Each party shall indemnify the other against third-party claims arising from its own breach, negligence or infringement of intellectual property.
+
+7. Dispute Resolution
+Disputes shall be referred to a sole arbitrator appointed by mutual agreement under the Arbitration and Conciliation Act, 1996. The seat of arbitration shall be agreed by the parties.
+
+8. Governing Law
+This Agreement is governed by the laws of India.

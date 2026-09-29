@@ -1,0 +1,15 @@
+Title: Wages, time of payment and deductions
+Jurisdiction: India
+Topic: payment
+Sources: Payment of Wages Act, 1936, sections 5 and 7; Code on Wages, 2019; Payment of Gratuity Act, 1972, section 4
+Note: Educational summary prepared for the LegalLens academic project. The Code on Wages, 2019 and the Code on Social Security, 2020 consolidate the older Acts cited here; check which regime and which wage ceilings apply before relying on a specific section.
+
+Section 5 of the Payment of Wages Act, 1936 requires wages of persons employed in an establishment with fewer than one thousand persons to be paid before the expiry of the seventh day after the last day of the wage period, and in other establishments before the expiry of the tenth day. Where employment is terminated by the employer, wages earned must be paid before the expiry of the second working day from the day of termination.
+
+Section 7 permits only the kinds of deductions authorised by the Act, such as fines imposed under the Act, deductions for absence from duty, deductions for damage or loss caused by neglect or default of the employee, housing and amenities supplied, recovery of advances, income tax and provident fund contributions. Arbitrary deductions are not permitted.
+
+The Code on Wages, 2019 consolidates the Payment of Wages Act and related wage laws and contains corresponding provisions on the time limit for payment of wages and on authorised deductions.
+
+Under section 4 of the Payment of Gratuity Act, 1972, gratuity is payable on termination of employment after continuous service of not less than five years (the five-year condition does not apply to death or disablement), at the rate of fifteen days' wages for every completed year of service. The Code on Social Security, 2020 consolidates this and modifies eligibility for fixed-term employees.
+
+Practical reading: a salary clause should state the amount, the components, the pay cycle and the date of payment. Be careful with clauses that allow the employer to withhold or forfeit earned salary, or to make deductions at its discretion.

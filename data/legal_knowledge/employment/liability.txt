@@ -1,0 +1,13 @@
+Title: Employee liability, indemnity and training bonds
+Jurisdiction: India
+Topic: liability
+Sources: Indian Contract Act, 1872, sections 73 and 74; Payment of Wages Act, 1936, section 7
+Note: Educational summary prepared for the LegalLens academic project. Verify against the official text before relying on it.
+
+An employee who breaches the contract is liable to compensate the employer only for loss that naturally arises from the breach, as provided in section 73 of the Indian Contract Act, 1872; remote and indirect loss is not recoverable under that section.
+
+Where a contract names a fixed amount payable on breach, such as a training bond or service bond, section 74 limits recovery to reasonable compensation not exceeding the named amount. Courts have examined whether the amount reflects actual training costs or is a penalty.
+
+Deductions from wages for damage or loss are permitted under section 7 of the Payment of Wages Act, 1936 only where the loss is directly attributable to the neglect or default of the employee, and only in the manner the Act allows.
+
+Practical reading: a clause making an employee personally liable for unlimited losses, or indemnifying the employer against all claims whatever their cause, is one-sided and should be limited to losses caused by the employee's wilful misconduct or gross negligence.

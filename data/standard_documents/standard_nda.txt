@@ -1,0 +1,26 @@
+PROJECT REFERENCE TEMPLATE — MUTUAL NON-DISCLOSURE AGREEMENT
+(Written for the LegalLens academic project. Not an official legal standard.)
+
+1. Purpose
+The parties wish to exchange information for the purpose of evaluating a possible business relationship (the Purpose).
+
+2. Confidential Information
+Confidential Information means non-public information disclosed by one party to the other that is marked confidential or that a reasonable person would understand to be confidential. It does not include information that is or becomes public without fault of the receiving party, was already known to the receiving party, is independently developed, or is lawfully received from a third party without restriction.
+
+3. Obligations
+Each receiving party shall use the Confidential Information only for the Purpose, protect it with at least reasonable care, and disclose it only to its employees and advisers who need to know it and are bound by similar obligations. Disclosure required by law or court order is permitted after prompt notice to the disclosing party.
+
+4. Term
+The obligations in this Agreement continue for three (3) years from the date of disclosure, and for trade secrets for as long as they remain trade secrets.
+
+5. Return of Materials
+On written request, the receiving party shall return or destroy all Confidential Information and confirm this in writing.
+
+6. Termination
+Either party may terminate this Agreement by giving thirty (30) days' written notice. Obligations regarding information already disclosed survive termination for the period stated in the Term clause.
+
+7. Liability and Remedies
+Each party is liable for direct loss caused by its breach. Neither party is liable for indirect or consequential loss. The disclosing party may seek an injunction to prevent misuse of its Confidential Information.
+
+8. Dispute Resolution
+Disputes shall be referred to a sole arbitrator appointed by mutual agreement under the Arbitration and Conciliation Act, 1996. The seat of arbitration shall be agreed by the parties.

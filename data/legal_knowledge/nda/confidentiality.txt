@@ -1,0 +1,15 @@
+Title: Non-disclosure agreements — scope, exclusions, term and remedies
+Jurisdiction: India
+Topic: confidentiality
+Sources: Indian Contract Act, 1872, sections 27 and 73; Specific Relief Act, 1963, section 38; General drafting practice (the list of standard exclusions and the return-or-destroy obligation are drafting conventions, not statutory requirements)
+Note: Educational summary prepared for the LegalLens academic project. Verify against the official text before relying on it.
+
+A non-disclosure agreement is an ordinary contract. Breach entitles the disclosing party to compensation under section 73 of the Indian Contract Act, 1872 for loss that naturally arises from the breach. Under section 38 of the Specific Relief Act, 1963, a court may also grant a perpetual injunction to prevent the breach of an obligation, which is the usual remedy sought to stop misuse of confidential information.
+
+Common drafting practice defines confidential information with reasonable precision and excludes information that (a) is or becomes public through no fault of the receiving party, (b) was already known to the receiving party, (c) is independently developed, or (d) is lawfully received from a third party without restriction. Disclosure required by law or court order is usually permitted with notice to the disclosing party.
+
+Common drafting practice also limits use of the information to a stated purpose, sets a defined confidentiality period (often two to five years, with trade secrets protected for longer), and requires return or destruction of materials on request.
+
+An NDA should not be used to impose a post-contract restraint on carrying on a trade or business, which section 27 of the Indian Contract Act makes void.
+
+Practical reading: check whether the NDA is mutual or one-way, whether the exclusions are present, how long the obligations last, and whether remedies or penalties are proportionate.

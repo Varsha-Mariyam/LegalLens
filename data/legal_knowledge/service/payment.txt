@@ -1,0 +1,11 @@
+Title: Payment terms in service and business agreements
+Jurisdiction: India
+Topic: payment
+Sources: Micro, Small and Medium Enterprises Development Act, 2006, sections 15 and 16; General drafting practice
+Note: Educational summary prepared for the LegalLens academic project. Verify against the official text before relying on it.
+
+Section 15 of the Micro, Small and Medium Enterprises Development Act, 2006 requires a buyer of goods or services from a supplier that is a micro or small enterprise to pay on or before the agreed date, and the agreed period cannot exceed forty-five days from the day of acceptance or deemed acceptance. Section 16 makes the buyer liable to pay compound interest, with monthly rests, at three times the bank rate notified by the Reserve Bank of India on delayed amounts.
+
+Common drafting practice in service agreements specifies the fee, invoicing schedule, payment period, currency, taxes, the process for disputing an invoice, and the consequence of late payment.
+
+Practical reading: check the payment period, whether payment can be withheld at the client's discretion, whether set-off is allowed, and whether late-payment interest is reasonable.

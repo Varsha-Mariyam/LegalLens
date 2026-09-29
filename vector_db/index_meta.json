@@ -1,0 +1,7 @@
+{
+  "fingerprint": "6324fc7bcfc8e0dc9f4127fde2e3bf7b623cb7cb9195acce2de51ba4643f1845",
+  "knowledge_chunks": 39,
+  "standard_clauses": 31,
+  "embedding_backend": "lsa-tfidf-svd",
+  "vector_store": "chromadb"
+}

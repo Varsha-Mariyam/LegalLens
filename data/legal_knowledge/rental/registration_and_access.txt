@@ -1,0 +1,11 @@
+Title: Registration of leases and landlord's entry into the premises
+Jurisdiction: India
+Topic: registration
+Sources: Registration Act, 1908, sections 17(1)(d) and 49; Model Tenancy Act, 2021
+Note: Educational summary prepared for the LegalLens academic project. Stamp duty and registration requirements vary by State; verify locally.
+
+Section 17(1)(d) of the Registration Act, 1908 makes registration compulsory for leases of immovable property from year to year, or for any term exceeding one year, or reserving a yearly rent. Under section 49, a document that is required to be registered but is not registered cannot, in general, affect the property it relates to or be received as evidence of the transaction, subject to limited exceptions. This is why many residential agreements are written for eleven months.
+
+The Model Tenancy Act, 2021 allows the landlord to enter the premises for inspection, repair or other reasonable purposes only after giving prior notice (at least twenty-four hours) to the tenant.
+
+Practical reading: a lease longer than one year should be registered and properly stamped. A clause letting the landlord enter at any time without notice is one-sided.

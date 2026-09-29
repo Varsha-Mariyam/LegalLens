@@ -1,0 +1,15 @@
+Title: Validity of contract terms and unfair standard-form clauses
+Jurisdiction: India
+Topic: general
+Sources: Indian Contract Act, 1872, sections 10, 14 and 23; Central Inland Water Transport Corporation v. Brojo Nath Ganguly (Supreme Court of India, 1986)
+Note: Educational summary prepared for the LegalLens academic project. Verify against the official text before relying on it.
+
+Under section 10 of the Indian Contract Act, 1872, an agreement is a contract when it is made by the free consent of parties competent to contract, for a lawful consideration and with a lawful object, and is not expressly declared to be void.
+
+Section 14 explains free consent: consent is not free when it is caused by coercion, undue influence, fraud, misrepresentation or mistake.
+
+Section 23 makes the consideration or object of an agreement unlawful if it is forbidden by law, would defeat the provisions of any law, is fraudulent, involves injury to the person or property of another, is regarded by the court as immoral, or is opposed to public policy. Every agreement with an unlawful object or consideration is void.
+
+In Central Inland Water Transport Corporation v. Brojo Nath Ganguly (1986), the Supreme Court held that a service rule allowing a government company to terminate a permanent employee by giving only three months' notice, without any reason, was unconscionable and void under section 23 as opposed to public policy. The judgment is frequently cited when one party with much greater bargaining power imposes an unfair term in a standard-form contract.
+
+Practical reading: a term is not automatically enforceable just because it has been signed. Terms that are one-sided, that remove basic legal protections, or that are contrary to a statute can be challenged. A careful reader should look for clauses that give only one party the power to terminate, change terms or decide disputes.

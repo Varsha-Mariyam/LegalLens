@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/legallens.db
+data/uploads/
+data/external/
+cache/documents/
+cache/llm/
+reports/*.pdf
+frontend/node_modules/

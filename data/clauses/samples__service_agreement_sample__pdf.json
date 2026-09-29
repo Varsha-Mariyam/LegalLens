@@ -1,0 +1,63 @@
+{
+  "source": "samples/service_agreement_sample.pdf",
+  "document_type": "service",
+  "extraction": [
+    "text-layer"
+  ],
+  "clauses": [
+    {
+      "id": 1,
+      "label": null,
+      "title": "Preamble / Parties",
+      "text": "SOFTWARE DEVELOPMENT SERVICE AGREEMENT\n(SYNTHETIC SAMPLE DOCUMENT FOR TESTING — FICTITIOUS PARTIES)\nThis Service Agreement is made between Malabar Retail Private Limited (the \"Client\") and Backwater Tech Solutions (the \"Service Provider\")."
+    },
+    {
+      "id": 2,
+      "label": "1",
+      "title": "Services",
+      "text": "The Service Provider shall develop and deliver a point-of-sale web application as described in the Statement of Work."
+    },
+    {
+      "id": 3,
+      "label": "2",
+      "title": "Fees and Payment",
+      "text": "The Client shall pay Rs. 6,00,000 in three instalments. Each invoice shall be paid within ninety (90) days of receipt. The Client may withhold payment at its sole discretion if it is not satisfied with the deliverables."
+    },
+    {
+      "id": 4,
+      "label": "3",
+      "title": "Confidentiality",
+      "text": "Each party shall keep the other party's confidential information confidential and use it only to perform this Agreement. This obligation continues for three (3) years after termination."
+    },
+    {
+      "id": 5,
+      "label": "4",
+      "title": "Termination",
+      "text": "The Client may terminate this Agreement for convenience at any time by giving seven (7) days' written notice. Either party may terminate for material breach not cured within thirty (30) days of notice."
+    },
+    {
+      "id": 6,
+      "label": "5",
+      "title": "Limitation of Liability",
+      "text": "The Service Provider shall be liable for all losses, including indirect and consequential losses and loss of profit, arising from the services, without limit."
+    },
+    {
+      "id": 7,
+      "label": "6",
+      "title": "Indemnity",
+      "text": "The Service Provider shall indemnify the Client against any and all claims, whatever their cause."
+    },
+    {
+      "id": 8,
+      "label": "7",
+      "title": "Auto-Renewal",
+      "text": "This Agreement shall automatically renew for successive one-year terms unless terminated."
+    },
+    {
+      "id": 9,
+      "label": "8",
+      "title": "Dispute Resolution",
+      "text": "Disputes shall be referred to arbitration under the Arbitration and Conciliation Act, 1996, with the seat of arbitration at Kozhikode."
+    }
+  ]
+}

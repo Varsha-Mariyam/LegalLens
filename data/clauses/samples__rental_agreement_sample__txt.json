@@ -1,0 +1,63 @@
+{
+  "source": "samples/rental_agreement_sample.txt",
+  "document_type": "rental",
+  "extraction": [
+    "plain-text"
+  ],
+  "clauses": [
+    {
+      "id": 1,
+      "label": null,
+      "title": "Preamble / Parties",
+      "text": "RENTAL AGREEMENT\n(SYNTHETIC SAMPLE DOCUMENT FOR TESTING — FICTITIOUS PARTIES)\nThis Rental Agreement is made on 1st July 2026 between Mr. Joseph Kurian, owner of House No. 14, Pattom, Thiruvananthapuram (the \"Landlord\"), and Ms. Anjali Nair (the \"Tenant\")."
+    },
+    {
+      "id": 2,
+      "label": "1",
+      "title": "Term",
+      "text": "The Landlord lets the house to the Tenant for a period of eleven (11) months starting from 1st July 2026."
+    },
+    {
+      "id": 3,
+      "label": "2",
+      "title": "Rent",
+      "text": "The Tenant shall pay a monthly rent of Rs. 18,000 on or before the 5th of every month. The Landlord may increase the rent at any time at his sole discretion."
+    },
+    {
+      "id": 4,
+      "label": "3",
+      "title": "Security Deposit",
+      "text": "The Tenant shall pay a security deposit of Rs. 1,80,000 (ten months' rent). The deposit is non-refundable if the Tenant leaves before the end of the term."
+    },
+    {
+      "id": 5,
+      "label": "4",
+      "title": "Lock-in Period",
+      "text": "There is a lock-in period of six (6) months. If the Tenant vacates during the lock-in period, the entire security deposit shall be forfeited."
+    },
+    {
+      "id": 6,
+      "label": "5",
+      "title": "Access",
+      "text": "The Landlord may enter the premises at any time without notice for inspection."
+    },
+    {
+      "id": 7,
+      "label": "6",
+      "title": "Termination",
+      "text": "The Landlord may terminate this agreement by giving fifteen (15) days' notice. The Tenant shall give two (2) months' notice before vacating."
+    },
+    {
+      "id": 8,
+      "label": "7",
+      "title": "Liability",
+      "text": "The Tenant shall be responsible for all repairs and for any and all damages to the premises, including structural repairs."
+    },
+    {
+      "id": 9,
+      "label": "8",
+      "title": "Dispute Resolution",
+      "text": "Any dispute shall be settled by the courts at Thiruvananthapuram."
+    }
+  ]
+}

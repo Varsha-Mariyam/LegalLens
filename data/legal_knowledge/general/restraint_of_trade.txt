@@ -1,0 +1,13 @@
+Title: Non-compete and restraint of trade
+Jurisdiction: India
+Topic: non_compete
+Sources: Indian Contract Act, 1872, section 27; Niranjan Shankar Golikari v. Century Spinning and Manufacturing Co. (Supreme Court of India, 1967); Superintendence Company of India v. Krishan Murgai (Supreme Court of India, 1980)
+Note: Educational summary prepared for the LegalLens academic project. Verify against the official text before relying on it.
+
+Section 27 of the Indian Contract Act, 1872 provides that every agreement by which anyone is restrained from exercising a lawful profession, trade or business of any kind is to that extent void. The only statutory exception concerns a seller of the goodwill of a business agreeing not to carry on a similar business within specified local limits.
+
+In Niranjan Shankar Golikari v. Century Spinning (1967), the Supreme Court held that a negative covenant operating during the term of employment, requiring the employee not to work for others while employed, is generally not a restraint of trade under section 27.
+
+In Superintendence Company of India v. Krishan Murgai (1980), the Supreme Court held that a restraint operating after the termination of employment, preventing the former employee from carrying on a similar business or taking similar employment, is void under section 27.
+
+Practical reading: a post-employment non-compete ("the employee shall not join a competitor for two years after leaving") is generally unenforceable in India, though its presence can still discourage an employee. Confidentiality obligations and restrictions on misuse of trade secrets are treated differently and are generally enforceable.

@@ -1,0 +1,13 @@
+Title: Confidentiality obligations of employees
+Jurisdiction: India
+Topic: confidentiality
+Sources: Indian Contract Act, 1872, section 27; Information Technology Act, 2000, section 72A; Superintendence Company of India v. Krishan Murgai (Supreme Court of India, 1980)
+Note: Educational summary prepared for the LegalLens academic project. Verify against the official text before relying on it.
+
+A promise by an employee not to disclose or misuse the employer's confidential information and trade secrets is generally enforceable, during and after employment. Such a promise protects information; it does not by itself stop the employee from working, so it is treated differently from a post-employment non-compete, which section 27 of the Indian Contract Act, 1872 makes void.
+
+Section 72A of the Information Technology Act, 2000 makes it an offence for a person, including an intermediary, who has secured access to personal information while providing services under a lawful contract, to disclose that information without consent, with intent to cause or knowing that he is likely to cause wrongful loss or wrongful gain.
+
+A well-drafted confidentiality clause defines confidential information clearly, excludes information that is already public, already known to the employee, independently developed or lawfully received from a third party, permits disclosure required by law, and requires return or destruction of materials at the end of employment.
+
+Practical reading: be careful with definitions that cover "all information of any kind" without exclusions, obligations that last forever for ordinary information, and clauses that use confidentiality as a disguised non-compete.

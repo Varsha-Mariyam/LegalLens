@@ -1,0 +1,9 @@
+Title: Security deposit
+Jurisdiction: India
+Topic: deposit
+Sources: Model Tenancy Act, 2021, section 11
+Note: Educational summary prepared for the LegalLens academic project. The Model Tenancy Act, 2021 applies only in States that have adopted it; it is used here as a benchmark.
+
+Section 11 of the Model Tenancy Act, 2021 limits the security deposit for residential premises to a maximum of two months' rent, and for non-residential premises to a maximum of six months' rent. The deposit is to be refunded to the tenant at the time of taking over vacant possession of the premises, after making due deductions for liabilities of the tenant.
+
+Practical reading: compare the deposit with the monthly rent. A deposit larger than two months' rent for a house exceeds the Model Tenancy Act benchmark. Check when the deposit will be returned, which deductions are allowed, and whether any part is non-refundable.

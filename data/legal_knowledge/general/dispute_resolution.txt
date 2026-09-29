@@ -1,0 +1,17 @@
+Title: Dispute resolution, arbitration and choice of court
+Jurisdiction: India
+Topic: dispute
+Sources: Indian Contract Act, 1872, section 28; Arbitration and Conciliation Act, 1996, sections 7, 8, 11 and 12 read with the Seventh Schedule; Perkins Eastman Architects DPC v. HSCC (India) Ltd. (Supreme Court of India, 2019); A.B.C. Laminart Pvt. Ltd. v. A.P. Agencies (Supreme Court of India, 1989); Swastik Gases Pvt. Ltd. v. Indian Oil Corporation Ltd. (Supreme Court of India, 2013)
+Note: Educational summary prepared for the LegalLens academic project. Verify against the official text before relying on it.
+
+Section 28 of the Indian Contract Act, 1872 makes void any agreement that absolutely restricts a party from enforcing his rights through the usual legal proceedings in ordinary tribunals, or that limits the time within which he may enforce them. An exception allows parties to agree that disputes will be referred to arbitration.
+
+Section 7 of the Arbitration and Conciliation Act, 1996 requires an arbitration agreement to be in writing. It may be a clause in the main contract or a separate agreement. Section 8 requires a judicial authority to refer the parties to arbitration where a valid arbitration agreement exists and a party applies in time. Section 11 deals with the appointment of arbitrators, including appointment by the court when the agreed procedure fails.
+
+Section 12 requires an arbitrator to disclose circumstances that give rise to justifiable doubts about independence or impartiality. Under section 12(5) read with the Seventh Schedule, a person with certain relationships to a party (for example an employee of a party) is ineligible to be appointed as arbitrator unless the parties expressly waive this in writing after the dispute has arisen.
+
+In Perkins Eastman Architects DPC v. HSCC (India) Ltd. (2019), the Supreme Court held that a party which has an interest in the outcome of the dispute cannot unilaterally appoint a sole arbitrator. A clause allowing only one side (for example the employer or landlord) to choose the sole arbitrator is therefore open to challenge.
+
+On choice of court: parties may agree to confine disputes to one of several courts that already have jurisdiction, but cannot confer jurisdiction on a court that has none (A.B.C. Laminart v. A.P. Agencies, 1989). An exclusive jurisdiction clause selecting one such competent court is generally upheld (Swastik Gases v. Indian Oil Corporation, 2013).
+
+Practical reading: check whether disputes go to courts or arbitration, where the seat or venue is, who appoints the arbitrator, and whether the clause tries to waive the right to approach any court at all.

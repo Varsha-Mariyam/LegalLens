@@ -1,0 +1,13 @@
+Title: Termination of employment — notice and retrenchment compensation
+Jurisdiction: India
+Topic: termination
+Sources: Industrial Disputes Act, 1947, sections 2(s) and 25F; Industrial Relations Code, 2020; Central Inland Water Transport Corporation v. Brojo Nath Ganguly (Supreme Court of India, 1986); State Shops and Establishments Acts (for example the Kerala Shops and Commercial Establishments Act, 1960)
+Note: Educational summary prepared for the LegalLens academic project. The Industrial Relations Code, 2020 consolidates the Industrial Disputes Act; check which regime applies before relying on a specific section.
+
+Section 25F of the Industrial Disputes Act, 1947 provides that a workman who has been in continuous service for not less than one year shall not be retrenched until he has been given one month's notice in writing indicating the reasons, or has been paid wages in lieu of notice, and has been paid retrenchment compensation equivalent to fifteen days' average pay for every completed year of continuous service. Notice must also be served on the appropriate government.
+
+The definition of "workman" in section 2(s) excludes persons employed mainly in a managerial or administrative capacity and certain supervisory employees above the prescribed wage level. Many salaried professionals are therefore governed mainly by their employment contract and the Shops and Establishments Act of their State, which commonly require notice or pay in lieu of notice before termination other than for misconduct.
+
+In Brojo Nath Ganguly (1986), the Supreme Court struck down a rule allowing termination of permanent employees by a short notice without reason as unconscionable and opposed to public policy.
+
+Practical reading: compare the notice period with the reference used by the organisation (this project's reference template uses 30 days, mutual). Check whether the notice is mutual, whether pay in lieu of notice is allowed for both sides, whether "cause" is defined, and whether earned dues are paid on exit.

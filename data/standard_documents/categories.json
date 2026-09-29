@@ -1,0 +1,15 @@
+{
+  "_note": "Manual category annotations for the project reference templates (authored by the LegalLens team). Clauses not listed here are classified automatically.",
+  "employment": {"Appointment and Duties": "Others", "Salary and Payment": "Payment", "Working Hours and Leave": "Others",
+                 "Confidentiality": "Confidentiality", "Termination": "Termination", "Liability": "Liability",
+                 "Dispute Resolution": "Dispute", "Governing Law": "Dispute"},
+  "nda": {"Purpose": "Others", "Confidential Information": "Confidentiality", "Obligations": "Confidentiality",
+          "Term": "Termination", "Return of Materials": "Confidentiality", "Termination": "Termination",
+          "Liability and Remedies": "Liability", "Dispute Resolution": "Dispute"},
+  "rental": {"Premises and Term": "Others", "Rent": "Payment", "Security Deposit": "Payment",
+             "Maintenance and Access": "Others", "Termination": "Termination", "Liability": "Liability",
+             "Dispute Resolution": "Dispute"},
+  "service": {"Services": "Others", "Fees and Payment": "Payment", "Confidentiality": "Confidentiality",
+              "Term and Termination": "Termination", "Limitation of Liability": "Liability", "Indemnity": "Liability",
+              "Dispute Resolution": "Dispute", "Governing Law": "Dispute"}
+}

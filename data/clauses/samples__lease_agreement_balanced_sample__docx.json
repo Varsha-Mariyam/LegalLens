@@ -1,0 +1,57 @@
+{
+  "source": "samples/lease_agreement_balanced_sample.docx",
+  "document_type": "rental",
+  "extraction": [
+    "python-docx"
+  ],
+  "clauses": [
+    {
+      "id": 1,
+      "label": null,
+      "title": "Preamble / Parties",
+      "text": "LEASE AGREEMENT FOR RESIDENTIAL PREMISES\n(SYNTHETIC SAMPLE DOCUMENT FOR TESTING — FICTITIOUS PARTIES)\nThis Lease Agreement is made between Mrs. Leela Varma (the \"Landlord\") and Mr. Rahul Das (the \"Tenant\") for the flat at Kowdiar, Thiruvananthapuram."
+    },
+    {
+      "id": 2,
+      "label": "1",
+      "title": "Term",
+      "text": "The lease is for eleven (11) months from 1st August 2026 and may be renewed by mutual written agreement."
+    },
+    {
+      "id": 3,
+      "label": "2",
+      "title": "Rent",
+      "text": "The Tenant shall pay a monthly rent of Rs. 16,000 on or before the 5th day of each month by bank transfer. The Landlord shall issue a receipt for each payment."
+    },
+    {
+      "id": 4,
+      "label": "3",
+      "title": "Security Deposit",
+      "text": "The Tenant shall pay a refundable security deposit of Rs. 32,000. The Landlord shall refund it within fifteen (15) days after the Tenant hands over vacant possession, after deducting only unpaid dues and the cost of repairing damage beyond normal wear and tear."
+    },
+    {
+      "id": 5,
+      "label": "4",
+      "title": "Access",
+      "text": "The Landlord may enter the flat for inspection after giving at least twenty-four (24) hours' prior notice."
+    },
+    {
+      "id": 6,
+      "label": "5",
+      "title": "Termination",
+      "text": "Either party may terminate this lease by giving one (1) month's written notice."
+    },
+    {
+      "id": 7,
+      "label": "6",
+      "title": "Liability",
+      "text": "The Tenant shall be liable for damage caused by the Tenant's negligence, beyond normal wear and tear."
+    },
+    {
+      "id": 8,
+      "label": "7",
+      "title": "Disputes",
+      "text": "Disputes shall be decided by the competent court having jurisdiction over the premises."
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+clause,label
+"Employee shall receive a monthly salary of Rs. 40,000 payable on the last working day of each month.",Payment
+"The Employer shall pay the Employee a gross annual compensation of Rs. 7,20,000 in twelve equal monthly instalments.",Payment
+"The Tenant shall pay a monthly rent of Rs. 12,000 on or before the fifth day of every calendar month.",Payment
+"The Client shall pay the Service Provider the fees set out in Schedule A within thirty days of receipt of a valid invoice.",Payment
+"All amounts payable under this Agreement are exclusive of GST, which shall be charged at the applicable rate.",Payment
+"The Company shall reimburse reasonable travel expenses incurred by the Employee on official duty against original bills.",Payment
+"A performance bonus of up to ten percent of the annual salary may be paid at the discretion of the management.",Payment
+"Late payment of any invoice shall attract simple interest at the rate of one percent per month.",Payment
+"The Licensee shall pay a royalty of five percent of net sales every quarter.",Payment
+"The Tenant shall pay the electricity and water charges directly to the concerned authorities as per actual consumption.",Payment
+"The Employer may deduct income tax, provident fund and professional tax from the salary as required by law.",Payment
+"The purchase price for the goods shall be paid in advance before dispatch.",Payment
+"The monthly maintenance charge of Rs. 2,000 shall be paid by the Tenant to the apartment association.",Payment
+"The consultant will invoice monthly in arrears and payment will be made by bank transfer.",Payment
+"The Tenant shall deposit an interest-free refundable security deposit equal to two months' rent.",Payment
+"Salary shall be revised annually based on performance appraisal.",Payment
+"The Company shall pay a joining bonus of Rs. 50,000 along with the first month's salary.",Payment
+"Commission shall be calculated at three percent of the invoice value of orders procured by the agent.",Payment
+"The Buyer shall make payment within forty-five days from the date of acceptance of the goods.",Payment
+"Overtime work shall be compensated at twice the ordinary rate of wages.",Payment
+"The employee shall maintain confidentiality of all business information of the company.",Confidentiality
+"The Receiving Party shall hold the Confidential Information in strict confidence and shall not disclose it to any third party.",Confidentiality
+"The Employee shall not, during or after employment, use or disclose any trade secret of the Company.",Confidentiality
+"Confidential Information does not include information that is publicly available or already known to the Receiving Party.",Confidentiality
+"Each party shall protect the other party's proprietary information with at least the same degree of care it uses for its own.",Confidentiality
+"On termination, the Employee shall return all documents, files and devices containing confidential information.",Confidentiality
+"The Receiving Party may disclose Confidential Information if required by law, after giving prompt notice to the Disclosing Party.",Confidentiality
+"The Service Provider shall keep all client data confidential and shall comply with applicable data protection laws.",Confidentiality
+"Neither party shall disclose the terms of this Agreement without the prior written consent of the other.",Confidentiality
+"The obligations of confidentiality shall survive for a period of three years after the termination of this Agreement.",Confidentiality
+"Confidential Information means any non-public technical, financial or business information disclosed by one party to the other.",Confidentiality
+"The Consultant shall not copy, reproduce or remove any confidential material from the Client's premises.",Confidentiality
+"Access to confidential information shall be limited to employees who need to know it for the Purpose.",Confidentiality
+"The Employee shall not post any non-public information about the Company on social media.",Confidentiality
+"All source code and designs provided under this Agreement are proprietary and confidential to the Company.",Confidentiality
+"The Receiving Party shall destroy all copies of the Confidential Information upon written request.",Confidentiality
+"The parties shall treat customer lists and pricing information as confidential.",Confidentiality
+"The Employee acknowledges that the Company's client information is a valuable trade secret.",Confidentiality
+"Personal data of customers shall be processed only for the purpose of providing the services and kept confidential.",Confidentiality
+"The Recipient shall not reverse engineer any prototype or sample provided as part of the Confidential Information.",Confidentiality
+"Either party may terminate this agreement by giving thirty days written notice to the other party.",Termination
+"The Company may terminate the Employee's employment immediately for gross misconduct.",Termination
+"The Employee may resign by giving one month's notice in writing or salary in lieu of notice.",Termination
+"This Agreement shall remain in force for a period of two years unless terminated earlier in accordance with this clause.",Termination
+"The Landlord may terminate the lease if the rent remains unpaid for two consecutive months.",Termination
+"The Tenant shall vacate the premises and hand over peaceful possession on the expiry of the lease.",Termination
+"Either party may terminate this Agreement for material breach that is not cured within thirty days of written notice.",Termination
+"The Client may terminate this Agreement for convenience by giving sixty days' prior written notice.",Termination
+"During the probation period of six months, either party may terminate employment with seven days' notice.",Termination
+"This Agreement will automatically terminate if either party becomes insolvent.",Termination
+"There shall be a lock-in period of six months during which neither party may terminate the lease.",Termination
+"Upon termination, all outstanding amounts for services rendered up to the termination date shall become payable.",Termination
+"The lease may be renewed for a further period of eleven months on mutually agreed terms.",Termination
+"Termination of this Agreement shall not affect any rights accrued before the date of termination.",Termination
+"The Distributor may terminate the agreement on ninety days' notice if the minimum purchase targets are not met.",Termination
+"The Employer may terminate the services of the Employee on retrenchment after complying with the applicable law.",Termination
+"This Agreement expires automatically at the end of the initial term unless renewed in writing.",Termination
+"Notice of termination shall be given in writing and delivered by registered post or email.",Termination
+"The Tenant may terminate the tenancy by giving one month's notice after the lock-in period.",Termination
+"The Company reserves the right to terminate the appointment if any information furnished by the Employee is found false.",Termination
+"The employee shall be liable for damages caused by gross negligence.",Liability
+"The Service Provider's total liability under this Agreement shall not exceed the fees paid in the preceding twelve months.",Liability
+"Neither party shall be liable for any indirect, incidental or consequential damages or loss of profits.",Liability
+"The Contractor shall indemnify the Client against all third-party claims arising from the Contractor's negligence.",Liability
+"The Tenant shall be responsible for any damage to the premises beyond normal wear and tear.",Liability
+"In case of breach, the defaulting party shall pay liquidated damages of Rs. 1,00,000.",Liability
+"The Company shall not be liable for any loss of personal belongings of employees at the workplace.",Liability
+"The Supplier warrants that the goods shall be free from defects for a period of twelve months.",Liability
+"The Consultant shall maintain professional indemnity insurance with a minimum cover of Rs. 50 lakh.",Liability
+"The Licensor shall defend and hold harmless the Licensee against claims of intellectual property infringement.",Liability
+"The Employee shall compensate the Company for any loss caused by wilful misconduct.",Liability
+"The limitation of liability shall not apply to fraud or wilful misconduct.",Liability
+"The Tenant shall indemnify the Landlord against any claims arising from illegal use of the premises.",Liability
+"Each party shall be liable to the other only for direct losses resulting from its breach of this Agreement.",Liability
+"If the employee leaves before completing two years, the employee shall pay a penalty towards training costs.",Liability
+"The Service Provider shall be liable for all losses suffered by the Client without any limit.",Liability
+"The Company disclaims all warranties, express or implied, other than those stated in this Agreement.",Liability
+"The Buyer's sole remedy for defective goods shall be repair or replacement.",Liability
+"Any loss caused to the Company's equipment by the Employee's negligence may be recovered from the Employee.",Liability
+"The Landlord shall not be responsible for any theft or damage to the Tenant's belongings.",Liability
+"Any dispute shall be resolved through arbitration.",Dispute
+"This Agreement shall be governed by and construed in accordance with the laws of India.",Dispute
+"The courts at Ernakulam shall have exclusive jurisdiction over all matters arising out of this Agreement.",Dispute
+"Any dispute shall be referred to a sole arbitrator appointed by mutual consent under the Arbitration and Conciliation Act, 1996.",Dispute
+"The parties shall first attempt to settle any dispute amicably through negotiation for thirty days.",Dispute
+"The seat and venue of arbitration shall be Chennai and the proceedings shall be conducted in English.",Dispute
+"If the dispute is not resolved by negotiation, the parties shall refer it to mediation before initiating arbitration.",Dispute
+"The award of the arbitral tribunal shall be final and binding on the parties.",Dispute
+"Disputes relating to the tenancy shall be decided by the Rent Controller having jurisdiction over the premises.",Dispute
+"Each party shall bear its own costs of the arbitration unless the arbitrator decides otherwise.",Dispute
+"Nothing in this clause prevents a party from seeking urgent interim relief from a competent court.",Dispute
+"Any claim arising under this Agreement must be brought before the courts of Mumbai only.",Dispute
+"The arbitral tribunal shall consist of three arbitrators, one appointed by each party and the third by the two arbitrators.",Dispute
+"This Agreement is subject to the jurisdiction of the civil courts at Kozhikode.",Dispute
+"All disputes shall be finally resolved by arbitration administered by an arbitral institution agreed by the parties.",Dispute
+"The Employee agrees that any grievance shall first be raised with the Human Resources department.",Dispute
+"The governing law of this contract shall be the laws of the State of Kerala and India.",Dispute
+"Disputes shall be settled by a sole arbitrator appointed by the Company.",Dispute
+"The parties submit to the non-exclusive jurisdiction of the courts of Delhi.",Dispute
+"A party wishing to start arbitration shall send a written notice of dispute to the other party.",Dispute
+"The employee shall report to the manager.",Others
+"The Employee is appointed as Senior Accountant at the Kochi office.",Others
+"This Agreement constitutes the entire agreement between the parties and supersedes all prior understandings.",Others
+"Neither party may assign this Agreement without the prior written consent of the other party.",Others
+"All notices under this Agreement shall be sent to the addresses mentioned above.",Others
+"The Employee shall work from 9 AM to 6 PM from Monday to Saturday.",Others
+"The Tenant shall use the premises for residential purposes only and shall not sublet them.",Others
+"The Employee is entitled to twelve days of casual leave and fifteen days of earned leave per year.",Others
+"Any amendment to this Agreement shall be valid only if made in writing and signed by both parties.",Others
+"If any provision of this Agreement is held invalid, the remaining provisions shall continue in full force.",Others
+"The headings in this Agreement are for convenience only and shall not affect its interpretation.",Others
+"The Service Provider shall deliver the software modules according to the project timeline in Schedule B.",Others
+"The Tenant shall not keep pets in the premises without the Landlord's written consent.",Others
+"The Employee shall be on probation for a period of six months from the date of joining.",Others
+"Neither party shall be liable for delay caused by force majeure events such as floods, war or pandemic.",Others
+"This Agreement may be executed in counterparts, each of which shall be deemed an original.",Others
+"All intellectual property created by the Employee in the course of employment shall belong to the Company.",Others
+"The Landlord shall carry out structural repairs and whitewashing once a year.",Others
+"The Employee may be transferred to any office or branch of the Company in India.",Others
+"The Distributor shall be the exclusive distributor of the products in the State of Kerala.",Others
+"The Company reserves the right to amend the terms of this Agreement at any time by written notice to the Employee.",Others
+"No amendment or variation of this Agreement shall be effective unless it is in writing and signed by both parties.",Others
+"This Agreement may be modified only by a written instrument executed by authorised representatives of both parties.",Others
+"Neither party may assign or transfer its rights under this Agreement without the prior written consent of the other party.",Others
+"This Agreement constitutes the entire agreement between the parties and supersedes all prior understandings.",Others
+"If any provision of this Agreement is held invalid, the remaining provisions shall continue in full force and effect.",Others
+"Neither party shall be liable for delay caused by events beyond its reasonable control, including floods, fire, epidemics or government orders.",Others
+"The failure of either party to enforce any provision shall not be construed as a waiver of that provision.",Others
+"The normal working hours shall be 9:30 a.m. to 6:00 p.m., Monday to Saturday, with a lunch break of one hour.",Others
+"The Employee shall be entitled to 18 days of paid leave in each calendar year in accordance with the leave policy.",Others
+"All notices under this Agreement shall be in writing and delivered to the addresses stated above or by email.",Others
+"The Tenant shall use the premises only for residential purposes and shall not sub-let any part of it.",Others

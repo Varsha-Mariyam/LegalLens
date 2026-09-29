@@ -1,0 +1,37 @@
+SOFTWARE DEVELOPMENT SERVICE AGREEMENT
+
+(SYNTHETIC SAMPLE DOCUMENT FOR TESTING — FICTITIOUS PARTIES)
+
+This Service Agreement is made between Malabar Retail Private Limited (the "Client") and Backwater Tech Solutions (the "Service Provider").
+
+1. Services
+
+The Service Provider shall develop and deliver a point-of-sale web application as described in the Statement of Work.
+
+2. Fees and Payment
+
+The Client shall pay Rs. 6,00,000 in three instalments. Each invoice shall be paid within ninety (90) days of receipt. The Client may withhold payment at its sole discretion if it is not satisfied with the deliverables.
+
+3. Confidentiality
+
+Each party shall keep the other party's confidential information confidential and use it only to perform this Agreement. This obligation continues for three (3) years after termination.
+
+4. Termination
+
+The Client may terminate this Agreement for convenience at any time by giving seven (7) days' written notice. Either party may terminate for material breach not cured within thirty (30) days of notice.
+
+5. Limitation of Liability
+
+The Service Provider shall be liable for all losses, including indirect and consequential losses and loss of profit, arising from the services, without limit.
+
+6. Indemnity
+
+The Service Provider shall indemnify the Client against any and all claims, whatever their cause.
+
+7. Auto-Renewal
+
+This Agreement shall automatically renew for successive one-year terms unless terminated.
+
+8. Dispute Resolution
+
+Disputes shall be referred to arbitration under the Arbitration and Conciliation Act, 1996, with the seat of arbitration at Kozhikode.

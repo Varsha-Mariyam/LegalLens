@@ -1,0 +1,13 @@
+Title: Termination of lease and notice to quit
+Jurisdiction: India
+Topic: termination
+Sources: Transfer of Property Act, 1882, sections 106 and 111; Model Tenancy Act, 2021
+Note: Educational summary prepared for the LegalLens academic project. Verify against the official text and the law of the relevant State before relying on it.
+
+Section 106 of the Transfer of Property Act, 1882 applies in the absence of a contract or local law to the contrary. A lease of immovable property for agricultural or manufacturing purposes is deemed to be a lease from year to year, terminable by six months' notice; a lease for any other purpose is deemed to be a lease from month to month, terminable by fifteen days' notice. The notice must be in writing, signed and properly delivered.
+
+Section 111 lists the ways a lease is determined, including by efflux of the time limited by it, by express surrender, by forfeiture and on the expiry of a notice to determine the lease.
+
+Under the Model Tenancy Act, 2021, a tenancy continues for the period agreed in the tenancy agreement, eviction during the tenancy must follow the grounds and procedure set out in that Act, and the landlord must not withhold essential supplies or services to the premises.
+
+Practical reading: check the notice period for both sides, any lock-in period, what happens to the deposit if the tenant leaves during a lock-in, and whether the landlord can evict without notice.

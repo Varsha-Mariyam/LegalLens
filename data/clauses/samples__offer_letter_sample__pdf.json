@@ -1,0 +1,63 @@
+{
+  "source": "samples/offer_letter_sample.pdf",
+  "document_type": "employment",
+  "extraction": [
+    "text-layer"
+  ],
+  "clauses": [
+    {
+      "id": 1,
+      "label": null,
+      "title": "Preamble / Parties",
+      "text": "OFFER OF EMPLOYMENT — EMPLOYEE CONTRACT\n(SYNTHETIC SAMPLE DOCUMENT FOR TESTING — FICTITIOUS PARTIES)\nThis agreement is between Coastal Analytics LLP, Thiruvananthapuram (\"Employer\") and Meera Pillai (\"Employee\")."
+    },
+    {
+      "id": 2,
+      "label": "1",
+      "title": "Position",
+      "text": "The Employee is appointed as Data Analyst and shall report to the Head of Analytics."
+    },
+    {
+      "id": 3,
+      "label": "2",
+      "title": "Compensation",
+      "text": "The Employer shall pay the Employee a monthly salary of Rs. 60,000 on or before the 7th day of the following month by bank transfer, subject to statutory deductions."
+    },
+    {
+      "id": 4,
+      "label": "3",
+      "title": "Leave",
+      "text": "The Employee is entitled to 18 days of earned leave per year and public holidays as notified by the Employer."
+    },
+    {
+      "id": 5,
+      "label": "4",
+      "title": "Confidentiality",
+      "text": "The Employee shall keep the Employer's non-public business information confidential and use it only for the Employer's work. This does not apply to information that is publicly available or required to be disclosed by law. This obligation continues for two (2) years after employment ends."
+    },
+    {
+      "id": 6,
+      "label": "5",
+      "title": "Termination",
+      "text": "Either party may terminate this agreement by giving thirty (30) days' written notice or salary in lieu of notice."
+    },
+    {
+      "id": 7,
+      "label": "6",
+      "title": "Liability",
+      "text": "The Employee shall be liable only for losses caused by the Employee's wilful misconduct, and such liability shall not exceed two (2) months' salary."
+    },
+    {
+      "id": 8,
+      "label": "7",
+      "title": "Disputes",
+      "text": "Any dispute shall be referred to a sole arbitrator appointed by mutual agreement of both parties under the Arbitration and Conciliation Act, 1996."
+    },
+    {
+      "id": 9,
+      "label": "8",
+      "title": "Governing Law",
+      "text": "This agreement is governed by the laws of India."
+    }
+  ]
+}

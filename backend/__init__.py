@@ -1,0 +1,1 @@
+"""LegalLens backend package."""

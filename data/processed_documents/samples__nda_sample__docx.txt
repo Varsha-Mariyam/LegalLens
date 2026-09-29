@@ -1,0 +1,33 @@
+NON-DISCLOSURE AGREEMENT
+
+(SYNTHETIC SAMPLE DOCUMENT FOR TESTING — FICTITIOUS PARTIES)
+
+This Non-Disclosure Agreement is entered into between Periyar Robotics Private Limited (the "Disclosing Party") and Bluewave Consulting (the "Receiving Party").
+
+1. Confidential Information
+
+Confidential Information means all information of any kind disclosed by the Disclosing Party, whether oral, written or electronic, whether or not marked confidential.
+
+2. Obligations of the Receiving Party
+
+The Receiving Party shall not disclose the Confidential Information to any third party and shall use it only to evaluate a possible software development project.
+
+3. Term
+
+The obligations of the Receiving Party shall continue indefinitely and shall survive termination of this Agreement.
+
+4. Non-Solicitation and Non-Compete
+
+The Receiving Party shall not provide services to any competitor of the Disclosing Party for a period of three (3) years after the termination of this Agreement.
+
+5. Remedies
+
+In case of any breach, the Receiving Party shall pay liquidated damages of Rs. 25,00,000 to the Disclosing Party, in addition to any other remedy.
+
+6. Termination
+
+The Disclosing Party may terminate this Agreement at any time without notice.
+
+7. Dispute Resolution
+
+The Receiving Party waives any right to approach any court. All disputes shall be decided by an arbitrator nominated by the Disclosing Party.

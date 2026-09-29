@@ -1,0 +1,8 @@
+# Better semantic embeddings (recommended). After installing: python scripts/download_models.py
+sentence-transformers>=3.0
+# PostgreSQL instead of SQLite: set DATABASE_URL=postgresql+psycopg2://user:pass@host/legallens
+psycopg2-binary>=2.9
+# Notebooks
+jupyter
+pandas
+matplotlib

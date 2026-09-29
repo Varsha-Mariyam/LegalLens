@@ -1,0 +1,258 @@
+[
+  {
+    "source": "cuad/ADAMSGOLFINC_03_21_2005_EX_10_17_ENDORSEMENT_AGREEMENT.txt",
+    "document_type": "service",
+    "clauses": 38,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/AlliedEsportsEntertainmentInc_20190815_8_K_EX_10_19_11788293_EX_10_19_Content_License_Agre.txt",
+    "document_type": "service",
+    "clauses": 16,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/AzulSa_20170303_F_1A_EX_10_3_9943903_EX_10_3_Maintenance_Agreement2.txt",
+    "document_type": "nda",
+    "clauses": 25,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/CENTRACKINTERNATIONALINC_10_29_1999_EX_10_3_WEB_SITE_HOSTING_AGREEMENT.txt",
+    "document_type": "service",
+    "clauses": 15,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/DOMINIADVISORTRUST_02_18_2005_EX_99_H_2_SPONSORSHIP_AGREEMENT.txt",
+    "document_type": "service",
+    "clauses": 12,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/DRAGONSYSTEMSINC_01_08_1999_EX_10_17_OUTSOURCING_AGREEMENT.txt",
+    "document_type": "service",
+    "clauses": 13,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/FuseMedicalInc_20190321_10_K_EX_10_43_11575454_EX_10_43_Distributor_Agreement.txt",
+    "document_type": "service",
+    "clauses": 62,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/IntegrityFunds_20200121_485BPOS_EX_99_E_UNDR_CONTR_11948727_EX_99_E_UNDR_CONTR_Service_Agr.txt",
+    "document_type": "service",
+    "clauses": 21,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/KIROMICBIOPHARMA_INC_05_11_2020_EX_10_23_CONSULTING_AGREEMENT.txt",
+    "document_type": "service",
+    "clauses": 20,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/LohaCompanyltd_20191209_F_1_EX_10_16_11917878_EX_10_16_Supply_Agreement.txt",
+    "document_type": "service",
+    "clauses": 21,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/PREMIERBIOMEDICALINC_05_14_2020_EX_10_2_INTELLECTUAL_PROPERTY_AGREEMENT.txt",
+    "document_type": "service",
+    "clauses": 28,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "cuad/VEONEER_INC_02_21_2020_EX_10_11_JOINT_VENTURE_AGREEMENT.txt",
+    "document_type": "service",
+    "clauses": 7,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "samples/employment_agreement_sample.docx",
+    "document_type": "employment",
+    "clauses": 12,
+    "methods": [
+      "python-docx"
+    ]
+  },
+  {
+    "source": "samples/employment_agreement_sample.pdf",
+    "document_type": "employment",
+    "clauses": 12,
+    "methods": [
+      "text-layer"
+    ]
+  },
+  {
+    "source": "samples/employment_agreement_sample.txt",
+    "document_type": "employment",
+    "clauses": 12,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "samples/lease_agreement_balanced_sample.docx",
+    "document_type": "rental",
+    "clauses": 8,
+    "methods": [
+      "python-docx"
+    ]
+  },
+  {
+    "source": "samples/lease_agreement_balanced_sample.pdf",
+    "document_type": "rental",
+    "clauses": 8,
+    "methods": [
+      "text-layer"
+    ]
+  },
+  {
+    "source": "samples/lease_agreement_balanced_sample.txt",
+    "document_type": "rental",
+    "clauses": 8,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "samples/nda_sample.docx",
+    "document_type": "nda",
+    "clauses": 8,
+    "methods": [
+      "python-docx"
+    ]
+  },
+  {
+    "source": "samples/nda_sample.pdf",
+    "document_type": "nda",
+    "clauses": 8,
+    "methods": [
+      "text-layer"
+    ]
+  },
+  {
+    "source": "samples/nda_sample.txt",
+    "document_type": "nda",
+    "clauses": 8,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "samples/offer_letter_sample.docx",
+    "document_type": "employment",
+    "clauses": 9,
+    "methods": [
+      "python-docx"
+    ]
+  },
+  {
+    "source": "samples/offer_letter_sample.pdf",
+    "document_type": "employment",
+    "clauses": 9,
+    "methods": [
+      "text-layer"
+    ]
+  },
+  {
+    "source": "samples/offer_letter_sample.txt",
+    "document_type": "employment",
+    "clauses": 9,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "samples/rental_agreement_sample.docx",
+    "document_type": "rental",
+    "clauses": 9,
+    "methods": [
+      "python-docx"
+    ]
+  },
+  {
+    "source": "samples/rental_agreement_sample.pdf",
+    "document_type": "rental",
+    "clauses": 9,
+    "methods": [
+      "text-layer"
+    ]
+  },
+  {
+    "source": "samples/rental_agreement_sample.txt",
+    "document_type": "rental",
+    "clauses": 9,
+    "methods": [
+      "plain-text"
+    ]
+  },
+  {
+    "source": "samples/rental_agreement_sample_scanned.pdf",
+    "document_type": "rental",
+    "clauses": 9,
+    "methods": [
+      "ocr"
+    ]
+  },
+  {
+    "source": "samples/rental_agreement_sample_scanned.png",
+    "document_type": "rental",
+    "clauses": 9,
+    "methods": [
+      "ocr"
+    ]
+  },
+  {
+    "source": "samples/service_agreement_sample.docx",
+    "document_type": "service",
+    "clauses": 9,
+    "methods": [
+      "python-docx"
+    ]
+  },
+  {
+    "source": "samples/service_agreement_sample.pdf",
+    "document_type": "service",
+    "clauses": 9,
+    "methods": [
+      "text-layer"
+    ]
+  },
+  {
+    "source": "samples/service_agreement_sample.txt",
+    "document_type": "service",
+    "clauses": 9,
+    "methods": [
+      "plain-text"
+    ]
+  }
+]

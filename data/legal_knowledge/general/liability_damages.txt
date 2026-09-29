@@ -1,0 +1,15 @@
+Title: Liability, compensation for breach, penalties and indemnity
+Jurisdiction: India
+Topic: liability
+Sources: Indian Contract Act, 1872, sections 73, 74, 124 and 125; Kailash Nath Associates v. Delhi Development Authority (Supreme Court of India, 2015)
+Note: Educational summary prepared for the LegalLens academic project. Verify against the official text before relying on it.
+
+Section 73 of the Indian Contract Act, 1872 entitles the party who suffers from a breach of contract to compensation for loss or damage that naturally arose in the usual course of things from the breach, or which the parties knew, when they made the contract, to be likely to result from the breach. No compensation is given for any remote and indirect loss or damage sustained by reason of the breach.
+
+Section 74 deals with contracts that name a sum to be paid on breach, or that contain any other stipulation by way of penalty. The party complaining of the breach is entitled to receive reasonable compensation not exceeding the amount so named or the penalty stipulated. In practice the named amount is a ceiling, not an automatic entitlement.
+
+In Kailash Nath Associates v. Delhi Development Authority (2015), the Supreme Court explained that section 74 allows only reasonable compensation, and that where loss can be proved, it has to be proved; a named sum is not recoverable merely because it is written in the contract.
+
+Section 124 defines a contract of indemnity as a contract by which one party promises to save the other from loss caused to him by the conduct of the promisor himself or by the conduct of any other person. Section 125 sets out the rights of the indemnity-holder when sued.
+
+Practical reading: a clause that makes one party liable for "any and all" losses, including indirect or consequential losses, with no upper limit, goes beyond the default position in section 73 and exposes that party to open-ended liability. Look for a liability cap, an exclusion of indirect loss, and indemnities that are mutual and limited to the party's own breach or negligence.

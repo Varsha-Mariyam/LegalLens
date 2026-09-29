@@ -1,0 +1,13 @@
+Title: Limitation of liability, indemnity and termination in service agreements
+Jurisdiction: General (drafting practice)
+Topic: liability
+Sources: General drafting practice; Indian Contract Act, 1872, sections 73 and 74 (for the default legal position)
+Note: This file describes common commercial drafting conventions, not legal requirements. Prepared for the LegalLens academic project.
+
+Commercial service agreements commonly cap each party's total liability, often at the fees paid or payable in the preceding twelve months, and exclude liability for indirect, consequential or special loss and loss of profit. Common carve-outs from the cap include fraud, wilful misconduct, breach of confidentiality and infringement of intellectual property.
+
+Indemnities are usually limited to losses arising from the indemnifying party's own breach, negligence or infringement, and are often mutual.
+
+Termination provisions commonly allow either party to terminate for material breach that is not cured within a stated cure period (for example 30 days after written notice), and sometimes allow termination for convenience on a longer written notice. Accrued payment obligations normally survive termination.
+
+Under the default legal position in section 73 of the Indian Contract Act, 1872, remote and indirect loss is not recoverable; a clause that expressly makes one party liable for such loss without limit shifts more risk than the default law does.
