@@ -1,0 +1,203 @@
+{
+  "created_at": "2026-09-30T17:41:03+00:00",
+  "source": {
+    "name": "CUAD v1 (Contract Understanding Atticus Dataset)",
+    "file": "data/external/cuad/CUADv1.json",
+    "sha256": "ed0b77d85bdf4014d7495800e8e4a70565b48ee6f8a2e5dca9cf8655dbf10eae",
+    "url": "https://github.com/TheAtticusProject/cuad",
+    "doi": "10.5281/zenodo.4595826",
+    "license": "CC BY 4.0",
+    "citation": "Hendrycks, Burns, Chen and Ball. CUAD: An Expert-Annotated NLP Dataset for Legal Contract Review. NeurIPS 2021 Datasets and Benchmarks."
+  },
+  "seed": 42,
+  "split_method": "filing-company groups, stratified by contract type, 70/15/15 by contract count",
+  "contracts": {
+    "train": 351,
+    "val": 80,
+    "test": 79
+  },
+  "filing_groups": {
+    "train": 316,
+    "test": 73,
+    "val": 70
+  },
+  "contract_types": {
+    "Affiliate": 10,
+    "Agency": 15,
+    "Co-Branding": 20,
+    "Collaboration": 11,
+    "Consulting": 11,
+    "Cooperation": 15,
+    "Development": 30,
+    "Distributor": 36,
+    "Endorsement": 24,
+    "Franchise": 15,
+    "Hosting": 20,
+    "IP": 16,
+    "Joint Filing": 13,
+    "Joint Venture": 10,
+    "License": 33,
+    "Maintenance": 34,
+    "Manufacturing": 12,
+    "Marketing": 11,
+    "Non-Compete": 3,
+    "Other": 1,
+    "Outsourcing": 18,
+    "Promotion": 11,
+    "Reseller": 13,
+    "Service": 29,
+    "Sponsorship": 31,
+    "Strategic Alliance": 32,
+    "Supply": 23,
+    "Transportation": 13
+  },
+  "segmentation": {
+    "segments_min_chars": 40,
+    "segments": 26484,
+    "located_in_source": 26124,
+    "coverage": 0.9864
+  },
+  "clause_classification": {
+    "labels": [
+      "Payment",
+      "Confidentiality",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+    ],
+    "sizes": {
+      "train": 5933,
+      "val": 1514,
+      "test": 1463
+    },
+    "label_distribution": {
+      "train": {
+        "Confidentiality": 166,
+        "Dispute": 436,
+        "Liability": 715,
+        "Others": 2935,
+        "Payment": 823,
+        "Termination": 858
+      },
+      "val": {
+        "Confidentiality": 54,
+        "Dispute": 120,
+        "Liability": 190,
+        "Others": 695,
+        "Payment": 217,
+        "Termination": 238
+      },
+      "test": {
+        "Confidentiality": 61,
+        "Dispute": 120,
+        "Liability": 203,
+        "Others": 662,
+        "Payment": 189,
+        "Termination": 228
+      }
+    },
+    "gold_sizes": {
+      "train": 4886,
+      "val": 1158,
+      "test": 1121
+    },
+    "conflicting_texts_dropped": 17,
+    "cross_split_duplicates_removed": 45,
+    "excluded": "131 project-authored seed clauses (data/datasets/seed_clauses_authored.csv)"
+  },
+  "risk_detection": {
+    "labels": [
+      "Uncapped Liability",
+      "Non-Compete",
+      "Non-Solicitation",
+      "Exclusivity",
+      "Liquidated Damages",
+      "Change Of Control",
+      "Anti-Assignment",
+      "Termination For Convenience",
+      "Ip Ownership Assignment",
+      "Covenant Not To Sue",
+      "Minimum Commitment",
+      "Renewal Term"
+    ],
+    "merged": {
+      "Non-Solicitation": [
+        "No-Solicit Of Employees",
+        "No-Solicit Of Customers"
+      ]
+    },
+    "unit": "clause as segmented by backend.services.clause_service (>= 40 chars)",
+    "sizes": {
+      "train": 4449,
+      "val": 4327,
+      "test": 4034
+    },
+    "positives": {
+      "train": 1483,
+      "val": 326,
+      "test": 347
+    },
+    "label_distribution": {
+      "train": {
+        "Uncapped Liability": 78,
+        "Non-Compete": 133,
+        "Non-Solicitation": 74,
+        "Exclusivity": 223,
+        "Liquidated Damages": 66,
+        "Change Of Control": 117,
+        "Anti-Assignment": 306,
+        "Termination For Convenience": 135,
+        "Ip Ownership Assignment": 127,
+        "Covenant Not To Sue": 86,
+        "Minimum Commitment": 207,
+        "Renewal Term": 139
+      },
+      "val": {
+        "Uncapped Liability": 26,
+        "Non-Compete": 30,
+        "Non-Solicitation": 13,
+        "Exclusivity": 40,
+        "Liquidated Damages": 13,
+        "Change Of Control": 27,
+        "Anti-Assignment": 67,
+        "Termination For Convenience": 39,
+        "Ip Ownership Assignment": 25,
+        "Covenant Not To Sue": 20,
+        "Minimum Commitment": 41,
+        "Renewal Term": 29
+      },
+      "test": {
+        "Uncapped Liability": 30,
+        "Non-Compete": 33,
+        "Non-Solicitation": 10,
+        "Exclusivity": 46,
+        "Liquidated Damages": 14,
+        "Change Of Control": 23,
+        "Anti-Assignment": 81,
+        "Termination For Convenience": 26,
+        "Ip Ownership Assignment": 41,
+        "Covenant Not To Sue": 28,
+        "Minimum Commitment": 39,
+        "Renewal Term": 24
+      }
+    },
+    "train_negative_ratio": 2.0,
+    "train_negatives_available": 15975,
+    "cross_split_duplicates_removed": 150
+  },
+  "retrieval": {
+    "val": {
+      "contracts": 80,
+      "queries": 2880,
+      "answerable": 691,
+      "answerable_with_located_segments": 676
+    },
+    "test": {
+      "contracts": 79,
+      "queries": 2844,
+      "answerable": 710,
+      "answerable_with_located_segments": 670
+    }
+  }
+}

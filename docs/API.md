@@ -23,10 +23,23 @@ and `/api/standards/{type}` need `Authorization: Bearer <token>`. Documents belo
 | GET | `/api/documents/{id}/comparison` | Reference-template comparison rows + summary |
 | GET | `/api/standards/{doc_type}` | Reference template clauses |
 | GET | `/api/documents/{id}/report` | PDF report download |
-| GET | `/api/system/status` | LLM, embeddings, RAG index, cache, OCR, classifier status and metrics |
+| GET | `/api/system/status` | LLM, embeddings, RAG index, cache, OCR, classifier (`primary`, `transformer`, fallback), `risk_detector`, `qa_retrieval` and evaluation metrics |
 | GET | `/api/system/knowledge` | Knowledge-base files and their sources |
 | POST | `/api/system/reindex` | Rebuild the vector index |
 | GET | `/api/health` | Liveness |
+
+### Fields added by the Transformer upgrade (all additive — existing fields are unchanged)
+
+| Where | Field | Meaning |
+|---|---|---|
+| clause `classifier_details` | `transformer: {label, confidence}` | fine-tuned Transformer prediction (present when the model is loaded); `method` is `transformer:<base model> (fine-tuned)`, `ml:tfidf-logreg` in fallback |
+| clause `risk_evidence[]` | items with `kind: "model"`, `rule: "model:<type>"`, `probability` | learned risk-detector detections; `risk_method` ends with `+ learned detector` when it ran |
+| `analysis_meta` | `risk_detector {used, base_model, labels, detections}`, `qa_retrieval`, `extractive_summary [{clause_number, clause_label, category, sentence, centrality}]`, `classifier {primary, transformer, ...}` | how this analysis was produced; key sentences quoted from the document |
+| Q&A `sources[]` | `dense`, `bm25` | the two retrieval scores behind each cited clause; `method` names the retriever, e.g. `extractive answer (no LLM configured) · hybrid retrieval (BM25 + sbert-all-MiniLM-L6-v2)` |
+| `/api/system/status` | `risk_detector`, `qa_retrieval {mode, fusion, alpha, category_boost, calibrated_not_found}`, `classifier_metrics.{risk_detector, retrieval, answerability}` | component status and test-set evaluation summary |
+
+Empty or unreadable files: an empty upload is rejected with 422; a file whose text cannot be read (blank text, corrupt
+PDF, scanned image without Tesseract) is accepted (202) and its status becomes `failed` with the reason in `error`.
 
 Example:
 

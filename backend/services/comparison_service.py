@@ -11,7 +11,16 @@ from backend.services.llm_service import SYSTEM_PROMPT, LLMError, get_client
 
 REFERENCE_LABEL = "Project reference template (not an official legal standard)"
 MATCH_THRESHOLD = 0.25
-EQUIVALENT_THRESHOLD = 0.75
+# Cosine scales differ between embedding models, so "equivalent" (same key term AND similar wording) needs a
+# backend-specific cut-off. 0.75 was set for the LSA embedder. For MiniLM, reference and user clauses with identical
+# key terms in the project's balanced samples score 0.67-0.93, so 0.65 is used (heuristic, see docs/EVALUATION.md).
+EQUIVALENT_THRESHOLDS = {"lsa-tfidf-svd": 0.75}
+DEFAULT_SBERT_EQUIVALENT = 0.65
+
+
+def equivalent_threshold() -> float:
+    name = embedding_service.get_embedder().name
+    return EQUIVALENT_THRESHOLDS.get(name, DEFAULT_SBERT_EQUIVALENT if name.startswith("sbert-") else 0.75)
 
 
 def load_standard(doc_type: str) -> list[dict]:
@@ -80,6 +89,7 @@ def compare(doc_type: str, user_clauses: list[dict], user_embeddings) -> list[di
     user_emb = np.asarray(user_embeddings, dtype=np.float32)
     sims = std_emb @ user_emb.T if len(user_clauses) else np.zeros((len(std), 0))
     client = get_client()
+    eq_threshold = equivalent_threshold()
     rows, used = [], set()
     for i, sc in enumerate(std):
         best_j, best_s = None, -1.0
@@ -99,7 +109,7 @@ def compare(doc_type: str, user_clauses: list[dict], user_embeddings) -> list[di
         uc = user_clauses[best_j]
         used.add(best_j)
         sv, uv = key_value(sc["category"], sc["text"]), key_value(sc["category"], uc["text"])
-        status = "equivalent" if sv == uv and raw >= EQUIVALENT_THRESHOLD else "differs"
+        status = "equivalent" if sv == uv and raw >= eq_threshold else "differs"
         diff, method = _rule_difference(sc["category"], sv, uv, sc["text"], uc["text"]), "embedding match + rule comparison"
         if client.available and status == "differs":
             prompt = (f"Reference clause ({REFERENCE_LABEL}):\n{sc['text']}\n\nUser clause:\n{uc['text']}\n\n"

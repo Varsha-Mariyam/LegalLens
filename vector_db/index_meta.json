@@ -1,7 +1,7 @@
 {
-  "fingerprint": "6324fc7bcfc8e0dc9f4127fde2e3bf7b623cb7cb9195acce2de51ba4643f1845",
+  "fingerprint": "4b54a2270f10feecaba1a3ea5e060b181eed4c4bba5636050ef2027a7fb7e22f",
   "knowledge_chunks": 39,
   "standard_clauses": 31,
-  "embedding_backend": "lsa-tfidf-svd",
+  "embedding_backend": "sbert-all-MiniLM-L6-v2",
   "vector_store": "chromadb"
 }

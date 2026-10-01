@@ -89,7 +89,10 @@ class SbertEmbedder:
     def __init__(self, model_name: str):
         from sentence_transformers import SentenceTransformer
         source = str(LOCAL_SBERT_DIR) if (LOCAL_SBERT_DIR / "config.json").exists() else model_name
-        self.model = SentenceTransformer(source)
+        try:  # use the local Hugging Face cache without network calls (works offline, starts faster)
+            self.model = SentenceTransformer(source, local_files_only=True)
+        except Exception:  # noqa: BLE001  — not cached yet: download it
+            self.model = SentenceTransformer(source)
         self.name = "sbert-" + Path(model_name).name
         self.dim = int(self.model.get_sentence_embedding_dimension())
         self.fingerprint = source

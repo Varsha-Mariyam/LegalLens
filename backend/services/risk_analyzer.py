@@ -1,4 +1,9 @@
-"""Risk analysis (guide section 12): transparent rule signals + optional LLM assessment.
+"""Risk analysis (guide section 12): transparent rule signals + learned risk detector + optional LLM assessment.
+
+Learned detector (added in the Transformer upgrade): a fine-tuned MiniLM averaged with a TF-IDF model (weight and
+per-type thresholds chosen on validation contracts; either model alone when the other is unavailable) recognises 12
+risk-relevant CUAD clause types; each detection is added as evidence with the level set by MODEL_RISK_POLICY below.
+Nothing ever lowers a rule level: the final level is the highest of the rule, detector and (optional) LLM levels.
 
 Every rule produces evidence (what was found, why it matters, the reference it relies on). The rules run
 for every clause. When an LLM is configured, it receives the clause, its explanation, the RAG references,
@@ -10,10 +15,65 @@ from __future__ import annotations
 import re
 
 from backend.services import legal_parsing as lp
+from backend.services import transformer_models
 from backend.services.llm_service import SYSTEM_PROMPT, LLMError, get_client, parse_json
 
 LEVELS = {"LOW": 0, "MEDIUM": 1, "HIGH": 2}
 ICA = "Indian Contract Act, 1872"
+MODEL_SOURCE = "Learned risk detector (fine-tuned MiniLM + TF-IDF ensemble, trained on CUAD v1 expert labels)"
+MUTUAL = re.compile(r"\b(either party|each party|both parties|mutual(ly)?|each of the parties)\b", re.I)
+_AUTO = object()
+# Learned detector: CUAD clause type -> (level, why it matters, precaution, level when the wording is mutual or None).
+# Commonplace types are informational (LOW); a detection with probability < 0.5 can never make a clause HIGH.
+MODEL_RISK_POLICY = {
+    "Uncapped Liability": ("HIGH", "Liability is not capped, or some losses are carved out of the liability cap.",
+                           "Negotiate an overall cap; keep uncapped items to fraud, wilful misconduct and specific indemnities.", None),
+    "Non-Compete": ("MEDIUM", "Restricts a party from competing or dealing with competitors.",
+                    "Check scope, territory and duration; restraints after the contract ends are void in India except in "
+                    "narrow cases.", None),
+    "Non-Solicitation": ("MEDIUM", "Restricts soliciting or hiring the other party's employees or customers.",
+                         "Limit the duration and scope, and make the restriction mutual.", "LOW"),
+    "Exclusivity": ("MEDIUM", "Grants exclusive rights or requires exclusive dealing.",
+                    "Confirm the exclusivity is limited in scope, territory and time and tied to performance.", None),
+    "Liquidated Damages": ("MEDIUM", "Fixes an amount payable on breach or early termination.",
+                           "Check that the amount is a genuine pre-estimate of loss; only reasonable compensation is recoverable.",
+                           None),
+    "Change Of Control": ("LOW", "Gives the other party rights (consent or termination) if ownership changes.",
+                          "Note what happens on a merger, sale or change of ownership.", None),
+    "Anti-Assignment": ("LOW", "Restricts assigning or transferring the agreement.",
+                        "Check whether consent can be withheld unreasonably and whether affiliates are excluded.", None),
+    "Termination For Convenience": ("MEDIUM", "Allows the agreement to be ended without cause.",
+                                    "Ensure the right is mutual, needs adequate notice, and pays for work already done.", "LOW"),
+    "Ip Ownership Assignment": ("MEDIUM", "Transfers ownership of intellectual property to the other party.",
+                                "Check which IP is transferred, that pre-existing IP is excluded and that compensation is fair.",
+                                None),
+    "Covenant Not To Sue": ("MEDIUM", "Restricts a party from suing or from challenging the other party's rights.",
+                            "Check that statutory remedies are not waived (an absolute bar on legal proceedings is void).", None),
+    "Minimum Commitment": ("MEDIUM", "Requires a minimum purchase, volume or payment.",
+                           "Check that the commitment is achievable and what happens on a shortfall.", None),
+    "Renewal Term": ("LOW", "The term renews (possibly automatically).",
+                     "Diary the renewal date and the notice needed to stop renewal.", None),
+}
+
+
+def model_signals(clause: dict, detections: list[dict] | None) -> list[dict]:
+    """Evidence items for the learned detector's detections on this clause (see MODEL_RISK_POLICY)."""
+    ev = []
+    for d in detections or []:
+        policy = MODEL_RISK_POLICY.get(d["label"])
+        if policy is None:
+            continue
+        level, reason, precaution, mutual_level = policy
+        mutual = mutual_level is not None and bool(MUTUAL.search(clause["text"]))
+        if mutual:
+            level = mutual_level
+        if level == "HIGH" and d["probability"] < 0.5:
+            level = "MEDIUM"
+        ev.append({"rule": f"model:{d['label']}", "level": level,
+                   "finding": f"Detected clause type: {d['label']} (probability {d['probability']:.2f})",
+                   "reason": reason + (" The wording applies to both parties." if mutual else ""),
+                   "precaution": precaution, "source": MODEL_SOURCE, "kind": "model", "probability": d["probability"]})
+    return ev
 
 
 def _ev(rule, level, finding, reason, precaution, source):
@@ -223,11 +283,19 @@ def _combine(evidence: list[dict]) -> tuple[str, str, str]:
     return level, reason, precaution
 
 
-def analyze(clause: dict, doc_type: str, standard: dict | None, references: list[dict], doc_facts: dict) -> dict:
+def analyze(clause: dict, doc_type: str, standard: dict | None, references: list[dict], doc_facts: dict,
+            model_risks=_AUTO) -> dict:
+    """model_risks: the learned detector's detections for this clause (the pipeline computes them in one batch);
+    None = detector unavailable; omitted = run the detector for this clause now."""
+    if model_risks is _AUTO:
+        batch = transformer_models.detect_risks([transformer_models.risk_input(clause.get("title"), clause["text"])])
+        model_risks = batch[0] if batch is not None else None
     evidence = rule_signals(clause, doc_type, standard["text"] if standard else None, doc_facts)
+    evidence += model_signals(clause, model_risks)
     level, reason, precaution = _combine(evidence)
+    base = "rule-based risk signals" + (" + learned detector" if model_risks is not None else "")
     result = {"risk_level": level, "risk_reason": reason, "precaution": precaution, "evidence": evidence,
-              "method": "rule-based risk signals"}
+              "method": base}
     client = get_client()
     if not client.available:
         return result
@@ -236,7 +304,7 @@ def analyze(clause: dict, doc_type: str, standard: dict | None, references: list
     prompt = (f"Document type: {doc_type}\nOriginal clause:\n\"\"\"\n{clause['text']}\n\"\"\"\n"
               f"Clause summary: {clause.get('summary', '')}\n\nReference knowledge:\n{refs or '(none)'}\n\n"
               f"Project reference clause (not an official standard):\n{standard['text'] if standard else '(none)'}\n\n"
-              f"Rule-based signals already detected:\n{ev_text}\n\n"
+              f"Rule-based and learned-detector signals already detected:\n{ev_text}\n\n"
               "Assess the potential risk of this clause for the weaker party. Respond with JSON only: "
               '{"risk_level": "LOW|MEDIUM|HIGH", "reason": "evidence-based explanation in 1-3 sentences", '
               '"precaution": "1-2 practical precautions"}')
@@ -248,7 +316,7 @@ def analyze(clause: dict, doc_type: str, standard: dict | None, references: list
         final = llm_level if LEVELS[llm_level] >= LEVELS[level] else level
         result.update({"risk_level": final, "risk_reason": data.get("reason") or reason,
                        "precaution": data.get("precaution") or precaution,
-                       "method": f"{client.label} + rule signals (final = higher of the two)"})
+                       "method": f"{client.label} + {base.replace('rule-based risk signals', 'rule signals')} (final = highest)"})
     except LLMError as exc:
-        result["method"] = f"rule-based risk signals (LLM error: {str(exc)[:80]})"
+        result["method"] = f"{base} (LLM error: {str(exc)[:60]})"
     return result

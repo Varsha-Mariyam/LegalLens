@@ -12,7 +12,8 @@ from backend.config import settings
 from backend.database.db import SessionLocal
 from backend.database.models import Clause, ComparisonRow, Document
 from backend.services import (cache_service, classifier, clause_service, comparison_service, document_type,
-                              embedding_service, extraction_service, rag_service, risk_analyzer, summarizer)
+                              embedding_service, extraction_service, rag_service, risk_analyzer, summarizer,
+                              transformer_models)
 from backend.services import legal_parsing as lp
 from backend.services.llm_service import get_client
 
@@ -78,6 +79,17 @@ def get_context(doc: Document) -> dict:
     return ctx
 
 
+def _risk_detector_meta(model_risks) -> dict:
+    mode = transformer_models.risk_detector_mode()
+    if model_risks is None or mode is None:
+        return {"used": False, "reason": transformer_models.status()["risk"].get("error") or "disabled or not trained"}
+    model = transformer_models.get("risk")
+    cfg = transformer_models.ensemble_config().get("risk", {})
+    return {"used": True, "mode": mode, "base_model": model.config.get("base_model") if model else None,
+            "transformer_weight": cfg.get("transformer_weight") if mode == "ensemble" else None,
+            "labels": cfg.get("labels") or (model.labels if model else []), "detections": sum(len(r) for r in model_risks)}
+
+
 def process_document(document_id: int) -> None:
     db = SessionLocal()
     doc = db.get(Document, document_id)
@@ -119,6 +131,9 @@ def process_document(document_id: int) -> None:
         cache_service.set_document_context(doc.document_id, ctx)
 
         facts = document_facts(doc.detected_type, clauses)
+        # learned risk detector: one batch for the whole document (None when the model is unavailable)
+        model_risks = transformer_models.detect_risks(
+            [transformer_models.risk_input(c["title"], c["text"]) for c in clauses]) if clauses else []
         rag_service.ensure_index()
         n = max(1, len(clauses))
         for i, c in enumerate(clauses):
@@ -133,7 +148,8 @@ def process_document(document_id: int) -> None:
             c["standard"] = ({"title": standard["metadata"].get("title"), "text": standard["text"], "score": standard["score"],
                               "label": "Project reference template (not an official legal standard)"} if standard else None)
             c["summary"], c["summary_method"] = summarizer.explain_clause(c, refs)
-            risk = risk_analyzer.analyze(c, doc.detected_type, standard, refs, facts)
+            risk = risk_analyzer.analyze(c, doc.detected_type, standard, refs, facts,
+                                         model_risks=model_risks[i] if model_risks is not None else None)
             c.update({"risk_level": risk["risk_level"], "risk_reason": risk["risk_reason"], "precaution": risk["precaution"],
                       "risk_evidence": risk["evidence"], "risk_method": risk["method"]})
 
@@ -141,7 +157,13 @@ def process_document(document_id: int) -> None:
         comparisons = comparison_service.compare(doc.detected_type, clauses, emb)
 
         _progress(db, doc, STEPS[6], 92)
-        doc.overall_summary, doc.summary_method = summarizer.overall_summary(doc.detected_type, clauses, doc.full_text)
+        try:
+            key_sentences = summarizer.extractive_summary(clauses)
+        except Exception as exc:  # noqa: BLE001  — the summary must not fail the whole analysis
+            log.warning("extractive summary failed for document %s: %s", document_id, exc)
+            key_sentences = []
+        doc.overall_summary, doc.summary_method = summarizer.overall_summary(doc.detected_type, clauses, doc.full_text,
+                                                                             key_sentences)
         doc.recommendations = build_recommendations(clauses, comparisons)
 
         for c in clauses:
@@ -159,7 +181,9 @@ def process_document(document_id: int) -> None:
                              "vector_store": json.loads(
                                  rag_service.META_FILE.read_text()).get("vector_store"),
                              "cache_backend": cache_service.status()["backend"],
-                             "classifier": classifier.status(), "document_facts": facts}
+                             "classifier": classifier.status(), "document_facts": facts,
+                             "risk_detector": _risk_detector_meta(model_risks),
+                             "qa_retrieval": settings.QA_RETRIEVAL, "extractive_summary": key_sentences}
         ctx["clauses"] = [{k: c.get(k) for k in ("number", "label", "title", "text", "category", "summary", "risk_level",
                                                   "risk_reason", "precaution")} for c in clauses]
         ctx["summary"] = doc.overall_summary

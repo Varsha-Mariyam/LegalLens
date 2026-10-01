@@ -1,0 +1,92 @@
+{
+  "created_at": "2026-09-30T19:22:10+00:00",
+  "fitted_on": "validation split only (data/datasets/contract_split/*_val.csv)",
+  "clause": {
+    "transformer_weight": 0.3,
+    "selection_metric": "validation macro F1",
+    "validation_macro_f1_by_weight": {
+      "0.0": 0.8778,
+      "0.1": 0.8837,
+      "0.2": 0.8928,
+      "0.3": 0.8989,
+      "0.4": 0.8914,
+      "0.5": 0.8803,
+      "0.6": 0.8774,
+      "0.7": 0.8766,
+      "0.8": 0.8738,
+      "0.9": 0.8724,
+      "1.0": 0.8697
+    }
+  },
+  "risk": {
+    "transformer_weight": 0.2,
+    "selection_metric": "validation macro average precision",
+    "validation_macro_ap_by_weight": {
+      "0.0": 0.6406,
+      "0.1": 0.6554,
+      "0.2": 0.6581,
+      "0.3": 0.6562,
+      "0.4": 0.6496,
+      "0.5": 0.642,
+      "0.6": 0.6293,
+      "0.7": 0.6172,
+      "0.8": 0.6015,
+      "0.9": 0.5831,
+      "1.0": 0.5402
+    },
+    "labels": [
+      "Uncapped Liability",
+      "Non-Compete",
+      "Non-Solicitation",
+      "Exclusivity",
+      "Liquidated Damages",
+      "Change Of Control",
+      "Anti-Assignment",
+      "Termination For Convenience",
+      "Ip Ownership Assignment",
+      "Covenant Not To Sue",
+      "Minimum Commitment",
+      "Renewal Term"
+    ],
+    "thresholds": {
+      "Uncapped Liability": 0.9800000190734863,
+      "Non-Compete": 0.4699999988079071,
+      "Non-Solicitation": 0.5299999713897705,
+      "Exclusivity": 0.8600000143051147,
+      "Liquidated Damages": 0.6600000262260437,
+      "Change Of Control": 0.7699999809265137,
+      "Anti-Assignment": 0.5799999833106995,
+      "Termination For Convenience": 0.8299999833106995,
+      "Ip Ownership Assignment": 0.800000011920929,
+      "Covenant Not To Sue": 0.7200000286102295,
+      "Minimum Commitment": 0.49000000953674316,
+      "Renewal Term": 0.8500000238418579
+    },
+    "logreg_thresholds": {
+      "Uncapped Liability": 0.9800000190734863,
+      "Non-Compete": 0.47999998927116394,
+      "Non-Solicitation": 0.800000011920929,
+      "Exclusivity": 0.8299999833106995,
+      "Liquidated Damages": 0.7200000286102295,
+      "Change Of Control": 0.7900000214576721,
+      "Anti-Assignment": 0.8299999833106995,
+      "Termination For Convenience": 0.8299999833106995,
+      "Ip Ownership Assignment": 0.7099999785423279,
+      "Covenant Not To Sue": 0.7699999809265137,
+      "Minimum Commitment": 0.47999998927116394,
+      "Renewal Term": 0.8500000238418579
+    },
+    "validation_at_tuned_thresholds": {
+      "ensemble": {
+        "macro_ap": 0.6581,
+        "micro_f1": 0.6367,
+        "macro_f1": 0.6521
+      },
+      "logreg": {
+        "macro_ap": 0.6406,
+        "micro_f1": 0.626,
+        "macro_f1": 0.6436
+      }
+    }
+  }
+}

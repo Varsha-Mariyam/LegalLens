@@ -1,0 +1,165 @@
+{
+  "task": "risk",
+  "multi_label": true,
+  "labels": [
+    "Uncapped Liability",
+    "Non-Compete",
+    "Non-Solicitation",
+    "Exclusivity",
+    "Liquidated Damages",
+    "Change Of Control",
+    "Anti-Assignment",
+    "Termination For Convenience",
+    "Ip Ownership Assignment",
+    "Covenant Not To Sue",
+    "Minimum Commitment",
+    "Renewal Term"
+  ],
+  "base_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "max_length": 256,
+  "pooling": "mean",
+  "dropout": 0.1,
+  "input": "'<heading>: <clause text>' (heading optional)",
+  "training": {
+    "task": "risk",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "tag": null,
+    "out": null,
+    "epochs": 5,
+    "batch_size": 32,
+    "grad_accum": 1,
+    "lr": 5e-05,
+    "weight_decay": 0.01,
+    "warmup": 0.1,
+    "max_length": 256,
+    "dropout": 0.1,
+    "seed": 42,
+    "device": "cuda",
+    "no_amp": false,
+    "fast_attention": false,
+    "save_fp32": false,
+    "limit": 0,
+    "log_every": 25,
+    "amp": true,
+    "train_examples": 4449,
+    "val_examples": 4327,
+    "parameters": 22717836,
+    "steps_per_epoch": 140,
+    "truncated_train_fraction": 0.2466,
+    "loss": "BCE with pos_weight (clipped to [1, 10])",
+    "class_weights": {
+      "Uncapped Liability": 10.0,
+      "Non-Compete": 10.0,
+      "Non-Solicitation": 10.0,
+      "Exclusivity": 10.0,
+      "Liquidated Damages": 10.0,
+      "Change Of Control": 10.0,
+      "Anti-Assignment": 10.0,
+      "Termination For Convenience": 10.0,
+      "Ip Ownership Assignment": 10.0,
+      "Covenant Not To Sue": 10.0,
+      "Minimum Commitment": 10.0,
+      "Renewal Term": 10.0
+    },
+    "selection_metric": "validation macro_ap",
+    "data_sha256": {
+      "train": "e6c1a869bbfb06bd503d2434c9e54fd67d7d306ae122aa9f34963cb0edb80551",
+      "val": "2a08b64752efa6c985f160f729c87afc361c018020a4ef21d8c01eb6ac61cfe5"
+    },
+    "total_seconds": 1293.4
+  },
+  "environment": {
+    "python": "3.12.2",
+    "torch": "2.13.0+cu126",
+    "transformers": "5.15.0",
+    "cuda_device": "NVIDIA GeForce GTX 1650 with Max-Q Design"
+  },
+  "best_epoch": 5,
+  "encoder_dtype": "float16",
+  "thresholds": {
+    "Uncapped Liability": 0.9399999976158142,
+    "Non-Compete": 0.8600000143051147,
+    "Non-Solicitation": 0.9100000262260437,
+    "Exclusivity": 0.949999988079071,
+    "Liquidated Damages": 0.800000011920929,
+    "Change Of Control": 0.8899999856948853,
+    "Anti-Assignment": 0.9399999976158142,
+    "Termination For Convenience": 0.9300000071525574,
+    "Ip Ownership Assignment": 0.8500000238418579,
+    "Covenant Not To Sue": 0.8500000238418579,
+    "Minimum Commitment": 0.949999988079071,
+    "Renewal Term": 0.8600000143051147
+  },
+  "validation_metrics": {
+    "at_0.5": {
+      "macro_ap": 0.5402,
+      "micro_f1": 0.3443,
+      "macro_f1": 0.3448
+    },
+    "at_tuned_thresholds": {
+      "macro_ap": 0.5402,
+      "micro_f1": 0.6062,
+      "macro_f1": 0.5869
+    },
+    "note": "thresholds are tuned on this split, so tuned-threshold scores are optimistic"
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6229,
+      "val": {
+        "macro_ap": 0.3619,
+        "micro_f1": 0.2166,
+        "macro_f1": 0.2119
+      },
+      "epoch_seconds": 326.2,
+      "best": true
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.3598,
+      "val": {
+        "macro_ap": 0.4492,
+        "micro_f1": 0.256,
+        "macro_f1": 0.2604
+      },
+      "epoch_seconds": 236.2,
+      "best": true
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.2682,
+      "val": {
+        "macro_ap": 0.5217,
+        "micro_f1": 0.2919,
+        "macro_f1": 0.2889
+      },
+      "epoch_seconds": 230.6,
+      "best": true
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.2212,
+      "val": {
+        "macro_ap": 0.5258,
+        "micro_f1": 0.3389,
+        "macro_f1": 0.3354
+      },
+      "epoch_seconds": 230.5,
+      "best": true
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.194,
+      "val": {
+        "macro_ap": 0.5402,
+        "micro_f1": 0.3441,
+        "macro_f1": 0.3445
+      },
+      "epoch_seconds": 230.8,
+      "best": true
+    }
+  ],
+  "trained_at": "2026-09-30T18:49:01+00:00",
+  "threshold_grid": "0.01-0.99 step 0.01"
+}

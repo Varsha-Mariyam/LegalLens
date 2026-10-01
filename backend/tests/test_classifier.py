@@ -42,3 +42,13 @@ def test_trained_model_metrics_recorded():
     ml = metrics["methods"]["tfidf_logreg"]
     assert ml["all"]["accuracy"] > metrics["methods"]["keyword_baseline"]["all"]["accuracy"]
     assert ml["gold_only"]["macro_f1"] > 0.7
+
+
+def test_metrics_come_from_the_contract_level_split():
+    metrics = json.loads((settings.MODELS_DIR / "classifier_metrics.json").read_text())
+    assert metrics["dataset"] == "contract_split" and metrics["test_contracts"] > 50
+    if "transformer_minilm" in metrics["methods"]:
+        assert metrics["deployed_model"] in ("ensemble_minilm_logreg", "transformer_minilm")
+        for k in ("transformer_minilm", metrics["deployed_model"]):
+            lo, hi = metrics["methods"][k]["all"]["macro_f1_ci95"]
+            assert lo <= metrics["methods"][k]["all"]["macro_f1"] <= hi

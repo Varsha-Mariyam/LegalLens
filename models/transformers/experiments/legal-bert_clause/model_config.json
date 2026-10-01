@@ -1,0 +1,67 @@
+{
+  "task": "clause",
+  "multi_label": false,
+  "labels": [
+    "Payment",
+    "Confidentiality",
+    "Termination",
+    "Liability",
+    "Dispute",
+    "Others"
+  ],
+  "base_model": "nlpaueb/legal-bert-base-uncased",
+  "max_length": 256,
+  "pooling": "mean",
+  "dropout": 0.1,
+  "input": "clause text",
+  "training": {
+    "task": "clause",
+    "model": "nlpaueb/legal-bert-base-uncased",
+    "tag": "legal-bert",
+    "out": null,
+    "epochs": 4,
+    "batch_size": 8,
+    "grad_accum": 4,
+    "lr": 3e-05,
+    "weight_decay": 0.01,
+    "warmup": 0.1,
+    "max_length": 256,
+    "dropout": 0.1,
+    "seed": 42,
+    "device": "cuda",
+    "no_amp": false,
+    "fast_attention": false,
+    "save_fp32": false,
+    "limit": 0,
+    "log_every": 25,
+    "retune_only": false,
+    "amp": true,
+    "train_examples": 5933,
+    "val_examples": 1514,
+    "parameters": 109486854,
+    "steps_per_epoch": 186,
+    "truncated_train_fraction": 0.0217,
+    "loss": "cross-entropy, balanced class weights",
+    "class_weights": {
+      "Payment": 1.201,
+      "Confidentiality": 5.957,
+      "Termination": 1.152,
+      "Liability": 1.383,
+      "Dispute": 2.268,
+      "Others": 0.337
+    },
+    "selection_metric": "validation macro_f1",
+    "data_sha256": {
+      "train": "fb4c4c49ef12a0ffdc2f01551d79eec5bd3aed1026fed146a13108c421243ede",
+      "val": "6274510b7c44240eecbe238bcd2b3982611fc83bb18db12741e6161a34ff9049"
+    }
+  },
+  "environment": {
+    "python": "3.12.2",
+    "torch": "2.13.0+cu126",
+    "transformers": "5.15.0",
+    "cuda_device": "NVIDIA GeForce GTX 1650 with Max-Q Design"
+  },
+  "best_epoch": 2,
+  "encoder_dtype": "float16"
+}

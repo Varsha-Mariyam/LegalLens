@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # One-time setup (Linux/macOS). Usage: ./setup.sh [--rebuild]
-#   --rebuild  re-download CUAD, rebuild datasets, retrain the classifier and rebuild the vector DB
+#   --rebuild  re-download CUAD, rebuild datasets, retrain all models (Transformers: ~35 min on a GTX 1650 GPU, much longer on CPU),
+#              re-run the evaluation and rebuild the vector DB
 set -e
 cd "$(dirname "$0")"
 PY=${PYTHON:-python3}
@@ -12,8 +13,13 @@ pip install -r requirements.txt
 command -v tesseract >/dev/null || echo "NOTE: Tesseract not found — scanned PDFs/images need it (sudo apt install tesseract-ocr / brew install tesseract)."
 if [ "$1" = "--rebuild" ]; then
   python scripts/download_datasets.py
-  python scripts/build_datasets.py
-  python scripts/train_classifier.py
+  python scripts/build_datasets.py          # preprocessing of raw documents + LSA fallback embedder
+  python scripts/prepare_datasets.py        # contract-level CUAD split (data/datasets/contract_split)
+  python scripts/train_classifier.py        # TF-IDF + Logistic Regression fallback
+  python scripts/train_transformer.py --task clause
+  python scripts/train_transformer.py --task risk
+  python scripts/fit_ensembles.py           # MiniLM + TF-IDF ensembles (weights/thresholds from validation)
+  python scripts/evaluate_models.py         # test-set evaluation, figures, Q&A retrieval calibration
   python scripts/build_vector_db.py --force
 else
   python scripts/refresh_models.py      # re-fits models only if your scikit-learn version differs

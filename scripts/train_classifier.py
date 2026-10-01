@@ -1,4 +1,4 @@
-"""Train and evaluate clause classifiers (guide section 8).
+"""Train and evaluate the classical clause classifiers (guide section 8).
 
 Evaluates, on the same held-out test split:
   * keyword baseline
@@ -6,12 +6,18 @@ Evaluates, on the same held-out test split:
   * TF-IDF + Logistic Regression
   * TF-IDF + Linear SVM
 Saves the Logistic Regression pipeline (it provides probabilities for confidence scores) to
-models/clause_classifier.joblib and all metrics to models/classifier_metrics.json.
-Metrics are reported overall and on the gold-label subset (project-authored + CUAD expert labels),
+models/clause_classifier.joblib — the fallback when the fine-tuned Transformer is unavailable — and all metrics to
+models/classifier_metrics.json. Metrics are reported overall and on the gold-label subset (CUAD expert labels),
 excluding heading-derived weak labels, so the weak labels cannot inflate the reported numbers.
+
+Datasets (--dataset):
+  contract_split (default)  data/datasets/contract_split/, split by contract (scripts/prepare_datasets.py)
+  legacy                    the original random clause-level split (data/datasets/clause_train.csv / clause_test.csv)
+Hyper-parameters are fixed (no tuning on the test split). scripts/evaluate_models.py adds the Transformer to the report.
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 from datetime import datetime, timezone
@@ -30,8 +36,15 @@ from backend.services import classifier, embedding_service
 LABELS = settings.CATEGORIES
 
 
+DATASET = "contract_split"
+
+
 def load(name: str) -> list[dict]:
-    with (settings.DATASETS_DIR / f"clause_{name}.csv").open(encoding="utf-8") as fh:
+    folder = settings.DATASETS_DIR / "contract_split" if DATASET == "contract_split" else settings.DATASETS_DIR
+    path = folder / f"clause_{name}.csv"
+    if not path.exists():
+        raise SystemExit(f"{path} not found. Run: python scripts/prepare_datasets.py (or use --dataset legacy)")
+    with path.open(encoding="utf-8") as fh:
         return list(csv.DictReader(fh))
 
 
@@ -69,9 +82,12 @@ def main() -> None:
         models[kind] = pipe
         preds[f"tfidf_{kind}"] = list(pipe.predict(X_test))
 
-    report = {"trained_at": datetime.now(timezone.utc).isoformat(), "train_size": len(train), "test_size": len(test),
-              "gold_test_size": len(gold_idx), "embedding_backend": embedding_service.status()["backend"],
-              "methods": {}}
+    report = {"trained_at": datetime.now(timezone.utc).isoformat(), "dataset": DATASET, "train_size": len(train),
+              "test_size": len(test), "gold_test_size": len(gold_idx),
+              "test_contracts": len({r["contract"] for r in test}) if "contract" in test[0] else None,
+              "split": ("by contract (filing groups), see data/datasets/contract_split/dataset_card.json"
+                        if DATASET == "contract_split" else "random by clause (original)"),
+              "embedding_backend": embedding_service.status()["backend"], "methods": {}}
     print(f"train={len(train)} test={len(test)} (gold subset={len(gold_idx)})")
     print(f"{'method':28s} {'acc':>7s} {'macroF1':>8s} | {'gold acc':>8s} {'gold F1':>8s}")
     for name, p in preds.items():
@@ -89,6 +105,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--dataset", choices=["contract_split", "legacy"], default="contract_split")
+    DATASET = ap.parse_args().dataset
     main()
     from refresh_models import record_versions
     record_versions()

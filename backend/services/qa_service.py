@@ -1,30 +1,28 @@
-"""Document Q&A (guide section 14) = cached document context (CAG) + clause retrieval + legal RAG + LLM."""
+"""Document Q&A (guide section 14) = cached document context (CAG) + clause retrieval + legal RAG + LLM.
+
+Clause retrieval is hybrid by default (BM25 + dense embeddings, backend/services/retrieval.py) with a "not found"
+decision calibrated on held-out CUAD contracts; QA_RETRIEVAL=legacy restores the original ranking.
+"""
 from __future__ import annotations
 
 import re
 
 import numpy as np
 
-from backend.services import embedding_service, rag_service
+from backend.services import embedding_service, rag_service, retrieval
 from backend.services.classifier import keyword_scores
 from backend.services import legal_parsing as lp
 from backend.services.llm_service import SYSTEM_PROMPT, LLMError, get_client
 
-STOP = set("a an the is are was were be of to in on for and or what who whom which when where how does do did can "
-           "could should would will shall this that it its my me i you your there any about with by as at from if "
-           "under per than then clause clauses agreement document contract say says mention mentioned there's".split())
+STOP = retrieval.LEGACY_STOP
 RISK_WORDS = re.compile(r"\b(risk|risky|safe|dangerous|concern|worried|problem|fair|unfair|should i sign)\b", re.I)
 FOLLOW_UP = re.compile(r"\b(that|it|this|those|they|them|he|she)\b", re.I)
 NOT_FOUND = ("The uploaded document does not appear to contain information about this. "
              "I can only answer from the document and the project's reference knowledge.")
 
 
-def _terms(text: str) -> set[str]:
-    return {w for w in re.findall(r"[a-z]{3,}", text.lower()) if w not in STOP}
-
-
-def _stem(w: str) -> str:
-    return re.sub(r"(ation|ions|ing|ed|es|s)$", "", w)
+_terms = retrieval.terms
+_stem = retrieval.stem
 
 
 def expand_query(question: str, history: list[dict]) -> str:
@@ -35,24 +33,28 @@ def expand_query(question: str, history: list[dict]) -> str:
     return question
 
 
-def rank_clauses(query: str, context: dict, k: int = 3) -> list[tuple[float, dict]]:
+def query_intent(query: str) -> str | None:
+    kw = keyword_scores(query)
+    return max(kw, key=kw.get) if kw and max(kw.values()) > 0 else None
+
+
+def retrieve(query: str, context: dict, k: int = 3) -> dict:
+    """Ranked clauses for the question plus the answerability decision (see retrieval.rank)."""
     clauses = context["clauses"]
+    embedder = context.get("embedder") or embedding_service.get_embedder().name
     if not clauses:
-        return []
+        return {"ranked": [], "answerable": False, "p_answerable": None, "method": "no clauses"}
     emb = np.asarray(context["clause_embeddings"], dtype=np.float32)
     q = embedding_service.encode([query])[0]
-    sims = emb @ q
-    q_terms = {_stem(t) for t in _terms(query)}
-    kw = keyword_scores(query)
-    intent = max(kw, key=kw.get) if kw and max(kw.values()) > 0 else None
-    scored = []
-    for s, c in zip(sims, clauses):
-        c_terms = {_stem(t) for t in _terms(f"{c.get('title') or ''} {c['text']} {c['category']}")}
-        overlap = len(q_terms & c_terms) / (len(q_terms) or 1)
-        boost = 0.25 if intent and c["category"] == intent else 0.0
-        scored.append((round(float(s) * 0.6 + overlap * 0.4 + boost, 4), overlap, c))
-    scored.sort(key=lambda x: -x[0])
-    return [(score, c) for score, ov, c in scored[:k] if ov > 0 or score > 0.35]
+    res = retrieval.rank(query, q, emb, clauses, embedder, k=k, intent=query_intent(query))
+    res["ranked"] = [(score, clauses[i], parts) for score, i, parts in res["ranked"]]
+    return res
+
+
+def rank_clauses(query: str, context: dict, k: int = 3) -> list[tuple[float, dict]]:
+    """Clauses that answer the question, best first; empty when the question looks unanswerable from the document."""
+    res = retrieve(query, context, k)
+    return [(score, c) for score, c, _ in res["ranked"]] if res["answerable"] else []
 
 
 def _extractive(question: str, ranked: list[tuple[float, dict]], asks_risk: bool) -> str:
@@ -80,13 +82,22 @@ def answer(question: str, context: dict, history: list[dict]) -> dict:
     asks_risk = bool(RISK_WORDS.search(question))
     topic_terms = _terms(RISK_WORDS.sub(" ", question))
     is_follow_up = bool(history and FOLLOW_UP.search(question) and len(topic_terms) <= 1)
-    ranked = [] if is_follow_up else rank_clauses(query, context)
+    ranked, parts, retrieval_method = [], [], "follow-up: clauses of the previous answer"
+    if not is_follow_up:
+        res = retrieve(query, context)
+        retrieval_method = res["method"]
+        if res["answerable"]:
+            ranked = [(s, c) for s, c, _ in res["ranked"]]
+            parts = [p for _, _, p in res["ranked"]]
+        else:
+            retrieval_method += " — no clause judged relevant"
     if is_follow_up and history[-1].get("sources"):
         by_number = {c["number"]: c for c in context["clauses"]}
         prev_nums = [s["clause_number"] for s in history[-1]["sources"] if s.get("clause_number") in by_number]
         ranked = [(1.0, by_number[n]) for n in prev_nums][:2]  # keep the previous answer's ranking order
     refs = rag_service.retrieve_knowledge(query, context["doc_type"], ranked[0][1]["category"] if ranked else None, k=2)
-    sources = [{"clause_number": c["number"], "clause_label": lp.clause_ref(c), "title": c.get("title"), "score": s} for s, c in ranked]
+    sources = [{"clause_number": c["number"], "clause_label": lp.clause_ref(c), "title": c.get("title"), "score": s,
+                **(parts[i] if i < len(parts) else {})} for i, (s, c) in enumerate(ranked)]
     sources += [{"reference": r["metadata"].get("title"), "citation": r["metadata"].get("citation"),
                  "score": r["score"]} for r in refs]
     client = get_client()
@@ -101,11 +112,11 @@ def answer(question: str, context: dict, history: list[dict]) -> dict:
                   f"clauses as [Clause n]. If the answer cannot be found in the supplied context, reply exactly: {NOT_FOUND}")
         try:
             return {"answer": client.generate(SYSTEM_PROMPT, prompt, max_tokens=600), "sources": sources,
-                    "method": client.label}
+                    "method": f"{client.label} · {retrieval_method}"[:120]}
         except LLMError as exc:
-            method = f"extractive (LLM error: {str(exc)[:80]})"
+            method = f"extractive (LLM error: {str(exc)[:60]}) · {retrieval_method}"[:120]
     else:
-        method = "extractive retrieval (no LLM configured)"
+        method = f"extractive answer (no LLM configured) · {retrieval_method}"[:120]
     if not ranked:
         return {"answer": NOT_FOUND, "sources": [s for s in sources if "reference" in s], "method": method}
     return {"answer": _extractive(question, ranked, asks_risk), "sources": sources, "method": method}

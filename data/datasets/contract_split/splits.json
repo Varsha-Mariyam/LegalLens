@@ -1,0 +1,2552 @@
+{
+ "2ThemartComInc_19990826_10-12G_EX-10.10_6700288_EX-10.10_Co-Branding Agreement_ Agency Agreement": {
+  "split": "train",
+  "group": "2THEMARTCOMINC",
+  "type": "Agency"
+ },
+ "ABILITYINC_06_15_2020-EX-4.25-SERVICES AGREEMENT": {
+  "split": "train",
+  "group": "ABILITYINC",
+  "type": "Service"
+ },
+ "ACCELERATEDTECHNOLOGIESHOLDINGCORP_04_24_2003-EX-10.13-JOINT VENTURE AGREEMENT": {
+  "split": "train",
+  "group": "ACCELERATEDTECHNOLOGIESHOLDINGCORP",
+  "type": "Joint Venture"
+ },
+ "ACCURAYINC_09_01_2010-EX-10.31-DISTRIBUTOR AGREEMENT": {
+  "split": "test",
+  "group": "ACCURAYINC",
+  "type": "Distributor"
+ },
+ "ADAMSGOLFINC_03_21_2005-EX-10.17-ENDORSEMENT AGREEMENT": {
+  "split": "train",
+  "group": "ADAMSGOLFINC",
+  "type": "Endorsement"
+ },
+ "ADAPTIMMUNETHERAPEUTICSPLC_04_06_2017-EX-10.11-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "ADAPTIMMUNETHERAPEUTICSPLC",
+  "type": "Strategic Alliance"
+ },
+ "ADIANUTRITION,INC_04_01_2005-EX-10.D2-RESELLER AGREEMENT": {
+  "split": "train",
+  "group": "ADIANUTRITIONINC",
+  "type": "Reseller"
+ },
+ "ADMA BioManufacturing, LLC -  Amendment #3 to Manufacturing Agreement ": {
+  "split": "train",
+  "group": "ADMABIOMANUFACTURINGLLCAMENDMENT3TOMANUFACTURINGAGREEMENT",
+  "type": "Manufacturing"
+ },
+ "ADUROBIOTECH,INC_06_02_2020-EX-10.7-CONSULTING AGREEMENT": {
+  "split": "train",
+  "group": "ADUROBIOTECHINC",
+  "type": "Consulting"
+ },
+ "ADUROBIOTECH,INC_06_02_2020-EX-10.7-CONSULTING AGREEMENT(1)": {
+  "split": "train",
+  "group": "ADUROBIOTECHINC",
+  "type": "Consulting"
+ },
+ "AFSALABANCORPINC_08_01_1996-EX-1.1-AGENCY AGREEMENT": {
+  "split": "train",
+  "group": "AFSALABANCORPINC",
+  "type": "Agency"
+ },
+ "AIRSPANNETWORKSINC_04_11_2000-EX-10.5-Distributor Agreement": {
+  "split": "test",
+  "group": "AIRSPANNETWORKSINC",
+  "type": "Distributor"
+ },
+ "AIRTECHINTERNATIONALGROUPINC_05_08_2000-EX-10.4-FRANCHISE AGREEMENT": {
+  "split": "train",
+  "group": "AIRTECHINTERNATIONALGROUPINC",
+  "type": "Franchise"
+ },
+ "ALAMOGORDOFINANCIALCORP_12_16_1999-EX-1-AGENCY AGREEMENT": {
+  "split": "test",
+  "group": "ALAMOGORDOFINANCIALCORP",
+  "type": "Agency"
+ },
+ "ALCOSTORESINC_12_14_2005-EX-10.26-AGENCY AGREEMENT": {
+  "split": "train",
+  "group": "ALCOSTORESINC",
+  "type": "Agency"
+ },
+ "ALLIANCEBANCORPINCOFPENNSYLVANIA_10_18_2006-EX-1.2-AGENCY AGREEMENT": {
+  "split": "train",
+  "group": "ALLIANCEBANCORPINCOFPENNSYLVANIA",
+  "type": "Agency"
+ },
+ "ALLISONTRANSMISSIONHOLDINGSINC_12_15_2014-EX-99.1-COOPERATION AGREEMENT": {
+  "split": "test",
+  "group": "ALLISONTRANSMISSIONHOLDINGSINC",
+  "type": "Cooperation"
+ },
+ "AMBASSADOREYEWEARGROUPINC_11_17_1997-EX-10.28-ENDORSEMENT AGREEMENT": {
+  "split": "train",
+  "group": "AMBASSADOREYEWEARGROUPINC",
+  "type": "Endorsement"
+ },
+ "AMERICANPHYSICIANSCAPITALINC_03_31_2003-EX-10.26-AGENCY AGREEMENT": {
+  "split": "test",
+  "group": "AMERICANPHYSICIANSCAPITALINC",
+  "type": "Agency"
+ },
+ "AMERICASSHOPPINGMALLINC_12_10_1999-EX-10.2-SITE DEVELOPMENT AND HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "AMERICASSHOPPINGMALLINC",
+  "type": "Hosting"
+ },
+ "ANIXABIOSCIENCESINC_06_09_2020-EX-10.1-COLLABORATION AGREEMENT": {
+  "split": "train",
+  "group": "ANIXABIOSCIENCESINC",
+  "type": "Collaboration"
+ },
+ "ARMSTRONGFLOORING,INC_01_07_2019-EX-10.2-INTELLECTUAL PROPERTY AGREEMENT": {
+  "split": "test",
+  "group": "ARMSTRONGFLOORINGINC",
+  "type": "IP"
+ },
+ "ASHWORTHINC_01_29_1999-EX-10.(D)-PROMOTION AGREEMENT AND NANTZ COMMUNICATIONS, INC.": {
+  "split": "train",
+  "group": "ASHWORTHINC",
+  "type": "Promotion"
+ },
+ "ASIANDRAGONGROUPINC_08_11_2005-EX-10.5-Reseller Agreement": {
+  "split": "train",
+  "group": "ASIANDRAGONGROUPINC",
+  "type": "Reseller"
+ },
+ "ASPIRITYHOLDINGSLLC_05_07_2012-EX-10.6-OUTSOURCING AGREEMENT": {
+  "split": "train",
+  "group": "ASPIRITYHOLDINGSLLC",
+  "type": "Outsourcing"
+ },
+ "ATENTOSA_07_06_2020-EX-99.1-JOINT FILING AGREEMENT": {
+  "split": "val",
+  "group": "ATENTOSA",
+  "type": "Joint Filing"
+ },
+ "ATHENSBANCSHARESCORP_11_02_2009-EX-1.2-AGENCY AGREEMENT , 2009": {
+  "split": "train",
+  "group": "ATHENSBANCSHARESCORP",
+  "type": "Agency"
+ },
+ "ATMOSENERGYCORP_11_22_2002-EX-10.17-TRANSPORTATION SERVICE AGREEMENT": {
+  "split": "train",
+  "group": "ATMOSENERGYCORP",
+  "type": "Transportation"
+ },
+ "AULAMERICANUNITTRUST_04_24_2020-EX-99.8.77-SERVICING AGREEMENT": {
+  "split": "train",
+  "group": "AULAMERICANUNITTRUST",
+  "type": "Service"
+ },
+ "AURASYSTEMSINC_06_16_2010-EX-10.25-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "AURASYSTEMSINC",
+  "type": "Strategic Alliance"
+ },
+ "AgapeAtpCorp_20191202_10-KA_EX-10.1_11911128_EX-10.1_Supply Agreement": {
+  "split": "test",
+  "group": "AGAPEATPCORP",
+  "type": "Supply"
+ },
+ "AimmuneTherapeuticsInc_20200205_8-K_EX-10.3_11967170_EX-10.3_Development Agreement": {
+  "split": "val",
+  "group": "AIMMUNETHERAPEUTICSINC",
+  "type": "Development"
+ },
+ "AlliedEsportsEntertainmentInc_20190815_8-K_EX-10.19_11788293_EX-10.19_Content License Agreement": {
+  "split": "train",
+  "group": "ALLIEDESPORTSENTERTAINMENTINC",
+  "type": "License"
+ },
+ "AlliedEsportsEntertainmentInc_20190815_8-K_EX-10.34_11788308_EX-10.34_Sponsorship Agreement": {
+  "split": "train",
+  "group": "ALLIEDESPORTSENTERTAINMENTINC",
+  "type": "Sponsorship"
+ },
+ "Antares Pharma, Inc. - Manufacturing Agreement": {
+  "split": "train",
+  "group": "ANTARESPHARMAINCMANUFACTURINGAGREEMENT",
+  "type": "Manufacturing"
+ },
+ "Apollo Endosurgery - Manufacturing and Supply Agreement": {
+  "split": "train",
+  "group": "APOLLOENDOSURGERYMANUFACTURINGANDSUPPLYAGREEMENT",
+  "type": "Supply"
+ },
+ "ArcGroupInc_20171211_8-K_EX-10.1_10976103_EX-10.1_Sponsorship Agreement": {
+  "split": "train",
+  "group": "ARCGROUPINC",
+  "type": "Sponsorship"
+ },
+ "ArcaUsTreasuryFund_20200207_N-2_EX-99.K5_11971930_EX-99.K5_Development Agreement": {
+  "split": "test",
+  "group": "ARCAUSTREASURYFUND",
+  "type": "Development"
+ },
+ "ArconicRolledProductsCorp_20191217_10-12B_EX-2.7_11923804_EX-2.7_Trademark License Agreement": {
+  "split": "train",
+  "group": "ARCONICROLLEDPRODUCTSCORP",
+  "type": "License"
+ },
+ "ArmstrongFlooringInc_20190107_8-K_EX-10.2_11471795_EX-10.2_Intellectual Property Agreement": {
+  "split": "test",
+  "group": "ARMSTRONGFLOORINGINC",
+  "type": "IP"
+ },
+ "Array BioPharma Inc. - LICENSE, DEVELOPMENT AND COMMERCIALIZATION AGREEMENT": {
+  "split": "train",
+  "group": "ARRAYBIOPHARMAINCLICENSEDEVELOPMENTANDCOMMERCIALIZATIONAGREEMENT",
+  "type": "Development"
+ },
+ "ArtaraTherapeuticsInc_20200110_8-K_EX-10.5_11943350_EX-10.5_License Agreement": {
+  "split": "train",
+  "group": "ARTARATHERAPEUTICSINC",
+  "type": "License"
+ },
+ "AtnInternationalInc_20191108_10-Q_EX-10.1_11878541_EX-10.1_Maintenance Agreement": {
+  "split": "val",
+  "group": "ATNINTERNATIONALINC",
+  "type": "Maintenance"
+ },
+ "AudibleInc_20001113_10-Q_EX-10.32_2599586_EX-10.32_Co-Branding Agreement_ Marketing Agreement_ Investment Distribution Agreement": {
+  "split": "test",
+  "group": "AUDIBLEINC",
+  "type": "Distributor"
+ },
+ "AzulSa_20170303_F-1A_EX-10.3_9943903_EX-10.3_Maintenance Agreement1": {
+  "split": "train",
+  "group": "AZULSA",
+  "type": "Maintenance"
+ },
+ "AzulSa_20170303_F-1A_EX-10.3_9943903_EX-10.3_Maintenance Agreement2": {
+  "split": "train",
+  "group": "AZULSA",
+  "type": "Maintenance"
+ },
+ "BABCOCK_WILCOXENTERPRISES,INC_08_04_2015-EX-10.17-INTELLECTUAL PROPERTY AGREEMENT between THE BABCOCK _ WILCOX COMPANY and BABCOCK _ WILCOX ENTERPRISES, INC.": {
+  "split": "train",
+  "group": "BABCOCK",
+  "type": "IP"
+ },
+ "BANGIINC_05_25_2005-EX-10-Premium Managed Hosting Agreement": {
+  "split": "test",
+  "group": "BANGIINC",
+  "type": "Hosting"
+ },
+ "BANUESTRAFINANCIALCORP_09_08_2006-EX-10.16-AGENCY AGREEMENT": {
+  "split": "val",
+  "group": "BANUESTRAFINANCIALCORP",
+  "type": "Agency"
+ },
+ "BELLICUMPHARMACEUTICALS,INC_05_07_2019-EX-10.1-Supply Agreement": {
+  "split": "train",
+  "group": "BELLICUMPHARMACEUTICALSINC",
+  "type": "Supply"
+ },
+ "BELLRINGBRANDS,INC_02_07_2020-EX-10.18-MASTER SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "BELLRINGBRANDSINC",
+  "type": "Supply"
+ },
+ "BERKELEYLIGHTS,INC_06_26_2020-EX-10.12-COLLABORATION AGREEMENT": {
+  "split": "train",
+  "group": "BERKELEYLIGHTSINC",
+  "type": "Collaboration"
+ },
+ "BEYONDCOMCORP_08_03_2000-EX-10.2-CO-HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "BEYONDCOMCORP",
+  "type": "Hosting"
+ },
+ "BICYCLETHERAPEUTICSPLC_03_10_2020-EX-10.11-SERVICE AGREEMENT": {
+  "split": "val",
+  "group": "BICYCLETHERAPEUTICSPLC",
+  "type": "Service"
+ },
+ "BIOAMBERINC_04_10_2013-EX-10.34-DEVELOPMENT AGREEMENT (1)": {
+  "split": "train",
+  "group": "BIOAMBERINC",
+  "type": "Development"
+ },
+ "BIOAMBERINC_04_10_2013-EX-10.34-DEVELOPMENT AGREEMENT - First Amendment": {
+  "split": "train",
+  "group": "BIOAMBERINC",
+  "type": "Development"
+ },
+ "BIOCEPTINC_08_19_2013-EX-10-COLLABORATION AGREEMENT": {
+  "split": "test",
+  "group": "BIOCEPTINC",
+  "type": "Collaboration"
+ },
+ "BIOFRONTERAAG_04_29_2019-EX-4.17-SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "BIOFRONTERAAG",
+  "type": "Supply"
+ },
+ "BIOPURECORP_06_30_1999-EX-10.13-AGENCY AGREEMENT": {
+  "split": "train",
+  "group": "BIOPURECORP",
+  "type": "Agency"
+ },
+ "BLACKBOXSTOCKSINC_08_05_2014-EX-10.1-DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "BLACKBOXSTOCKSINC",
+  "type": "Distributor"
+ },
+ "BLACKROCKMUNIHOLDINGSINVESTMENTQUALITYFUND_04_07_2020-EX-99.01-JOINT FILING AGREEMENT": {
+  "split": "test",
+  "group": "BLACKROCKMUNIHOLDINGSINVESTMENTQUALITYFUND",
+  "type": "Joint Filing"
+ },
+ "BLACKSTONEGSOLONG-SHORTCREDITINCOMEFUND_05_11_2020-EX-99.(K)(1)-SERVICE AGREEMENT": {
+  "split": "test",
+  "group": "BLACKSTONEGSOLONGSHORTCREDITINCOMEFUND",
+  "type": "Service"
+ },
+ "BLUEFLYINC_03_27_2002-EX-10.27-e-business Hosting Agreement": {
+  "split": "val",
+  "group": "BLUEFLYINC",
+  "type": "Hosting"
+ },
+ "BLUEHILLSBANCORP,INC_05_20_2014-EX-1.1-AGENCY AGREEMENT": {
+  "split": "train",
+  "group": "BLUEHILLSBANCORPINC",
+  "type": "Agency"
+ },
+ "BLUEROCKRESIDENTIALGROWTHREIT,INC_06_01_2016-EX-1.1-AGENCY AGREEMENT": {
+  "split": "train",
+  "group": "BLUEROCKRESIDENTIALGROWTHREITINC",
+  "type": "Agency"
+ },
+ "BNCMORTGAGEINC_05_17_1999-EX-10.4-LICENSING AND WEB SITE HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "BNCMORTGAGEINC",
+  "type": "Hosting"
+ },
+ "BNLFINANCIALCORP_03_30_2007-EX-10.8-OUTSOURCING AGREEMENT": {
+  "split": "test",
+  "group": "BNLFINANCIALCORP",
+  "type": "Outsourcing"
+ },
+ "BOLIVARMININGCORP_05_23_2003-EX-2.1-VISP WEB SITE BUILDING AND HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "BOLIVARMININGCORP",
+  "type": "Hosting"
+ },
+ "BONTONSTORESINC_04_20_2018-EX-99.3-AGENCY AGREEMENT": {
+  "split": "train",
+  "group": "BONTONSTORESINC",
+  "type": "Agency"
+ },
+ "BORROWMONEYCOM,INC_06_11_2020-EX-10.1-JOINT VENTURE AGREEMENT": {
+  "split": "train",
+  "group": "BORROWMONEYCOMINC",
+  "type": "Joint Venture"
+ },
+ "BUFFALOWILDWINGSINC_06_05_1998-EX-10.3-FRANCHISE AGREEMENT": {
+  "split": "train",
+  "group": "BUFFALOWILDWINGSINC",
+  "type": "Franchise"
+ },
+ "BellringBrandsInc_20190920_S-1_EX-10.12_11817081_EX-10.12_Manufacturing Agreement1": {
+  "split": "train",
+  "group": "BELLRINGBRANDSINC",
+  "type": "Manufacturing"
+ },
+ "BellringBrandsInc_20190920_S-1_EX-10.12_11817081_EX-10.12_Manufacturing Agreement2": {
+  "split": "train",
+  "group": "BELLRINGBRANDSINC",
+  "type": "Manufacturing"
+ },
+ "BellringBrandsInc_20190920_S-1_EX-10.12_11817081_EX-10.12_Manufacturing Agreement3": {
+  "split": "train",
+  "group": "BELLRINGBRANDSINC",
+  "type": "Manufacturing"
+ },
+ "BellringBrandsInc_20190920_S-1_EX-10.12_11817081_EX-10.12_Manufacturing Agreement4": {
+  "split": "train",
+  "group": "BELLRINGBRANDSINC",
+  "type": "Manufacturing"
+ },
+ "BerkshireHillsBancorpInc_20120809_10-Q_EX-10.16_7708169_EX-10.16_Endorsement Agreement": {
+  "split": "train",
+  "group": "BERKSHIREHILLSBANCORPINC",
+  "type": "Endorsement"
+ },
+ "BizzingoInc_20120322_8-K_EX-10.17_7504499_EX-10.17_Endorsement Agreement": {
+  "split": "test",
+  "group": "BIZZINGOINC",
+  "type": "Endorsement"
+ },
+ "BloomEnergyCorp_20180321_DRSA (on S-1)_EX-10_11240356_EX-10_Maintenance Agreement": {
+  "split": "val",
+  "group": "BLOOMENERGYCORP",
+  "type": "Maintenance"
+ },
+ "BravatekSolutionsInc_20170418_8-K_EX-10.1_10205739_EX-10.1_Reseller Agreement": {
+  "split": "val",
+  "group": "BRAVATEKSOLUTIONSINC",
+  "type": "Reseller"
+ },
+ "CANOPETROLEUM,INC_12_13_2007-EX-10.1-Sponsorship Agreement": {
+  "split": "train",
+  "group": "CANOPETROLEUMINC",
+  "type": "Sponsorship"
+ },
+ "CARDAX,INC_08_19_2014-EX-10.1-COLLABORATION AGREEMENT": {
+  "split": "train",
+  "group": "CARDAXINC",
+  "type": "Collaboration"
+ },
+ "CCAINDUSTRIESINC_04_14_2014-EX-10.1-OUTSOURCING AGREEMENT": {
+  "split": "test",
+  "group": "CCAINDUSTRIESINC",
+  "type": "Outsourcing"
+ },
+ "CENTRACKINTERNATIONALINC_10_29_1999-EX-10.3-WEB SITE HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "CENTRACKINTERNATIONALINC",
+  "type": "Hosting"
+ },
+ "CERES,INC_01_25_2012-EX-10.20-Collaboration Agreement": {
+  "split": "train",
+  "group": "CERESINC",
+  "type": "Collaboration"
+ },
+ "CHANGEPOINTCORP_03_08_2000-EX-10.6-LICENSE AND HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "CHANGEPOINTCORP",
+  "type": "Hosting"
+ },
+ "CHAPARRALRESOURCESINC_03_30_2000-EX-10.66-TRANSPORTATION CONTRACT": {
+  "split": "val",
+  "group": "CHAPARRALRESOURCESINC",
+  "type": "Transportation"
+ },
+ "CHEETAHMOBILEINC_04_22_2014-EX-10.43-Cooperation Agreement": {
+  "split": "train",
+  "group": "CHEETAHMOBILEINC",
+  "type": "Cooperation"
+ },
+ "CHERRYHILLMORTGAGEINVESTMENTCORP_09_26_2013-EX-10.1-Strategic Alliance Agreement": {
+  "split": "train",
+  "group": "CHERRYHILLMORTGAGEINVESTMENTCORP",
+  "type": "Strategic Alliance"
+ },
+ "CHINARECYCLINGENERGYCORP_11_14_2013-EX-10.6-Cooperation Agreement": {
+  "split": "train",
+  "group": "CHINARECYCLINGENERGYCORP",
+  "type": "Cooperation"
+ },
+ "CHIPMOSTECHNOLOGIESBERMUDALTD_04_18_2016-EX-4.72-Strategic Alliance Agreement": {
+  "split": "test",
+  "group": "CHIPMOSTECHNOLOGIESBERMUDALTD",
+  "type": "Strategic Alliance"
+ },
+ "COOLTECHNOLOGIES,INC_10_25_2017-EX-10.71-Strategic Alliance Agreement": {
+  "split": "train",
+  "group": "COOLTECHNOLOGIESINC",
+  "type": "Strategic Alliance"
+ },
+ "CORALGOLDRESOURCES,LTD_05_28_2020-EX-4.1-CONSULTING AGREEMENT": {
+  "split": "train",
+  "group": "CORALGOLDRESOURCESLTD",
+  "type": "Consulting"
+ },
+ "CORIOINC_07_20_2000-EX-10.5-LICENSE AND HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "CORIOINC",
+  "type": "Hosting"
+ },
+ "CURAEGISTECHNOLOGIES,INC_05_26_2010-EX-1-CORPORATE SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "CURAEGISTECHNOLOGIESINC",
+  "type": "Sponsorship"
+ },
+ "CUROGROUPHOLDINGSCORP_05_04_2020-EX-10.3-SERVICING AGREEMENT": {
+  "split": "train",
+  "group": "CUROGROUPHOLDINGSCORP",
+  "type": "Service"
+ },
+ "CYBERIANOUTPOSTINC_07_09_1998-EX-10.13-PROMOTION AGREEMENT": {
+  "split": "train",
+  "group": "CYBERIANOUTPOSTINC",
+  "type": "Promotion"
+ },
+ "CardlyticsInc_20180112_S-1_EX-10.16_11002987_EX-10.16_Maintenance Agreement1": {
+  "split": "train",
+  "group": "CARDLYTICSINC",
+  "type": "Maintenance"
+ },
+ "CardlyticsInc_20180112_S-1_EX-10.16_11002987_EX-10.16_Maintenance Agreement2": {
+  "split": "train",
+  "group": "CARDLYTICSINC",
+  "type": "Maintenance"
+ },
+ "CardlyticsInc_20180112_S-1_EX-10.16_11002987_EX-10.16_Maintenance Agreement3": {
+  "split": "train",
+  "group": "CARDLYTICSINC",
+  "type": "Maintenance"
+ },
+ "CardlyticsInc_20180112_S-1_EX-10.16_11002987_EX-10.16_Maintenance Agreement4": {
+  "split": "train",
+  "group": "CARDLYTICSINC",
+  "type": "Maintenance"
+ },
+ "CcRealEstateIncomeFundadv_20181205_POS 8C_EX-99.(H)(3)_11447739_EX-99.(H)(3)_Marketing Agreement": {
+  "split": "train",
+  "group": "CCREALESTATEINCOMEFUNDADV",
+  "type": "Marketing"
+ },
+ "CerenceInc_20191002_8-K_EX-10.4_11827494_EX-10.4_Intellectual Property Agreement": {
+  "split": "train",
+  "group": "CERENCEINC",
+  "type": "IP"
+ },
+ "Cerus Corporation - FIRST AMEND TO SUPPLY AND MANUFACTURING AGREEMENT": {
+  "split": "test",
+  "group": "CERUSCORPORATIONFIRSTAMENDTOSUPPLYANDMANUFACTURINGAGREEMENT",
+  "type": "Supply"
+ },
+ "ChinaRealEstateInformationCorp_20090929_F-1_EX-10.32_4771615_EX-10.32_Content License Agreement": {
+  "split": "train",
+  "group": "CHINAREALESTATEINFORMATIONCORP",
+  "type": "License"
+ },
+ "ClickstreamCorp_20200330_1-A_EX1A-6 MAT CTRCT_12089935_EX1A-6 MAT CTRCT_Development Agreement": {
+  "split": "train",
+  "group": "CLICKSTREAMCORP",
+  "type": "Development"
+ },
+ "CnsPharmaceuticalsInc_20200326_8-K_EX-10.1_12079626_EX-10.1_Development Agreement": {
+  "split": "train",
+  "group": "CNSPHARMACEUTICALSINC",
+  "type": "Development"
+ },
+ "CoherusBiosciencesInc_20200227_10-K_EX-10.29_12021376_EX-10.29_Development Agreement": {
+  "split": "train",
+  "group": "COHERUSBIOSCIENCESINC",
+  "type": "Development"
+ },
+ "Columbia Laboratories, (Bermuda) Ltd. - AMEND NO. 2 TO MANUFACTURING AND SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "COLUMBIALABORATORIESBERMUDALTDAMENDNO2TOMANUFACTURINGANDSUPPLYAGREEMENT",
+  "type": "Supply"
+ },
+ "ConformisInc_20191101_10-Q_EX-10.6_11861402_EX-10.6_Development Agreement": {
+  "split": "train",
+  "group": "CONFORMISINC",
+  "type": "Development"
+ },
+ "CreditcardscomInc_20070810_S-1_EX-10.33_362297_EX-10.33_Affiliate Agreement": {
+  "split": "train",
+  "group": "CREDITCARDSCOMINC",
+  "type": "Affiliate"
+ },
+ "CybergyHoldingsInc_20140520_10-Q_EX-10.27_8605784_EX-10.27_Affiliate Agreement": {
+  "split": "train",
+  "group": "CYBERGYHOLDINGSINC",
+  "type": "Affiliate"
+ },
+ "CytodynInc_20200109_10-Q_EX-10.5_11941634_EX-10.5_License Agreement": {
+  "split": "train",
+  "group": "CYTODYNINC",
+  "type": "License"
+ },
+ "DIVERSINETCORP_03_01_2012-EX-4-RESELLER AGREEMENT": {
+  "split": "train",
+  "group": "DIVERSINETCORP",
+  "type": "Reseller"
+ },
+ "DOMINIADVISORTRUST_02_18_2005-EX-99.(H)(2)-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "DOMINIADVISORTRUST",
+  "type": "Sponsorship"
+ },
+ "DRAGONSYSTEMSINC_01_08_1999-EX-10.17-OUTSOURCING AGREEMENT": {
+  "split": "train",
+  "group": "DRAGONSYSTEMSINC",
+  "type": "Outsourcing"
+ },
+ "DRIVENDELIVERIES,INC_05_22_2020-EX-10.4-CONSULTING AGREEMENT": {
+  "split": "test",
+  "group": "DRIVENDELIVERIESINC",
+  "type": "Consulting"
+ },
+ "DRKOOPCOMINC_04_21_1999-EX-10.28-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "DRKOOPCOMINC",
+  "type": "Sponsorship"
+ },
+ "DUOSTECHNOLOGIESGROUP,INC_04_21_2009-EX-10.1-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "DUOSTECHNOLOGIESGROUPINC",
+  "type": "Strategic Alliance"
+ },
+ "DYNAMEXINC_06_06_1996-EX-10.4-TRANSPORTATION SERVICES AGREEMENT": {
+  "split": "train",
+  "group": "DYNAMEXINC",
+  "type": "Transportation"
+ },
+ "DYNTEKINC_07_30_1999-EX-10-ONLINE HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "DYNTEKINC",
+  "type": "Hosting"
+ },
+ "DataCallTechnologies_20060918_SB-2A_EX-10.9_944510_EX-10.9_Content License Agreement": {
+  "split": "val",
+  "group": "DATACALLTECHNOLOGIES",
+  "type": "License"
+ },
+ "DeltathreeInc_19991102_S-1A_EX-10.19_6227850_EX-10.19_Co-Branding Agreement_ Service Agreement": {
+  "split": "train",
+  "group": "DELTATHREEINC",
+  "type": "Service"
+ },
+ "DigitalCinemaDestinationsCorp_20111220_S-1_EX-10.10_7346719_EX-10.10_Affiliate Agreement": {
+  "split": "test",
+  "group": "DIGITALCINEMADESTINATIONSCORP",
+  "type": "Affiliate"
+ },
+ "DovaPharmaceuticalsInc_20181108_10-Q_EX-10.2_11414857_EX-10.2_Promotion Agreement": {
+  "split": "test",
+  "group": "DOVAPHARMACEUTICALSINC",
+  "type": "Promotion"
+ },
+ "ELANDIAINTERNATIONALINC_04_25_2007-EX-10.21-Outsourcing Agreement": {
+  "split": "train",
+  "group": "ELANDIAINTERNATIONALINC",
+  "type": "Outsourcing"
+ },
+ "ELECTRAMECCANICA VEHICLES CORP. - Manufacturing Agreement": {
+  "split": "test",
+  "group": "ELECTRAMECCANICAVEHICLESCORPMANUFACTURINGAGREEMENT",
+  "type": "Manufacturing"
+ },
+ "ELFBEAUTY,INC_07_02_2020-EX-10.1-COOPERATION AGREEMENT": {
+  "split": "train",
+  "group": "ELFBEAUTYINC",
+  "type": "Cooperation"
+ },
+ "EMERALDHEALTHTHERAPEUTICSINC_06_10_2020-EX-4.5-CONSULTING AGREEMENT - DR. GAETANO MORELLO N.D. INC.": {
+  "split": "val",
+  "group": "EMERALDHEALTHTHERAPEUTICSINC",
+  "type": "Consulting"
+ },
+ "ENERGOUSCORP_03_16_2017-EX-10.24-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "ENERGOUSCORP",
+  "type": "Strategic Alliance"
+ },
+ "ENERGYXXILTD_05_08_2015-EX-10.13-Transportation AGREEMENT": {
+  "split": "train",
+  "group": "ENERGYXXILTD",
+  "type": "Transportation"
+ },
+ "ENTERPRISEPRODUCTSPARTNERSLP_07_08_1998-EX-10.3-TRANSPORTATION CONTRACT": {
+  "split": "train",
+  "group": "ENTERPRISEPRODUCTSPARTNERSLP",
+  "type": "Transportation"
+ },
+ "ENTERTAINMENTGAMINGASIAINC_02_15_2005-EX-10.5-DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "ENTERTAINMENTGAMINGASIAINC",
+  "type": "Distributor"
+ },
+ "ENTRUSTINC_07_24_1998-EX-10.5-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "test",
+  "group": "ENTRUSTINC",
+  "type": "Strategic Alliance"
+ },
+ "ETELOS,INC_03_09_2004-EX-10.8-DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "ETELOSINC",
+  "type": "Distributor"
+ },
+ "EUROPEANMICROHOLDINGSINC_03_06_1998-EX-10.6-DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "EUROPEANMICROHOLDINGSINC",
+  "type": "Distributor"
+ },
+ "EbixInc_20010515_10-Q_EX-10.3_4049767_EX-10.3_Co-Branding Agreement": {
+  "split": "train",
+  "group": "EBIXINC",
+  "type": "Co-Branding"
+ },
+ "EcoScienceSolutionsInc_20171117_8-K_EX-10.1_10956472_EX-10.1_Endorsement Agreement": {
+  "split": "train",
+  "group": "ECOSCIENCESOLUTIONSINC",
+  "type": "Endorsement"
+ },
+ "EcoScienceSolutionsInc_20180406_8-K_EX-10.1_11135398_EX-10.1_Sponsorship Agreement": {
+  "split": "train",
+  "group": "ECOSCIENCESOLUTIONSINC",
+  "type": "Sponsorship"
+ },
+ "EdietsComInc_20001030_10QSB_EX-10.4_2606646_EX-10.4_Co-Branding Agreement": {
+  "split": "train",
+  "group": "EDIETSCOMINC",
+  "type": "Co-Branding"
+ },
+ "EhaveInc_20190515_20-F_EX-4.44_11678816_EX-4.44_License Agreement_ Reseller Agreement": {
+  "split": "train",
+  "group": "EHAVEINC",
+  "type": "Reseller"
+ },
+ "ElPolloLocoHoldingsInc_20200306_10-K_EX-10.16_12041700_EX-10.16_Development Agreement": {
+  "split": "train",
+  "group": "ELPOLLOLOCOHOLDINGSINC",
+  "type": "Development"
+ },
+ "EmbarkComInc_19991008_S-1A_EX-10.10_6487661_EX-10.10_Co-Branding Agreement": {
+  "split": "train",
+  "group": "EMBARKCOMINC",
+  "type": "Co-Branding"
+ },
+ "EmeraldHealthBioceuticalsInc_20200218_1-A_EX1A-6 MAT CTRCT_11987205_EX1A-6 MAT CTRCT_Development Agreement": {
+  "split": "val",
+  "group": "EMERALDHEALTHBIOCEUTICALSINC",
+  "type": "Development"
+ },
+ "EmmisCommunicationsCorp_20191125_8-K_EX-10.6_11906433_EX-10.6_Marketing Agreement": {
+  "split": "train",
+  "group": "EMMISCOMMUNICATIONSCORP",
+  "type": "Marketing"
+ },
+ "EtonPharmaceuticalsInc_20191114_10-Q_EX-10.1_11893941_EX-10.1_Development Agreement": {
+  "split": "train",
+  "group": "ETONPHARMACEUTICALSINC",
+  "type": "Development"
+ },
+ "EuromediaHoldingsCorp_20070215_10SB12G_EX-10.B(01)_525118_EX-10.B(01)_Content License Agreement": {
+  "split": "train",
+  "group": "EUROMEDIAHOLDINGSCORP",
+  "type": "License"
+ },
+ "ExactSciencesCorp_20180822_8-K_EX-10.1_11331629_EX-10.1_Promotion Agreement": {
+  "split": "val",
+  "group": "EXACTSCIENCESCORP",
+  "type": "Promotion"
+ },
+ "FEDERATEDGOVERNMENTINCOMESECURITIESINC_04_28_2020-EX-99.SERV AGREE-SERVICES AGREEMENT": {
+  "split": "test",
+  "group": "FEDERATEDGOVERNMENTINCOMESECURITIESINC",
+  "type": "Service"
+ },
+ "FEDERATEDGOVERNMENTINCOMESECURITIESINC_04_28_2020-EX-99.SERV AGREE-SERVICES AGREEMENT_AMENDMENT": {
+  "split": "test",
+  "group": "FEDERATEDGOVERNMENTINCOMESECURITIESINC",
+  "type": "Service"
+ },
+ "FEDERATEDGOVERNMENTINCOMESECURITIESINC_04_28_2020-EX-99.SERV AGREE-SERVICES AGREEMENT_POWEROF": {
+  "split": "test",
+  "group": "FEDERATEDGOVERNMENTINCOMESECURITIESINC",
+  "type": "Service"
+ },
+ "FEDERATEDGOVERNMENTINCOMESECURITIESINC_04_28_2020-EX-99.SERV AGREE-SERVICES AGREEMENT_SECONDAMENDMENT": {
+  "split": "test",
+  "group": "FEDERATEDGOVERNMENTINCOMESECURITIESINC",
+  "type": "Service"
+ },
+ "FIBROGENINC_10_01_2014-EX-10.11-COLLABORATION AGREEMENT": {
+  "split": "train",
+  "group": "FIBROGENINC",
+  "type": "Collaboration"
+ },
+ "FIDELITYNATIONALINFORMATIONSERVICES,INC_08_05_2009-EX-10.3-INTELLECTUAL PROPERTY AGREEMENT": {
+  "split": "train",
+  "group": "FIDELITYNATIONALINFORMATIONSERVICESINC",
+  "type": "IP"
+ },
+ "FLOTEKINDUSTRIESINCCN_05_09_2019-EX-10.1-SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "FLOTEKINDUSTRIESINCCN",
+  "type": "Supply"
+ },
+ "FOUNDATIONMEDICINE,INC_02_02_2015-EX-10.2-Collaboration Agreement": {
+  "split": "train",
+  "group": "FOUNDATIONMEDICINEINC",
+  "type": "Collaboration"
+ },
+ "FTENETWORKS,INC_02_18_2016-EX-99.4-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "FTENETWORKSINC",
+  "type": "Strategic Alliance"
+ },
+ "FUSIONPHARMACEUTICALSINC_06_05_2020-EX-10.17-Supply Agreement - FUSION": {
+  "split": "val",
+  "group": "FUSIONPHARMACEUTICALSINC",
+  "type": "Supply"
+ },
+ "FerroglobePlc_20150624_F-4A_EX-10.20_9154746_EX-10.20_Outsourcing Agreement": {
+  "split": "train",
+  "group": "FERROGLOBEPLC",
+  "type": "Outsourcing"
+ },
+ "Freecook_20180605_S-1_EX-10.3_11233807_EX-10.3_Hosting Agreement": {
+  "split": "train",
+  "group": "FREECOOK",
+  "type": "Hosting"
+ },
+ "FreezeTagInc_20180411_8-K_EX-10.1_11139603_EX-10.1_Sponsorship Agreement": {
+  "split": "train",
+  "group": "FREEZETAGINC",
+  "type": "Sponsorship"
+ },
+ "FuelcellEnergyInc_20191106_8-K_EX-10.1_11868007_EX-10.1_Development Agreement": {
+  "split": "val",
+  "group": "FUELCELLENERGYINC",
+  "type": "Development"
+ },
+ "FulucaiProductionsLtd_20131223_10-Q_EX-10.9_8368347_EX-10.9_Content License Agreement": {
+  "split": "train",
+  "group": "FULUCAIPRODUCTIONSLTD",
+  "type": "License"
+ },
+ "FuseMedicalInc_20190321_10-K_EX-10.43_11575454_EX-10.43_Distributor Agreement": {
+  "split": "train",
+  "group": "FUSEMEDICALINC",
+  "type": "Distributor"
+ },
+ "GAINSCOINC_01_21_2010-EX-10.41-SPONSORSHIP AGREEMENT": {
+  "split": "val",
+  "group": "GAINSCOINC",
+  "type": "Sponsorship"
+ },
+ "GALACTICOMMTECHNOLOGIESINC_11_07_1997-EX-10.46-WEB HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "GALACTICOMMTECHNOLOGIESINC",
+  "type": "Hosting"
+ },
+ "GALERATHERAPEUTICS,INC_02_14_2020-EX-99.A-JOINT FILING AGREEMENT": {
+  "split": "val",
+  "group": "GALERATHERAPEUTICSINC",
+  "type": "Joint Filing"
+ },
+ "GIGGLESN_HUGS,INC_06_23_2016-EX-10.2-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "test",
+  "group": "GIGGLESN",
+  "type": "Strategic Alliance"
+ },
+ "GLOBALTECHNOLOGIESLTD_06_08_2020-EX-10.16-CONSULTING AGREEMENT": {
+  "split": "train",
+  "group": "GLOBALTECHNOLOGIESLTD",
+  "type": "Consulting"
+ },
+ "GOCALLINC_03_30_2000-EX-10.7-Promotion Agreement": {
+  "split": "val",
+  "group": "GOCALLINC",
+  "type": "Promotion"
+ },
+ "GOLDRESOURCECORP_12_11_2008-EX-10.1-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "GOLDRESOURCECORP",
+  "type": "Strategic Alliance"
+ },
+ "GOOSEHEADINSURANCE,INC_04_02_2018-EX-10.6-Franchise Agreement": {
+  "split": "train",
+  "group": "GOOSEHEADINSURANCEINC",
+  "type": "Franchise"
+ },
+ "GRANTIERRAENERGYINC_05_07_2012-EX-10.6-TRANSPORTATION CONTRACT": {
+  "split": "train",
+  "group": "GRANTIERRAENERGYINC",
+  "type": "Transportation"
+ },
+ "GRIDIRONBIONUTRIENTS,INC_02_05_2020-EX-10.3-SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "GRIDIRONBIONUTRIENTSINC",
+  "type": "Supply"
+ },
+ "GSITECHNOLOGYINC_11_16_2009-EX-10.2-INTELLECTUAL PROPERTY AGREEMENT between SONY ELECTRONICS INC. and GSI TECHNOLOGY, INC.": {
+  "split": "train",
+  "group": "GSITECHNOLOGYINC",
+  "type": "IP"
+ },
+ "GSVINC_05_15_1998-EX-10-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "GSVINC",
+  "type": "Sponsorship"
+ },
+ "GULFSOUTHMEDICALSUPPLYINC_12_24_1997-EX-4-AFFILIATE AGREEMENT": {
+  "split": "val",
+  "group": "GULFSOUTHMEDICALSUPPLYINC",
+  "type": "Affiliate"
+ },
+ "GWG HOLDINGS, INC. - ORDERLY MARKETING AGREEMENT": {
+  "split": "val",
+  "group": "GWGHOLDINGSINCORDERLYMARKETINGAGREEMENT",
+  "type": "Marketing"
+ },
+ "GarrettMotionInc_20181001_8-K_EX-2.4_11364532_EX-2.4_Intellectual Property Agreement": {
+  "split": "val",
+  "group": "GARRETTMOTIONINC",
+  "type": "IP"
+ },
+ "GentechHoldingsInc_20190808_1-A_EX1A-6 MAT CTRCT_11776814_EX1A-6 MAT CTRCT_Distributor Agreement": {
+  "split": "train",
+  "group": "GENTECHHOLDINGSINC",
+  "type": "Distributor"
+ },
+ "GlobalTechnologiesGroupInc_20050928_10KSB_EX-10.9_4148808_EX-10.9_Content License Agreement": {
+  "split": "train",
+  "group": "GLOBALTECHNOLOGIESGROUPINC",
+  "type": "License"
+ },
+ "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement1": {
+  "split": "val",
+  "group": "GLUMOBILEINC",
+  "type": "License"
+ },
+ "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement2": {
+  "split": "val",
+  "group": "GLUMOBILEINC",
+  "type": "License"
+ },
+ "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement3": {
+  "split": "val",
+  "group": "GLUMOBILEINC",
+  "type": "License"
+ },
+ "GluMobileInc_20070319_S-1A_EX-10.09_436630_EX-10.09_Content License Agreement4": {
+  "split": "val",
+  "group": "GLUMOBILEINC",
+  "type": "License"
+ },
+ "GopageCorp_20140221_10-K_EX-10.1_8432966_EX-10.1_Content License Agreement": {
+  "split": "train",
+  "group": "GOPAGECORP",
+  "type": "License"
+ },
+ "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.6_11951677_EX-10.6_License Agreement": {
+  "split": "train",
+  "group": "GPAQACQUISITIONHOLDINGSINC",
+  "type": "License"
+ },
+ "GpaqAcquisitionHoldingsInc_20200123_S-4A_EX-10.8_11951679_EX-10.8_Service Agreement": {
+  "split": "train",
+  "group": "GPAQACQUISITIONHOLDINGSINC",
+  "type": "Service"
+ },
+ "GridironBionutrientsInc_20171206_8-K_EX-10.1_10972555_EX-10.1_Endorsement Agreement": {
+  "split": "train",
+  "group": "GRIDIRONBIONUTRIENTSINC",
+  "type": "Endorsement"
+ },
+ "GridironBionutrientsInc_20171206_8-K_EX-10.2_10972556_EX-10.2_Endorsement Agreement": {
+  "split": "train",
+  "group": "GRIDIRONBIONUTRIENTSINC",
+  "type": "Endorsement"
+ },
+ "HALITRON,INC_03_01_2005-EX-10.15-SPONSORSHIP AND DEVELOPMENT AGREEMENT": {
+  "split": "train",
+  "group": "HALITRONINC",
+  "type": "Sponsorship"
+ },
+ "HC2HOLDINGS,INC_05_14_2020-EX-10.1-COOPERATION AGREEMENT": {
+  "split": "train",
+  "group": "HC2HOLDINGSINC",
+  "type": "Cooperation"
+ },
+ "HEALTHGATEDATACORP_11_24_1999-EX-10.1-HOSTING AND MANAGEMENT AGREEMENT (1)": {
+  "split": "train",
+  "group": "HEALTHGATEDATACORP",
+  "type": "Hosting"
+ },
+ "HEALTHGATEDATACORP_11_24_1999-EX-10.1-HOSTING AND MANAGEMENT AGREEMENT - Escrow Agreement": {
+  "split": "train",
+  "group": "HEALTHGATEDATACORP",
+  "type": "Hosting"
+ },
+ "HEMISPHERX - Sales, Marketing, Distribution, and Supply Agreement": {
+  "split": "train",
+  "group": "HEMISPHERXSALESMARKETINGDISTRIBUTIONANDSUPPLYAGREEMENT",
+  "type": "Distributor"
+ },
+ "HERTZGLOBALHOLDINGS,INC_07_07_2016-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT": {
+  "split": "train",
+  "group": "HERTZGLOBALHOLDINGSINC",
+  "type": "IP"
+ },
+ "HOLIDAYRVSUPERSTORESINC_04_15_2002-EX-10.13-ENDORSEMENT AGREEMENT": {
+  "split": "test",
+  "group": "HOLIDAYRVSUPERSTORESINC",
+  "type": "Endorsement"
+ },
+ "HOSPITALITYINVESTORSTRUST,INC_04_07_2014-EX-10.26-FRANCHISE AGREEMENT": {
+  "split": "test",
+  "group": "HOSPITALITYINVESTORSTRUSTINC",
+  "type": "Franchise"
+ },
+ "HPILHOLDING_01_07_2015-EX-99.1-COOPERATION AGREEMENT": {
+  "split": "train",
+  "group": "HPILHOLDING",
+  "type": "Cooperation"
+ },
+ "HUBEIMINKANGPHARMACEUTICALLTD_09_19_2006-EX-10.1-OUTSOURCING AGREEMENT": {
+  "split": "val",
+  "group": "HUBEIMINKANGPHARMACEUTICALLTD",
+  "type": "Outsourcing"
+ },
+ "HYDRONTECHNOLOGIESINC_03_31_1997-EX-10.47-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "HYDRONTECHNOLOGIESINC",
+  "type": "Sponsorship"
+ },
+ "HYPERIONSOFTWARECORP_09_28_1994-EX-10.47-EXCLUSIVE DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "HYPERIONSOFTWARECORP",
+  "type": "Distributor"
+ },
+ "HarpoonTherapeuticsInc_20200312_10-K_EX-10.18_12051356_EX-10.18_Development Agreement": {
+  "split": "val",
+  "group": "HARPOONTHERAPEUTICSINC",
+  "type": "Development"
+ },
+ "HealthcareIntegratedTechnologiesInc_20190812_8-K_EX-10.1_11776966_EX-10.1_Reseller Agreement": {
+  "split": "train",
+  "group": "HEALTHCAREINTEGRATEDTECHNOLOGIESINC",
+  "type": "Reseller"
+ },
+ "HealthcentralCom_19991108_S-1A_EX-10.27_6623292_EX-10.27_Co-Branding Agreement": {
+  "split": "test",
+  "group": "HEALTHCENTRALCOM",
+  "type": "Co-Branding"
+ },
+ "HerImports_20161018_8-KA_EX-10.14_9765707_EX-10.14_Maintenance Agreement": {
+  "split": "test",
+  "group": "HERIMPORTS",
+  "type": "Maintenance"
+ },
+ "HertzGroupRealtyTrustInc_20190920_S-11A_EX-10.8_11816941_EX-10.8_Trademark License Agreement": {
+  "split": "train",
+  "group": "HERTZGROUPREALTYTRUSTINC",
+  "type": "License"
+ },
+ "HfEnterprisesInc_20191223_S-1_EX-10.22_11931299_EX-10.22_Development Agreement": {
+  "split": "test",
+  "group": "HFENTERPRISESINC",
+  "type": "Development"
+ },
+ "ICORECONNECTINC_10_13_2010-EX-7.1-Strategic Alliance Agreement": {
+  "split": "train",
+  "group": "ICORECONNECTINC",
+  "type": "Strategic Alliance"
+ },
+ "IDREAMSKYTECHNOLOGYLTD_07_03_2014-EX-10.39-Cooperation Agreement on Mobile Game Business": {
+  "split": "train",
+  "group": "IDREAMSKYTECHNOLOGYLTD",
+  "type": "Cooperation"
+ },
+ "IGENEBIOTECHNOLOGYINC_05_13_2003-EX-1-JOINT VENTURE AGREEMENT": {
+  "split": "train",
+  "group": "IGENEBIOTECHNOLOGYINC",
+  "type": "Joint Venture"
+ },
+ "IMAGEWARESYSTEMSINC_12_20_1999-EX-10.22-MAINTENANCE AGREEMENT": {
+  "split": "val",
+  "group": "IMAGEWARESYSTEMSINC",
+  "type": "Maintenance"
+ },
+ "IMMUNOMEDICSINC_08_07_2019-EX-10.1-PROMOTION AGREEMENT": {
+  "split": "test",
+  "group": "IMMUNOMEDICSINC",
+  "type": "Promotion"
+ },
+ "IMPCOTECHNOLOGIESINC_04_15_2003-EX-10.65-JOINT VENTURE AGREEMENT": {
+  "split": "test",
+  "group": "IMPCOTECHNOLOGIESINC",
+  "type": "Joint Venture"
+ },
+ "INGEVITYCORP_05_16_2016-EX-10.5-INTELLECTUAL PROPERTY AGREEMENT": {
+  "split": "train",
+  "group": "INGEVITYCORP",
+  "type": "IP"
+ },
+ "INKTOMICORP_06_08_1998-EX-10.14-SOFTWARE HOSTING AGREEMENT": {
+  "split": "test",
+  "group": "INKTOMICORP",
+  "type": "Hosting"
+ },
+ "INNOVIVA,INC_08_07_2014-EX-10.1-COLLABORATION AGREEMENT": {
+  "split": "val",
+  "group": "INNOVIVAINC",
+  "type": "Collaboration"
+ },
+ "INTELLIGENTHIGHWAYSOLUTIONS,INC_01_18_2018-EX-10.1-Strategic Alliance Agreement": {
+  "split": "test",
+  "group": "INTELLIGENTHIGHWAYSOLUTIONSINC",
+  "type": "Strategic Alliance"
+ },
+ "INTERNATIONALFASTFOODCORP_04_04_1997-EX-99-FRANCHISE AGREEMENT": {
+  "split": "train",
+  "group": "INTERNATIONALFASTFOODCORP",
+  "type": "Franchise"
+ },
+ "INTERSECTENT,INC_05_11_2020-EX-10.1-SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "INTERSECTENTINC",
+  "type": "Supply"
+ },
+ "INTRICONCORP_03_10_2009-EX-10.22-Strategic Alliance Agreement": {
+  "split": "train",
+  "group": "INTRICONCORP",
+  "type": "Strategic Alliance"
+ },
+ "IOVANCEBIOTHERAPEUTICS,INC_08_03_2017-EX-10.1-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "IOVANCEBIOTHERAPEUTICSINC",
+  "type": "Strategic Alliance"
+ },
+ "IPAYMENT,INC_05_14_2007-EX-10.1-SPONSORSHIP AGREEMENT": {
+  "split": "test",
+  "group": "IPAYMENTINC",
+  "type": "Sponsorship"
+ },
+ "IVILLAGEINC_03_17_1999-EX-10.16-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "IVILLAGEINC",
+  "type": "Sponsorship"
+ },
+ "IbioInc_20200313_8-K_EX-10.1_12052678_EX-10.1_Development Agreement": {
+  "split": "train",
+  "group": "IBIOINC",
+  "type": "Development"
+ },
+ "IdeanomicsInc_20151124_8-K_EX-10.2_9354744_EX-10.2_Content License Agreement": {
+  "split": "train",
+  "group": "IDEANOMICSINC",
+  "type": "License"
+ },
+ "IdeanomicsInc_20160330_10-K_EX-10.26_9512211_EX-10.26_Content License Agreement": {
+  "split": "train",
+  "group": "IDEANOMICSINC",
+  "type": "License"
+ },
+ "ImineCorp_20180725_S-1_EX-10.5_11275970_EX-10.5_Distributor Agreement": {
+  "split": "train",
+  "group": "IMINECORP",
+  "type": "Distributor"
+ },
+ "ImperialGardenResortInc_20161028_DRS (on F-1)_EX-10.13_9963189_EX-10.13_Outsourcing Agreement": {
+  "split": "val",
+  "group": "IMPERIALGARDENRESORTINC",
+  "type": "Outsourcing"
+ },
+ "ImpresseCorp_20000322_S-1A_EX-10.11_5199234_EX-10.11_Co-Branding Agreement": {
+  "split": "train",
+  "group": "IMPRESSECORP",
+  "type": "Co-Branding"
+ },
+ "InmodeLtd_20190729_F-1A_EX-10.9_11743243_EX-10.9_Manufacturing Agreement": {
+  "split": "val",
+  "group": "INMODELTD",
+  "type": "Manufacturing"
+ },
+ "InnerscopeHearingTechnologiesInc_20181109_8-K_EX-10.6_11419704_EX-10.6_Distributor Agreement": {
+  "split": "train",
+  "group": "INNERSCOPEHEARINGTECHNOLOGIESINC",
+  "type": "Distributor"
+ },
+ "IntegrityFunds_20200121_485BPOS_EX-99.E UNDR CONTR_11948727_EX-99.E UNDR CONTR_Service Agreement": {
+  "split": "train",
+  "group": "INTEGRITYFUNDS",
+  "type": "Service"
+ },
+ "IntegrityMediaInc_20010329_10-K405_EX-10.17_2373875_EX-10.17_Co-Branding Agreement": {
+  "split": "train",
+  "group": "INTEGRITYMEDIAINC",
+  "type": "Co-Branding"
+ },
+ "InvendaCorp_20000828_S-1A_EX-10.2_2588206_EX-10.2_Co-Branding Agreement": {
+  "split": "train",
+  "group": "INVENDACORP",
+  "type": "Co-Branding"
+ },
+ "IpassInc_20181203_8-K_EX-99.1_11445874_EX-99.1_Reseller Agreement": {
+  "split": "train",
+  "group": "IPASSINC",
+  "type": "Reseller"
+ },
+ "JINGWEIINTERNATIONALLTD_10_04_2007-EX-10.7-INTELLECTUAL PROPERTY AGREEMENT": {
+  "split": "train",
+  "group": "JINGWEIINTERNATIONALLTD",
+  "type": "IP"
+ },
+ "JOINTCORP_09_19_2014-EX-10.15-FRANCHISE AGREEMENT": {
+  "split": "val",
+  "group": "JOINTCORP",
+  "type": "Franchise"
+ },
+ "KALLOINC_11_03_2011-EX-10.1-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "KALLOINC",
+  "type": "Strategic Alliance"
+ },
+ "KENTUCKYUTILITIESCO_03_25_2003-EX-10.65-TRANSPORTATION AGREEMENT": {
+  "split": "train",
+  "group": "KENTUCKYUTILITIESCO",
+  "type": "Transportation"
+ },
+ "KINGPHARMACEUTICALSINC_08_09_2006-EX-10.1-PROMOTION AGREEMENT": {
+  "split": "train",
+  "group": "KINGPHARMACEUTICALSINC",
+  "type": "Promotion"
+ },
+ "KIROMICBIOPHARMA,INC_04_08_2020-EX-10.28-JOINT VENTURE AGREEMENT": {
+  "split": "train",
+  "group": "KIROMICBIOPHARMAINC",
+  "type": "Joint Venture"
+ },
+ "KIROMICBIOPHARMA,INC_05_11_2020-EX-10.23-CONSULTING AGREEMENT": {
+  "split": "train",
+  "group": "KIROMICBIOPHARMAINC",
+  "type": "Consulting"
+ },
+ "KNOWLABS,INC_08_15_2005-EX-10-INTELLECTUAL PROPERTY AGREEMENT": {
+  "split": "train",
+  "group": "KNOWLABSINC",
+  "type": "IP"
+ },
+ "KUBIENT,INC_07_02_2020-EX-10.14-MASTER SERVICES AGREEMENT_Part1": {
+  "split": "train",
+  "group": "KUBIENTINC",
+  "type": "Service"
+ },
+ "KUBIENT,INC_07_02_2020-EX-10.14-MASTER SERVICES AGREEMENT_Part2": {
+  "split": "train",
+  "group": "KUBIENTINC",
+  "type": "Service"
+ },
+ "KitovPharmaLtd_20190326_20-F_EX-4.15_11584449_EX-4.15_Manufacturing Agreement": {
+  "split": "val",
+  "group": "KITOVPHARMALTD",
+  "type": "Manufacturing"
+ },
+ "LECLANCHE\u0301 S.A. - JOINT DEVELOPMENT AND MARKETING AGREEMENT": {
+  "split": "test",
+  "group": "LECLANCHESAJOINTDEVELOPMENTANDMARKETINGAGREEMENT",
+  "type": "Development"
+ },
+ "LEGACYTECHNOLOGYHOLDINGS,INC_12_09_2005-EX-10.2-DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "LEGACYTECHNOLOGYHOLDINGSINC",
+  "type": "Distributor"
+ },
+ "LEJUHOLDINGSLTD_03_12_2014-EX-10.34-INTERNET CHANNEL COOPERATION AGREEMENT": {
+  "split": "test",
+  "group": "LEJUHOLDINGSLTD",
+  "type": "Cooperation"
+ },
+ "LIGHTBRIDGECORP_11_23_2015-EX-10.26-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "LIGHTBRIDGECORP",
+  "type": "Strategic Alliance"
+ },
+ "LIMEENERGYCO_09_09_1999-EX-10-DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "LIMEENERGYCO",
+  "type": "Distributor"
+ },
+ "LOGANSROADHOUSEINC_03_27_1998-EX-10.17-SPONSORSHIP AGREEMENT": {
+  "split": "test",
+  "group": "LOGANSROADHOUSEINC",
+  "type": "Sponsorship"
+ },
+ "LOOKSMARTLTD_07_20_2012-EX-99.(D)(I)-SPONSORSHIP AGREEMENT": {
+  "split": "val",
+  "group": "LOOKSMARTLTD",
+  "type": "Sponsorship"
+ },
+ "LOYALTYPOINTINC_11_16_2004-EX-10.2-RESELLER AGREEMENT": {
+  "split": "test",
+  "group": "LOYALTYPOINTINC",
+  "type": "Reseller"
+ },
+ "LUCIDINC_04_15_2011-EX-10.9-DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "LUCIDINC",
+  "type": "Distributor"
+ },
+ "LeadersonlineInc_20000427_S-1A_EX-10.8_4991089_EX-10.8_Co-Branding Agreement": {
+  "split": "train",
+  "group": "LEADERSONLINEINC",
+  "type": "Co-Branding"
+ },
+ "LegacyEducationAllianceInc_20141110_8-K_EX-10.9_8828866_EX-10.9_Endorsement Agreement": {
+  "split": "train",
+  "group": "LEGACYEDUCATIONALLIANCEINC",
+  "type": "Endorsement"
+ },
+ "LegacyEducationAllianceInc_20200330_10-K_EX-10.18_12090678_EX-10.18_Development Agreement": {
+  "split": "train",
+  "group": "LEGACYEDUCATIONALLIANCEINC",
+  "type": "Development"
+ },
+ "LejuHoldingsLtd_20140121_DRS (on F-1)_EX-10.26_8473102_EX-10.26_Content License Agreement1": {
+  "split": "test",
+  "group": "LEJUHOLDINGSLTD",
+  "type": "License"
+ },
+ "LejuHoldingsLtd_20140121_DRS (on F-1)_EX-10.26_8473102_EX-10.26_Content License Agreement2": {
+  "split": "test",
+  "group": "LEJUHOLDINGSLTD",
+  "type": "License"
+ },
+ "LifewayFoodsInc_20160316_10-K_EX-10.24_9489766_EX-10.24_Endorsement Agreement": {
+  "split": "train",
+  "group": "LIFEWAYFOODSINC",
+  "type": "Endorsement"
+ },
+ "LinkPlusCorp_20050802_8-K_EX-10_3240252_EX-10_Affiliate Agreement": {
+  "split": "train",
+  "group": "LINKPLUSCORP",
+  "type": "Affiliate"
+ },
+ "LiquidmetalTechnologiesInc_20200205_8-K_EX-10.1_11968198_EX-10.1_Development Agreement": {
+  "split": "train",
+  "group": "LIQUIDMETALTECHNOLOGIESINC",
+  "type": "Development"
+ },
+ "LohaCompanyltd_20191209_F-1_EX-10.16_11917878_EX-10.16_Supply Agreement": {
+  "split": "train",
+  "group": "LOHACOMPANYLTD",
+  "type": "Supply"
+ },
+ "Loop Industries, Inc. - Marketing Agreement": {
+  "split": "train",
+  "group": "LOOPINDUSTRIESINCMARKETINGAGREEMENT",
+  "type": "Marketing"
+ },
+ "MACROGENICSINC_08_02_2013-EX-10-COLLABORATION AGREEMENT": {
+  "split": "val",
+  "group": "MACROGENICSINC",
+  "type": "Collaboration"
+ },
+ "MACY_S,INC_05_11_2020-EX-99.4-JOINT FILING AGREEMENT": {
+  "split": "train",
+  "group": "MACY",
+  "type": "Joint Filing"
+ },
+ "MANAKOASERVICESCORP_11_21_2007-EX-7.5-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "MANAKOASERVICESCORP",
+  "type": "Strategic Alliance"
+ },
+ "MANUFACTURERSSERVICESLTD_06_05_2000-EX-10.14-OUTSOURCING AGREEMENT": {
+  "split": "train",
+  "group": "MANUFACTURERSSERVICESLTD",
+  "type": "Outsourcing"
+ },
+ "MARSHALLHOLDINGSINTERNATIONAL,INC_04_14_2004-EX-10.15-ENDORSEMENT AGREEMENT": {
+  "split": "train",
+  "group": "MARSHALLHOLDINGSINTERNATIONALINC",
+  "type": "Endorsement"
+ },
+ "MARTINMIDSTREAMPARTNERSLP_01_23_2004-EX-10.3-TRANSPORTATION SERVICES AGREEMENT": {
+  "split": "test",
+  "group": "MARTINMIDSTREAMPARTNERSLP",
+  "type": "Transportation"
+ },
+ "MEDALISTDIVERSIFIEDREIT,INC_05_18_2020-EX-10.1-CONSULTING AGREEMENT": {
+  "split": "val",
+  "group": "MEDALISTDIVERSIFIEDREITINC",
+  "type": "Consulting"
+ },
+ "MEDIWOUNDLTD_01_15_2014-EX-10.6-SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "MEDIWOUNDLTD",
+  "type": "Supply"
+ },
+ "MEETGROUP,INC_06_29_2017-EX-10.1-COOPERATION AGREEMENT": {
+  "split": "val",
+  "group": "MEETGROUPINC",
+  "type": "Cooperation"
+ },
+ "MERCATAINC_03_09_2000-EX-10.21-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "MERCATAINC",
+  "type": "Sponsorship"
+ },
+ "MERITLIFEINSURANCECO_06_19_2020-EX-10.(XIV)-MASTER SERVICES AGREEMENT": {
+  "split": "train",
+  "group": "MERITLIFEINSURANCECO",
+  "type": "Service"
+ },
+ "MFAFINANCIAL,INC_07_06_2020-EX-99.D-JOINT FILING AGREEMENT": {
+  "split": "train",
+  "group": "MFAFINANCIALINC",
+  "type": "Joint Filing"
+ },
+ "MIDDLEBROOKPHARMACEUTICALS,INC_03_18_2010-EX-10.1-PROMOTION AGREEMENT": {
+  "split": "train",
+  "group": "MIDDLEBROOKPHARMACEUTICALSINC",
+  "type": "Promotion"
+ },
+ "MJBIOTECH,INC_12_06_2018-EX-99.01-JOINT VENTURE AGREEMENT": {
+  "split": "train",
+  "group": "MJBIOTECHINC",
+  "type": "Joint Venture"
+ },
+ "MOELIS_CO_03_24_2014-EX-10.19-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "test",
+  "group": "MOELIS",
+  "type": "Strategic Alliance"
+ },
+ "MOSSIMOINC_04_14_2000-EX-10.14-ENDORSEMENT AGREEMENT": {
+  "split": "train",
+  "group": "MOSSIMOINC",
+  "type": "Endorsement"
+ },
+ "MOVADOGROUPINC_04_30_2003-EX-10.28-ENDORSEMENT AGREEMENT": {
+  "split": "test",
+  "group": "MOVADOGROUPINC",
+  "type": "Endorsement"
+ },
+ "MPLXLP_06_17_2015-EX-10.1-TRANSPORTATION SERVICES AGREEMENT": {
+  "split": "test",
+  "group": "MPLXLP",
+  "type": "Transportation"
+ },
+ "MRSFIELDSORIGINALCOOKIESINC_01_29_1998-EX-10-FRANCHISE AGREEMENT": {
+  "split": "val",
+  "group": "MRSFIELDSORIGINALCOOKIESINC",
+  "type": "Franchise"
+ },
+ "MSCIINC_02_28_2008-EX-10.10-": {
+  "split": "train",
+  "group": "MSCIINC",
+  "type": "Other"
+ },
+ "MTITECHNOLOGYCORP_11_16_2004-EX-10.102-Reseller Agreement Premier Addendum": {
+  "split": "val",
+  "group": "MTITECHNOLOGYCORP",
+  "type": "Reseller"
+ },
+ "Magenta Therapeutics, Inc. - Master Development and Manufacturing Agreement": {
+  "split": "test",
+  "group": "MAGENTATHERAPEUTICSINCMASTERDEVELOPMENTANDMANUFACTURINGAGREEMENT",
+  "type": "Manufacturing"
+ },
+ "MetLife, Inc. - Remarketing Agreement": {
+  "split": "test",
+  "group": "METLIFEINCREMARKETINGAGREEMENT",
+  "type": "Marketing"
+ },
+ "Microgenics Corporation - Collaborative Development and Commercialization Agreement": {
+  "split": "val",
+  "group": "MICROGENICSCORPORATIONCOLLABORATIVEDEVELOPMENTANDCOMMERCIALIZATIONAGREEMENT",
+  "type": "Development"
+ },
+ "MidwestEnergyEmissionsCorp_20080604_8-K_EX-10.2_3093976_EX-10.2_Content License Agreement": {
+  "split": "train",
+  "group": "MIDWESTENERGYEMISSIONSCORP",
+  "type": "License"
+ },
+ "Monsanto Company - SECOND A_R EXCLUSIVE AGENCY AND MARKETING AGREEMENT ": {
+  "split": "train",
+  "group": "MONSANTOCOMPANYSECONDA",
+  "type": "Agency"
+ },
+ "MorganStanleyDirectLendingFund_20191119_10-12GA_EX-10.5_11898508_EX-10.5_Trademark License Agreement": {
+  "split": "train",
+  "group": "MORGANSTANLEYDIRECTLENDINGFUND",
+  "type": "License"
+ },
+ "MphaseTechnologiesInc_20030911_10-K_EX-10.15_1560667_EX-10.15_Co-Branding Agreement": {
+  "split": "val",
+  "group": "MPHASETECHNOLOGIESINC",
+  "type": "Co-Branding"
+ },
+ "MusclepharmCorp_20170208_10-KA_EX-10.38_9893581_EX-10.38_Co-Branding Agreement": {
+  "split": "train",
+  "group": "MUSCLEPHARMCORP",
+  "type": "Co-Branding"
+ },
+ "N2KINC_10_16_1997-EX-10.16-SPONSORSHIP AGREEMENT": {
+  "split": "test",
+  "group": "N2KINC",
+  "type": "Sponsorship"
+ },
+ "NANOPHASETECHNOLOGIESCORP_11_01_2005-EX-99.1-DISTRIBUTOR AGREEMENT": {
+  "split": "val",
+  "group": "NANOPHASETECHNOLOGIESCORP",
+  "type": "Distributor"
+ },
+ "NATIONALPROCESSINGINC_07_18_1996-EX-10.4-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "NATIONALPROCESSINGINC",
+  "type": "Sponsorship"
+ },
+ "NELNETINC_04_08_2020-EX-1-JOINT FILING AGREEMENT": {
+  "split": "train",
+  "group": "NELNETINC",
+  "type": "Joint Filing"
+ },
+ "NEOMEDIATECHNOLOGIESINC_12_15_2005-EX-16.1-DISTRIBUTOR AGREEMENT": {
+  "split": "test",
+  "group": "NEOMEDIATECHNOLOGIESINC",
+  "type": "Distributor"
+ },
+ "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_Amendment": {
+  "split": "train",
+  "group": "NEONSYSTEMSINC",
+  "type": "Distributor"
+ },
+ "NEONSYSTEMSINC_03_01_1999-EX-10.5-DISTRIBUTOR AGREEMENT_New": {
+  "split": "train",
+  "group": "NEONSYSTEMSINC",
+  "type": "Distributor"
+ },
+ "NETGEAR,INC_04_21_2003-EX-10.16- AMENDMENT #2 TO THE DISTRIBUTION AGREEMENT": {
+  "split": "train",
+  "group": "NETGEARINC",
+  "type": "Distributor"
+ },
+ "NETGEAR,INC_04_21_2003-EX-10.16-AMENDMENT TO THE DISTRIBUTOR AGREEMENT BETWEEN INGRAM MICRO AND NETGEAR": {
+  "split": "train",
+  "group": "NETGEARINC",
+  "type": "Distributor"
+ },
+ "NETGEAR,INC_04_21_2003-EX-10.16-DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "NETGEARINC",
+  "type": "Distributor"
+ },
+ "NETGROCERINC_07_31_1998-EX-10.15-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "NETGROCERINC",
+  "type": "Sponsorship"
+ },
+ "NETZEEINC_11_14_2002-EX-10.3-MAINTENANCE AGREEMENT": {
+  "split": "test",
+  "group": "NETZEEINC",
+  "type": "Maintenance"
+ },
+ "NEXSTARFINANCEHOLDINGSINC_03_27_2002-EX-10.26-OUTSOURCING AGREEMENT": {
+  "split": "train",
+  "group": "NEXSTARFINANCEHOLDINGSINC",
+  "type": "Outsourcing"
+ },
+ "NICELTD_06_26_2003-EX-4.5-OUTSOURCING AGREEMENT": {
+  "split": "train",
+  "group": "NICELTD",
+  "type": "Outsourcing"
+ },
+ "NOVOINTEGRATEDSCIENCES,INC_12_23_2019-EX-10.1-JOINT VENTURE AGREEMENT": {
+  "split": "train",
+  "group": "NOVOINTEGRATEDSCIENCESINC",
+  "type": "Joint Venture"
+ },
+ "NUVEEN - REMARKETING AGREEMENT": {
+  "split": "val",
+  "group": "NUVEENREMARKETINGAGREEMENT",
+  "type": "Marketing"
+ },
+ "NYLIACVARIABLEANNUITYSEPARATEACCOUNTIII_04_10_2020-EX-99.8.KK-SERVICE AGREEMENT": {
+  "split": "train",
+  "group": "NYLIACVARIABLEANNUITYSEPARATEACCOUNTIII",
+  "type": "Service"
+ },
+ "NakedBrandGroupInc_20150731_POS AM (on S-1)_EX-10.75_9196027_EX-10.75_Endorsement Agreement": {
+  "split": "val",
+  "group": "NAKEDBRANDGROUPINC",
+  "type": "Endorsement"
+ },
+ "NeoformaInc_19991202_S-1A_EX-10.26_5224521_EX-10.26_Co-Branding Agreement": {
+  "split": "test",
+  "group": "NEOFORMAINC",
+  "type": "Co-Branding"
+ },
+ "NeuroboPharmaceuticalsInc_20190903_S-4_EX-10.36_11802165_EX-10.36_Manufacturing Agreement_ Supply Agreement": {
+  "split": "train",
+  "group": "NEUROBOPHARMACEUTICALSINC",
+  "type": "Supply"
+ },
+ "NlsPharmaceuticsLtd_20200228_F-1_EX-10.14_12029046_EX-10.14_Development Agreement": {
+  "split": "train",
+  "group": "NLSPHARMACEUTICSLTD",
+  "type": "Development"
+ },
+ "NmfSlfIInc_20200115_10-12GA_EX-10.5_11946987_EX-10.5_Trademark License Agreement": {
+  "split": "train",
+  "group": "NMFSLFIINC",
+  "type": "License"
+ },
+ "OAKTREECAPITALGROUP,LLC_03_02_2020-EX-10.8-Services Agreement": {
+  "split": "test",
+  "group": "OAKTREECAPITALGROUPLLC",
+  "type": "Service"
+ },
+ "OASYSMOBILE,INC_07_05_2001-EX-10.17-OUTSOURCING AGREEMENT": {
+  "split": "train",
+  "group": "OASYSMOBILEINC",
+  "type": "Outsourcing"
+ },
+ "OFGBANCORP_03_28_2007-EX-10.23-OUTSOURCING AGREEMENT": {
+  "split": "val",
+  "group": "OFGBANCORP",
+  "type": "Outsourcing"
+ },
+ "OLDAPIWIND-DOWNLTD_01_08_2016-EX-1.3-AGENCY AGREEMENT1": {
+  "split": "val",
+  "group": "OLDAPIWINDDOWNLTD",
+  "type": "Agency"
+ },
+ "OLDAPIWIND-DOWNLTD_01_08_2016-EX-1.3-AGENCY AGREEMENT2": {
+  "split": "val",
+  "group": "OLDAPIWINDDOWNLTD",
+  "type": "Agency"
+ },
+ "OMINTO,INC_03_29_2004-EX-10-RESELLER AGREEMENT": {
+  "split": "train",
+  "group": "OMINTOINC",
+  "type": "Reseller"
+ },
+ "ON2TECHNOLOGIES,INC_11_17_2006-EX-10.3-SUPPORT AND MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "ON2TECHNOLOGIESINC",
+  "type": "Maintenance"
+ },
+ "ON4COMMUNICATIONSINC_07_02_2009-EX-10.1-PROMOTION AGREEMENT": {
+  "split": "train",
+  "group": "ON4COMMUNICATIONSINC",
+  "type": "Promotion"
+ },
+ "ONEMAINHOLDINGS,INC_02_20_2020-EX-99.D-JOINT FILING AGREEMENT": {
+  "split": "train",
+  "group": "ONEMAINHOLDINGSINC",
+  "type": "Joint Filing"
+ },
+ "OPERALTD_04_30_2020-EX-4.14-SERVICE AGREEMENT": {
+  "split": "train",
+  "group": "OPERALTD",
+  "type": "Service"
+ },
+ "OPTIMIZEDTRANSPORTATIONMANAGEMENT,INC_07_26_2000-EX-6.6-DISTRIBUTOR AGREEMENT": {
+  "split": "train",
+  "group": "OPTIMIZEDTRANSPORTATIONMANAGEMENTINC",
+  "type": "Distributor"
+ },
+ "ORBSATCORP_08_17_2007-EX-7.3-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "val",
+  "group": "ORBSATCORP",
+  "type": "Strategic Alliance"
+ },
+ "OTISWORLDWIDECORP_04_03_2020-EX-10.4-INTELLECTUAL PROPERTY AGREEMENT by and among UNITED TECHNOLOGIES CORPORATION, OTIS WORLDWIDE CORPORATION and CARRIER ~1": {
+  "split": "val",
+  "group": "OTISWORLDWIDECORP",
+  "type": "IP"
+ },
+ "PACIFICSYSTEMSCONTROLTECHNOLOGYINC_08_24_2000-EX-10.53-SPONSORSHIP AGREEMENT": {
+  "split": "test",
+  "group": "PACIFICSYSTEMSCONTROLTECHNOLOGYINC",
+  "type": "Sponsorship"
+ },
+ "PACIRA PHARMACEUTICALS, INC. - A_R STRATEGIC LICENSING, DISTRIBUTION AND MARKETING AGREEMENT ": {
+  "split": "test",
+  "group": "PACIRAPHARMACEUTICALSINCA",
+  "type": "Distributor"
+ },
+ "PANDIONTHERAPEUTICSHOLDCOLLC_05_22_2020-EX-10.17-CONSULTING AGREEMENT": {
+  "split": "test",
+  "group": "PANDIONTHERAPEUTICSHOLDCOLLC",
+  "type": "Consulting"
+ },
+ "PAXMEDICA,INC_07_02_2020-EX-10.12-Master Service Agreement": {
+  "split": "train",
+  "group": "PAXMEDICAINC",
+  "type": "Service"
+ },
+ "PFSFUNDS_06_26_2020-EX-99.H OTH MAT CONT-SERVICES AGREEMENT": {
+  "split": "train",
+  "group": "PFSFUNDS",
+  "type": "Service"
+ },
+ "PHLVARIABLEINSURANCECOCT_08_17_2009-EX-10.1-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "PHLVARIABLEINSURANCECOCT",
+  "type": "Strategic Alliance"
+ },
+ "PHREESIA,INC_05_28_2019-EX-10.18-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "val",
+  "group": "PHREESIAINC",
+  "type": "Strategic Alliance"
+ },
+ "PLAYAHOTELS_RESORTSNV_03_14_2017-EX-10.22-STRATEGIC ALLIANCE AGREEMENT (Hyatt Ziva Cancun)": {
+  "split": "train",
+  "group": "PLAYAHOTELS",
+  "type": "Strategic Alliance"
+ },
+ "PRECIGEN,INC_01_22_2020-EX-99.1-JOINT FILING AGREEMENT": {
+  "split": "test",
+  "group": "PRECIGENINC",
+  "type": "Joint Filing"
+ },
+ "PREMIERBIOMEDICALINC_05_14_2020-EX-10.2-INTELLECTUAL PROPERTY AGREEMENT": {
+  "split": "train",
+  "group": "PREMIERBIOMEDICALINC",
+  "type": "IP"
+ },
+ "PRIMEENERGYRESOURCESCORP_04_02_2007-EX-10.28-COMPLETION AND LIQUIDITY MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "PRIMEENERGYRESOURCESCORP",
+  "type": "Maintenance"
+ },
+ "PROFOUNDMEDICALCORP_08_29_2019-EX-4.5-SUPPLY AGREEMENT": {
+  "split": "test",
+  "group": "PROFOUNDMEDICALCORP",
+  "type": "Supply"
+ },
+ "PROLONGINTERNATIONALCORP_03_23_1998-EX-10.16-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "PROLONGINTERNATIONALCORP",
+  "type": "Sponsorship"
+ },
+ "PacificapEntertainmentHoldingsInc_20051115_8-KA_EX-1.01_4300894_EX-1.01_Content License Agreement": {
+  "split": "train",
+  "group": "PACIFICAPENTERTAINMENTHOLDINGSINC",
+  "type": "License"
+ },
+ "PalmerSquareCapitalBdcInc_20200116_10-12GA_EX-10.6_11949289_EX-10.6_Trademark License Agreement": {
+  "split": "test",
+  "group": "PALMERSQUARECAPITALBDCINC",
+  "type": "License"
+ },
+ "PapaJohnsInternationalInc_20190617_8-K_EX-10.1_11707365_EX-10.1_Endorsement Agreement": {
+  "split": "train",
+  "group": "PAPAJOHNSINTERNATIONALINC",
+  "type": "Endorsement"
+ },
+ "PaperexchangeComInc_20000322_S-1A_EX-10.4_5202103_EX-10.4_Co-Branding Agreement": {
+  "split": "val",
+  "group": "PAPEREXCHANGECOMINC",
+  "type": "Co-Branding"
+ },
+ "ParatekPharmaceuticalsInc_20170505_10-KA_EX-10.29_10323872_EX-10.29_Outsourcing Agreement": {
+  "split": "test",
+  "group": "PARATEKPHARMACEUTICALSINC",
+  "type": "Outsourcing"
+ },
+ "PareteumCorp_20081001_8-K_EX-99.1_2654808_EX-99.1_Hosting Agreement": {
+  "split": "train",
+  "group": "PARETEUMCORP",
+  "type": "Hosting"
+ },
+ "PcquoteComInc_19990721_S-1A_EX-10.11_6377149_EX-10.11_Co-Branding Agreement1": {
+  "split": "train",
+  "group": "PCQUOTECOMINC",
+  "type": "Co-Branding"
+ },
+ "PcquoteComInc_19990721_S-1A_EX-10.11_6377149_EX-10.11_Co-Branding Agreement2": {
+  "split": "train",
+  "group": "PCQUOTECOMINC",
+  "type": "Co-Branding"
+ },
+ "PcquoteComInc_19990721_S-1A_EX-10.11_6377149_EX-10.11_Co-Branding Agreement3": {
+  "split": "train",
+  "group": "PCQUOTECOMINC",
+  "type": "Co-Branding"
+ },
+ "PelicanDeliversInc_20200211_S-1_EX-10.3_11975895_EX-10.3_Development Agreement1": {
+  "split": "train",
+  "group": "PELICANDELIVERSINC",
+  "type": "Development"
+ },
+ "PelicanDeliversInc_20200211_S-1_EX-10.3_11975895_EX-10.3_Development Agreement2": {
+  "split": "train",
+  "group": "PELICANDELIVERSINC",
+  "type": "Development"
+ },
+ "PenntexMidstreamPartnersLp_20150416_S-1A_EX-10.4_9042833_EX-10.4_Transportation Agreement": {
+  "split": "val",
+  "group": "PENNTEXMIDSTREAMPARTNERSLP",
+  "type": "Transportation"
+ },
+ "PerformanceSportsBrandsInc_20110909_S-1_EX-10.10_7220214_EX-10.10_Endorsement Agreement": {
+  "split": "train",
+  "group": "PERFORMANCESPORTSBRANDSINC",
+  "type": "Endorsement"
+ },
+ "PfHospitalityGroupInc_20150923_10-12G_EX-10.1_9266710_EX-10.1_Franchise Agreement1": {
+  "split": "train",
+  "group": "PFHOSPITALITYGROUPINC",
+  "type": "Franchise"
+ },
+ "PfHospitalityGroupInc_20150923_10-12G_EX-10.1_9266710_EX-10.1_Franchise Agreement3": {
+  "split": "train",
+  "group": "PFHOSPITALITYGROUPINC",
+  "type": "Franchise"
+ },
+ "PharmagenInc_20120803_8-KA_EX-10.1_7693204_EX-10.1_Endorsement Agreement": {
+  "split": "val",
+  "group": "PHARMAGENINC",
+  "type": "Endorsement"
+ },
+ "PhasebioPharmaceuticalsInc_20200330_10-K_EX-10.21_12086810_EX-10.21_Development Agreement": {
+  "split": "train",
+  "group": "PHASEBIOPHARMACEUTICALSINC",
+  "type": "Development"
+ },
+ "PhoenixNewMediaLtd_20110421_F-1_EX-10.17_6958322_EX-10.17_Content License Agreement": {
+  "split": "train",
+  "group": "PHOENIXNEWMEDIALTD",
+  "type": "License"
+ },
+ "PhotronicsInc_20171219_10-QA_EX-10.28_10982650_EX-10.28_Outsourcing Agreement": {
+  "split": "train",
+  "group": "PHOTRONICSINC",
+  "type": "Outsourcing"
+ },
+ "PlayboyEnterprisesInc_20090220_10-QA_EX-10.2_4091580_EX-10.2_Content License Agreement_ Marketing Agreement_ Sales-Purchase Agreement1": {
+  "split": "train",
+  "group": "PLAYBOYENTERPRISESINC",
+  "type": "License"
+ },
+ "PlayboyEnterprisesInc_20090220_10-QA_EX-10.2_4091580_EX-10.2_Content License Agreement_ Marketing Agreement_ Sales-Purchase Agreement2": {
+  "split": "train",
+  "group": "PLAYBOYENTERPRISESINC",
+  "type": "License"
+ },
+ "PrecheckHealthServicesInc_20200320_8-K_EX-99.2_12070169_EX-99.2_Distributor Agreement": {
+  "split": "train",
+  "group": "PRECHECKHEALTHSERVICESINC",
+  "type": "Distributor"
+ },
+ "Principal Life Insurance Company - Broker Dealer Marketing and Servicing Agreement": {
+  "split": "train",
+  "group": "PRINCIPALLIFEINSURANCECOMPANYBROKERDEALERMARKETINGANDSERVICINGAGREEMENT",
+  "type": "Marketing"
+ },
+ "PrudentialBancorpInc_20170606_8-K_EX-10.4_10474434_EX-10.4_Endorsement Agreement": {
+  "split": "train",
+  "group": "PRUDENTIALBANCORPINC",
+  "type": "Endorsement"
+ },
+ "QBIOMEDINC_04_08_2020-EX-99.1-JOINT FILING AGREEMENT": {
+  "split": "train",
+  "group": "QBIOMEDINC",
+  "type": "Joint Filing"
+ },
+ "QIWI_06_16_2017-EX-99.(D)(2)-COOPERATION AGREEMENT": {
+  "split": "test",
+  "group": "QIWI",
+  "type": "Cooperation"
+ },
+ "Quaker Chemical Corporation - NON COMPETITION AND NON SOLICITATION AGREEMENT": {
+  "split": "train",
+  "group": "QUAKERCHEMICALCORPORATIONNONCOMPETITIONANDNONSOLICITATIONAGREEMENT",
+  "type": "Non-Compete"
+ },
+ "QuantumGroupIncFl_20090120_8-K_EX-99.2_3672910_EX-99.2_Hosting Agreement": {
+  "split": "test",
+  "group": "QUANTUMGROUPINCFL",
+  "type": "Hosting"
+ },
+ "REGANHOLDINGCORP_03_31_2008-EX-10-LICENSE AND HOSTING AGREEMENT": {
+  "split": "train",
+  "group": "REGANHOLDINGCORP",
+  "type": "Hosting"
+ },
+ "REWALKROBOTICSLTD_07_10_2014-EX-10.2-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "val",
+  "group": "REWALKROBOTICSLTD",
+  "type": "Strategic Alliance"
+ },
+ "RISEEDUCATIONCAYMANLTD_04_17_2020-EX-4.23-SERVICE AGREEMENT": {
+  "split": "val",
+  "group": "RISEEDUCATIONCAYMANLTD",
+  "type": "Service"
+ },
+ "RMRGROUPINC_01_22_2020-EX-99.1-JOINT FILING AGREEMENT": {
+  "split": "train",
+  "group": "RMRGROUPINC",
+  "type": "Joint Filing"
+ },
+ "ROCKYMOUNTAINCHOCOLATEFACTORY,INC_12_23_2019-EX-10.2-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "ROCKYMOUNTAINCHOCOLATEFACTORYINC",
+  "type": "Strategic Alliance"
+ },
+ "RUBIOSRESTAURANTSINC_03_31_2008-EX-10.75-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "RUBIOSRESTAURANTSINC",
+  "type": "Sponsorship"
+ },
+ "RaeSystemsInc_20001114_10-Q_EX-10.57_2631790_EX-10.57_Co-Branding Agreement": {
+  "split": "train",
+  "group": "RAESYSTEMSINC",
+  "type": "Co-Branding"
+ },
+ "RandWorldwideInc_20010402_8-KA_EX-10.2_2102464_EX-10.2_Co-Branding Agreement": {
+  "split": "train",
+  "group": "RANDWORLDWIDEINC",
+  "type": "Co-Branding"
+ },
+ "RangeResourcesLouisianaInc_20150417_8-K_EX-10.5_9045501_EX-10.5_Transportation Agreement": {
+  "split": "train",
+  "group": "RANGERESOURCESLOUISIANAINC",
+  "type": "Transportation"
+ },
+ "RareElementResourcesLtd_20171019_SC 13D_EX-99.4_10897534_EX-99.4_Intellectual Property Agreement": {
+  "split": "train",
+  "group": "RAREELEMENTRESOURCESLTD",
+  "type": "IP"
+ },
+ "ReedsInc_20191113_10-Q_EX-10.4_11888303_EX-10.4_Development Agreement": {
+  "split": "train",
+  "group": "REEDSINC",
+  "type": "Development"
+ },
+ "Reinsurance Group of America, Incorporated - A_R REMARKETING  AGREEMENT": {
+  "split": "train",
+  "group": "REINSURANCEGROUPOFAMERICAINCORPORATEDA",
+  "type": "Marketing"
+ },
+ "RemarkHoldingsInc_20081114_10-Q_EX-10.24_2895649_EX-10.24_Content License Agreement": {
+  "split": "train",
+  "group": "REMARKHOLDINGSINC",
+  "type": "License"
+ },
+ "RevolutionMedicinesInc_20200117_S-1_EX-10.1_11948417_EX-10.1_Development Agreement": {
+  "split": "test",
+  "group": "REVOLUTIONMEDICINESINC",
+  "type": "Development"
+ },
+ "ReynoldsConsumerProductsInc_20191115_S-1_EX-10.18_11896469_EX-10.18_Supply Agreement": {
+  "split": "val",
+  "group": "REYNOLDSCONSUMERPRODUCTSINC",
+  "type": "Supply"
+ },
+ "ReynoldsConsumerProductsInc_20200121_S-1A_EX-10.22_11948918_EX-10.22_Service Agreement": {
+  "split": "val",
+  "group": "REYNOLDSCONSUMERPRODUCTSINC",
+  "type": "Service"
+ },
+ "RgcResourcesInc_20151216_8-K_EX-10.3_9372751_EX-10.3_Franchise Agreement": {
+  "split": "test",
+  "group": "RGCRESOURCESINC",
+  "type": "Franchise"
+ },
+ "RitterPharmaceuticalsInc_20200313_S-4A_EX-10.54_12055220_EX-10.54_Development Agreement": {
+  "split": "train",
+  "group": "RITTERPHARMACEUTICALSINC",
+  "type": "Development"
+ },
+ "SANDRIDGEENERGYINC_08_06_2009-EX-10.6-OPERATIONS AND MAINTENANCE AGREEMENT": {
+  "split": "val",
+  "group": "SANDRIDGEENERGYINC",
+  "type": "Maintenance"
+ },
+ "SCOUTCAMINC_05_12_2020-EX-10.22-SERVICES AGREEMENT": {
+  "split": "train",
+  "group": "SCOUTCAMINC",
+  "type": "Service"
+ },
+ "SEASPINEHOLDINGSCORP_10_10_2018-EX-10.1-SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "SEASPINEHOLDINGSCORP",
+  "type": "Supply"
+ },
+ "SECURIANFUNDSTRUST_05_01_2012-EX-99.28.H.9-NET INVESTMENT INCOME MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "SECURIANFUNDSTRUST",
+  "type": "Maintenance"
+ },
+ "SENMIAOTECHNOLOGYLTD_02_19_2019-EX-10.5-Collaboration Agreement": {
+  "split": "train",
+  "group": "SENMIAOTECHNOLOGYLTD",
+  "type": "Collaboration"
+ },
+ "SEPARATEACCOUNTIIOFAGL_05_02_2011-EX-99.(J)(4)-UNCONDITIONAL CAPITAL MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "SEPARATEACCOUNTIIOFAGL",
+  "type": "Maintenance"
+ },
+ "SFGFINANCIALCORP_05_12_2009-EX-10.1-SOFTWARE LICENSE AND MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "SFGFINANCIALCORP",
+  "type": "Maintenance"
+ },
+ "SIBANNAC,INC_12_04_2017-EX-2.1-Strategic Alliance Agreement": {
+  "split": "val",
+  "group": "SIBANNACINC",
+  "type": "Strategic Alliance"
+ },
+ "SLINGERBAGINC_05_27_2020-EX-10.7-CONSULTING AGREEMENT": {
+  "split": "train",
+  "group": "SLINGERBAGINC",
+  "type": "Consulting"
+ },
+ "SLOVAKWIRELESSFINANCECOBV_03_28_2001-EX-4.(B)(II).3-Maintenance and support contract for SICAP(R) modules": {
+  "split": "train",
+  "group": "SLOVAKWIRELESSFINANCECOBV",
+  "type": "Maintenance"
+ },
+ "SMITHELECTRICVEHICLESCORP_04_04_2012-EX-10.26-FLEET MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "SMITHELECTRICVEHICLESCORP",
+  "type": "Maintenance"
+ },
+ "SOLUTIONSVENDINGINTERNATIONAL,INC_03_31_2020-EX1A-1 UNDR AGMT-SERVICES AGREEMENT": {
+  "split": "val",
+  "group": "SOLUTIONSVENDINGINTERNATIONALINC",
+  "type": "Service"
+ },
+ "SONUSCORP_03_12_1997-EX-10.11-SPONSORSHIP AGREEMENT": {
+  "split": "test",
+  "group": "SONUSCORP",
+  "type": "Sponsorship"
+ },
+ "SPARKLINGSPRINGWATERHOLDINGSLTD_07_03_2002-EX-10.13-SOFTWARE LICENSE AND MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "SPARKLINGSPRINGWATERHOLDINGSLTD",
+  "type": "Maintenance"
+ },
+ "SPHERE3DCORP_06_24_2020-EX-10.12-CONSULTING AGREEMENT": {
+  "split": "train",
+  "group": "SPHERE3DCORP",
+  "type": "Consulting"
+ },
+ "SPIENERGYCO,LTD_03_09_2011-EX-99.5-OPERATIONS AND MAINTENANCE AGREEMENT": {
+  "split": "val",
+  "group": "SPIENERGYCOLTD",
+  "type": "Maintenance"
+ },
+ "SPIENERGYCO,LTD_07_10_2014-EX-10-Cooperation Agreement of 50MWp Photovoltaic Grid-connected Power Generation Project in Yangqiao of~1": {
+  "split": "val",
+  "group": "SPIENERGYCOLTD",
+  "type": "Cooperation"
+ },
+ "SPOKHOLDINGS,INC_06_19_2020-EX-10.1-COOPERATION AGREEMENT": {
+  "split": "train",
+  "group": "SPOKHOLDINGSINC",
+  "type": "Cooperation"
+ },
+ "SPORTHALEYINC_09_29_1997-EX-10.2-10-ENDORSEMENT AGREEMENT": {
+  "split": "train",
+  "group": "SPORTHALEYINC",
+  "type": "Endorsement"
+ },
+ "SPRINGBANKPHARMACEUTICALS,INC_04_08_2020-EX-99.A-JOINT FILING AGREEMENT": {
+  "split": "train",
+  "group": "SPRINGBANKPHARMACEUTICALSINC",
+  "type": "Joint Filing"
+ },
+ "STAMPSCOMINC_06_24_1999-EX-10.18-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "STAMPSCOMINC",
+  "type": "Sponsorship"
+ },
+ "STARTECGLOBALCOMMUNICATIONSCORP_11_16_1998-EX-10.30-CONSTRUCTION AND MAINTENANCE AGREEMENT": {
+  "split": "test",
+  "group": "STARTECGLOBALCOMMUNICATIONSCORP",
+  "type": "Maintenance"
+ },
+ "STWRESOURCESHOLDINGCORP_08_06_2014-EX-10.1-COOPERATION AGREEMENT": {
+  "split": "train",
+  "group": "STWRESOURCESHOLDINGCORP",
+  "type": "Cooperation"
+ },
+ "SUCAMPOPHARMACEUTICALS,INC_11_04_2015-EX-10.2-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "SUCAMPOPHARMACEUTICALSINC",
+  "type": "Strategic Alliance"
+ },
+ "SUMMAFOURINC_06_19_1998-EX-10.3-SOFTWARE LICENSE AND MAINTENANCE AGREEMENT": {
+  "split": "val",
+  "group": "SUMMAFOURINC",
+  "type": "Maintenance"
+ },
+ "SUNTRONCORP_05_17_2006-EX-10.22-MAINTENANCE AGREEMENT": {
+  "split": "test",
+  "group": "SUNTRONCORP",
+  "type": "Maintenance"
+ },
+ "SYKESHEALTHPLANSERVICESINC_04_24_1998-EX-10.14-OUTSOURCING AGREEMENT": {
+  "split": "train",
+  "group": "SYKESHEALTHPLANSERVICESINC",
+  "type": "Outsourcing"
+ },
+ "SalesforcecomInc_20171122_10-Q_EX-10.1_10961535_EX-10.1_Reseller Agreement": {
+  "split": "train",
+  "group": "SALESFORCECOMINC",
+  "type": "Reseller"
+ },
+ "ScansourceInc_20190509_10-Q_EX-10.2_11661422_EX-10.2_Distributor Agreement": {
+  "split": "val",
+  "group": "SCANSOURCEINC",
+  "type": "Distributor"
+ },
+ "ScansourceInc_20190822_10-K_EX-10.38_11793958_EX-10.38_Distributor Agreement1": {
+  "split": "val",
+  "group": "SCANSOURCEINC",
+  "type": "Distributor"
+ },
+ "ScansourceInc_20190822_10-K_EX-10.38_11793958_EX-10.38_Distributor Agreement2": {
+  "split": "val",
+  "group": "SCANSOURCEINC",
+  "type": "Distributor"
+ },
+ "ScansourceInc_20190822_10-K_EX-10.39_11793959_EX-10.39_Distributor Agreement": {
+  "split": "val",
+  "group": "SCANSOURCEINC",
+  "type": "Distributor"
+ },
+ "SigaTechnologiesInc_20190603_8-K_EX-10.1_11695818_EX-10.1_Promotion Agreement": {
+  "split": "train",
+  "group": "SIGATECHNOLOGIESINC",
+  "type": "Promotion"
+ },
+ "SightLife Surgical, Inc. - STRATEGIC SALES _ MARKETING AGREEMENT": {
+  "split": "test",
+  "group": "SIGHTLIFESURGICALINCSTRATEGICSALES",
+  "type": "Marketing"
+ },
+ "SimplicityEsportsGamingCompany_20181130_8-K_EX-10.1_11444071_EX-10.1_Franchise Agreement": {
+  "split": "train",
+  "group": "SIMPLICITYESPORTSGAMINGCOMPANY",
+  "type": "Franchise"
+ },
+ "SmartRxSystemsInc_20180914_1-A_EX1A-6 MAT CTRCT_11351705_EX1A-6 MAT CTRCT_Distributor Agreement": {
+  "split": "train",
+  "group": "SMARTRXSYSTEMSINC",
+  "type": "Distributor"
+ },
+ "Sonos, Inc. - Manufacturing Agreement ": {
+  "split": "train",
+  "group": "SONOSINCMANUFACTURINGAGREEMENT",
+  "type": "Manufacturing"
+ },
+ "SoupmanInc_20150814_8-K_EX-10.1_9230148_EX-10.1_Franchise Agreement1": {
+  "split": "train",
+  "group": "SOUPMANINC",
+  "type": "Franchise"
+ },
+ "SoupmanInc_20150814_8-K_EX-10.1_9230148_EX-10.1_Franchise Agreement2": {
+  "split": "train",
+  "group": "SOUPMANINC",
+  "type": "Franchise"
+ },
+ "SoupmanInc_20150814_8-K_EX-10.1_9230148_EX-10.1_Franchise Agreement3": {
+  "split": "train",
+  "group": "SOUPMANINC",
+  "type": "Franchise"
+ },
+ "SoupmanInc_20150814_8-K_EX-10.1_9230148_EX-10.1_Franchise Agreement4": {
+  "split": "train",
+  "group": "SOUPMANINC",
+  "type": "Franchise"
+ },
+ "SouthernStarEnergyInc_20051202_SB-2A_EX-9_801890_EX-9_Affiliate Agreement": {
+  "split": "train",
+  "group": "SOUTHERNSTARENERGYINC",
+  "type": "Affiliate"
+ },
+ "StaarSurgicalCompany_20180801_10-Q_EX-10.37_11289449_EX-10.37_Distributor Agreement": {
+  "split": "train",
+  "group": "STAARSURGICALCOMPANY",
+  "type": "Distributor"
+ },
+ "StampscomInc_20001114_10-Q_EX-10.47_2631630_EX-10.47_Co-Branding Agreement": {
+  "split": "train",
+  "group": "STAMPSCOMINC",
+  "type": "Co-Branding"
+ },
+ "SteelVaultCorp_20081224_10-K_EX-10.16_3074935_EX-10.16_Affiliate Agreement": {
+  "split": "train",
+  "group": "STEELVAULTCORP",
+  "type": "Affiliate"
+ },
+ "TALCOTTRESOLUTIONLIFEINSURANCECO-SEPARATEACCOUNTTWELVE_04_30_2020-EX-99.8(L)-SERVICE AGREEMENT": {
+  "split": "train",
+  "group": "TALCOTTRESOLUTIONLIFEINSURANCECOSEPARATEACCOUNTTWELVE",
+  "type": "Service"
+ },
+ "TALLGRASSENERGY,LP_02_20_2020-EX-99.26-JOINT FILING AGREEMENT": {
+  "split": "train",
+  "group": "TALLGRASSENERGYLP",
+  "type": "Joint Filing"
+ },
+ "TEARDROPGOLFCO_10_23_1996-EX-10.12-ENDORSEMENT AGREEMENT": {
+  "split": "test",
+  "group": "TEARDROPGOLFCO",
+  "type": "Endorsement"
+ },
+ "TELEGLOBEINTERNATIONALHOLDINGSLTD_03_29_2004-EX-10.10-CONSTRUCTION AND MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "TELEGLOBEINTERNATIONALHOLDINGSLTD",
+  "type": "Maintenance"
+ },
+ "TELKOMSALTD_01_30_2003-EX-10-LICENCE AND MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "TELKOMSALTD",
+  "type": "Maintenance"
+ },
+ "THERAVANCEBIOPHARMA,INC_05_08_2020-EX-10.2-SERVICE AGREEMENT": {
+  "split": "train",
+  "group": "THERAVANCEBIOPHARMAINC",
+  "type": "Service"
+ },
+ "TICKETSCOMINC_06_22_1999-EX-10.22-SPONSORSHIP AGREEMENT": {
+  "split": "val",
+  "group": "TICKETSCOMINC",
+  "type": "Sponsorship"
+ },
+ "TRANSMONTAIGNEPARTNERSLLC_03_13_2020-EX-10.9-SERVICES AGREEMENT": {
+  "split": "train",
+  "group": "TRANSMONTAIGNEPARTNERSLLC",
+  "type": "Service"
+ },
+ "TRANSPHORM,INC_02_14_2020-EX-10.12(1)-JOINT VENTURE AGREEMENT": {
+  "split": "val",
+  "group": "TRANSPHORMINC",
+  "type": "Joint Venture"
+ },
+ "TRICITYBANKSHARESCORP_05_15_1998-EX-10-OUTSOURCING AGREEMENT": {
+  "split": "train",
+  "group": "TRICITYBANKSHARESCORP",
+  "type": "Outsourcing"
+ },
+ "TRIZETTOGROUPINC_08_18_1999-EX-10.17-TECHNICAL INFRASTRUCTURE MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "TRIZETTOGROUPINC",
+  "type": "Maintenance"
+ },
+ "TRUENORTHENERGYCORP_02_08_2007-EX-10.1-DEVELOPMENT AGREEMENT": {
+  "split": "test",
+  "group": "TRUENORTHENERGYCORP",
+  "type": "Development"
+ },
+ "TUNIUCORP_03_06_2014-EX-10-COOPERATION AGREEMENT": {
+  "split": "train",
+  "group": "TUNIUCORP",
+  "type": "Cooperation"
+ },
+ "TURNKEYCAPITAL,INC_07_20_2017-EX-1.1-Strategic Alliance Agreement": {
+  "split": "train",
+  "group": "TURNKEYCAPITALINC",
+  "type": "Strategic Alliance"
+ },
+ "TcPipelinesLp_20160226_10-K_EX-99.12_9454048_EX-99.12_Transportation Agreement": {
+  "split": "train",
+  "group": "TCPIPELINESLP",
+  "type": "Transportation"
+ },
+ "TheglobeComInc_19990503_S-1A_EX-10.20_5416126_EX-10.20_Co-Branding Agreement": {
+  "split": "val",
+  "group": "THEGLOBECOMINC",
+  "type": "Co-Branding"
+ },
+ "ThriventVariableInsuranceAccountB_20190701_N-6_EX-99.D(IV)_11720968_EX-99.D(IV)_Endorsement Agreement": {
+  "split": "val",
+  "group": "THRIVENTVARIABLEINSURANCEACCOUNTB",
+  "type": "Endorsement"
+ },
+ "TodosMedicalLtd_20190328_20-F_EX-4.10_11587157_EX-4.10_Marketing Agreement_ Reseller Agreement": {
+  "split": "train",
+  "group": "TODOSMEDICALLTD",
+  "type": "Reseller"
+ },
+ "TomOnlineInc_20060501_20-F_EX-4.46_749700_EX-4.46_Co-Branding Agreement": {
+  "split": "test",
+  "group": "TOMONLINEINC",
+  "type": "Co-Branding"
+ },
+ "TubeMediaCorp_20060310_8-K_EX-10.1_513921_EX-10.1_Affiliate Agreement": {
+  "split": "test",
+  "group": "TUBEMEDIACORP",
+  "type": "Affiliate"
+ },
+ "UAGHINC_04_14_2004-EX-10.18-MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "UAGHINC",
+  "type": "Maintenance"
+ },
+ "ULTRAGENYXPHARMACEUTICALINC_12_23_2013-EX-10.9-SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "ULTRAGENYXPHARMACEUTICALINC",
+  "type": "Supply"
+ },
+ "UNITEDNATIONALBANCORP_03_03_1999-EX-99-Outsourcing Agreement with the BISYS Group, Inc.": {
+  "split": "train",
+  "group": "UNITEDNATIONALBANCORP",
+  "type": "Outsourcing"
+ },
+ "URSCORPNEW_03_17_2014-EX-99-COOPERATION AGREEMENT": {
+  "split": "train",
+  "group": "URSCORPNEW",
+  "type": "Cooperation"
+ },
+ "USASYNTHETICFUELCORP_10_21_2010-EX-10.10-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "USASYNTHETICFUELCORP",
+  "type": "Strategic Alliance"
+ },
+ "UnionDentalHoldingsInc_20050204_8-KA_EX-10_3345577_EX-10_Affiliate Agreement": {
+  "split": "val",
+  "group": "UNIONDENTALHOLDINGSINC",
+  "type": "Affiliate"
+ },
+ "UpjohnInc_20200121_10-12G_EX-2.6_11948692_EX-2.6_Manufacturing Agreement_ Supply Agreement": {
+  "split": "train",
+  "group": "UPJOHNINC",
+  "type": "Supply"
+ },
+ "UsioInc_20040428_SB-2_EX-10.11_1723988_EX-10.11_Affiliate Agreement 2": {
+  "split": "train",
+  "group": "USIOINC",
+  "type": "Affiliate"
+ },
+ "VALENCETECHNOLOGYINC_02_14_2003-EX-10-JOINT VENTURE CONTRACT": {
+  "split": "train",
+  "group": "VALENCETECHNOLOGYINC",
+  "type": "Joint Venture"
+ },
+ "VAPOTHERM, INC. - Manufacturing and Supply Agreement": {
+  "split": "train",
+  "group": "VAPOTHERMINCMANUFACTURINGANDSUPPLYAGREEMENT",
+  "type": "Supply"
+ },
+ "VARIABLESEPARATEACCOUNT_04_30_2014-EX-13.C-UNCONDITIONAL CAPITAL MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "VARIABLESEPARATEACCOUNT",
+  "type": "Maintenance"
+ },
+ "VAXCYTE,INC_05_22_2020-EX-10.19-SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "VAXCYTEINC",
+  "type": "Supply"
+ },
+ "VEONEER,INC_02_21_2020-EX-10.11-JOINT VENTURE AGREEMENT": {
+  "split": "train",
+  "group": "VEONEERINC",
+  "type": "Joint Venture"
+ },
+ "VERICELCORP_08_06_2019-EX-10.10-SUPPLY AGREEMENT": {
+  "split": "train",
+  "group": "VERICELCORP",
+  "type": "Supply"
+ },
+ "VERSOTECHNOLOGIESINC_12_28_2007-EX-99.3-INTELLECTUAL PROPERTY AGREEMENT": {
+  "split": "train",
+  "group": "VERSOTECHNOLOGIESINC",
+  "type": "IP"
+ },
+ "VERTEXENERGYINC_08_14_2014-EX-10.24-OPERATION AND MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "VERTEXENERGYINC",
+  "type": "Maintenance"
+ },
+ "VERTICALNETINC_04_01_2002-EX-10.19-MAINTENANCE AND SUPPORT AGREEMENT": {
+  "split": "train",
+  "group": "VERTICALNETINC",
+  "type": "Maintenance"
+ },
+ "VIOLINMEMORYINC_12_12_2012-EX-10.14-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "VIOLINMEMORYINC",
+  "type": "Sponsorship"
+ },
+ "VIRGINGALACTICHOLDINGS,INC_04_08_2020-EX-99.1-JOINT FILING STATEMENT": {
+  "split": "train",
+  "group": "VIRGINGALACTICHOLDINGSINC",
+  "type": "Joint Filing"
+ },
+ "VIRTUALSCOPICS,INC_11_12_2010-EX-10.1-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "VIRTUALSCOPICSINC",
+  "type": "Strategic Alliance"
+ },
+ "VISIUMTECHNOLOGIES,INC_10_20_2004-EX-10.20-DISTRIBUTOR AGREEMENT": {
+  "split": "val",
+  "group": "VISIUMTECHNOLOGIESINC",
+  "type": "Distributor"
+ },
+ "VITAMINSHOPPECOMINC_09_13_1999-EX-10.26-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "VITAMINSHOPPECOMINC",
+  "type": "Sponsorship"
+ },
+ "VIVINT SOLAR, INC. - NON-COMPETITION AGREEMENT": {
+  "split": "train",
+  "group": "VIVINTSOLARINCNONCOMPETITIONAGREEMENT",
+  "type": "Non-Compete"
+ },
+ "VNUE,INC_07_10_2015-EX-10.1-SPONSORSHIP AGREEMENT": {
+  "split": "val",
+  "group": "VNUEINC",
+  "type": "Sponsorship"
+ },
+ "VerizonAbsLlc_20200123_8-K_EX-10.4_11952335_EX-10.4_Service Agreement": {
+  "split": "train",
+  "group": "VERIZONABSLLC",
+  "type": "Service"
+ },
+ "VertexEnergyInc_20200113_8-K_EX-10.1_11943624_EX-10.1_Marketing Agreement": {
+  "split": "train",
+  "group": "VERTEXENERGYINC",
+  "type": "Marketing"
+ },
+ "VgrabCommunicationsInc_20200129_10-K_EX-10.33_11958828_EX-10.33_Development Agreement": {
+  "split": "train",
+  "group": "VGRABCOMMUNICATIONSINC",
+  "type": "Development"
+ },
+ "VirtuosoSurgicalInc_20191227_1-A_EX1A-6 MAT CTRCT_11933379_EX1A-6 MAT CTRCT_License Agreement": {
+  "split": "train",
+  "group": "VIRTUOSOSURGICALINC",
+  "type": "License"
+ },
+ "VitalibisInc_20180316_8-K_EX-10.2_11100168_EX-10.2_Hosting Agreement": {
+  "split": "val",
+  "group": "VITALIBISINC",
+  "type": "Hosting"
+ },
+ "VnueInc_20150914_8-K_EX-10.1_9259571_EX-10.1_Promotion Agreement": {
+  "split": "val",
+  "group": "VNUEINC",
+  "type": "Promotion"
+ },
+ "WARNERCHILCOTTPLC_12_31_2003-EX-4.36-DEVELOPMENT AGREEMENT": {
+  "split": "train",
+  "group": "WARNERCHILCOTTPLC",
+  "type": "Development"
+ },
+ "WARNINGMANAGEMENTSERVICESINC_12_10_1999-EX-10-ENDORSEMENT AGREEMENT": {
+  "split": "val",
+  "group": "WARNINGMANAGEMENTSERVICESINC",
+  "type": "Endorsement"
+ },
+ "WASTE2ENERGYHOLDINGS,INC_06_03_2010-EX-10.2-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "val",
+  "group": "WASTE2ENERGYHOLDINGSINC",
+  "type": "Strategic Alliance"
+ },
+ "WEBHELPCOMINC_03_22_2000-EX-10.8-HOSTING AGREEMENT": {
+  "split": "val",
+  "group": "WEBHELPCOMINC",
+  "type": "Hosting"
+ },
+ "WELLSFARGOMORTGAGEBACKEDSECURITIES2006-6TRUST_05_11_2006-EX-10.3-Yield Maintenance Agreement": {
+  "split": "test",
+  "group": "WELLSFARGOMORTGAGEBACKEDSECURITIES20066TRUST",
+  "type": "Maintenance"
+ },
+ "WESTERN COPPER - NON-COMPETITION AGREEMENT": {
+  "split": "train",
+  "group": "WESTERNCOPPERNONCOMPETITIONAGREEMENT",
+  "type": "Non-Compete"
+ },
+ "WHITESMOKE,INC_11_08_2011-EX-10.26-PROMOTION AND DISTRIBUTION AGREEMENT": {
+  "split": "train",
+  "group": "WHITESMOKEINC",
+  "type": "Distributor"
+ },
+ "WOMENSGOLFUNLIMITEDINC_03_29_2000-EX-10.13-ENDORSEMENT AGREEMENT": {
+  "split": "train",
+  "group": "WOMENSGOLFUNLIMITEDINC",
+  "type": "Endorsement"
+ },
+ "WOMENSGOLFUNLIMITEDINC_03_29_2000-EX-10.13-ENDORSEMENT AGREEMENT - Intellectual Property Rights                 Confidentiality and Non-Use Obligations Agreement": {
+  "split": "train",
+  "group": "WOMENSGOLFUNLIMITEDINC",
+  "type": "Endorsement"
+ },
+ "WORLDWIDESTRATEGIESINC_11_02_2005-EX-10-RESELLER AGREEMENT": {
+  "split": "test",
+  "group": "WORLDWIDESTRATEGIESINC",
+  "type": "Reseller"
+ },
+ "WPPPLC_04_30_2020-EX-4.28-SERVICE AGREEMENT": {
+  "split": "val",
+  "group": "WPPPLC",
+  "type": "Service"
+ },
+ "WatchitMediaInc_20061201_8-K_EX-10.1_4148672_EX-10.1_Content License Agreement": {
+  "split": "train",
+  "group": "WATCHITMEDIAINC",
+  "type": "License"
+ },
+ "WaterNowInc_20191120_10-Q_EX-10.12_11900227_EX-10.12_Distributor Agreement": {
+  "split": "train",
+  "group": "WATERNOWINC",
+  "type": "Distributor"
+ },
+ "WebmdHealthCorp_20050908_S-1A_EX-10.7_1027007_EX-10.7_Content License Agreement": {
+  "split": "train",
+  "group": "WEBMDHEALTHCORP",
+  "type": "License"
+ },
+ "WestPharmaceuticalServicesInc_20200116_8-K_EX-10.1_11947529_EX-10.1_Supply Agreement": {
+  "split": "train",
+  "group": "WESTPHARMACEUTICALSERVICESINC",
+  "type": "Supply"
+ },
+ "XACCT Technologies, Inc.SUPPORT AND MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "XACCTTECHNOLOGIESINCSUPPORTANDMAINTENANCEAGREEMENT",
+  "type": "Maintenance"
+ },
+ "XENCORINC_10_25_2013-EX-10.24-COLLABORATION AGREEMENT (3)": {
+  "split": "test",
+  "group": "XENCORINC",
+  "type": "Collaboration"
+ },
+ "XLITECHNOLOGIES,INC_12_02_2015-EX-10.02-STRATEGIC ALLIANCE AGREEMENT": {
+  "split": "train",
+  "group": "XLITECHNOLOGIESINC",
+  "type": "Strategic Alliance"
+ },
+ "XLITECHNOLOGIES,INC_12_11_2015-EX-10.1-Sponsorship Agreement": {
+  "split": "train",
+  "group": "XLITECHNOLOGIESINC",
+  "type": "Sponsorship"
+ },
+ "XYBERNAUTCORP_07_12_2002-EX-4-SPONSORSHIP AGREEMENT": {
+  "split": "train",
+  "group": "XYBERNAUTCORP",
+  "type": "Sponsorship"
+ },
+ "XinhuaSportsEntertainmentLtd_20070221_F-1_EX-99.4_645553_EX-99.4_Content License Agreement": {
+  "split": "test",
+  "group": "XINHUASPORTSENTERTAINMENTLTD",
+  "type": "License"
+ },
+ "XpresspaGroupInc_20190401_10-K_EX-10.28_11599457_EX-10.28_Marketing Agreement": {
+  "split": "train",
+  "group": "XPRESSPAGROUPINC",
+  "type": "Marketing"
+ },
+ "ZEBRATECHNOLOGIESCORP_04_16_2014-EX-10.1-INTELLECTUAL PROPERTY AGREEMENT": {
+  "split": "train",
+  "group": "ZEBRATECHNOLOGIESCORP",
+  "type": "IP"
+ },
+ "ZONDWINDSYSTEMPARTNERSLTDSERIES85-B_04_03_2006-EX-10-MANAGEMENT AND MAINTENANCE AGREEMENT": {
+  "split": "train",
+  "group": "ZONDWINDSYSTEMPARTNERSLTDSERIES85B",
+  "type": "Maintenance"
+ },
+ "ZogenixInc_20190509_10-Q_EX-10.2_11663313_EX-10.2_Distributor Agreement": {
+  "split": "train",
+  "group": "ZOGENIXINC",
+  "type": "Distributor"
+ },
+ "Zounds Hearing, Inc. - MANUFACTURING DESIGN MARKETING AGREEMENT": {
+  "split": "train",
+  "group": "ZOUNDSHEARINGINCMANUFACTURINGDESIGNMARKETINGAGREEMENT",
+  "type": "Manufacturing"
+ },
+ "ZtoExpressCaymanInc_20160930_F-1_EX-10.10_9752871_EX-10.10_Transportation Agreement": {
+  "split": "train",
+  "group": "ZTOEXPRESSCAYMANINC",
+  "type": "Transportation"
+ }
+}
