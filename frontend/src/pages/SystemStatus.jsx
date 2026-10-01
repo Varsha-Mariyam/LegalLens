@@ -12,6 +12,7 @@ const METHOD_NAMES = {
   ensemble_minilm_logreg: "Ensemble: fine-tuned MiniLM + TF-IDF Logistic Regression",
   tfidf_logreg_ovr: "TF-IDF + Logistic Regression (one-vs-rest)",
 };
+const methodName = (k) => METHOD_NAMES[k] || (k.startsWith("transformer_") ? `Fine-tuned ${k.slice(12)} (experiment, not in use)` : k);
 const fmt = (x) => (typeof x === "number" ? x.toFixed(3) : "–");
 const ci = (c) => (Array.isArray(c) ? `${c[0].toFixed(3)}–${c[1].toFixed(3)}` : "–");
 
@@ -90,7 +91,7 @@ export default function SystemStatus() {
               <tbody>
                 {Object.entries(m.methods || {}).sort((a, b) => b[1].all.macro_f1 - a[1].all.macro_f1).map(([k, v]) => (
                   <tr key={k}>
-                    <td className={k === m.deployed_model ? "best" : ""}>{METHOD_NAMES[k] || k}{k === m.deployed_model ? " (in use)" : ""}</td>
+                    <td className={k === m.deployed_model ? "best" : ""}>{methodName(k)}{k === m.deployed_model ? " (in use)" : ""}</td>
                     <td>{fmt(v.all?.accuracy)}</td><td>{fmt(v.all?.macro_f1)}</td><td>{ci(v.all?.macro_f1_ci95)}</td>
                     <td>{fmt(v.gold_only?.accuracy)}</td><td>{fmt(v.gold_only?.macro_f1)}</td>
                   </tr>
@@ -112,7 +113,7 @@ export default function SystemStatus() {
                   <thead><tr><th>Method</th><th>Micro F1</th><th>Macro F1</th><th>Macro ROC-AUC</th><th>Macro average precision</th></tr></thead>
                   <tbody>
                     {Object.entries(m.risk_detector).map(([k, v]) => (
-                      <tr key={k}><td>{METHOD_NAMES[k] || k}</td><td>{fmt(v.micro_f1)}</td><td>{fmt(v.macro_f1)}</td><td>{fmt(v.macro_roc_auc)}</td><td>{fmt(v.macro_average_precision)}</td></tr>
+                      <tr key={k}><td>{methodName(k)}</td><td>{fmt(v.micro_f1)}</td><td>{fmt(v.macro_f1)}</td><td>{fmt(v.macro_roc_auc)}</td><td>{fmt(v.macro_average_precision)}</td></tr>
                     ))}
                   </tbody>
                 </table>

@@ -54,7 +54,8 @@
     "data_sha256": {
       "train": "fb4c4c49ef12a0ffdc2f01551d79eec5bd3aed1026fed146a13108c421243ede",
       "val": "6274510b7c44240eecbe238bcd2b3982611fc83bb18db12741e6161a34ff9049"
-    }
+    },
+    "total_seconds": 5187.5
   },
   "environment": {
     "python": "3.12.2",
@@ -62,6 +63,53 @@
     "transformers": "5.15.0",
     "cuda_device": "NVIDIA GeForce GTX 1650 with Max-Q Design"
   },
-  "best_epoch": 2,
-  "encoder_dtype": "float16"
+  "best_epoch": 4,
+  "encoder_dtype": "float16",
+  "validation_metrics": {
+    "accuracy": 0.9247,
+    "macro_f1": 0.9185
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7143,
+      "val": {
+        "accuracy": 0.897,
+        "macro_f1": 0.8922
+      },
+      "epoch_seconds": 1122.2,
+      "best": true
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.1774,
+      "val": {
+        "accuracy": 0.9214,
+        "macro_f1": 0.9117
+      },
+      "epoch_seconds": 1225.3,
+      "best": true
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0905,
+      "val": {
+        "accuracy": 0.9181,
+        "macro_f1": 0.9053
+      },
+      "epoch_seconds": 3948.2,
+      "best": false
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0434,
+      "val": {
+        "accuracy": 0.9247,
+        "macro_f1": 0.9183
+      },
+      "epoch_seconds": 1110.7,
+      "best": true
+    }
+  ],
+  "trained_at": "2026-10-01T14:17:06+00:00"
 }

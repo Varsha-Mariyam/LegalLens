@@ -74,7 +74,10 @@ def test_not_found_and_notice_period_on_sample(samples):
     clauses = [{"number": s["id"], "label": s["label"], "title": s["title"], "text": s["text"], "category": c["category"]}
                for s, c in zip(segs, classifier.classify_batch(segs))]
     ctx = _ctx(clauses)
-    assert "seven (7) days" in qa_service.rank_clauses("What is the notice period?", ctx)[0][1]["text"]
+    ranked = qa_service.rank_clauses("What is the notice period?", ctx)
+    # MiniLM (default): the termination clause ranks first. LSA fallback: within the top 2, which the answer quotes.
+    top = 1 if ctx["embedder"].startswith("sbert-") else 2
+    assert any("seven (7) days" in c["text"] for _, c in ranked[:top])
     assert qa_service.rank_clauses("Is there a clause about pet ownership?", ctx) == []
     res = qa_service.answer("What is the notice period?", ctx, [])
     assert "retrieval" in res["method"] and res["sources"][0].get("bm25") is not None

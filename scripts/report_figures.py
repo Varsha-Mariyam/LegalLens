@@ -128,9 +128,9 @@ def risk_figure(metrics: dict, path: Path) -> None:
     ax.set_yticks(y, [f"{l} (n={risk['methods']['transformer_minilm']['per_label'][l]['support']})" for l in labels])
     ax.invert_yaxis()
     ax.set_xlim(0, 1)
-    ax.set_xlabel("F1 on test clauses (rules only exist for 6 of the 12 types)")
-    ax.set_title("Risk detection per clause type — held-out test contracts", loc="left")
-    ax.legend(loc="lower right")
+    ax.set_xlabel("F1 on test clauses (rules exist for 6 of the 12 types; no bar = no rule, or F1 0 — see table)")
+    ax.set_title("Risk detection per clause type — held-out test contracts", loc="left", pad=34)
+    ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), ncol=2, borderaxespad=0.2)
     _axes(ax)
     fig.tight_layout()
     fig.savefig(path, dpi=150)
@@ -333,8 +333,10 @@ def write_markdown(m: dict, path: Path) -> None:
         import json
         rows = json.loads(samples.read_text(encoding="utf-8"))
         L += ["## Sample documents: fallback vs upgraded configuration", "",
-              "Fallback = TF-IDF + Logistic Regression classifier and rule signals only; upgraded = fine-tuned Transformer "
-              "classifier, rule signals + learned risk detector (`scripts/compare_sample_documents.py`).", "",
+              "Fallback = TF-IDF + Logistic Regression classifier and rule signals only; upgraded = the deployed "
+              "configuration (MiniLM + Logistic Regression ensemble classifier, rule signals + learned risk detector) "
+              "(`scripts/compare_sample_documents.py`). Levels can also change through classification: a clause "
+              "classified differently triggers different category-specific rules.", "",
               "| Document | Type | Clauses | Fallback H / M / L | Upgraded H / M / L | Learned-detector evidence |", "|---|---|---|---|---|---|"]
         for r in rows:
             b, a = r["fallback"], r["upgraded"]
@@ -354,3 +356,17 @@ def write_markdown(m: dict, path: Path) -> None:
             L.append(f"| {e['epoch']} | {_f(e['train_loss'], 4)} | " + ", ".join(f"{k} {v:.4f}" for k, v in e["val"].items()) + " |")
         L.append("")
     path.write_text("\n".join(L) + "\n", encoding="utf-8")
+
+
+def main() -> None:
+    """Re-draw the figures and RESULTS.md from reports/evaluation/metrics.json (no models needed)."""
+    import json
+    out = Path(__file__).resolve().parent.parent / "reports" / "evaluation"
+    metrics = json.loads((out / "metrics.json").read_text(encoding="utf-8"))
+    make_all(metrics, None, None, out)
+    write_markdown(metrics, out / "RESULTS.md")
+    print(f"regenerated figures and RESULTS.md in {out}")
+
+
+if __name__ == "__main__":
+    main()

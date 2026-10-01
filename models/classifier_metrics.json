@@ -1,5 +1,5 @@
 {
-  "trained_at": "2026-09-30T19:05:12+00:00",
+  "trained_at": "2026-10-01T14:31:19+00:00",
   "dataset": "contract_split",
   "split": "filing-company groups, stratified by contract type, 70/15/15 by contract count",
   "train_size": 5933,
@@ -810,19 +810,316 @@
         "macro_f1": 0.8942,
         "n": 1121
       }
+    },
+    "transformer_legal-bert": {
+      "all": {
+        "accuracy": 0.9173,
+        "macro_f1": 0.9086,
+        "macro_precision": 0.9218,
+        "macro_recall": 0.8985,
+        "accuracy_ci95": [
+          0.8917,
+          0.9394
+        ],
+        "macro_f1_ci95": [
+          0.8833,
+          0.9324
+        ],
+        "per_class": {
+          "Payment": {
+            "precision": 0.8814,
+            "recall": 0.9048,
+            "f1-score": 0.893,
+            "support": 189.0
+          },
+          "Confidentiality": {
+            "precision": 0.9608,
+            "recall": 0.8033,
+            "f1-score": 0.875,
+            "support": 61.0
+          },
+          "Termination": {
+            "precision": 0.8163,
+            "recall": 0.8772,
+            "f1-score": 0.8457,
+            "support": 228.0
+          },
+          "Liability": {
+            "precision": 0.9574,
+            "recall": 0.8867,
+            "f1-score": 0.9207,
+            "support": 203.0
+          },
+          "Dispute": {
+            "precision": 0.975,
+            "recall": 0.975,
+            "f1-score": 0.975,
+            "support": 120.0
+          },
+          "Others": {
+            "precision": 0.9398,
+            "recall": 0.9441,
+            "f1-score": 0.942,
+            "support": 662.0
+          },
+          "accuracy": 0.9173,
+          "macro avg": {
+            "precision": 0.9218,
+            "recall": 0.8985,
+            "f1-score": 0.9086,
+            "support": 1463.0
+          },
+          "weighted avg": {
+            "precision": 0.9193,
+            "recall": 0.9173,
+            "f1-score": 0.9176,
+            "support": 1463.0
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "Payment",
+            "Confidentiality",
+            "Termination",
+            "Liability",
+            "Dispute",
+            "Others"
+          ],
+          "matrix": [
+            [
+              171,
+              0,
+              6,
+              2,
+              1,
+              9
+            ],
+            [
+              1,
+              49,
+              3,
+              0,
+              1,
+              7
+            ],
+            [
+              6,
+              0,
+              200,
+              3,
+              0,
+              19
+            ],
+            [
+              6,
+              0,
+              13,
+              180,
+              1,
+              3
+            ],
+            [
+              0,
+              0,
+              0,
+              1,
+              117,
+              2
+            ],
+            [
+              10,
+              2,
+              23,
+              2,
+              0,
+              625
+            ]
+          ]
+        },
+        "n": 1463,
+        "roc_auc_macro_ovr": 0.987
+      },
+      "gold_only": {
+        "accuracy": 0.9322,
+        "macro_f1": 0.9217,
+        "n": 1121
+      }
+    },
+    "ensemble_minilm_logreg": {
+      "all": {
+        "accuracy": 0.9064,
+        "macro_f1": 0.8968,
+        "macro_precision": 0.9172,
+        "macro_recall": 0.8819,
+        "accuracy_ci95": [
+          0.8775,
+          0.9305
+        ],
+        "macro_f1_ci95": [
+          0.8667,
+          0.9216
+        ],
+        "per_class": {
+          "Payment": {
+            "precision": 0.8763,
+            "recall": 0.8995,
+            "f1-score": 0.8877,
+            "support": 189.0
+          },
+          "Confidentiality": {
+            "precision": 0.9583,
+            "recall": 0.7541,
+            "f1-score": 0.844,
+            "support": 61.0
+          },
+          "Termination": {
+            "precision": 0.813,
+            "recall": 0.8772,
+            "f1-score": 0.8439,
+            "support": 228.0
+          },
+          "Liability": {
+            "precision": 0.9341,
+            "recall": 0.8374,
+            "f1-score": 0.8831,
+            "support": 203.0
+          },
+          "Dispute": {
+            "precision": 1.0,
+            "recall": 0.9833,
+            "f1-score": 0.9916,
+            "support": 120.0
+          },
+          "Others": {
+            "precision": 0.9215,
+            "recall": 0.9396,
+            "f1-score": 0.9304,
+            "support": 662.0
+          },
+          "accuracy": 0.9064,
+          "macro avg": {
+            "precision": 0.9172,
+            "recall": 0.8819,
+            "f1-score": 0.8968,
+            "support": 1463.0
+          },
+          "weighted avg": {
+            "precision": 0.9085,
+            "recall": 0.9064,
+            "f1-score": 0.9063,
+            "support": 1463.0
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "Payment",
+            "Confidentiality",
+            "Termination",
+            "Liability",
+            "Dispute",
+            "Others"
+          ],
+          "matrix": [
+            [
+              170,
+              0,
+              7,
+              2,
+              0,
+              10
+            ],
+            [
+              0,
+              46,
+              2,
+              2,
+              0,
+              11
+            ],
+            [
+              5,
+              0,
+              200,
+              3,
+              0,
+              20
+            ],
+            [
+              10,
+              1,
+              12,
+              170,
+              0,
+              10
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              118,
+              2
+            ],
+            [
+              9,
+              1,
+              25,
+              5,
+              0,
+              622
+            ]
+          ]
+        },
+        "n": 1463,
+        "roc_auc_macro_ovr": 0.9818
+      },
+      "gold_only": {
+        "accuracy": 0.9224,
+        "macro_f1": 0.9101,
+        "n": 1121
+      }
     }
   },
-  "deployed_model": "transformer_minilm",
+  "deployed_model": "ensemble_minilm_logreg",
   "fallback_model": "tfidf_logreg",
-  "paired_bootstrap": {
-    "comparison": "transformer_minilm - tfidf_logreg (macro F1, all test clauses)",
-    "observed": 0.0112,
-    "ci95": [
-      -0.0134,
-      0.0335
-    ],
-    "share_of_resamples_not_better": 0.172
-  },
+  "paired_bootstrap": [
+    {
+      "comparison": "transformer_minilm - tfidf_logreg (macro F1, all test clauses)",
+      "observed": 0.0112,
+      "ci95": [
+        -0.0134,
+        0.0335
+      ],
+      "share_of_resamples_not_better": 0.172
+    },
+    {
+      "comparison": "ensemble_minilm_logreg - tfidf_logreg (macro F1, all test clauses)",
+      "observed": 0.0241,
+      "ci95": [
+        0.0081,
+        0.0411
+      ],
+      "share_of_resamples_not_better": 0.0
+    },
+    {
+      "comparison": "ensemble_minilm_logreg - transformer_minilm (macro F1, all test clauses)",
+      "observed": 0.0129,
+      "ci95": [
+        -0.0015,
+        0.031
+      ],
+      "share_of_resamples_not_better": 0.039
+    },
+    {
+      "comparison": "ensemble_minilm_logreg - tfidf_linear_svm (macro F1, all test clauses)",
+      "observed": 0.0117,
+      "ci95": [
+        -0.0011,
+        0.023
+      ],
+      "share_of_resamples_not_better": 0.036
+    }
+  ],
   "risk_detector": {
     "transformer_minilm": {
       "micro_f1": 0.5985,
@@ -835,34 +1132,40 @@
       "macro_f1": 0.591,
       "macro_roc_auc": 0.9827,
       "macro_average_precision": 0.6613
+    },
+    "ensemble_minilm_logreg": {
+      "micro_f1": 0.5908,
+      "macro_f1": 0.5929,
+      "macro_roc_auc": 0.9848,
+      "macro_average_precision": 0.6815
     }
   },
   "retrieval": {
-    "legacy_lsa (original ranking, LSA)": {
+    "Original ranking + LSA (original system)": {
       "queries": 670,
-      "hit@1": 0.4015,
-      "hit@3": 0.6254,
-      "hit@5": 0.7179,
-      "mrr@10": 0.5329,
-      "ndcg@5": 0.5382,
+      "hit@1": 0.403,
+      "hit@3": 0.6194,
+      "hit@5": 0.7149,
+      "mrr@10": 0.5338,
+      "ndcg@5": 0.5384,
       "mrr@10_ci95": [
-        0.4997,
-        0.5709
+        0.4985,
+        0.5739
       ]
     },
-    "legacy_minilm (original ranking, MiniLM)": {
+    "Original ranking + MiniLM": {
       "queries": 670,
-      "hit@1": 0.4328,
-      "hit@3": 0.6075,
-      "hit@5": 0.7254,
-      "mrr@10": 0.5532,
-      "ndcg@5": 0.5459,
+      "hit@1": 0.4269,
+      "hit@3": 0.606,
+      "hit@5": 0.7239,
+      "mrr@10": 0.5506,
+      "ndcg@5": 0.5437,
       "mrr@10_ci95": [
-        0.5181,
-        0.5902
+        0.5155,
+        0.5886
       ]
     },
-    "lsa_dense": {
+    "LSA dense": {
       "queries": 670,
       "hit@1": 0.394,
       "hit@3": 0.6209,
@@ -874,7 +1177,7 @@
         0.577
       ]
     },
-    "minilm_dense": {
+    "MiniLM dense": {
       "queries": 670,
       "hit@1": 0.403,
       "hit@3": 0.594,
@@ -886,64 +1189,64 @@
         0.561
       ]
     },
-    "bm25": {
+    "BM25": {
       "queries": 670,
-      "hit@1": 0.5075,
-      "hit@3": 0.7164,
-      "hit@5": 0.803,
-      "mrr@10": 0.6286,
-      "ndcg@5": 0.6208,
+      "hit@1": 0.506,
+      "hit@3": 0.7194,
+      "hit@5": 0.8045,
+      "mrr@10": 0.6282,
+      "ndcg@5": 0.6214,
       "mrr@10_ci95": [
-        0.5995,
-        0.6608
+        0.599,
+        0.6607
       ]
     },
-    "hybrid_bm25_minilm (deployed)": {
+    "Hybrid BM25 + MiniLM (deployed)": {
       "queries": 670,
-      "hit@1": 0.5418,
-      "hit@3": 0.7731,
+      "hit@1": 0.5388,
+      "hit@3": 0.7716,
       "hit@5": 0.8239,
-      "mrr@10": 0.667,
-      "ndcg@5": 0.6583,
+      "mrr@10": 0.6659,
+      "ndcg@5": 0.6563,
       "mrr@10_ci95": [
-        0.6388,
-        0.6966
+        0.6373,
+        0.6956
       ]
     },
-    "hybrid_bm25_lsa": {
+    "Hybrid BM25 + LSA": {
       "queries": 670,
-      "hit@1": 0.5313,
-      "hit@3": 0.7343,
-      "hit@5": 0.8134,
-      "mrr@10": 0.6494,
-      "ndcg@5": 0.6415,
+      "hit@1": 0.5299,
+      "hit@3": 0.7358,
+      "hit@5": 0.8119,
+      "mrr@10": 0.6483,
+      "ndcg@5": 0.6399,
       "mrr@10_ci95": [
-        0.6151,
-        0.6845
+        0.6139,
+        0.6841
       ]
     }
   },
   "answerability": {
     "legacy_lsa (original)": {
-      "accuracy": 0.2739,
-      "balanced_accuracy": 0.5162,
+      "accuracy": 0.2736,
+      "balanced_accuracy": 0.5159,
       "answered_when_answerable": 1.0,
-      "not_found_when_unanswerable": 0.0323,
+      "not_found_when_unanswerable": 0.0319,
       "not_found_precision": 1.0,
-      "not_found_recall": 0.0323,
-      "not_found_f1": 0.0626,
-      "end_to_end_correct": 0.174,
+      "not_found_recall": 0.0319,
+      "not_found_f1": 0.0618,
+      "end_to_end_correct": 0.1723,
       "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3"
     },
     "legacy_minilm": {
-      "accuracy": 0.2718,
-      "balanced_accuracy": 0.5148,
+      "accuracy": 0.2729,
+      "balanced_accuracy": 0.5155,
       "answered_when_answerable": 1.0,
-      "not_found_when_unanswerable": 0.0295,
+      "not_found_when_unanswerable": 0.0309,
       "not_found_precision": 1.0,
-      "not_found_recall": 0.0295,
-      "not_found_f1": 0.0574,
-      "end_to_end_correct": 0.1676,
+      "not_found_recall": 0.0309,
+      "not_found_f1": 0.06,
+      "end_to_end_correct": 0.1683,
       "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3"
     },
     "hybrid + uncalibrated rule": {
@@ -954,20 +1257,20 @@
       "not_found_precision": 1.0,
       "not_found_recall": 0.0323,
       "not_found_f1": 0.0626,
-      "end_to_end_correct": 0.2093,
+      "end_to_end_correct": 0.209,
       "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3"
     },
     "hybrid + calibrated answerability (deployed)": {
-      "accuracy": 0.7201,
-      "balanced_accuracy": 0.719,
-      "answered_when_answerable": 0.7169,
-      "not_found_when_unanswerable": 0.7212,
-      "not_found_precision": 0.8845,
-      "not_found_recall": 0.7212,
-      "not_found_f1": 0.7945,
-      "end_to_end_correct": 0.6944,
+      "accuracy": 0.5334,
+      "balanced_accuracy": 0.6571,
+      "answered_when_answerable": 0.9042,
+      "not_found_when_unanswerable": 0.41,
+      "not_found_precision": 0.9279,
+      "not_found_recall": 0.41,
+      "not_found_f1": 0.5687,
+      "end_to_end_correct": 0.485,
       "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3",
-      "roc_auc_p_answerable": 0.7905
+      "roc_auc_p_answerable": 0.7893
     }
   },
   "report": "reports/evaluation/RESULTS.md"

@@ -10,9 +10,17 @@ picks out key sentences, writes persona-specific summaries, answers questions ab
 (CAG + hybrid BM25/semantic retrieval), and exports a PDF report.
 
 **Models** (all trained and evaluated on CUAD v1 with a contract-level split — see
-[docs/EVALUATION.md](docs/EVALUATION.md)): fine-tuned `all-MiniLM-L6-v2` clause classifier (TF-IDF + Logistic
-Regression as fallback), fine-tuned MiniLM multi-label risk detector for 12 CUAD risk types, MiniLM sentence
-embeddings for RAG, comparison and key sentences, BM25 + dense hybrid retrieval for Q&A.
+[docs/EVALUATION.md](docs/EVALUATION.md)): clause classifier = fine-tuned `all-MiniLM-L6-v2` averaged with TF-IDF +
+Logistic Regression (Logistic Regression alone as fallback); risk detector for 12 CUAD risk types = fine-tuned MiniLM
+averaged with a TF-IDF model, on top of the rules; MiniLM sentence embeddings for RAG, comparison and key sentences;
+BM25 + dense hybrid retrieval with a calibrated "not found" for Q&A.
+
+| Held-out test contracts | Original approach | Upgraded (deployed) |
+|---|---|---|
+| Clause classification, macro F1 | 0.873 (TF-IDF + LogReg, retrained on the same split) | **0.897** (ensemble) |
+| Risk types, micro F1 on the 6 types the rules target | 0.164 (rules) | **0.596** (rules + detector) |
+| Q&A retrieval, MRR@10 | 0.534 (original ranking, LSA) | **0.666** (hybrid) |
+| Says "not found" for unanswerable questions | 3% | **41%** (while answering 90% of answerable ones) |
 
 > LegalLens is an educational tool. Its output is not legal advice; have a qualified lawyer review any document before signing.
 
@@ -61,8 +69,8 @@ Without Tesseract, digital PDFs/DOCX/TXT still work; scanned files report a clea
 | Component | Default (no keys, no extra services) | Upgrade path |
 |---|---|---|
 | Text generation (explanations, summaries, persona, Q&A) | Deterministic rule-based / extractive mode | Set `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` (any OpenAI-compatible server) or `OLLAMA_MODEL` (local, free) in `.env` |
-| Clause classifier | Fine-tuned MiniLM (`models/transformers/clause`), CPU or GPU | falls back to TF-IDF + Logistic Regression if torch/transformers are missing or `CLASSIFIER_BACKEND=logreg` |
-| Risk | Rule signals + fine-tuned MiniLM risk detector (`models/transformers/risk`) | `RISK_MODEL=off` for rules only |
+| Clause classifier | Fine-tuned MiniLM (`models/transformers/clause`) + TF-IDF Logistic Regression ensemble, CPU or GPU | Logistic Regression alone if torch/transformers are missing; `CLASSIFIER_BACKEND=transformer` or `logreg` to use one model |
+| Risk | Rule signals + learned detector (fine-tuned MiniLM `models/transformers/risk` + TF-IDF `models/risk_logreg.joblib`) | `RISK_MODEL=transformer`, `logreg`, or `off` for rules only |
 | Embeddings | Sentence Transformers `all-MiniLM-L6-v2` (downloaded from Hugging Face on first use, ~90 MB) | falls back to LSA (TF-IDF + SVD) offline; `python scripts/download_models.py` stores MiniLM in `models/` for offline use |
 | Q&A retrieval | Hybrid BM25 + MiniLM, "not found" calibrated on held-out contracts | `QA_RETRIEVAL=legacy` restores the original ranking |
 | Vector DB | ChromaDB (persistent, `vector_db/`) | NumPy fallback if ChromaDB is not installed |
@@ -109,8 +117,9 @@ pip install "torch==2.13.0+cu126" --index-url https://download.pytorch.org/whl/c
 ## Tests
 
 ```bash
-python -m pytest backend/tests -q      # 66 tests: extraction/OCR, segmentation, classifier, RAG, CAG, risk,
-                                       # comparison, LLM client (mocked HTTP), full API flow, access control
+python -m pytest backend/tests -q      # 90 tests: extraction/OCR, segmentation, classifiers + Transformer models,
+                                       # fallbacks, RAG, hybrid retrieval, CAG, risk, comparison, LLM client
+                                       # (mocked HTTP), full API flow, access control, empty/unreadable files
 ```
 
 ---

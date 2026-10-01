@@ -31,11 +31,151 @@ which inflates scores. The sandbox Transformer's **0.864** was a *validation* sc
 number is comparable with anything below. The fair comparison is the table in section 1, where every method — including
 Logistic Regression, retrained — is trained on the same training contracts and scored on the same unseen test contracts.
 
-RESULTS_PLACEHOLDER
+## 1. Clause classification (6 categories)
+
+1,463 test clauses from 75 of the 79 test contracts (4 contracts contribute no example after deduplication);
+1,121 carry expert labels ("gold"), the rest heading-derived labels.
+
+![Macro F1 by method](../reports/evaluation/fig_classification_macro_f1.png)
+
+| Method | Val macro F1 | Test accuracy | **Test macro F1** [95% CI] | Gold macro F1 | ROC-AUC |
+|---|---|---|---|---|---|
+| Fine-tuned Legal-BERT (experiment, not deployed) | 0.918 | 0.917 | **0.909** [0.883, 0.932] | 0.922 | 0.987 |
+| **Ensemble: MiniLM × 0.3 + LogReg × 0.7 (deployed)** | 0.899 | 0.906 | **0.897** [0.867, 0.922] | 0.910 | 0.982 |
+| TF-IDF + Linear SVM | 0.886 | 0.895 | **0.885** [0.856, 0.911] | 0.898 | 0.976 |
+| Fine-tuned MiniLM alone | 0.870 | 0.897 | **0.884** [0.852, 0.912] | 0.894 | 0.980 |
+| TF-IDF + Logistic Regression (fallback) | 0.878 | 0.886 | **0.873** [0.842, 0.900] | 0.893 | 0.977 |
+| Keyword baseline | 0.661 | 0.658 | **0.694** [0.652, 0.729] | 0.640 | – |
+| Embedding similarity (MiniLM) | – | 0.614 | **0.592** [0.548, 0.635] | 0.527 | 0.800 |
+| Embedding similarity (LSA) | – | 0.495 | **0.522** [0.482, 0.557] | 0.450 | 0.812 |
+
+Paired bootstrap over test contracts (macro F1 difference, 95% CI):
+ensemble − Logistic Regression **+0.024 [+0.008, +0.041]** (better in every resample);
+MiniLM − Logistic Regression +0.011 [−0.013, +0.034]; ensemble − MiniLM +0.013 [−0.002, +0.031];
+ensemble − SVM +0.012 [−0.001, +0.023].
+
+What this shows:
+* The fine-tuned **MiniLM on its own is not clearly better** than TF-IDF models (inside the noise; worse on validation).
+* The **ensemble chosen on validation is clearly better than Logistic Regression** (+2.4 points macro F1) and is the
+  deployed classifier. The confusion matrices show why it works: MiniLM rarely pushes Payment, Confidentiality and
+  Dispute clauses into "Others" (Logistic Regression does so 20, 14 and 9 times), while Logistic Regression confuses
+  fewer "Others" clauses with Termination — different mistakes average out.
+* **Legal-BERT is the most accurate model** (validation and test agree), see the trade-off below.
+* Out-of-domain sanity check on the 31 hand-labelled clauses of the project's Indian reference templates (accuracy):
+  ensemble 0.935, MiniLM 0.903, Logistic Regression 0.968, keyword baseline 0.903 — n is tiny (one clause ≈ 0.03).
+
+![Confusion matrices](../reports/evaluation/fig_confusion_matrices.png)
+
+### Legal-BERT: why it is not deployed (yet)
+
+| | Deployed ensemble (MiniLM + LogReg) | Legal-BERT (`nlpaueb/legal-bert-base-uncased`) |
+|---|---|---|
+| Validation / test macro F1 | 0.899 / 0.897 | **0.918 / 0.909** |
+| Parameters / model file | 22.7 M / 45 MB (+3 MB LogReg) | 109.5 M / 219 MB |
+| Inference, CPU (12 threads) | 48 ms per clause | 339 ms per clause (≈ 7×) |
+| Inference, GTX 1650 | 2.6 ms per clause | 20.7 ms per clause |
+| Training on the GTX 1650 | 12 min (5 epochs) | ≈ 19 min per epoch (4 epochs) |
+| Licence of the base model | Apache 2.0 | CC BY-SA 4.0 (fine-tuned weights must be shared alike) |
+
+Legal-BERT gains about 1–2 points of macro F1, at 5× the size and 7× the CPU time (a 100-clause contract: ~5 s vs
+~34 s of classification on CPU). The app keeps the lighter MiniLM ensemble; switching is one retraining command:
+
+```bash
+python scripts/train_transformer.py --task clause --model nlpaueb/legal-bert-base-uncased --lr 3e-5 --epochs 4 --batch-size 8 --grad-accum 4
+python scripts/fit_ensembles.py && python scripts/evaluate_models.py
+```
+
+## 2. Risk detection (12 CUAD clause types, multi-label)
+
+4,034 test clauses of 79 contracts at their natural balance (347 with at least one risk type); per-type thresholds
+tuned on validation.
+
+![Risk F1 per type](../reports/evaluation/fig_risk_per_label_f1.png)
+
+| Method | Micro P | Micro R | **Micro F1** [95% CI] | Macro F1 | Macro ROC-AUC | Macro avg. precision |
+|---|---|---|---|---|---|---|
+| **Ensemble MiniLM × 0.2 + TF-IDF × 0.8 (deployed)** | 0.566 | 0.618 | **0.591** [0.552, 0.631] | 0.593 | **0.985** | **0.681** |
+| Fine-tuned MiniLM alone | 0.605 | 0.592 | **0.599** [0.559, 0.636] | 0.563 | 0.967 | 0.565 |
+| TF-IDF + Logistic Regression (one-vs-rest) | 0.573 | 0.598 | **0.585** [0.546, 0.621] | 0.591 | 0.983 | 0.661 |
+
+On the 6 types that one of the original rules targets: original rules micro F1 **0.164** (P 0.119, R 0.265) vs
+**0.596** for the deployed ensemble; 6 types have no rule at all (exclusivity, change of control, anti-assignment,
+IP ownership assignment, minimum commitment, non-solicitation).
+
+What this shows: every learned detector is far better than the hand-written rules at recognising CUAD's risk-relevant
+clause types (expected — the rules target Indian consumer contracts). Between the learned detectors, micro-F1
+differences are inside the noise (paired 95% CIs include 0); the ensemble has the best ranking quality (macro average
+precision 0.681, chosen on validation), so it is deployed. Per-type F1 ranges from 0.38 (Minimum Commitment) to 0.80
+(Anti-Assignment, Non-Solicitation); types with 10–14 test positives are noisy.
+
+## 3. Q&A retrieval
+
+2,844 test questions over the segmented clauses of 79 unseen contracts (36 CUAD questions per contract); 670
+answerable questions with a located answer clause are used for ranking.
+
+![Retrieval](../reports/evaluation/fig_retrieval.png)
+
+| Ranker | Test Hit@1 | Test Hit@3 | **Test MRR@10** [95% CI] | nDCG@5 |
+|---|---|---|---|---|
+| Original ranking + LSA (the original system) | 0.403 | 0.619 | **0.534** [0.498, 0.574] | 0.538 |
+| Original ranking + MiniLM | 0.427 | 0.606 | **0.551** [0.515, 0.589] | 0.544 |
+| LSA dense | 0.394 | 0.621 | **0.537** [0.498, 0.577] | 0.539 |
+| MiniLM dense | 0.403 | 0.594 | **0.525** [0.491, 0.561] | 0.511 |
+| BM25 | 0.506 | 0.719 | **0.628** [0.599, 0.661] | 0.621 |
+| **Hybrid BM25 + MiniLM (deployed)** | **0.539** | **0.772** | **0.666** [0.637, 0.696] | **0.656** |
+| Hybrid BM25 + LSA | 0.530 | 0.736 | **0.648** [0.614, 0.684] | 0.640 |
+
+Settings chosen on validation: weighted fusion of min-max-normalised scores, dense weight 0.5, category-intent boost 0.1.
+Hybrid retrieval improves MRR@10 from 0.534 to 0.666 (+0.13) and Hit@3 from 0.62 to 0.77. Interesting detail: on
+these long contracts MiniLM alone is *not* better than LSA or BM25 — it is the combination that helps.
+
+**"Not found" answers** (unanswerable = the clause type does not occur in that contract):
+
+| System | Says "not found" when unanswerable | Answers when answerable | Balanced accuracy | End-to-end correct |
+|---|---|---|---|---|
+| Original ranking (LSA) | 0.032 | 1.000 | 0.516 | 0.172 |
+| Hybrid + calibrated answerability (deployed) | **0.410** | 0.904 | **0.657** | **0.485** |
+
+The original system almost never says "not found" (3%), so for unanswerable questions it quotes unrelated clauses.
+The deployed logistic answerability model (top cosine, top BM25 per query term, query-term coverage; ROC-AUC 0.789 on
+test) was set to keep answering ≥ 90% of answerable validation questions. End-to-end correct = "not found" for
+unanswerable questions, a relevant clause in the top 3 for answerable ones.
+
+## 4. Extractive key sentences
+
+Not scored (there are no reference summaries for these contracts). Tests check that every key sentence is quoted
+verbatim from a non-preamble clause and returned in document order.
+
+## 5. Sample documents: fallback vs upgraded configuration
+
+`scripts/compare_sample_documents.py` analyses every raw document twice (full table in
+[RESULTS.md](../reports/evaluation/RESULTS.md)):
+
+* **Synthetic Indian samples: unchanged risk profiles** — e.g. the balanced lease and offer letter still have
+  0 HIGH / 0 MEDIUM clauses; the one-sided employment agreement keeps 6 HIGH / 2 MEDIUM. The detector adds evidence
+  (e.g. *Non-Compete*, *Termination For Convenience*) to clauses the rules already flagged, and only informational
+  (LOW) items to the balanced documents.
+* **Real CUAD contracts: new MEDIUM flags** for clause types the rules never covered — e.g. the endorsement agreement
+  goes from 0 to 5 MEDIUM (exclusivity, minimum commitment, non-compete), the distributor agreement from 2 to 6.
+* One contract's HIGH count fell from 2 to 1. Not the detector (it can never lower a level): the Logistic Regression
+  classifier had labelled a payment-notice clause ("…notify THI … sixty (60) days before the IP Cost is due") as
+  *Termination*, which wrongly fired the short-notice rule; the ensemble correctly labels it *Payment*.
 
 ## Automated tests
 
-TESTS_PLACEHOLDER
+`python -m pytest backend/tests` — **88 passed, 2 skipped** (the 2 OCR tests: Tesseract is not installed here), in
+about 50 s on the GPU machine. The same 88 pass with the LSA embedding fallback (`EMBEDDING_BACKEND=lsa`). Before the
+upgrade, the unchanged code on this machine gave 64 passed, 1 failed, 2 skipped: the comparison test failed because
+sentence-transformers was installed, so MiniLM embeddings were used with a similarity cut-off tuned for LSA (now
+per-backend).
+
+New tests (23): `test_transformer_models.py` (models load with the expected labels, valid probabilities, ensemble
+weights from validation, save/load round trip in float16, missing model → Logistic Regression, disabled by
+configuration, inference failure → fallback, risk-merge policy incl. mutual wording and "never lowers a rule level"),
+`test_retrieval.py` (tokenizer, BM25 edge cases, fusion, legacy mode, calibrated and uncalibrated "not found", the
+notice-period / pet-ownership questions on the sample agreement, extractive summary), and in `test_api.py` empty and
+unreadable files, unsupported formats, model information and key sentences in the analysis, a full analysis without
+the Transformer models, and rules-only mode.
 
 ## Limitations (please state these in the report/viva)
 
@@ -56,9 +196,11 @@ TESTS_PLACEHOLDER
    is expected; the comparison shows what the learned detector adds, not that the rules are wrong for their purpose.
 5. **"Not found" is calibrated on CUAD's questions**, which are long and formulaic; users ask short questions. The
    operating point favours answering (≥ 90% of answerable validation questions are answered), and documents with
-   fewer than 5 clauses use the original overlap rule. On the project's sample documents the decision was checked by
-   hand on 20 questions; one clear miss was "How long does confidentiality last?" in the NDA, whose answer ("continue
-   indefinitely") shares no words with the question.
+   fewer than 5 clauses use the original overlap rule. On the project's sample documents 20 questions with an obvious
+   expected outcome were checked by hand: 18 behaved as expected. The two misses show the trade-off — "How long does
+   confidentiality last?" got "not found" although the NDA says the obligations "continue indefinitely" (no shared
+   words), and "Can I work from home?" was answered with the Working Hours clause although the document says nothing
+   about working from home.
 6. **No summary quality score.** There are no reference summaries for these contracts, so the extractive key sentences
    cannot be scored with ROUGE; they are quoted verbatim (nothing is generated) and shown with links to their clauses.
 7. **No LLM was used in testing.** Generation via Anthropic / OpenAI-compatible / Ollama is implemented and tested with

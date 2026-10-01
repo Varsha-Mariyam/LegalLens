@@ -7,6 +7,11 @@ from pathlib import Path
 TMP = Path(tempfile.mkdtemp(prefix="legallens_test_"))
 os.environ["DATABASE_URL"] = f"sqlite:///{(TMP / 'test.db').as_posix()}"
 os.environ["LLM_PROVIDER"] = "none"
+# Tests describe the default configuration; fallbacks are tested explicitly (monkeypatch), so a developer's .env must
+# not switch them on for the whole suite.
+os.environ["CLASSIFIER_BACKEND"] = "auto"
+os.environ["RISK_MODEL"] = "auto"
+os.environ["QA_RETRIEVAL"] = "hybrid"
 os.environ["REDIS_URL"] = ""
 os.environ["SECRET_KEY"] = "test-secret"
 ROOT = Path(__file__).resolve().parents[2]
