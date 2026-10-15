@@ -86,12 +86,6 @@ export default function SystemStatus() {
               </tbody>
             </table>
           </div>
-          <p className="muted small metrics-note">
-            {m.dataset === "contract_split"
-              ? `${m.test_size} test clauses from ${m.test_contracts} contracts never seen in training (split by contract); metrics are computed from the deployed model's own predictions. Gold labels = CUAD expert annotations (heading-derived weak labels excluded). Full report, including the comparison with other methods: ${m.report}.`
-              : "Gold labels = project-authored seed clauses and CUAD expert annotations (heading-derived weak labels excluded)."}
-          </p>
-
           {m.risk_detector && (
             <>
               <h2>Risk detector evaluation (12 CUAD clause types)</h2>
