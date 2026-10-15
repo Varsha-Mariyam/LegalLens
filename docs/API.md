@@ -36,7 +36,7 @@ and `/api/standards/{type}` need `Authorization: Bearer <token>`. Documents belo
 | clause `risk_evidence[]` | items with `kind: "model"`, `rule: "model:<type>"`, `probability` | learned risk-detector detections; `risk_method` ends with `+ learned detector` when it ran |
 | `analysis_meta` | `risk_detector {used, base_model, labels, detections}`, `qa_retrieval`, `extractive_summary [{clause_number, clause_label, category, sentence, centrality}]`, `classifier {primary, transformer, ...}` | how this analysis was produced; key sentences quoted from the document |
 | Q&A `sources[]` | `dense`, `bm25` | the two retrieval scores behind each cited clause; `method` names the retriever, e.g. `extractive answer (no LLM configured) · hybrid retrieval (BM25 + sbert-all-MiniLM-L6-v2)` |
-| `/api/system/status` | `risk_detector`, `qa_retrieval {mode, fusion, alpha, category_boost, calibrated_not_found}`, `classifier_metrics.{risk_detector, retrieval, answerability}` | component status and test-set evaluation summary |
+| `/api/system/status` | `risk_detector`, `qa_retrieval {mode, fusion, alpha, category_boost, calibrated_not_found}`, `classifier_metrics.{model, classifier, risk_detector, retrieval, answerability}` (deployed fine-tuned MiniLM models only) | component status and test-set evaluation summary |
 
 Empty or unreadable files: an empty upload is rejected with 422; a file whose text cannot be read (blank text, corrupt
 PDF, scanned image without Tesseract) is accepted (202) and its status becomes `failed` with the reason in `error`.

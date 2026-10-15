@@ -606,12 +606,46 @@ def training_history(task: str) -> dict:
             "training": cfg.get("training", {}), "validation": cfg.get("validation_metrics")}
 
 
+DEPLOYED_CLASSIFIER = "transformer_minilm"
+UI_METRICS_FILE = "classifier_metrics.json"
+
+
+def write_ui_metrics(metrics: dict) -> None:
+    """models/classifier_metrics.json for the System page: the deployed fine-tuned MiniLM models only (clause
+    classifier and risk detector), scored on their own test-set predictions. All other methods stay in
+    reports/evaluation/metrics.json for comparison."""
+    cls, risk, ret = metrics["classification"], metrics["risk"], metrics["retrieval"]
+    c = cls["methods"][DEPLOYED_CLASSIFIER]
+    info = cls["transformer_models"].get(DEPLOYED_CLASSIFIER, {})
+    r = risk["methods"][DEPLOYED_CLASSIFIER]
+    ui = {"trained_at": metrics["created_at"], "dataset": "contract_split", "split": metrics["dataset_card"]["split_method"],
+          "train_size": cls["train_size"], "test_size": cls["test_size"], "gold_test_size": cls["gold_test_size"],
+          "test_contracts": cls["test_contracts"],
+          "model": DEPLOYED_CLASSIFIER, "model_name": "Fine-tuned MiniLM Transformer",
+          "base_model": info.get("base_model", MINILM),
+          "classifier": {**{k: c["all"][k] for k in ("n", "accuracy", "accuracy_ci95", "macro_precision", "macro_recall",
+                                                    "macro_f1", "macro_f1_ci95", "weighted_f1", "confusion_matrix")},
+                         "per_class": {k: c["all"]["per_class"][k] for k in LABELS},  # categories only (no sklearn averages)
+                         "gold_only": {k: c["gold_only"][k] for k in ("n", "accuracy", "macro_f1")}},
+          "risk_detector": {k: r[k] for k in ("micro_precision", "micro_recall", "micro_f1", "micro_f1_ci95", "macro_f1",
+                                               "macro_roc_auc", "macro_average_precision", "per_label") if k in r},
+          "retrieval": {report_figures.RANKERS.get(k, k): v["test"] for k, v in ret["rankers"].items()},
+          "answerability": ret["decisions"], "report": "reports/evaluation/RESULTS.md"}
+    (settings.MODELS_DIR / UI_METRICS_FILE).write_text(json.dumps(ui, indent=2), encoding="utf-8")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--bootstrap", type=int, default=1000)
     ap.add_argument("--skip-speed", action="store_true")
+    ap.add_argument("--ui-only", action="store_true",
+                    help="only rewrite models/classifier_metrics.json from the existing reports/evaluation/metrics.json")
     args = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
+    if args.ui_only:
+        write_ui_metrics(json.loads((OUT / "metrics.json").read_text(encoding="utf-8")))
+        print(f"[done] models/{UI_METRICS_FILE} rewritten from {OUT / 'metrics.json'}")
+        return
     t0 = time.time()
     lsa_corpus = [r["clause"] for r in read_csv("clause_train.csv")] + [r["text"] for r in read_csv("risk_train.csv")]
     enc = Encoders(lsa_corpus)
@@ -630,22 +664,7 @@ def main() -> None:
                "bootstrap_resamples": args.bootstrap, "seconds": round(time.time() - t0)}
     (OUT / "metrics.json").write_text(json.dumps(metrics, indent=1), encoding="utf-8")
 
-    # System page / backwards-compatible summary
-    ui = {"trained_at": metrics["created_at"], "dataset": "contract_split", "split": card["split_method"],
-          "train_size": cls["train_size"], "test_size": cls["test_size"], "gold_test_size": cls["gold_test_size"],
-          "test_contracts": cls["test_contracts"], "embedding_backend": "see method names",
-          "methods": {k: {"all": {kk: v["all"][kk] for kk in ("accuracy", "macro_f1", "macro_precision", "macro_recall",
-                                                               "accuracy_ci95", "macro_f1_ci95", "per_class", "confusion_matrix", "n")}
-                          | ({"roc_auc_macro_ovr": v["all"]["roc_auc_macro_ovr"]} if "roc_auc_macro_ovr" in v["all"] else {}),
-                          "gold_only": {kk: v["gold_only"][kk] for kk in ("accuracy", "macro_f1", "n")}}
-                      for k, v in cls["methods"].items()},
-          "deployed_model": next((k for k, v in cls["transformer_models"].items() if v.get("deployed")), "tfidf_logreg"),
-          "fallback_model": "tfidf_logreg", "paired_bootstrap": cls["paired_bootstrap"],
-          "risk_detector": {k: {kk: v[kk] for kk in ("micro_f1", "macro_f1", "macro_roc_auc", "macro_average_precision") if kk in v}
-                            for k, v in risk["methods"].items()},
-          "retrieval": {report_figures.RANKERS.get(k, k): v["test"] for k, v in ret["rankers"].items()},
-          "answerability": ret["decisions"], "report": "reports/evaluation/RESULTS.md"}
-    (settings.MODELS_DIR / "classifier_metrics.json").write_text(json.dumps(ui, indent=2), encoding="utf-8")
+    write_ui_metrics(metrics)
     report_figures.make_all(metrics, preds, y_true, OUT)
     report_figures.write_markdown(metrics, OUT / "RESULTS.md")
     print(f"[done] {OUT} ({metrics['seconds']}s)")

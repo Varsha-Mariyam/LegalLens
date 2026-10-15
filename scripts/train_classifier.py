@@ -7,13 +7,14 @@ Evaluates, on the same held-out test split:
   * TF-IDF + Linear SVM
 Saves the Logistic Regression pipeline (it provides probabilities for confidence scores) to
 models/clause_classifier.joblib — the fallback when the fine-tuned Transformer is unavailable — and all metrics to
-models/classifier_metrics.json. Metrics are reported overall and on the gold-label subset (CUAD expert labels),
+models/classifier_fallback_metrics.json (the System page shows models/classifier_metrics.json, the deployed Transformer's
+metrics written by scripts/evaluate_models.py). Metrics are reported overall and on the gold-label subset (CUAD expert labels),
 excluding heading-derived weak labels, so the weak labels cannot inflate the reported numbers.
 
 Datasets (--dataset):
   contract_split (default)  data/datasets/contract_split/, split by contract (scripts/prepare_datasets.py)
   legacy                    the original random clause-level split (data/datasets/clause_train.csv / clause_test.csv)
-Hyper-parameters are fixed (no tuning on the test split). scripts/evaluate_models.py adds the Transformer to the report.
+Hyper-parameters are fixed (no tuning on the test split). scripts/evaluate_models.py compares all methods with the Transformer.
 """
 from __future__ import annotations
 
@@ -98,9 +99,11 @@ def main() -> None:
 
     final = models["logreg"]
     joblib.dump(final, settings.MODELS_DIR / "clause_classifier.joblib")
-    report["deployed_model"] = "tfidf_logreg"
-    (settings.MODELS_DIR / "classifier_metrics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
-    print("saved models/clause_classifier.joblib and models/classifier_metrics.json")
+    report["role"] = "fallback (used only when the fine-tuned Transformer cannot be loaded)"
+    # Written to a separate file so that re-training the fallback never overwrites the deployed Transformer's
+    # metrics (models/classifier_metrics.json, written by scripts/evaluate_models.py and shown on the System page).
+    (settings.MODELS_DIR / "classifier_fallback_metrics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    print("saved models/clause_classifier.joblib and models/classifier_fallback_metrics.json")
     classifier.reload_model()
 
 

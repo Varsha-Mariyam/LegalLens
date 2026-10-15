@@ -1,18 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../api.js";
 
-const METHOD_NAMES = {
-  keyword_baseline: "Keyword baseline",
-  embedding_similarity: "Embedding similarity",
-  embedding_similarity_lsa: "Embedding similarity (LSA)",
-  embedding_similarity_minilm: "Embedding similarity (MiniLM)",
-  tfidf_logreg: "TF-IDF + Logistic Regression",
-  tfidf_linear_svm: "TF-IDF + Linear SVM",
-  transformer_minilm: "Fine-tuned MiniLM Transformer",
-  ensemble_minilm_logreg: "Ensemble: fine-tuned MiniLM + TF-IDF Logistic Regression",
-  tfidf_logreg_ovr: "TF-IDF + Logistic Regression (one-vs-rest)",
-};
-const methodName = (k) => METHOD_NAMES[k] || (k.startsWith("transformer_") ? `Fine-tuned ${k.slice(12)} (experiment, not in use)` : k);
 const fmt = (x) => (typeof x === "number" ? x.toFixed(3) : "–");
 const ci = (c) => (Array.isArray(c) ? `${c[0].toFixed(3)}–${c[1].toFixed(3)}` : "–");
 
@@ -82,26 +70,50 @@ export default function SystemStatus() {
       </table>
       <button className="secondary" onClick={reindex} disabled={busy}>{busy ? "Rebuilding…" : "Rebuild knowledge index"}</button>
 
-      {m && (
+      {m?.classifier && (
         <section>
           <h2>Classifier evaluation (held-out test {m.dataset === "contract_split" ? "contracts" : "set"})</h2>
           <div className="table-wrap">
             <table className="metrics">
-              <thead><tr><th>Method</th><th>Accuracy</th><th>Macro F1</th><th>95% CI (macro F1)</th><th>Gold-label accuracy</th><th>Gold-label macro F1</th></tr></thead>
+              <thead><tr><th>Model</th><th>Accuracy</th><th>Macro precision</th><th>Macro recall</th><th>Macro F1</th><th>95% CI (macro F1)</th><th>Gold-label accuracy</th><th>Gold-label macro F1</th></tr></thead>
               <tbody>
-                {Object.entries(m.methods || {}).sort((a, b) => b[1].all.macro_f1 - a[1].all.macro_f1).map(([k, v]) => (
-                  <tr key={k}>
-                    <td className={k === m.deployed_model ? "best" : ""}>{methodName(k)}{k === m.deployed_model ? " (in use)" : ""}</td>
-                    <td>{fmt(v.all?.accuracy)}</td><td>{fmt(v.all?.macro_f1)}</td><td>{ci(v.all?.macro_f1_ci95)}</td>
-                    <td>{fmt(v.gold_only?.accuracy)}</td><td>{fmt(v.gold_only?.macro_f1)}</td>
-                  </tr>
+                <tr>
+                  <td className="best">{m.model_name} ({m.base_model})</td>
+                  <td>{fmt(m.classifier.accuracy)}</td><td>{fmt(m.classifier.macro_precision)}</td><td>{fmt(m.classifier.macro_recall)}</td>
+                  <td>{fmt(m.classifier.macro_f1)}</td><td>{ci(m.classifier.macro_f1_ci95)}</td>
+                  <td>{fmt(m.classifier.gold_only?.accuracy)}</td><td>{fmt(m.classifier.gold_only?.macro_f1)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="table-wrap">
+            <table className="metrics">
+              <thead><tr><th>Category</th><th>Precision</th><th>Recall</th><th>F1</th><th>Test clauses</th></tr></thead>
+              <tbody>
+                {Object.entries(m.classifier.per_class || {}).map(([k, v]) => (
+                  <tr key={k}><td>{k}</td><td>{fmt(v.precision)}</td><td>{fmt(v.recall)}</td><td>{fmt(v["f1-score"])}</td><td>{v.support}</td></tr>
                 ))}
               </tbody>
             </table>
           </div>
+          {m.classifier.confusion_matrix && (
+            <div className="table-wrap">
+              <table className="metrics">
+                <thead><tr><th>Actual ↓ / predicted →</th>{m.classifier.confusion_matrix.labels.map((l) => <th key={l}>{l}</th>)}</tr></thead>
+                <tbody>
+                  {m.classifier.confusion_matrix.matrix.map((row, i) => (
+                    <tr key={m.classifier.confusion_matrix.labels[i]}>
+                      <td>{m.classifier.confusion_matrix.labels[i]}</td>
+                      {row.map((n, j) => <td key={j} className={i === j ? "best" : ""}>{n}</td>)}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
           <p className="muted small metrics-note">
             {m.dataset === "contract_split"
-              ? `${m.test_size} test clauses from ${m.test_contracts} contracts never seen in training (split by contract). Gold labels = CUAD expert annotations (heading-derived weak labels excluded). Full report: ${m.report}.`
+              ? `${m.test_size} test clauses from ${m.test_contracts} contracts never seen in training (split by contract); metrics are computed from the deployed model's own predictions. Gold labels = CUAD expert annotations (heading-derived weak labels excluded). Full report, including the comparison with other methods: ${m.report}.`
               : "Gold labels = project-authored seed clauses and CUAD expert annotations (heading-derived weak labels excluded)."}
           </p>
 
@@ -110,11 +122,14 @@ export default function SystemStatus() {
               <h2>Risk detector evaluation (12 CUAD clause types)</h2>
               <div className="table-wrap">
                 <table className="metrics">
-                  <thead><tr><th>Method</th><th>Micro F1</th><th>Macro F1</th><th>Macro ROC-AUC</th><th>Macro average precision</th></tr></thead>
+                  <thead><tr><th>Model</th><th>Micro precision</th><th>Micro recall</th><th>Micro F1</th><th>95% CI (micro F1)</th><th>Macro F1</th><th>Macro ROC-AUC</th><th>Macro average precision</th></tr></thead>
                   <tbody>
-                    {Object.entries(m.risk_detector).map(([k, v]) => (
-                      <tr key={k}><td>{methodName(k)}</td><td>{fmt(v.micro_f1)}</td><td>{fmt(v.macro_f1)}</td><td>{fmt(v.macro_roc_auc)}</td><td>{fmt(v.macro_average_precision)}</td></tr>
-                    ))}
+                    <tr>
+                      <td className="best">{m.model_name} ({m.base_model})</td>
+                      <td>{fmt(m.risk_detector.micro_precision)}</td><td>{fmt(m.risk_detector.micro_recall)}</td><td>{fmt(m.risk_detector.micro_f1)}</td>
+                      <td>{ci(m.risk_detector.micro_f1_ci95)}</td><td>{fmt(m.risk_detector.macro_f1)}</td>
+                      <td>{fmt(m.risk_detector.macro_roc_auc)}</td><td>{fmt(m.risk_detector.macro_average_precision)}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

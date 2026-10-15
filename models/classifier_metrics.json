@@ -6,1138 +6,236 @@
   "test_size": 1463,
   "gold_test_size": 1121,
   "test_contracts": 75,
-  "embedding_backend": "see method names",
-  "methods": {
-    "keyword_baseline": {
-      "all": {
-        "accuracy": 0.6576,
-        "macro_f1": 0.6943,
-        "macro_precision": 0.6915,
-        "macro_recall": 0.7412,
-        "accuracy_ci95": [
-          0.6173,
-          0.6966
+  "model": "transformer_minilm",
+  "model_name": "Fine-tuned MiniLM Transformer",
+  "base_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "classifier": {
+    "n": 1463,
+    "accuracy": 0.8968,
+    "accuracy_ci95": [
+      0.8668,
+      0.9231
+    ],
+    "macro_precision": 0.8899,
+    "macro_recall": 0.8808,
+    "macro_f1": 0.8839,
+    "macro_f1_ci95": [
+      0.8519,
+      0.9125
+    ],
+    "weighted_f1": 0.8973,
+    "confusion_matrix": {
+      "labels": [
+        "Payment",
+        "Confidentiality",
+        "Termination",
+        "Liability",
+        "Dispute",
+        "Others"
+      ],
+      "matrix": [
+        [
+          173,
+          0,
+          6,
+          5,
+          0,
+          5
         ],
-        "macro_f1_ci95": [
-          0.6523,
-          0.7291
+        [
+          0,
+          47,
+          4,
+          2,
+          2,
+          6
         ],
-        "per_class": {
-          "Payment": {
-            "precision": 0.3813,
-            "recall": 0.7566,
-            "f1-score": 0.5071,
-            "support": 189.0
-          },
-          "Confidentiality": {
-            "precision": 0.6098,
-            "recall": 0.8197,
-            "f1-score": 0.6993,
-            "support": 61.0
-          },
-          "Termination": {
-            "precision": 0.5811,
-            "recall": 0.7544,
-            "f1-score": 0.6565,
-            "support": 228.0
-          },
-          "Liability": {
-            "precision": 0.8026,
-            "recall": 0.601,
-            "f1-score": 0.6873,
-            "support": 203.0
-          },
-          "Dispute": {
-            "precision": 0.9512,
-            "recall": 0.975,
-            "f1-score": 0.963,
-            "support": 120.0
-          },
-          "Others": {
-            "precision": 0.823,
-            "recall": 0.5408,
-            "f1-score": 0.6527,
-            "support": 662.0
-          },
-          "accuracy": 0.6576,
-          "macro avg": {
-            "precision": 0.6915,
-            "recall": 0.7412,
-            "f1-score": 0.6943,
-            "support": 1463.0
-          },
-          "weighted avg": {
-            "precision": 0.727,
-            "recall": 0.6576,
-            "f1-score": 0.6667,
-            "support": 1463.0
-          }
-        },
-        "confusion_matrix": {
-          "labels": [
-            "Payment",
-            "Confidentiality",
-            "Termination",
-            "Liability",
-            "Dispute",
-            "Others"
-          ],
-          "matrix": [
-            [
-              143,
-              0,
-              12,
-              2,
-              0,
-              32
-            ],
-            [
-              1,
-              50,
-              1,
-              0,
-              0,
-              9
-            ],
-            [
-              31,
-              3,
-              172,
-              2,
-              1,
-              19
-            ],
-            [
-              49,
-              3,
-              12,
-              122,
-              1,
-              16
-            ],
-            [
-              1,
-              0,
-              1,
-              0,
-              117,
-              1
-            ],
-            [
-              150,
-              26,
-              98,
-              26,
-              4,
-              358
-            ]
-          ]
-        },
-        "n": 1463
+        [
+          7,
+          0,
+          196,
+          6,
+          0,
+          19
+        ],
+        [
+          9,
+          1,
+          16,
+          170,
+          0,
+          7
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          118,
+          1
+        ],
+        [
+          15,
+          5,
+          28,
+          6,
+          0,
+          608
+        ]
+      ]
+    },
+    "per_class": {
+      "Payment": {
+        "precision": 0.848,
+        "recall": 0.9153,
+        "f1-score": 0.8804,
+        "support": 189.0
       },
-      "gold_only": {
-        "accuracy": 0.6075,
-        "macro_f1": 0.6397,
-        "n": 1121
+      "Confidentiality": {
+        "precision": 0.8868,
+        "recall": 0.7705,
+        "f1-score": 0.8246,
+        "support": 61.0
+      },
+      "Termination": {
+        "precision": 0.7809,
+        "recall": 0.8596,
+        "f1-score": 0.8184,
+        "support": 228.0
+      },
+      "Liability": {
+        "precision": 0.8995,
+        "recall": 0.8374,
+        "f1-score": 0.8673,
+        "support": 203.0
+      },
+      "Dispute": {
+        "precision": 0.9833,
+        "recall": 0.9833,
+        "f1-score": 0.9833,
+        "support": 120.0
+      },
+      "Others": {
+        "precision": 0.9412,
+        "recall": 0.9184,
+        "f1-score": 0.9297,
+        "support": 662.0
       }
     },
-    "embedding_similarity_lsa": {
-      "all": {
-        "accuracy": 0.4949,
-        "macro_f1": 0.5219,
-        "macro_precision": 0.4873,
-        "macro_recall": 0.6517,
-        "accuracy_ci95": [
-          0.4571,
-          0.5355
-        ],
-        "macro_f1_ci95": [
-          0.4825,
-          0.5573
-        ],
-        "per_class": {
-          "Payment": {
-            "precision": 0.4032,
-            "recall": 0.5397,
-            "f1-score": 0.4615,
-            "support": 189.0
-          },
-          "Confidentiality": {
-            "precision": 0.3828,
-            "recall": 0.8033,
-            "f1-score": 0.5185,
-            "support": 61.0
-          },
-          "Termination": {
-            "precision": 0.4444,
-            "recall": 0.5965,
-            "f1-score": 0.5094,
-            "support": 228.0
-          },
-          "Liability": {
-            "precision": 0.5153,
-            "recall": 0.7488,
-            "f1-score": 0.6104,
-            "support": 203.0
-          },
-          "Dispute": {
-            "precision": 0.5022,
-            "recall": 0.9667,
-            "f1-score": 0.661,
-            "support": 120.0
-          },
-          "Others": {
-            "precision": 0.676,
-            "recall": 0.2553,
-            "f1-score": 0.3706,
-            "support": 662.0
-          },
-          "accuracy": 0.4949,
-          "macro avg": {
-            "precision": 0.4873,
-            "recall": 0.6517,
-            "f1-score": 0.5219,
-            "support": 1463.0
-          },
-          "weighted avg": {
-            "precision": 0.5559,
-            "recall": 0.4949,
-            "f1-score": 0.4672,
-            "support": 1463.0
-          }
-        },
-        "confusion_matrix": {
-          "labels": [
-            "Payment",
-            "Confidentiality",
-            "Termination",
-            "Liability",
-            "Dispute",
-            "Others"
-          ],
-          "matrix": [
-            [
-              102,
-              4,
-              29,
-              18,
-              7,
-              29
-            ],
-            [
-              2,
-              49,
-              1,
-              3,
-              0,
-              6
-            ],
-            [
-              20,
-              14,
-              136,
-              15,
-              4,
-              39
-            ],
-            [
-              20,
-              3,
-              14,
-              152,
-              9,
-              5
-            ],
-            [
-              0,
-              0,
-              2,
-              0,
-              116,
-              2
-            ],
-            [
-              109,
-              58,
-              124,
-              107,
-              95,
-              169
-            ]
-          ]
-        },
-        "n": 1463,
-        "roc_auc_macro_ovr": 0.8117
-      },
-      "gold_only": {
-        "accuracy": 0.4184,
-        "macro_f1": 0.4501,
-        "n": 1121
-      }
-    },
-    "embedding_similarity_minilm": {
-      "all": {
-        "accuracy": 0.6138,
-        "macro_f1": 0.5921,
-        "macro_precision": 0.5992,
-        "macro_recall": 0.6322,
-        "accuracy_ci95": [
-          0.5841,
-          0.6443
-        ],
-        "macro_f1_ci95": [
-          0.5479,
-          0.6346
-        ],
-        "per_class": {
-          "Payment": {
-            "precision": 0.6715,
-            "recall": 0.4868,
-            "f1-score": 0.5644,
-            "support": 189.0
-          },
-          "Confidentiality": {
-            "precision": 0.3543,
-            "recall": 0.7377,
-            "f1-score": 0.4787,
-            "support": 61.0
-          },
-          "Termination": {
-            "precision": 0.5474,
-            "recall": 0.7851,
-            "f1-score": 0.645,
-            "support": 228.0
-          },
-          "Liability": {
-            "precision": 0.6245,
-            "recall": 0.7537,
-            "f1-score": 0.683,
-            "support": 203.0
-          },
-          "Dispute": {
-            "precision": 0.7179,
-            "recall": 0.4667,
-            "f1-score": 0.5657,
-            "support": 120.0
-          },
-          "Others": {
-            "precision": 0.6794,
-            "recall": 0.5634,
-            "f1-score": 0.616,
-            "support": 662.0
-          },
-          "accuracy": 0.6138,
-          "macro avg": {
-            "precision": 0.5992,
-            "recall": 0.6322,
-            "f1-score": 0.5921,
-            "support": 1463.0
-          },
-          "weighted avg": {
-            "precision": 0.6398,
-            "recall": 0.6138,
-            "f1-score": 0.6133,
-            "support": 1463.0
-          }
-        },
-        "confusion_matrix": {
-          "labels": [
-            "Payment",
-            "Confidentiality",
-            "Termination",
-            "Liability",
-            "Dispute",
-            "Others"
-          ],
-          "matrix": [
-            [
-              92,
-              2,
-              15,
-              18,
-              3,
-              59
-            ],
-            [
-              0,
-              45,
-              5,
-              2,
-              1,
-              8
-            ],
-            [
-              4,
-              3,
-              179,
-              3,
-              0,
-              39
-            ],
-            [
-              6,
-              4,
-              24,
-              153,
-              1,
-              15
-            ],
-            [
-              0,
-              3,
-              4,
-              2,
-              56,
-              55
-            ],
-            [
-              35,
-              70,
-              100,
-              67,
-              17,
-              373
-            ]
-          ]
-        },
-        "n": 1463,
-        "roc_auc_macro_ovr": 0.8002
-      },
-      "gold_only": {
-        "accuracy": 0.57,
-        "macro_f1": 0.5268,
-        "n": 1121
-      }
-    },
-    "tfidf_logreg": {
-      "all": {
-        "accuracy": 0.8859,
-        "macro_f1": 0.8727,
-        "macro_precision": 0.901,
-        "macro_recall": 0.851,
-        "accuracy_ci95": [
-          0.8591,
-          0.9097
-        ],
-        "macro_f1_ci95": [
-          0.8422,
-          0.8999
-        ],
-        "per_class": {
-          "Payment": {
-            "precision": 0.8281,
-            "recall": 0.8413,
-            "f1-score": 0.8346,
-            "support": 189.0
-          },
-          "Confidentiality": {
-            "precision": 0.9362,
-            "recall": 0.7213,
-            "f1-score": 0.8148,
-            "support": 61.0
-          },
-          "Termination": {
-            "precision": 0.8083,
-            "recall": 0.8509,
-            "f1-score": 0.8291,
-            "support": 228.0
-          },
-          "Liability": {
-            "precision": 0.9505,
-            "recall": 0.8522,
-            "f1-score": 0.8987,
-            "support": 203.0
-          },
-          "Dispute": {
-            "precision": 0.9909,
-            "recall": 0.9083,
-            "f1-score": 0.9478,
-            "support": 120.0
-          },
-          "Others": {
-            "precision": 0.8916,
-            "recall": 0.932,
-            "f1-score": 0.9114,
-            "support": 662.0
-          },
-          "accuracy": 0.8859,
-          "macro avg": {
-            "precision": 0.901,
-            "recall": 0.851,
-            "f1-score": 0.8727,
-            "support": 1463.0
-          },
-          "weighted avg": {
-            "precision": 0.8886,
-            "recall": 0.8859,
-            "f1-score": 0.8858,
-            "support": 1463.0
-          }
-        },
-        "confusion_matrix": {
-          "labels": [
-            "Payment",
-            "Confidentiality",
-            "Termination",
-            "Liability",
-            "Dispute",
-            "Others"
-          ],
-          "matrix": [
-            [
-              159,
-              0,
-              9,
-              1,
-              0,
-              20
-            ],
-            [
-              0,
-              44,
-              1,
-              2,
-              0,
-              14
-            ],
-            [
-              7,
-              0,
-              194,
-              3,
-              1,
-              23
-            ],
-            [
-              9,
-              0,
-              12,
-              173,
-              0,
-              9
-            ],
-            [
-              1,
-              0,
-              1,
-              0,
-              109,
-              9
-            ],
-            [
-              16,
-              3,
-              23,
-              3,
-              0,
-              617
-            ]
-          ]
-        },
-        "n": 1463,
-        "roc_auc_macro_ovr": 0.9768
-      },
-      "gold_only": {
-        "accuracy": 0.9072,
-        "macro_f1": 0.8927,
-        "n": 1121
-      }
-    },
-    "tfidf_linear_svm": {
-      "all": {
-        "accuracy": 0.8954,
-        "macro_f1": 0.8851,
-        "macro_precision": 0.915,
-        "macro_recall": 0.8625,
-        "accuracy_ci95": [
-          0.8657,
-          0.9228
-        ],
-        "macro_f1_ci95": [
-          0.8556,
-          0.9109
-        ],
-        "per_class": {
-          "Payment": {
-            "precision": 0.8571,
-            "recall": 0.8254,
-            "f1-score": 0.841,
-            "support": 189.0
-          },
-          "Confidentiality": {
-            "precision": 0.9783,
-            "recall": 0.7377,
-            "f1-score": 0.8411,
-            "support": 61.0
-          },
-          "Termination": {
-            "precision": 0.8151,
-            "recall": 0.8509,
-            "f1-score": 0.8326,
-            "support": 228.0
-          },
-          "Liability": {
-            "precision": 0.9609,
-            "recall": 0.8473,
-            "f1-score": 0.9005,
-            "support": 203.0
-          },
-          "Dispute": {
-            "precision": 0.9831,
-            "recall": 0.9667,
-            "f1-score": 0.9748,
-            "support": 120.0
-          },
-          "Others": {
-            "precision": 0.8957,
-            "recall": 0.9471,
-            "f1-score": 0.9207,
-            "support": 662.0
-          },
-          "accuracy": 0.8954,
-          "macro avg": {
-            "precision": 0.915,
-            "recall": 0.8625,
-            "f1-score": 0.8851,
-            "support": 1463.0
-          },
-          "weighted avg": {
-            "precision": 0.8978,
-            "recall": 0.8954,
-            "f1-score": 0.895,
-            "support": 1463.0
-          }
-        },
-        "confusion_matrix": {
-          "labels": [
-            "Payment",
-            "Confidentiality",
-            "Termination",
-            "Liability",
-            "Dispute",
-            "Others"
-          ],
-          "matrix": [
-            [
-              156,
-              0,
-              9,
-              2,
-              1,
-              21
-            ],
-            [
-              0,
-              45,
-              3,
-              1,
-              0,
-              12
-            ],
-            [
-              5,
-              0,
-              194,
-              2,
-              1,
-              26
-            ],
-            [
-              9,
-              0,
-              12,
-              172,
-              0,
-              10
-            ],
-            [
-              0,
-              0,
-              0,
-              0,
-              116,
-              4
-            ],
-            [
-              12,
-              1,
-              20,
-              2,
-              0,
-              627
-            ]
-          ]
-        },
-        "n": 1463,
-        "roc_auc_macro_ovr": 0.976
-      },
-      "gold_only": {
-        "accuracy": 0.9144,
-        "macro_f1": 0.8977,
-        "n": 1121
-      }
-    },
-    "transformer_minilm": {
-      "all": {
-        "accuracy": 0.8968,
-        "macro_f1": 0.8839,
-        "macro_precision": 0.8899,
-        "macro_recall": 0.8808,
-        "accuracy_ci95": [
-          0.8668,
-          0.9231
-        ],
-        "macro_f1_ci95": [
-          0.8519,
-          0.9125
-        ],
-        "per_class": {
-          "Payment": {
-            "precision": 0.848,
-            "recall": 0.9153,
-            "f1-score": 0.8804,
-            "support": 189.0
-          },
-          "Confidentiality": {
-            "precision": 0.8868,
-            "recall": 0.7705,
-            "f1-score": 0.8246,
-            "support": 61.0
-          },
-          "Termination": {
-            "precision": 0.7809,
-            "recall": 0.8596,
-            "f1-score": 0.8184,
-            "support": 228.0
-          },
-          "Liability": {
-            "precision": 0.8995,
-            "recall": 0.8374,
-            "f1-score": 0.8673,
-            "support": 203.0
-          },
-          "Dispute": {
-            "precision": 0.9833,
-            "recall": 0.9833,
-            "f1-score": 0.9833,
-            "support": 120.0
-          },
-          "Others": {
-            "precision": 0.9412,
-            "recall": 0.9184,
-            "f1-score": 0.9297,
-            "support": 662.0
-          },
-          "accuracy": 0.8968,
-          "macro avg": {
-            "precision": 0.8899,
-            "recall": 0.8808,
-            "f1-score": 0.8839,
-            "support": 1463.0
-          },
-          "weighted avg": {
-            "precision": 0.8996,
-            "recall": 0.8968,
-            "f1-score": 0.8973,
-            "support": 1463.0
-          }
-        },
-        "confusion_matrix": {
-          "labels": [
-            "Payment",
-            "Confidentiality",
-            "Termination",
-            "Liability",
-            "Dispute",
-            "Others"
-          ],
-          "matrix": [
-            [
-              173,
-              0,
-              6,
-              5,
-              0,
-              5
-            ],
-            [
-              0,
-              47,
-              4,
-              2,
-              2,
-              6
-            ],
-            [
-              7,
-              0,
-              196,
-              6,
-              0,
-              19
-            ],
-            [
-              9,
-              1,
-              16,
-              170,
-              0,
-              7
-            ],
-            [
-              0,
-              0,
-              1,
-              0,
-              118,
-              1
-            ],
-            [
-              15,
-              5,
-              28,
-              6,
-              0,
-              608
-            ]
-          ]
-        },
-        "n": 1463,
-        "roc_auc_macro_ovr": 0.9801
-      },
-      "gold_only": {
-        "accuracy": 0.9063,
-        "macro_f1": 0.8942,
-        "n": 1121
-      }
-    },
-    "transformer_legal-bert": {
-      "all": {
-        "accuracy": 0.9173,
-        "macro_f1": 0.9086,
-        "macro_precision": 0.9218,
-        "macro_recall": 0.8985,
-        "accuracy_ci95": [
-          0.8917,
-          0.9394
-        ],
-        "macro_f1_ci95": [
-          0.8833,
-          0.9324
-        ],
-        "per_class": {
-          "Payment": {
-            "precision": 0.8814,
-            "recall": 0.9048,
-            "f1-score": 0.893,
-            "support": 189.0
-          },
-          "Confidentiality": {
-            "precision": 0.9608,
-            "recall": 0.8033,
-            "f1-score": 0.875,
-            "support": 61.0
-          },
-          "Termination": {
-            "precision": 0.8163,
-            "recall": 0.8772,
-            "f1-score": 0.8457,
-            "support": 228.0
-          },
-          "Liability": {
-            "precision": 0.9574,
-            "recall": 0.8867,
-            "f1-score": 0.9207,
-            "support": 203.0
-          },
-          "Dispute": {
-            "precision": 0.975,
-            "recall": 0.975,
-            "f1-score": 0.975,
-            "support": 120.0
-          },
-          "Others": {
-            "precision": 0.9398,
-            "recall": 0.9441,
-            "f1-score": 0.942,
-            "support": 662.0
-          },
-          "accuracy": 0.9173,
-          "macro avg": {
-            "precision": 0.9218,
-            "recall": 0.8985,
-            "f1-score": 0.9086,
-            "support": 1463.0
-          },
-          "weighted avg": {
-            "precision": 0.9193,
-            "recall": 0.9173,
-            "f1-score": 0.9176,
-            "support": 1463.0
-          }
-        },
-        "confusion_matrix": {
-          "labels": [
-            "Payment",
-            "Confidentiality",
-            "Termination",
-            "Liability",
-            "Dispute",
-            "Others"
-          ],
-          "matrix": [
-            [
-              171,
-              0,
-              6,
-              2,
-              1,
-              9
-            ],
-            [
-              1,
-              49,
-              3,
-              0,
-              1,
-              7
-            ],
-            [
-              6,
-              0,
-              200,
-              3,
-              0,
-              19
-            ],
-            [
-              6,
-              0,
-              13,
-              180,
-              1,
-              3
-            ],
-            [
-              0,
-              0,
-              0,
-              1,
-              117,
-              2
-            ],
-            [
-              10,
-              2,
-              23,
-              2,
-              0,
-              625
-            ]
-          ]
-        },
-        "n": 1463,
-        "roc_auc_macro_ovr": 0.987
-      },
-      "gold_only": {
-        "accuracy": 0.9322,
-        "macro_f1": 0.9217,
-        "n": 1121
-      }
-    },
-    "ensemble_minilm_logreg": {
-      "all": {
-        "accuracy": 0.9064,
-        "macro_f1": 0.8968,
-        "macro_precision": 0.9172,
-        "macro_recall": 0.8819,
-        "accuracy_ci95": [
-          0.8775,
-          0.9305
-        ],
-        "macro_f1_ci95": [
-          0.8667,
-          0.9216
-        ],
-        "per_class": {
-          "Payment": {
-            "precision": 0.8763,
-            "recall": 0.8995,
-            "f1-score": 0.8877,
-            "support": 189.0
-          },
-          "Confidentiality": {
-            "precision": 0.9583,
-            "recall": 0.7541,
-            "f1-score": 0.844,
-            "support": 61.0
-          },
-          "Termination": {
-            "precision": 0.813,
-            "recall": 0.8772,
-            "f1-score": 0.8439,
-            "support": 228.0
-          },
-          "Liability": {
-            "precision": 0.9341,
-            "recall": 0.8374,
-            "f1-score": 0.8831,
-            "support": 203.0
-          },
-          "Dispute": {
-            "precision": 1.0,
-            "recall": 0.9833,
-            "f1-score": 0.9916,
-            "support": 120.0
-          },
-          "Others": {
-            "precision": 0.9215,
-            "recall": 0.9396,
-            "f1-score": 0.9304,
-            "support": 662.0
-          },
-          "accuracy": 0.9064,
-          "macro avg": {
-            "precision": 0.9172,
-            "recall": 0.8819,
-            "f1-score": 0.8968,
-            "support": 1463.0
-          },
-          "weighted avg": {
-            "precision": 0.9085,
-            "recall": 0.9064,
-            "f1-score": 0.9063,
-            "support": 1463.0
-          }
-        },
-        "confusion_matrix": {
-          "labels": [
-            "Payment",
-            "Confidentiality",
-            "Termination",
-            "Liability",
-            "Dispute",
-            "Others"
-          ],
-          "matrix": [
-            [
-              170,
-              0,
-              7,
-              2,
-              0,
-              10
-            ],
-            [
-              0,
-              46,
-              2,
-              2,
-              0,
-              11
-            ],
-            [
-              5,
-              0,
-              200,
-              3,
-              0,
-              20
-            ],
-            [
-              10,
-              1,
-              12,
-              170,
-              0,
-              10
-            ],
-            [
-              0,
-              0,
-              0,
-              0,
-              118,
-              2
-            ],
-            [
-              9,
-              1,
-              25,
-              5,
-              0,
-              622
-            ]
-          ]
-        },
-        "n": 1463,
-        "roc_auc_macro_ovr": 0.9818
-      },
-      "gold_only": {
-        "accuracy": 0.9224,
-        "macro_f1": 0.9101,
-        "n": 1121
-      }
+    "gold_only": {
+      "n": 1121,
+      "accuracy": 0.9063,
+      "macro_f1": 0.8942
     }
   },
-  "deployed_model": "transformer_minilm",
-  "fallback_model": "tfidf_logreg",
-  "paired_bootstrap": [
-    {
-      "comparison": "transformer_minilm - tfidf_logreg (macro F1, all test clauses)",
-      "observed": 0.0112,
-      "ci95": [
-        -0.0134,
-        0.0335
-      ],
-      "share_of_resamples_not_better": 0.172
-    },
-    {
-      "comparison": "ensemble_minilm_logreg - tfidf_logreg (macro F1, all test clauses)",
-      "observed": 0.0241,
-      "ci95": [
-        0.0081,
-        0.0411
-      ],
-      "share_of_resamples_not_better": 0.0
-    },
-    {
-      "comparison": "ensemble_minilm_logreg - transformer_minilm (macro F1, all test clauses)",
-      "observed": 0.0129,
-      "ci95": [
-        -0.0015,
-        0.031
-      ],
-      "share_of_resamples_not_better": 0.039
-    },
-    {
-      "comparison": "ensemble_minilm_logreg - tfidf_linear_svm (macro F1, all test clauses)",
-      "observed": 0.0117,
-      "ci95": [
-        -0.0011,
-        0.023
-      ],
-      "share_of_resamples_not_better": 0.036
-    }
-  ],
   "risk_detector": {
-    "transformer_minilm": {
-      "micro_f1": 0.5985,
-      "macro_f1": 0.5626,
-      "macro_roc_auc": 0.9666,
-      "macro_average_precision": 0.5651
-    },
-    "tfidf_logreg_ovr": {
-      "micro_f1": 0.5821,
-      "macro_f1": 0.588,
-      "macro_roc_auc": 0.9828,
-      "macro_average_precision": 0.6642
-    },
-    "ensemble_minilm_logreg": {
-      "micro_f1": 0.5817,
-      "macro_f1": 0.5884,
-      "macro_roc_auc": 0.9849,
-      "macro_average_precision": 0.6834
+    "micro_precision": 0.6047,
+    "micro_recall": 0.5924,
+    "micro_f1": 0.5985,
+    "micro_f1_ci95": [
+      0.5595,
+      0.6361
+    ],
+    "macro_f1": 0.5626,
+    "macro_roc_auc": 0.9666,
+    "macro_average_precision": 0.5651,
+    "per_label": {
+      "Uncapped Liability": {
+        "precision": 0.68,
+        "recall": 0.5667,
+        "f1": 0.6182,
+        "support": 30,
+        "roc_auc": 0.9484,
+        "average_precision": 0.6353
+      },
+      "Non-Compete": {
+        "precision": 0.5682,
+        "recall": 0.7576,
+        "f1": 0.6494,
+        "support": 33,
+        "roc_auc": 0.9904,
+        "average_precision": 0.6549
+      },
+      "Non-Solicitation": {
+        "precision": 0.6154,
+        "recall": 0.8,
+        "f1": 0.6957,
+        "support": 10,
+        "roc_auc": 0.9727,
+        "average_precision": 0.7203
+      },
+      "Exclusivity": {
+        "precision": 0.5588,
+        "recall": 0.413,
+        "f1": 0.475,
+        "support": 46,
+        "roc_auc": 0.9745,
+        "average_precision": 0.5021
+      },
+      "Liquidated Damages": {
+        "precision": 0.5556,
+        "recall": 0.3571,
+        "f1": 0.4348,
+        "support": 14,
+        "roc_auc": 0.9791,
+        "average_precision": 0.4066
+      },
+      "Change Of Control": {
+        "precision": 0.3636,
+        "recall": 0.1739,
+        "f1": 0.2353,
+        "support": 23,
+        "roc_auc": 0.97,
+        "average_precision": 0.2744
+      },
+      "Anti-Assignment": {
+        "precision": 0.8571,
+        "recall": 0.7407,
+        "f1": 0.7947,
+        "support": 81,
+        "roc_auc": 0.9755,
+        "average_precision": 0.8124
+      },
+      "Termination For Convenience": {
+        "precision": 0.3684,
+        "recall": 0.5385,
+        "f1": 0.4375,
+        "support": 26,
+        "roc_auc": 0.9498,
+        "average_precision": 0.3458
+      },
+      "Ip Ownership Assignment": {
+        "precision": 0.5094,
+        "recall": 0.6585,
+        "f1": 0.5745,
+        "support": 41,
+        "roc_auc": 0.9425,
+        "average_precision": 0.612
+      },
+      "Covenant Not To Sue": {
+        "precision": 0.7391,
+        "recall": 0.6071,
+        "f1": 0.6667,
+        "support": 28,
+        "roc_auc": 0.9297,
+        "average_precision": 0.6522
+      },
+      "Minimum Commitment": {
+        "precision": 0.5769,
+        "recall": 0.3846,
+        "f1": 0.4615,
+        "support": 39,
+        "roc_auc": 0.9709,
+        "average_precision": 0.4246
+      },
+      "Renewal Term": {
+        "precision": 0.561,
+        "recall": 0.9583,
+        "f1": 0.7077,
+        "support": 24,
+        "roc_auc": 0.9953,
+        "average_precision": 0.7412
+      }
     }
   },
   "retrieval": {

@@ -102,8 +102,9 @@ project — verify against the primary sources; the Labour Codes (2019–2020) m
   (`index.json` lists method, detected type and clause count). Uploaded documents are written here as `upload_doc{id}.*`.
 - `models/lsa_embedder.joblib` — LSA embedder fitted on the clause dataset + knowledge base + templates (fallback only).
 - `models/clause_classifier.joblib` — TF-IDF + Logistic Regression trained on the contract-split training contracts
-  (fallback classifier); `models/classifier_metrics.json` — test-set metrics of every method (written by
-  `scripts/evaluate_models.py`).
+  (fallback classifier; its own metrics go to `models/classifier_fallback_metrics.json`); `models/classifier_metrics.json` —
+  test-set metrics of the deployed fine-tuned MiniLM models (System page), written by `scripts/evaluate_models.py`;
+  every method's metrics are in `reports/evaluation/metrics.json`.
 - `models/transformers/{clause,risk}/` — fine-tuned MiniLM models (encoder + head + `model_config.json` with labels,
   thresholds, validation metrics, training settings and history; `training_log.jsonl`).
 - `models/retrieval_config.json` — Q&A fusion settings and "not found" model, fitted on validation contracts.

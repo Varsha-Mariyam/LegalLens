@@ -37,18 +37,20 @@ def test_structural_units_are_others():
     assert r["category"] == "Others"
 
 
-def test_trained_model_metrics_recorded():
+def test_system_page_metrics_are_the_deployed_transformers_only():
+    """models/classifier_metrics.json (System page) holds the fine-tuned MiniLM models' own test-set metrics."""
     metrics = json.loads((settings.MODELS_DIR / "classifier_metrics.json").read_text())
-    ml = metrics["methods"]["tfidf_logreg"]
-    assert ml["all"]["accuracy"] > metrics["methods"]["keyword_baseline"]["all"]["accuracy"]
-    assert ml["gold_only"]["macro_f1"] > 0.7
-
-
-def test_metrics_come_from_the_contract_level_split():
-    metrics = json.loads((settings.MODELS_DIR / "classifier_metrics.json").read_text())
+    assert metrics["model"] == "transformer_minilm" and "methods" not in metrics
     assert metrics["dataset"] == "contract_split" and metrics["test_contracts"] > 50
-    if "transformer_minilm" in metrics["methods"]:
-        assert metrics["deployed_model"] in ("ensemble_minilm_logreg", "transformer_minilm")
-        for k in ("transformer_minilm", metrics["deployed_model"]):
-            lo, hi = metrics["methods"][k]["all"]["macro_f1_ci95"]
-            assert lo <= metrics["methods"][k]["all"]["macro_f1"] <= hi
+    c = metrics["classifier"]
+    assert c["n"] == metrics["test_size"] and c["gold_only"]["n"] == metrics["gold_test_size"]
+    for k in ("accuracy", "macro_precision", "macro_recall", "macro_f1"):
+        assert 0.5 < c[k] <= 1.0
+    lo, hi = c["macro_f1_ci95"]
+    assert lo <= c["macro_f1"] <= hi
+    assert set(c["per_class"]) == set(settings.CATEGORIES)
+    cm = c["confusion_matrix"]
+    assert cm["labels"] == settings.CATEGORIES and sum(map(sum, cm["matrix"])) == c["n"]
+    assert sum(cm["matrix"][i][i] for i in range(len(cm["labels"]))) / c["n"] == pytest.approx(c["accuracy"], abs=1e-3)
+    r = metrics["risk_detector"]
+    assert {"micro_precision", "micro_recall", "micro_f1", "macro_f1"} <= set(r) and 0 < r["micro_f1"] <= 1
