@@ -64,6 +64,20 @@ class Settings:
     EMBEDDING_BACKEND = _env("EMBEDDING_BACKEND", "auto").lower()
     EMBEDDING_MODEL = _env("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
 
+    # Fine-tuned Transformers (scripts/train_transformer.py). The deployed models are the fine-tuned MiniLM
+    # Transformers alone; the TF-IDF + Logistic Regression models are kept only as a fallback when a Transformer
+    # cannot be loaded, and the legacy ensemble (scripts/fit_ensembles.py) remains available for rollback.
+    # Clause classifier: transformer (MiniLM alone, default) | auto (legacy Transformer + Logistic Regression
+    # ensemble when both exist) | logreg.
+    # Learned risk detector: transformer (default) | auto (legacy ensemble) | logreg | off (rule signals only).
+    TRANSFORMER_DIR = MODELS_DIR / "transformers"
+    CLASSIFIER_BACKEND = _env("CLASSIFIER_BACKEND", "transformer").lower()
+    RISK_MODEL = _env("RISK_MODEL", "transformer").lower()
+    TRANSFORMER_DEVICE = _env("TRANSFORMER_DEVICE", "auto").lower()  # auto | cpu | cuda
+
+    # Document Q&A retrieval: hybrid (BM25 + dense) | dense | legacy (original embedding + keyword-overlap ranking)
+    QA_RETRIEVAL = _env("QA_RETRIEVAL", "hybrid").lower()
+
     # Vector store: auto | chroma | numpy
     VECTOR_STORE = _env("VECTOR_STORE", "auto").lower()
 

@@ -3,10 +3,24 @@
 AI-assisted legal document analysis — a final-year academic project.
 
 Upload an employment agreement, offer letter, rental/lease agreement, NDA or service agreement (PDF, Word, text, or a
-scanned image). LegalLens extracts the text (with OCR when needed), splits it into clauses, classifies each clause,
-explains it in plain language using retrieved legal context (RAG), flags **potential** risks with the evidence behind
-them, compares the document with a reference template, writes persona-specific summaries, answers questions about the
-document with follow-up support (CAG + RAG), and exports a PDF report.
+scanned image). LegalLens extracts the text (with OCR when needed), splits it into clauses, classifies each clause with
+a fine-tuned Transformer, explains it in plain language using retrieved legal context (RAG), flags **potential** risks
+with the evidence behind them (rules + a learned risk detector), compares the document with a reference template,
+picks out key sentences, writes persona-specific summaries, answers questions about the document with follow-up support
+(CAG + hybrid BM25/semantic retrieval), and exports a PDF report.
+
+**Models** (all trained and evaluated on CUAD v1 with a contract-level split — see
+[docs/EVALUATION.md](docs/EVALUATION.md)): clause classifier = fine-tuned `all-MiniLM-L6-v2` averaged with TF-IDF +
+Logistic Regression (Logistic Regression alone as fallback); risk detector for 12 CUAD risk types = fine-tuned MiniLM
+averaged with a TF-IDF model, on top of the rules; MiniLM sentence embeddings for RAG, comparison and key sentences;
+BM25 + dense hybrid retrieval with a calibrated "not found" for Q&A.
+
+| Held-out test contracts | Original approach | Upgraded (deployed) |
+|---|---|---|
+| Clause classification, macro F1 | 0.873 (TF-IDF + LogReg, retrained on the same split) | **0.884** (fine-tuned MiniLM; the legacy MiniLM + LogReg ensemble scored 0.897) |
+| Risk types, micro F1 on the 6 types the rules target | 0.164 (rules) | **0.603** (rules + fine-tuned MiniLM detector; legacy ensemble 0.592) |
+| Q&A retrieval, MRR@10 | 0.534 (original ranking, LSA) | **0.666** (hybrid) |
+| Says "not found" for unanswerable questions | 3% | **41%** (while answering 90% of answerable ones) |
 
 > LegalLens is an educational tool. Its output is not legal advice; have a qualified lawyer review any document before signing.
 
@@ -55,7 +69,10 @@ Without Tesseract, digital PDFs/DOCX/TXT still work; scanned files report a clea
 | Component | Default (no keys, no extra services) | Upgrade path |
 |---|---|---|
 | Text generation (explanations, summaries, persona, Q&A) | Deterministic rule-based / extractive mode | Set `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` (any OpenAI-compatible server) or `OLLAMA_MODEL` (local, free) in `.env` |
-| Embeddings | LSA (TF-IDF + SVD) trained on the project corpus | `pip install sentence-transformers && python scripts/download_models.py && python scripts/build_vector_db.py --force` |
+| Clause classifier | Fine-tuned MiniLM Transformer alone (`models/transformers/clause`), CPU or GPU | TF-IDF Logistic Regression only if the Transformer cannot be loaded (e.g. torch missing); `CLASSIFIER_BACKEND=auto` restores the legacy MiniLM + LogReg ensemble, `logreg` forces Logistic Regression |
+| Risk | Rule signals + learned detector (fine-tuned MiniLM Transformer alone, `models/transformers/risk`) | TF-IDF `models/risk_logreg.joblib` only if the Transformer cannot be loaded; `RISK_MODEL=auto` (legacy ensemble), `logreg`, or `off` for rules only |
+| Embeddings | Sentence Transformers `all-MiniLM-L6-v2` (downloaded from Hugging Face on first use, ~90 MB) | falls back to LSA (TF-IDF + SVD) offline; `python scripts/download_models.py` stores MiniLM in `models/` for offline use |
+| Q&A retrieval | Hybrid BM25 + MiniLM, "not found" calibrated on held-out contracts | `QA_RETRIEVAL=legacy` restores the original ranking |
 | Vector DB | ChromaDB (persistent, `vector_db/`) | NumPy fallback if ChromaDB is not installed |
 | CAG cache | In-memory + JSON files in `cache/` | Set `REDIS_URL` |
 | Database | SQLite `data/legallens.db` | `DATABASE_URL=postgresql+psycopg2://...` (`pip install psycopg2-binary`) |
@@ -70,18 +87,39 @@ System page in the app shows the status of every component.
 ```bash
 python scripts/download_datasets.py     # CUAD v1 from GitHub (~18 MB zip) -> data/external, spans CSV, sample contracts
 python scripts/generate_sample_files.py # renders the synthetic samples to PDF/DOCX/scanned PNG+PDF
-python scripts/build_datasets.py        # clause dataset + train/test split + preprocessing + LSA embedder
-python scripts/train_classifier.py      # evaluates 4 classifiers, saves models/clause_classifier.joblib + metrics
+python scripts/build_datasets.py        # preprocessing of raw documents + LSA fallback embedder (+ original clause dataset)
+python scripts/prepare_datasets.py      # contract-level CUAD split -> data/datasets/contract_split/ (seed 42)
+python scripts/train_classifier.py      # TF-IDF + Logistic Regression fallback (+ SVM, keyword, embedding baselines)
+python scripts/train_transformer.py --task clause   # fine-tuned MiniLM clause classifier -> models/transformers/clause
+python scripts/train_transformer.py --task risk     # fine-tuned MiniLM risk detector    -> models/transformers/risk
+python scripts/fit_ensembles.py         # TF-IDF risk fallback model + legacy MiniLM/TF-IDF ensemble config (rollback only; validation split)
+python scripts/evaluate_models.py       # all models on the held-out test contracts -> reports/evaluation/ (+ Q&A calibration)
+python scripts/compare_sample_documents.py  # risk profile of every raw document, fallback vs upgraded configuration
 python scripts/build_vector_db.py --force
 python scripts/run_pipeline_cli.py data/raw_documents/samples/nda_sample.pdf --persona business --question "How long does confidentiality last?"
 ```
-(`./setup.sh --rebuild` runs the first five steps.)
+(`./setup.sh --rebuild` / `setup.bat --rebuild` run these steps.) Measured on a GTX 1650 (4 GB): clause model ≈ 13 min,
+risk model ≈ 20 min, evaluation a few minutes. Any Hugging Face encoder can be trained instead of MiniLM, e.g.
+`python scripts/train_transformer.py --task clause --model nlpaueb/legal-bert-base-uncased --tag legal-bert --batch-size 16`
+(experiments are saved under `models/transformers/experiments/` and evaluated, but not deployed).
+
+### GPU (optional)
+
+The app runs on CPU. For GPU training install the CUDA build of the *same* torch version, e.g. for torch 2.13 and an
+NVIDIA driver supporting CUDA 12.6+:
+
+```bash
+pip install "torch==2.13.0+cu126" --index-url https://download.pytorch.org/whl/cu126 --no-deps --force-reinstall
+```
+`python -c "import torch; print(torch.cuda.is_available())"` should print `True`. To go back to CPU-only:
+`pip install torch==2.13.0 --index-url https://download.pytorch.org/whl/cpu --no-deps --force-reinstall`.
 
 ## Tests
 
 ```bash
-python -m pytest backend/tests -q      # 66 tests: extraction/OCR, segmentation, classifier, RAG, CAG, risk,
-                                       # comparison, LLM client (mocked HTTP), full API flow, access control
+python -m pytest backend/tests -q      # 90 tests: extraction/OCR, segmentation, classifiers + Transformer models,
+                                       # fallbacks, RAG, hybrid retrieval, CAG, risk, comparison, LLM client
+                                       # (mocked HTTP), full API flow, access control, empty/unreadable files
 ```
 
 ---
@@ -95,8 +133,9 @@ backend/
   database/               SQLAlchemy models: users, documents, clauses, conversations, persona_summaries, comparisons
   routes/                 auth, documents, analysis (+persona), qa, comparison, report, system
   services/               extraction (PyMuPDF, python-docx, Tesseract), cleaning, clause segmentation, classifier,
-                          embeddings, vector store, RAG, CAG cache, LLM client, summarizer, risk analyzer, persona,
-                          Q&A, comparison, PDF report, pipeline orchestration
+                          transformer_models (fine-tuned models), embeddings, vector store, RAG, CAG cache, LLM client,
+                          summarizer (+ extractive key sentences), risk analyzer, persona, Q&A + retrieval (hybrid
+                          BM25/dense), comparison, PDF report, pipeline orchestration
   tests/
 frontend/                 React + Vite app (src/, prebuilt dist/)
 data/
@@ -106,13 +145,15 @@ data/
   clauses/                segmented clauses (JSON) of every raw document
   standard_documents/     project reference templates + category annotations
   legal_knowledge/        controlled RAG knowledge base with cited sources
-  datasets/               clause dataset, CUAD spans, train/test split
-models/                   LSA embedder, clause classifier, evaluation metrics
+  datasets/               CUAD spans; contract_split/ (train/val/test by contract + dataset_card.json); original clause dataset
+models/                   transformers/{clause,risk}/ (fine-tuned MiniLM), clause_classifier.joblib (LogReg fallback),
+                          LSA embedder, retrieval_config.json, classifier_metrics.json
 vector_db/                ChromaDB index
 cache/                    CAG cache (memory+disk backend)
-reports/                  generated PDF reports
-notebooks/                dataset exploration, classifier evaluation, RAG/risk walkthrough (executed)
-scripts/                  data download, dataset build, training, index build, CLI
+reports/                  generated PDF reports; evaluation/ (RESULTS.md, metrics.json, figures)
+notebooks/                dataset exploration, classifier evaluation, RAG/risk walkthrough (original version)
+scripts/                  data download, dataset build (prepare_datasets.py), training (train_classifier.py,
+                          train_transformer.py), evaluation (evaluate_models.py), index build, CLI
 docs/                     architecture, datasets, API, evaluation, guide coverage, viva notes
 ```
 
@@ -121,7 +162,10 @@ See `docs/` for details: [ARCHITECTURE](docs/ARCHITECTURE.md) · [DATASETS](docs
 
 ## Licences and data
 
-Code: written for this project. CUAD v1 © The Atticus Project, CC BY 4.0. Sample agreements are synthetic and fictitious.
+Code: written for this project. CUAD v1 © The Atticus Project, CC BY 4.0 (Hendrycks, Burns, Chen and Ball, *CUAD: An
+Expert-Annotated NLP Dataset for Legal Contract Review*, NeurIPS 2021; https://github.com/TheAtticusProject/cuad,
+DOI 10.5281/zenodo.4595826) — the fine-tuned models in `models/transformers/` are trained on it. Base model
+`sentence-transformers/all-MiniLM-L6-v2` (Apache 2.0). Sample agreements are synthetic and fictitious.
 The knowledge base is an educational summary written for the project, citing Indian statutes and judgments — verify against
 the primary sources before relying on it.
 

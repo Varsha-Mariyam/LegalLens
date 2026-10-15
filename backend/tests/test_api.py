@@ -138,5 +138,73 @@ def test_rental_docx_and_delete(client, samples):
 
 def test_system_status(client):
     s = client.get("/api/system/status").json()
-    assert {"llm", "embedding", "rag_index", "cache", "ocr", "classifier"} <= set(s)
+    assert {"llm", "embedding", "rag_index", "cache", "ocr", "classifier", "risk_detector", "qa_retrieval"} <= set(s)
+    assert s["classifier"]["primary"] in ("ensemble", "transformer", "tfidf-logreg", "keyword/embedding baselines")
     assert client.get("/api/health").json() == {"status": "ok"}
+
+
+def _status_after_upload(client, h, tmp_path, name, content: bytes):
+    p = tmp_path / name
+    p.write_bytes(content)
+    doc_id = _upload(client, h, p)
+    return client.get(f"/api/documents/{doc_id}/status", headers=h).json()
+
+
+def test_empty_and_unreadable_documents_fail_cleanly(client, tmp_path):
+    h = _register(client, "edge@example.com")
+    blank = _status_after_upload(client, h, tmp_path, "blank.txt", b"   \n\n   \t  ")
+    assert blank["status"] == "failed" and "No readable text" in blank["error"]
+    broken = _status_after_upload(client, h, tmp_path, "broken.pdf", b"%PDF-1.4 this is not really a pdf")
+    assert broken["status"] == "failed" and broken["error"]
+    with open(tmp_path / "blank.txt", "rb") as fh:
+        assert client.post("/api/documents", files={"file": ("notes.odt", fh)}, headers=h).status_code == 415
+
+
+def test_analysis_reports_models_and_key_sentences(client, employment_doc):
+    h, doc_id = employment_doc
+    a = client.get(f"/api/documents/{doc_id}/analysis", headers=h).json()
+    meta = a["analysis_meta"]
+    assert {"risk_detector", "qa_retrieval", "extractive_summary"} <= set(meta)
+    assert 0 < len(meta["extractive_summary"]) <= 5
+    texts = " ".join(c["original_text"] for c in a["clauses"])
+    assert all(k["sentence"] in texts for k in meta["extractive_summary"])
+    if meta["classifier"]["primary"] == "transformer":
+        assert all("transformer" in c["classifier_details"] for c in a["clauses"])
+    qa = client.post(f"/api/documents/{doc_id}/qa", json={"question": "How much is the salary?"}, headers=h).json()
+    assert "retrieval" in qa["method"] and "45,000" in qa["answer"]
+
+
+def test_pipeline_completes_without_transformer_models(client, samples):
+    from backend.services import transformer_models as tm
+    tm.set_model("clause", None)
+    tm.set_model("risk", None)
+    try:
+        h = _register(client, "fallback@example.com")
+        doc_id = _upload(client, h, samples / "nda_sample.txt", "nda")
+        a = client.get(f"/api/documents/{doc_id}/analysis", headers=h).json()
+        assert a["document"]["status"] == "completed"
+        assert {c["classifier_details"]["method"] for c in a["clauses"]} <= {
+            "ml:tfidf-logreg", "heading-keyword (low model confidence)", "structural (preamble/execution)"}
+        assert all("transformer" not in c["classifier_details"] for c in a["clauses"])
+        assert a["analysis_meta"]["classifier"]["primary"] == "tfidf-logreg"
+        det = a["analysis_meta"]["risk_detector"]
+        # the TF-IDF risk model (models/risk_logreg.joblib) takes over when the Transformer is missing
+        assert det["used"] is False or det["mode"] == "logreg"
+    finally:
+        tm.reload()
+
+
+def test_pipeline_rules_only_when_risk_model_disabled(client, samples, monkeypatch):
+    from backend.config import settings
+    from backend.services import transformer_models as tm
+    monkeypatch.setattr(settings, "RISK_MODEL", "off")
+    tm.reload()
+    try:
+        h = _register(client, "rulesonly@example.com")
+        doc_id = _upload(client, h, samples / "rental_agreement_sample.txt", "rental")
+        a = client.get(f"/api/documents/{doc_id}/analysis", headers=h).json()
+        assert a["analysis_meta"]["risk_detector"]["used"] is False
+        assert all(c["risk_method"] == "rule-based risk signals" for c in a["clauses"])
+        assert next(c for c in a["clauses"] if c["title"] == "Security Deposit")["risk_level"] == "HIGH"
+    finally:
+        tm.reload()

@@ -1,0 +1,662 @@
+[
+ {
+  "file": "samples\\employment_agreement_sample.txt",
+  "fallback": {
+   "doc_type": "employment",
+   "clauses": 12,
+   "HIGH": 6,
+   "MEDIUM": 2,
+   "LOW": 4,
+   "categories": {
+    "Others": 6,
+    "Payment": 2,
+    "Confidentiality": 1,
+    "Termination": 1,
+    "Liability": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "employment",
+   "clauses": 12,
+   "HIGH": 6,
+   "MEDIUM": 2,
+   "LOW": 4,
+   "categories": {
+    "Others": 5,
+    "Payment": 1,
+    "Confidentiality": 1,
+    "Termination": 2,
+    "Liability": 2,
+    "Dispute": 1
+   },
+   "detector_evidence": [
+    "Non-Compete: Non-Compete (MEDIUM)",
+    "Non-Compete: Non-Solicitation (MEDIUM)",
+    "Termination: Termination For Convenience (MEDIUM)"
+   ]
+  }
+ },
+ {
+  "file": "samples\\lease_agreement_balanced_sample.txt",
+  "fallback": {
+   "doc_type": "rental",
+   "clauses": 8,
+   "HIGH": 0,
+   "MEDIUM": 0,
+   "LOW": 8,
+   "categories": {
+    "Others": 2,
+    "Termination": 2,
+    "Payment": 2,
+    "Liability": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "rental",
+   "clauses": 8,
+   "HIGH": 0,
+   "MEDIUM": 0,
+   "LOW": 8,
+   "categories": {
+    "Others": 2,
+    "Termination": 2,
+    "Payment": 2,
+    "Liability": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": [
+    "Termination: Termination For Convenience (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "samples\\nda_sample.txt",
+  "fallback": {
+   "doc_type": "nda",
+   "clauses": 8,
+   "HIGH": 3,
+   "MEDIUM": 3,
+   "LOW": 2,
+   "categories": {
+    "Others": 1,
+    "Confidentiality": 3,
+    "Termination": 2,
+    "Liability": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "nda",
+   "clauses": 8,
+   "HIGH": 3,
+   "MEDIUM": 3,
+   "LOW": 2,
+   "categories": {
+    "Others": 2,
+    "Confidentiality": 2,
+    "Termination": 2,
+    "Liability": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": [
+    "Non-Solicitation and Non-Compete: Non-Compete (MEDIUM)",
+    "Remedies: Liquidated Damages (MEDIUM)",
+    "Termination: Termination For Convenience (MEDIUM)"
+   ]
+  }
+ },
+ {
+  "file": "samples\\offer_letter_sample.txt",
+  "fallback": {
+   "doc_type": "employment",
+   "clauses": 9,
+   "HIGH": 0,
+   "MEDIUM": 0,
+   "LOW": 9,
+   "categories": {
+    "Others": 3,
+    "Payment": 1,
+    "Confidentiality": 1,
+    "Termination": 1,
+    "Liability": 1,
+    "Dispute": 2
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "employment",
+   "clauses": 9,
+   "HIGH": 0,
+   "MEDIUM": 0,
+   "LOW": 9,
+   "categories": {
+    "Others": 2,
+    "Payment": 1,
+    "Termination": 2,
+    "Confidentiality": 1,
+    "Liability": 1,
+    "Dispute": 2
+   },
+   "detector_evidence": [
+    "Termination: Termination For Convenience (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "samples\\rental_agreement_sample.txt",
+  "fallback": {
+   "doc_type": "rental",
+   "clauses": 9,
+   "HIGH": 4,
+   "MEDIUM": 2,
+   "LOW": 3,
+   "categories": {
+    "Others": 4,
+    "Payment": 2,
+    "Termination": 1,
+    "Liability": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "rental",
+   "clauses": 9,
+   "HIGH": 4,
+   "MEDIUM": 2,
+   "LOW": 3,
+   "categories": {
+    "Others": 2,
+    "Termination": 3,
+    "Payment": 2,
+    "Liability": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": [
+    "Termination: Termination For Convenience (MEDIUM)"
+   ]
+  }
+ },
+ {
+  "file": "samples\\service_agreement_sample.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 9,
+   "HIGH": 3,
+   "MEDIUM": 2,
+   "LOW": 4,
+   "categories": {
+    "Others": 1,
+    "Payment": 2,
+    "Confidentiality": 1,
+    "Termination": 2,
+    "Liability": 2,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 9,
+   "HIGH": 3,
+   "MEDIUM": 2,
+   "LOW": 4,
+   "categories": {
+    "Others": 2,
+    "Payment": 1,
+    "Confidentiality": 1,
+    "Termination": 2,
+    "Liability": 2,
+    "Dispute": 1
+   },
+   "detector_evidence": [
+    "Termination: Termination For Convenience (LOW)",
+    "Auto-Renewal: Renewal Term (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\ADAMSGOLFINC_03_21_2005_EX_10_17_ENDORSEMENT_AGREEMENT.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 38,
+   "HIGH": 3,
+   "MEDIUM": 0,
+   "LOW": 35,
+   "categories": {
+    "Others": 14,
+    "Termination": 10,
+    "Payment": 8,
+    "Liability": 3,
+    "Dispute": 2,
+    "Confidentiality": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 38,
+   "HIGH": 3,
+   "MEDIUM": 5,
+   "LOW": 30,
+   "categories": {
+    "Others": 13,
+    "Termination": 10,
+    "Payment": 10,
+    "Liability": 2,
+    "Dispute": 2,
+    "Confidentiality": 1
+   },
+   "detector_evidence": [
+    "Definitions: Minimum Commitment (MEDIUM)",
+    "Consultant'S Endorsement: Exclusivity (MEDIUM)",
+    "Exclusive Use Of Product: Exclusivity (MEDIUM)",
+    "Consultant'S Endorsement Of Non-Competitive Product: Non-Compete (MEDIUM)",
+    "Minimum Number Of Tournaments And Potential Repayment Of Base Compensation: Minimum Commitment (MEDIUM)",
+    "Assignment And Change Of Control: Anti-Assignment (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\AlliedEsportsEntertainmentInc_20190815_8_K_EX_10_19_11788293_EX_10_19_Content_License_Agre.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 16,
+   "HIGH": 4,
+   "MEDIUM": 2,
+   "LOW": 10,
+   "categories": {
+    "Others": 7,
+    "Termination": 3,
+    "Payment": 2,
+    "Liability": 2,
+    "Confidentiality": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 16,
+   "HIGH": 4,
+   "MEDIUM": 3,
+   "LOW": 9,
+   "categories": {
+    "Others": 8,
+    "Termination": 3,
+    "Payment": 2,
+    "Liability": 2,
+    "Confidentiality": 1
+   },
+   "detector_evidence": [
+    "Term: Renewal Term (LOW)",
+    "Annual Minimum Guarantee: Minimum Commitment (MEDIUM)",
+    "8: Covenant Not To Sue (MEDIUM)",
+    "8: Non-Compete (MEDIUM)",
+    "9: Minimum Commitment (MEDIUM)",
+    "16: Anti-Assignment (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\AzulSa_20170303_F_1A_EX_10_3_9943903_EX_10_3_Maintenance_Agreement2.txt",
+  "fallback": {
+   "doc_type": "nda",
+   "clauses": 25,
+   "HIGH": 1,
+   "MEDIUM": 0,
+   "LOW": 24,
+   "categories": {
+    "Others": 6,
+    "Confidentiality": 6,
+    "Dispute": 10,
+    "Payment": 2,
+    "Termination": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "nda",
+   "clauses": 25,
+   "HIGH": 1,
+   "MEDIUM": 0,
+   "LOW": 24,
+   "categories": {
+    "Others": 5,
+    "Confidentiality": 6,
+    "Dispute": 13,
+    "Payment": 1
+   },
+   "detector_evidence": []
+  }
+ },
+ {
+  "file": "cuad\\CENTRACKINTERNATIONALINC_10_29_1999_EX_10_3_WEB_SITE_HOSTING_AGREEMENT.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 15,
+   "HIGH": 1,
+   "MEDIUM": 0,
+   "LOW": 14,
+   "categories": {
+    "Others": 12,
+    "Payment": 2,
+    "Liability": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 15,
+   "HIGH": 1,
+   "MEDIUM": 0,
+   "LOW": 14,
+   "categories": {
+    "Others": 10,
+    "Payment": 4,
+    "Liability": 1
+   },
+   "detector_evidence": [
+    "14: Renewal Term (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\DOMINIADVISORTRUST_02_18_2005_EX_99_H_2_SPONSORSHIP_AGREEMENT.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 12,
+   "HIGH": 1,
+   "MEDIUM": 1,
+   "LOW": 10,
+   "categories": {
+    "Others": 6,
+    "Payment": 2,
+    "Liability": 1,
+    "Termination": 2,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 12,
+   "HIGH": 1,
+   "MEDIUM": 1,
+   "LOW": 10,
+   "categories": {
+    "Others": 5,
+    "Payment": 2,
+    "Liability": 1,
+    "Termination": 3,
+    "Dispute": 1
+   },
+   "detector_evidence": [
+    "7: Termination For Convenience (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\DRAGONSYSTEMSINC_01_08_1999_EX_10_17_OUTSOURCING_AGREEMENT.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 13,
+   "HIGH": 2,
+   "MEDIUM": 1,
+   "LOW": 10,
+   "categories": {
+    "Others": 6,
+    "Payment": 3,
+    "Liability": 2,
+    "Confidentiality": 1,
+    "Termination": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 13,
+   "HIGH": 2,
+   "MEDIUM": 1,
+   "LOW": 10,
+   "categories": {
+    "Others": 7,
+    "Payment": 2,
+    "Liability": 2,
+    "Confidentiality": 1,
+    "Termination": 1
+   },
+   "detector_evidence": [
+    "Term And Termination: Termination For Convenience (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\FuseMedicalInc_20190321_10_K_EX_10_43_11575454_EX_10_43_Distributor_Agreement.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 62,
+   "HIGH": 2,
+   "MEDIUM": 2,
+   "LOW": 58,
+   "categories": {
+    "Others": 40,
+    "Liability": 8,
+    "Termination": 9,
+    "Payment": 2,
+    "Confidentiality": 1,
+    "Dispute": 2
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 62,
+   "HIGH": 2,
+   "MEDIUM": 6,
+   "LOW": 54,
+   "categories": {
+    "Others": 35,
+    "Termination": 10,
+    "Dispute": 5,
+    "Confidentiality": 2,
+    "Payment": 3,
+    "Liability": 7
+   },
+   "detector_evidence": [
+    "Appointment (2.1): Exclusivity (MEDIUM)",
+    "The Distributor shall not: Non-Compete (MEDIUM)",
+    "Trade marks and intellectual property (9.1): Exclusivity (MEDIUM)",
+    "Trade marks and intellectual property (9.6): Anti-Assignment (LOW)",
+    "Trade marks and intellectual property (9.7): Covenant Not To Sue (MEDIUM)",
+    "Duration and termination (11.1): Renewal Term (LOW)",
+    "Duration and termination (11.2): Anti-Assignment (LOW)",
+    "Assignment and other dealings prohibited: Anti-Assignment (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\IntegrityFunds_20200121_485BPOS_EX_99_E_UNDR_CONTR_11948727_EX_99_E_UNDR_CONTR_Service_Agr.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 21,
+   "HIGH": 5,
+   "MEDIUM": 1,
+   "LOW": 15,
+   "categories": {
+    "Others": 7,
+    "Payment": 7,
+    "Liability": 3,
+    "Termination": 3,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 21,
+   "HIGH": 5,
+   "MEDIUM": 1,
+   "LOW": 15,
+   "categories": {
+    "Others": 11,
+    "Payment": 4,
+    "Liability": 3,
+    "Termination": 2,
+    "Dispute": 1
+   },
+   "detector_evidence": [
+    "Term Of Agreement: Renewal Term (LOW)",
+    "Term Of Agreement: Anti-Assignment (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\KIROMICBIOPHARMA_INC_05_11_2020_EX_10_23_CONSULTING_AGREEMENT.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 20,
+   "HIGH": 3,
+   "MEDIUM": 1,
+   "LOW": 16,
+   "categories": {
+    "Others": 11,
+    "Payment": 3,
+    "Confidentiality": 1,
+    "Termination": 3,
+    "Dispute": 2
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 20,
+   "HIGH": 3,
+   "MEDIUM": 1,
+   "LOW": 16,
+   "categories": {
+    "Others": 10,
+    "Payment": 3,
+    "Confidentiality": 1,
+    "Termination": 3,
+    "Dispute": 3
+   },
+   "detector_evidence": [
+    "Ownership: Ip Ownership Assignment (MEDIUM)",
+    "Term and Termination: Termination For Convenience (MEDIUM)",
+    "Conflicting Obligations: Non-Compete (MEDIUM)",
+    "General: Anti-Assignment (LOW)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\LohaCompanyltd_20191209_F_1_EX_10_16_11917878_EX_10_16_Supply_Agreement.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 21,
+   "HIGH": 0,
+   "MEDIUM": 2,
+   "LOW": 19,
+   "categories": {
+    "Others": 11,
+    "Payment": 7,
+    "Liability": 1,
+    "Confidentiality": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 21,
+   "HIGH": 0,
+   "MEDIUM": 2,
+   "LOW": 19,
+   "categories": {
+    "Others": 11,
+    "Termination": 1,
+    "Payment": 5,
+    "Liability": 2,
+    "Confidentiality": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  }
+ },
+ {
+  "file": "cuad\\PREMIERBIOMEDICALINC_05_14_2020_EX_10_2_INTELLECTUAL_PROPERTY_AGREEMENT.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 28,
+   "HIGH": 2,
+   "MEDIUM": 3,
+   "LOW": 23,
+   "categories": {
+    "Others": 13,
+    "Confidentiality": 2,
+    "Payment": 10,
+    "Termination": 1,
+    "Dispute": 1,
+    "Liability": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 28,
+   "HIGH": 1,
+   "MEDIUM": 6,
+   "LOW": 21,
+   "categories": {
+    "Others": 11,
+    "Payment": 12,
+    "Termination": 2,
+    "Confidentiality": 1,
+    "Dispute": 1,
+    "Liability": 1
+   },
+   "detector_evidence": [
+    "Licensing: Exclusivity (MEDIUM)",
+    "14: Minimum Commitment (MEDIUM)",
+    "16: Exclusivity (MEDIUM)",
+    "17: Exclusivity (MEDIUM)"
+   ]
+  }
+ },
+ {
+  "file": "cuad\\VEONEER_INC_02_21_2020_EX_10_11_JOINT_VENTURE_AGREEMENT.txt",
+  "fallback": {
+   "doc_type": "service",
+   "clauses": 7,
+   "HIGH": 0,
+   "MEDIUM": 0,
+   "LOW": 7,
+   "categories": {
+    "Others": 3,
+    "Termination": 2,
+    "Liability": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  },
+  "upgraded": {
+   "doc_type": "service",
+   "clauses": 7,
+   "HIGH": 0,
+   "MEDIUM": 0,
+   "LOW": 7,
+   "categories": {
+    "Others": 3,
+    "Termination": 2,
+    "Liability": 1,
+    "Dispute": 1
+   },
+   "detector_evidence": []
+  }
+ }
+]

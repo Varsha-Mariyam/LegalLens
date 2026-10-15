@@ -3,8 +3,11 @@
 Pickled scikit-learn models are only guaranteed to load in the same scikit-learn version. setup.sh/setup.bat run this
 automatically. It needs only the files shipped in the project (no downloads):
   1. re-fits the LSA embedder (models/lsa_embedder.joblib) from the local corpus,
-  2. re-trains and re-evaluates the clause classifier from data/datasets/clause_train.csv / clause_test.csv,
-  3. rebuilds the vector DB (embeddings changed).
+  2. re-trains the Logistic Regression clause classifier from data/datasets/contract_split/,
+  3. re-trains the TF-IDF risk fallback model and re-fits the legacy ensemble settings (scripts/fit_ensembles.py,
+     kept for rollback; the deployed models are the fine-tuned Transformers alone, which are PyTorch files and do
+     not depend on scikit-learn) when the Transformer models are present,
+  4. rebuilds the vector DB (embeddings changed).
 Usage: python scripts/refresh_models.py [--force]
 """
 import argparse
@@ -31,7 +34,15 @@ def main():
     print(f"Models were built with scikit-learn {built}, installed is {sklearn.__version__}: re-fitting (about a minute)...")
     from backend.services.embedding_service import LSAEmbedder, build_corpus
     LSAEmbedder.fit_and_save(build_corpus())
-    for script in ("train_classifier.py", "build_vector_db.py"):
+    scripts = ["train_classifier.py"]
+    if all((settings.TRANSFORMER_DIR / t / "model_config.json").exists() for t in ("clause", "risk")):
+        try:
+            import torch  # noqa: F401
+            import transformers  # noqa: F401
+            scripts.append("fit_ensembles.py")
+        except ImportError:
+            print("torch/transformers not installed: skipping the ensemble re-fit (the app uses Logistic Regression)")
+    for script in scripts + ["build_vector_db.py"]:
         cmd = [sys.executable, str(settings.ROOT / "scripts" / script)] + (["--force"] if script == "build_vector_db.py" else [])
         subprocess.run(cmd, check=True)
     record_versions()

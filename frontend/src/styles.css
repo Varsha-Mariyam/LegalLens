@@ -164,6 +164,10 @@ blockquote.reference { border-left: 3px dashed var(--ink-3); padding: .2rem 0 .2
 .evidence li { margin-bottom: .5rem; }
 .evidence .lvl { display: inline-block; color: #fff; font-size: .68rem; font-weight: 600; padding: .05em .4em; border-radius: 3px; margin-right: .45rem; vertical-align: 1px; }
 .evidence .source { color: var(--ink-2); font-size: .82rem; display: block; margin-top: .1rem; }
+.evidence .ev-kind { display: inline-block; font-size: .68rem; font-weight: 600; padding: .05em .4em; border-radius: 3px; margin-right: .45rem; vertical-align: 1px; color: var(--ink-2); border: 1px solid var(--line); }
+.key-sentences { list-style: none; padding-left: 0; max-width: 80ch; }
+.key-sentences li { margin-bottom: .8rem; }
+.key-sentences blockquote { margin: 0 0 .2rem; padding-left: .8rem; border-left: 3px solid var(--line); }
 .mini-compare { border-collapse: collapse; margin-bottom: .6rem; }
 .mini-compare th { text-align: left; font-weight: 500; color: var(--ink-3); padding: .2rem 1.2rem .2rem 0; font-size: .88rem; }
 .refs { margin-top: .8rem; }
@@ -228,6 +232,8 @@ blockquote.reference { border-left: 3px dashed var(--ink-3); padding: .2rem 0 .2
 .status-dot.warn { background: var(--medium); }
 .metrics { font-variant-numeric: tabular-nums; background: var(--sheet); }
 .metrics th { font-weight: 500; font-size: .85rem; color: var(--ink-2); }
+.metrics td.best { font-weight: 600; }
+.metrics-note { margin-top: .4rem; }
 .sources-list { padding-left: 1.2rem; }
 .sources-list li { margin-bottom: .6rem; }
 

@@ -37,6 +37,7 @@ export default function ClauseDetail({ clause, comparison }) {
             {clause.risk_evidence.map((e, i) => (
               <li key={i}>
                 <span className={`lvl risk-${e.level.toLowerCase()}`}>{e.level}</span>
+                {e.kind === "model" && <span className="ev-kind" title="Detected by the learned risk model, not a hand-written rule">model</span>}
                 <strong>{e.finding}</strong> — {e.reason}
                 {e.source && <span className="source"> Source: {e.source}</span>}
               </li>
@@ -84,8 +85,10 @@ export default function ClauseDetail({ clause, comparison }) {
             ))}
             <p className="small muted">
               Category: {clause.clause_type} (confidence {clause.category_confidence?.toFixed(2)}, {cls.method}).
-              Keyword baseline: {cls.keyword?.label}; embedding similarity: {cls.embedding?.label}
-              {cls.ml && <>; ML classifier: {cls.ml.label} ({cls.ml.confidence?.toFixed(2)})</>}.
+              {cls.ensemble && <> Ensemble: {cls.ensemble.label} ({cls.ensemble.confidence?.toFixed(2)});</>}
+              {cls.transformer && <> Fine-tuned Transformer: {cls.transformer.label} ({cls.transformer.confidence?.toFixed(2)});</>}
+              {" "}Keyword baseline: {cls.keyword?.label}; embedding similarity: {cls.embedding?.label}
+              {cls.ml && <>; TF-IDF + Logistic Regression: {cls.ml.label} ({cls.ml.confidence?.toFixed(2)})</>}.
             </p>
           </div>
         )}

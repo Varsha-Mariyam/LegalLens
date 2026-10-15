@@ -1,11 +1,16 @@
 """Clause classification (guide section 8).
 
-Three classifiers, as in the guide:
+Classifiers, as in the guide plus the Transformer upgrade:
   1. keyword/rule baseline,
   2. embedding similarity against category descriptions,
-  3. a trained ML classifier (TF-IDF + Logistic Regression) — trained by scripts/train_classifier.py.
-The final label uses the trained model when it is available and confident, and otherwise falls back to
-the baseline methods. All three results are kept so they can be shown and evaluated.
+  3. a trained ML classifier (TF-IDF + Logistic Regression) — trained by scripts/train_classifier.py,
+  4. a fine-tuned Transformer (MiniLM encoder + classification head) — trained by scripts/train_transformer.py.
+The deployed model is the fine-tuned Transformer alone (CLASSIFIER_BACKEND=transformer, the default): the final
+label comes from it, and Logistic Regression is neither run nor shown unless the Transformer cannot be loaded, in
+which case Logistic Regression takes over (then the baselines). Low-confidence predictions defer to a clear section
+heading. The baselines' results are always kept so they can be shown and evaluated. CLASSIFIER_BACKEND=auto restores
+the legacy probability-average ensemble of the two models (weight from scripts/fit_ensembles.py); =logreg disables
+the Transformer.
 """
 from __future__ import annotations
 
@@ -16,7 +21,7 @@ import threading
 import numpy as np
 
 from backend.config import settings
-from backend.services import embedding_service
+from backend.services import embedding_service, transformer_models
 
 CATEGORIES = settings.CATEGORIES
 MODEL_PATH = settings.MODELS_DIR / "clause_classifier.joblib"
@@ -132,13 +137,33 @@ def reload_model():
     return load_model()
 
 
-def ml_classify_batch(texts: list[str]) -> list[tuple[str, float]] | None:
+def ml_proba(texts: list[str]) -> np.ndarray | None:
+    """Logistic Regression probabilities with columns in CATEGORIES order, or None when unavailable."""
     model = load_model()
     if model is None:
         return None
-    probs = model.predict_proba(texts)
+    try:
+        probs = model.predict_proba(texts)
+    except Exception as exc:  # noqa: BLE001  (e.g. a model pickled by an incompatible scikit-learn)
+        global _load_error
+        _load_error = f"Logistic Regression inference failed ({type(exc).__name__}: {exc})"
+        logging.getLogger("legallens.classifier").warning(_load_error)
+        return None
     classes = list(model.classes_)
-    return [(classes[int(np.argmax(p))], round(float(np.max(p)), 3)) for p in probs]
+    return probs[:, [classes.index(c) for c in CATEGORIES]]
+
+
+def ml_classify_batch(texts: list[str]) -> list[tuple[str, float]] | None:
+    probs = ml_proba(texts)
+    if probs is None:
+        return None
+    return [(CATEGORIES[int(np.argmax(p))], round(float(np.max(p)), 3)) for p in probs]
+
+
+def _transformer_method() -> str:
+    model = transformer_models.get("clause")
+    base = (model.config.get("base_model") or "transformer").split("/")[-1] if model else "transformer"
+    return f"transformer:{base} (fine-tuned)"
 
 
 def classify_batch(items: list[dict]) -> list[dict]:
@@ -147,7 +172,18 @@ def classify_batch(items: list[dict]) -> list[dict]:
         return []
     texts = [f"{(i.get('title') or '')} {i['text']}".strip() for i in items]
     emb = embedding_classify_batch(texts)
-    ml = ml_classify_batch(texts)
+    tr = transformer_models.classify(texts)
+    # Logistic Regression runs only as the fallback when the Transformer is unavailable, or in the legacy
+    # ensemble mode (CLASSIFIER_BACKEND=auto); the deployed Transformer-only model never consults it.
+    ml_p = ml_proba(texts) if tr is None or settings.CLASSIFIER_BACKEND == "auto" else None
+    ml = None if ml_p is None else [(CATEGORIES[int(np.argmax(p))], round(float(np.max(p)), 3)) for p in ml_p]
+    tr_method = _transformer_method() if tr else None
+    w = transformer_models.ensemble_weight("clause") if settings.CLASSIFIER_BACKEND == "auto" else None
+    if tr and ml and w is not None:  # legacy ensemble: probability average, weight chosen on validation
+        ens = w * np.array([[t["probs"][c] for c in CATEGORIES] for t in tr]) + (1 - w) * ml_p
+        tr = [{**t, "label": CATEGORIES[int(np.argmax(p))], "confidence": round(float(np.max(p)), 3),
+               "transformer_label": t["label"], "transformer_confidence": t["confidence"]} for t, p in zip(tr, ens)]
+        tr_method = f"ensemble: {tr_method.split(':', 1)[1].strip()} x{w:g} + TF-IDF LogReg x{1 - w:g}"
     results = []
     for idx, item in enumerate(items):
         kw_label, kw_conf = keyword_classify(item["text"], item.get("title"))
@@ -156,9 +192,16 @@ def classify_batch(items: list[dict]) -> list[dict]:
                    "embedding": {"label": emb[idx][0], "similarity": emb[idx][1]}}
         if ml:
             details["ml"] = {"label": ml[idx][0], "confidence": ml[idx][1]}
-            label, conf, method = ml[idx][0], ml[idx][1], "ml:tfidf-logreg"
+        if tr:
+            details["transformer"] = {"label": tr[idx].get("transformer_label", tr[idx]["label"]),
+                                      "confidence": tr[idx].get("transformer_confidence", tr[idx]["confidence"])}
+            if "transformer_label" in tr[idx]:
+                details["ensemble"] = {"label": tr[idx]["label"], "confidence": tr[idx]["confidence"], "transformer_weight": w}
+        if tr or ml:
+            label, conf, method = ((tr[idx]["label"], tr[idx]["confidence"], tr_method) if tr
+                                   else (ml[idx][0], ml[idx][1], "ml:tfidf-logreg"))
             if conf < 0.45 and item.get("title") and title_label != "Others":
-                label, conf, method = title_label, conf, "heading-keyword (low ML confidence)"
+                label, conf, method = title_label, conf, "heading-keyword (low model confidence)"
         else:
             if kw_conf > 0:
                 label, conf, method = kw_label, kw_conf, "keyword-baseline"
@@ -173,5 +216,10 @@ def classify_batch(items: list[dict]) -> list[dict]:
 
 def status() -> dict:
     load_model()
-    return {"ml_model": _model is not None, "model_path": str(MODEL_PATH.relative_to(settings.ROOT)),
-            "load_error": _load_error}
+    tr = transformer_models.status()["clause"]
+    ensemble = (tr["available"] and _model is not None and settings.CLASSIFIER_BACKEND == "auto"
+                and transformer_models.ensemble_weight("clause") is not None)
+    primary = ("ensemble" if ensemble else "transformer" if tr["available"]
+               else "tfidf-logreg" if _model is not None else "keyword/embedding baselines")
+    return {"primary": primary, "ml_model": _model is not None, "model_path": str(MODEL_PATH.relative_to(settings.ROOT)),
+            "load_error": _load_error, "transformer": tr}

@@ -4,6 +4,8 @@ from __future__ import annotations
 import re
 from collections import Counter
 
+import numpy as np
+
 from backend.services import legal_parsing as lp
 from backend.services.llm_service import SYSTEM_PROMPT, LLMError, get_client
 
@@ -73,6 +75,36 @@ def explain_clause(clause: dict, references: list[dict]) -> tuple[str, str]:
     return rule_based_explanation(clause["text"], clause["category"]), "rule-based plain-language rewrite"
 
 
+def extractive_summary(clauses: list[dict], k: int = 5, diversity: float = 0.3) -> list[dict]:
+    """Key sentences of the document, chosen without generation (so nothing can be invented):
+    sentences are embedded with the active embedding model; relevance = cosine similarity to the document centroid
+    (centrality); Maximal Marginal Relevance picks k sentences that are central but not redundant; the result is
+    returned in document order with the clause each sentence comes from."""
+    from backend.services import embedding_service
+    cands = []
+    for c in clauses:
+        if (c.get("title") or "").startswith(("Preamble", "Execution")):
+            continue
+        for s in lp.sentences(c["text"]):
+            if 40 <= len(s) <= 600:
+                cands.append((c, s))
+    if not cands:
+        return []
+    E = embedding_service.encode([s for _, s in cands])
+    centroid = E.mean(axis=0)
+    centroid = centroid / (np.linalg.norm(centroid) or 1.0)
+    relevance = E @ centroid
+    chosen: list[int] = []
+    while len(chosen) < min(k, len(cands)):
+        redundancy = (E @ E[chosen].T).max(axis=1) if chosen else np.zeros(len(cands))
+        score = (1 - diversity) * relevance - diversity * redundancy
+        score[chosen] = -np.inf
+        chosen.append(int(np.argmax(score)))
+    return [{"clause_number": cands[i][0].get("number"), "clause_label": lp.clause_ref(cands[i][0]),
+             "category": cands[i][0].get("category"), "sentence": cands[i][1], "centrality": round(float(relevance[i]), 3)}
+            for i in sorted(chosen)]
+
+
 def rule_based_overall(doc_type: str, clauses: list[dict], full_text: str) -> str:
     counts = Counter(c["category"] for c in clauses)
     risks = Counter(c.get("risk_level") for c in clauses if c.get("risk_level"))
@@ -99,17 +131,30 @@ def rule_based_overall(doc_type: str, clauses: list[dict], full_text: str) -> st
     return "\n".join(lines)
 
 
-def overall_summary(doc_type: str, clauses: list[dict], full_text: str) -> tuple[str, str]:
+def _with_key_sentences(text: str, key_sentences: list[dict] | None) -> str:
+    if not key_sentences:
+        return text
+    lines = [f"- [{k['clause_label']}] {k['sentence']}" for k in key_sentences]
+    return text + "\nKey sentences from the document (extractive):\n" + "\n".join(lines)
+
+
+def overall_summary(doc_type: str, clauses: list[dict], full_text: str,
+                    key_sentences: list[dict] | None = None) -> tuple[str, str]:
+    """key_sentences: output of extractive_summary(); appended verbatim in rule-based mode, given to the LLM as grounding."""
     client = get_client()
+    extractive = " + extractive key sentences" if key_sentences else ""
     if client.available:
         digest = "\n".join(f"[{lp.clause_ref(c)}] {c['category']} | risk {c.get('risk_level')} | {c.get('summary', '')[:300]}"
                            for c in clauses)
+        key = "\n".join(f"[{k['clause_label']}] {k['sentence']}" for k in key_sentences or [])
         prompt = (f"Document type: {doc_type}\nClause-by-clause explanations:\n{digest[:12000]}\n\n"
-                  "Write an overall summary of the document in one short paragraph followed by 3-6 bullet points of "
+                  + (f"Key sentences quoted from the document:\n{key[:3000]}\n\n" if key else "")
+                  + "Write an overall summary of the document in one short paragraph followed by 3-6 bullet points of "
                   "the most important terms and potential risks. Refer to clause numbers in [n] form. Use only the "
                   "information above.")
         try:
             return client.generate(SYSTEM_PROMPT, prompt, max_tokens=700), client.label
         except LLMError as exc:
-            return rule_based_overall(doc_type, clauses, full_text), f"rule-based (LLM error: {str(exc)[:80]})"
-    return rule_based_overall(doc_type, clauses, full_text), "rule-based summary"
+            return (_with_key_sentences(rule_based_overall(doc_type, clauses, full_text), key_sentences),
+                    f"rule-based{extractive} (LLM error: {str(exc)[:60]})")
+    return _with_key_sentences(rule_based_overall(doc_type, clauses, full_text), key_sentences), f"rule-based summary{extractive}"

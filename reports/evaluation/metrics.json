@@ -1,0 +1,4490 @@
+{
+ "created_at": "2026-10-15T12:44:16+00:00",
+ "dataset_card": {
+  "created_at": "2026-09-30T17:41:03+00:00",
+  "source": {
+   "name": "CUAD v1 (Contract Understanding Atticus Dataset)",
+   "file": "data/external/cuad/CUADv1.json",
+   "sha256": "ed0b77d85bdf4014d7495800e8e4a70565b48ee6f8a2e5dca9cf8655dbf10eae",
+   "url": "https://github.com/TheAtticusProject/cuad",
+   "doi": "10.5281/zenodo.4595826",
+   "license": "CC BY 4.0",
+   "citation": "Hendrycks, Burns, Chen and Ball. CUAD: An Expert-Annotated NLP Dataset for Legal Contract Review. NeurIPS 2021 Datasets and Benchmarks."
+  },
+  "seed": 42,
+  "split_method": "filing-company groups, stratified by contract type, 70/15/15 by contract count",
+  "contracts": {
+   "train": 351,
+   "val": 80,
+   "test": 79
+  },
+  "filing_groups": {
+   "train": 316,
+   "test": 73,
+   "val": 70
+  },
+  "contract_types": {
+   "Affiliate": 10,
+   "Agency": 15,
+   "Co-Branding": 20,
+   "Collaboration": 11,
+   "Consulting": 11,
+   "Cooperation": 15,
+   "Development": 30,
+   "Distributor": 36,
+   "Endorsement": 24,
+   "Franchise": 15,
+   "Hosting": 20,
+   "IP": 16,
+   "Joint Filing": 13,
+   "Joint Venture": 10,
+   "License": 33,
+   "Maintenance": 34,
+   "Manufacturing": 12,
+   "Marketing": 11,
+   "Non-Compete": 3,
+   "Other": 1,
+   "Outsourcing": 18,
+   "Promotion": 11,
+   "Reseller": 13,
+   "Service": 29,
+   "Sponsorship": 31,
+   "Strategic Alliance": 32,
+   "Supply": 23,
+   "Transportation": 13
+  },
+  "segmentation": {
+   "segments_min_chars": 40,
+   "segments": 26484,
+   "located_in_source": 26124,
+   "coverage": 0.9864
+  },
+  "clause_classification": {
+   "labels": [
+    "Payment",
+    "Confidentiality",
+    "Termination",
+    "Liability",
+    "Dispute",
+    "Others"
+   ],
+   "sizes": {
+    "train": 5933,
+    "val": 1514,
+    "test": 1463
+   },
+   "label_distribution": {
+    "train": {
+     "Confidentiality": 166,
+     "Dispute": 436,
+     "Liability": 715,
+     "Others": 2935,
+     "Payment": 823,
+     "Termination": 858
+    },
+    "val": {
+     "Confidentiality": 54,
+     "Dispute": 120,
+     "Liability": 190,
+     "Others": 695,
+     "Payment": 217,
+     "Termination": 238
+    },
+    "test": {
+     "Confidentiality": 61,
+     "Dispute": 120,
+     "Liability": 203,
+     "Others": 662,
+     "Payment": 189,
+     "Termination": 228
+    }
+   },
+   "gold_sizes": {
+    "train": 4886,
+    "val": 1158,
+    "test": 1121
+   },
+   "conflicting_texts_dropped": 17,
+   "cross_split_duplicates_removed": 45,
+   "excluded": "131 project-authored seed clauses (data/datasets/seed_clauses_authored.csv)"
+  },
+  "risk_detection": {
+   "labels": [
+    "Uncapped Liability",
+    "Non-Compete",
+    "Non-Solicitation",
+    "Exclusivity",
+    "Liquidated Damages",
+    "Change Of Control",
+    "Anti-Assignment",
+    "Termination For Convenience",
+    "Ip Ownership Assignment",
+    "Covenant Not To Sue",
+    "Minimum Commitment",
+    "Renewal Term"
+   ],
+   "merged": {
+    "Non-Solicitation": [
+     "No-Solicit Of Employees",
+     "No-Solicit Of Customers"
+    ]
+   },
+   "unit": "clause as segmented by backend.services.clause_service (>= 40 chars)",
+   "sizes": {
+    "train": 4449,
+    "val": 4327,
+    "test": 4034
+   },
+   "positives": {
+    "train": 1483,
+    "val": 326,
+    "test": 347
+   },
+   "label_distribution": {
+    "train": {
+     "Uncapped Liability": 78,
+     "Non-Compete": 133,
+     "Non-Solicitation": 74,
+     "Exclusivity": 223,
+     "Liquidated Damages": 66,
+     "Change Of Control": 117,
+     "Anti-Assignment": 306,
+     "Termination For Convenience": 135,
+     "Ip Ownership Assignment": 127,
+     "Covenant Not To Sue": 86,
+     "Minimum Commitment": 207,
+     "Renewal Term": 139
+    },
+    "val": {
+     "Uncapped Liability": 26,
+     "Non-Compete": 30,
+     "Non-Solicitation": 13,
+     "Exclusivity": 40,
+     "Liquidated Damages": 13,
+     "Change Of Control": 27,
+     "Anti-Assignment": 67,
+     "Termination For Convenience": 39,
+     "Ip Ownership Assignment": 25,
+     "Covenant Not To Sue": 20,
+     "Minimum Commitment": 41,
+     "Renewal Term": 29
+    },
+    "test": {
+     "Uncapped Liability": 30,
+     "Non-Compete": 33,
+     "Non-Solicitation": 10,
+     "Exclusivity": 46,
+     "Liquidated Damages": 14,
+     "Change Of Control": 23,
+     "Anti-Assignment": 81,
+     "Termination For Convenience": 26,
+     "Ip Ownership Assignment": 41,
+     "Covenant Not To Sue": 28,
+     "Minimum Commitment": 39,
+     "Renewal Term": 24
+    }
+   },
+   "train_negative_ratio": 2.0,
+   "train_negatives_available": 15975,
+   "cross_split_duplicates_removed": 150
+  },
+  "retrieval": {
+   "val": {
+    "contracts": 80,
+    "queries": 2880,
+    "answerable": 691,
+    "answerable_with_located_segments": 676
+   },
+   "test": {
+    "contracts": 79,
+    "queries": 2844,
+    "answerable": 710,
+    "answerable_with_located_segments": 670
+   }
+  }
+ },
+ "classification": {
+  "test_size": 1463,
+  "gold_test_size": 1121,
+  "train_size": 5933,
+  "test_contracts": 75,
+  "methods": {
+   "keyword_baseline": {
+    "validation": {
+     "accuracy": 0.6215,
+     "macro_f1": 0.661
+    },
+    "all": {
+     "n": 1463,
+     "classes_in_macro": [
+      "Payment",
+      "Confidentiality",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.6576,
+     "macro_precision": 0.6915,
+     "macro_recall": 0.7412,
+     "macro_f1": 0.6943,
+     "weighted_f1": 0.6667,
+     "per_class": {
+      "Payment": {
+       "precision": 0.3813,
+       "recall": 0.7566,
+       "f1-score": 0.5071,
+       "support": 189.0
+      },
+      "Confidentiality": {
+       "precision": 0.6098,
+       "recall": 0.8197,
+       "f1-score": 0.6993,
+       "support": 61.0
+      },
+      "Termination": {
+       "precision": 0.5811,
+       "recall": 0.7544,
+       "f1-score": 0.6565,
+       "support": 228.0
+      },
+      "Liability": {
+       "precision": 0.8026,
+       "recall": 0.601,
+       "f1-score": 0.6873,
+       "support": 203.0
+      },
+      "Dispute": {
+       "precision": 0.9512,
+       "recall": 0.975,
+       "f1-score": 0.963,
+       "support": 120.0
+      },
+      "Others": {
+       "precision": 0.823,
+       "recall": 0.5408,
+       "f1-score": 0.6527,
+       "support": 662.0
+      },
+      "accuracy": 0.6576,
+      "macro avg": {
+       "precision": 0.6915,
+       "recall": 0.7412,
+       "f1-score": 0.6943,
+       "support": 1463.0
+      },
+      "weighted avg": {
+       "precision": 0.727,
+       "recall": 0.6576,
+       "f1-score": 0.6667,
+       "support": 1463.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        143,
+        0,
+        12,
+        2,
+        0,
+        32
+       ],
+       [
+        1,
+        50,
+        1,
+        0,
+        0,
+        9
+       ],
+       [
+        31,
+        3,
+        172,
+        2,
+        1,
+        19
+       ],
+       [
+        49,
+        3,
+        12,
+        122,
+        1,
+        16
+       ],
+       [
+        1,
+        0,
+        1,
+        0,
+        117,
+        1
+       ],
+       [
+        150,
+        26,
+        98,
+        26,
+        4,
+        358
+       ]
+      ]
+     },
+     "accuracy_ci95": [
+      0.6173,
+      0.6966
+     ],
+     "macro_f1_ci95": [
+      0.6523,
+      0.7291
+     ]
+    },
+    "gold_only": {
+     "n": 1121,
+     "classes_in_macro": [
+      "Payment",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.6075,
+     "macro_precision": 0.6499,
+     "macro_recall": 0.693,
+     "macro_f1": 0.6397,
+     "weighted_f1": 0.6378,
+     "per_class": {
+      "Payment": {
+       "precision": 0.2753,
+       "recall": 0.6583,
+       "f1-score": 0.3882,
+       "support": 120.0
+      },
+      "Confidentiality": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1-score": 0.0,
+       "support": 0.0
+      },
+      "Termination": {
+       "precision": 0.4769,
+       "recall": 0.7518,
+       "f1-score": 0.5836,
+       "support": 137.0
+      },
+      "Liability": {
+       "precision": 0.6979,
+       "recall": 0.5276,
+       "f1-score": 0.6009,
+       "support": 127.0
+      },
+      "Dispute": {
+       "precision": 0.9367,
+       "recall": 0.9867,
+       "f1-score": 0.961,
+       "support": 75.0
+      },
+      "Others": {
+       "precision": 0.8627,
+       "recall": 0.5408,
+       "f1-score": 0.6648,
+       "support": 662.0
+      },
+      "accuracy": 0.6075,
+      "macro avg": {
+       "precision": 0.5416,
+       "recall": 0.5775,
+       "f1-score": 0.5331,
+       "support": 1121.0
+      },
+      "weighted avg": {
+       "precision": 0.7389,
+       "recall": 0.6075,
+       "f1-score": 0.6378,
+       "support": 1121.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        79,
+        0,
+        10,
+        2,
+        0,
+        29
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        19,
+        0,
+        103,
+        1,
+        0,
+        14
+       ],
+       [
+        39,
+        2,
+        5,
+        67,
+        1,
+        13
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        74,
+        1
+       ],
+       [
+        150,
+        26,
+        98,
+        26,
+        4,
+        358
+       ]
+      ]
+     }
+    }
+   },
+   "embedding_similarity_lsa": {
+    "validation": null,
+    "all": {
+     "n": 1463,
+     "classes_in_macro": [
+      "Payment",
+      "Confidentiality",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.4949,
+     "macro_precision": 0.4873,
+     "macro_recall": 0.6517,
+     "macro_f1": 0.5219,
+     "weighted_f1": 0.4672,
+     "per_class": {
+      "Payment": {
+       "precision": 0.4032,
+       "recall": 0.5397,
+       "f1-score": 0.4615,
+       "support": 189.0
+      },
+      "Confidentiality": {
+       "precision": 0.3828,
+       "recall": 0.8033,
+       "f1-score": 0.5185,
+       "support": 61.0
+      },
+      "Termination": {
+       "precision": 0.4444,
+       "recall": 0.5965,
+       "f1-score": 0.5094,
+       "support": 228.0
+      },
+      "Liability": {
+       "precision": 0.5153,
+       "recall": 0.7488,
+       "f1-score": 0.6104,
+       "support": 203.0
+      },
+      "Dispute": {
+       "precision": 0.5022,
+       "recall": 0.9667,
+       "f1-score": 0.661,
+       "support": 120.0
+      },
+      "Others": {
+       "precision": 0.676,
+       "recall": 0.2553,
+       "f1-score": 0.3706,
+       "support": 662.0
+      },
+      "accuracy": 0.4949,
+      "macro avg": {
+       "precision": 0.4873,
+       "recall": 0.6517,
+       "f1-score": 0.5219,
+       "support": 1463.0
+      },
+      "weighted avg": {
+       "precision": 0.5559,
+       "recall": 0.4949,
+       "f1-score": 0.4672,
+       "support": 1463.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        102,
+        4,
+        29,
+        18,
+        7,
+        29
+       ],
+       [
+        2,
+        49,
+        1,
+        3,
+        0,
+        6
+       ],
+       [
+        20,
+        14,
+        136,
+        15,
+        4,
+        39
+       ],
+       [
+        20,
+        3,
+        14,
+        152,
+        9,
+        5
+       ],
+       [
+        0,
+        0,
+        2,
+        0,
+        116,
+        2
+       ],
+       [
+        109,
+        58,
+        124,
+        107,
+        95,
+        169
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.8117,
+     "accuracy_ci95": [
+      0.4571,
+      0.5355
+     ],
+     "macro_f1_ci95": [
+      0.4825,
+      0.5573
+     ]
+    },
+    "gold_only": {
+     "n": 1121,
+     "classes_in_macro": [
+      "Payment",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.4184,
+     "macro_precision": 0.4399,
+     "macro_recall": 0.5999,
+     "macro_f1": 0.4501,
+     "weighted_f1": 0.4133,
+     "per_class": {
+      "Payment": {
+       "precision": 0.2772,
+       "recall": 0.4667,
+       "f1-score": 0.3478,
+       "support": 120.0
+      },
+      "Confidentiality": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1-score": 0.0,
+       "support": 0.0
+      },
+      "Termination": {
+       "precision": 0.3458,
+       "recall": 0.6058,
+       "f1-score": 0.4403,
+       "support": 137.0
+      },
+      "Liability": {
+       "precision": 0.4028,
+       "recall": 0.685,
+       "f1-score": 0.5073,
+       "support": 127.0
+      },
+      "Dispute": {
+       "precision": 0.4022,
+       "recall": 0.9867,
+       "f1-score": 0.5714,
+       "support": 75.0
+      },
+      "Others": {
+       "precision": 0.7717,
+       "recall": 0.2553,
+       "f1-score": 0.3837,
+       "support": 662.0
+      },
+      "accuracy": 0.4184,
+      "macro avg": {
+       "precision": 0.3666,
+       "recall": 0.4999,
+       "f1-score": 0.3751,
+       "support": 1121.0
+      },
+      "weighted avg": {
+       "precision": 0.6002,
+       "recall": 0.4184,
+       "f1-score": 0.4133,
+       "support": 1121.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        56,
+        0,
+        24,
+        12,
+        5,
+        23
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        18,
+        1,
+        83,
+        10,
+        2,
+        23
+       ],
+       [
+        19,
+        1,
+        9,
+        87,
+        8,
+        3
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        74,
+        1
+       ],
+       [
+        109,
+        58,
+        124,
+        107,
+        95,
+        169
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.7803
+    }
+   },
+   "embedding_similarity_minilm": {
+    "validation": null,
+    "all": {
+     "n": 1463,
+     "classes_in_macro": [
+      "Payment",
+      "Confidentiality",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.6138,
+     "macro_precision": 0.5992,
+     "macro_recall": 0.6322,
+     "macro_f1": 0.5921,
+     "weighted_f1": 0.6133,
+     "per_class": {
+      "Payment": {
+       "precision": 0.6715,
+       "recall": 0.4868,
+       "f1-score": 0.5644,
+       "support": 189.0
+      },
+      "Confidentiality": {
+       "precision": 0.3543,
+       "recall": 0.7377,
+       "f1-score": 0.4787,
+       "support": 61.0
+      },
+      "Termination": {
+       "precision": 0.5474,
+       "recall": 0.7851,
+       "f1-score": 0.645,
+       "support": 228.0
+      },
+      "Liability": {
+       "precision": 0.6245,
+       "recall": 0.7537,
+       "f1-score": 0.683,
+       "support": 203.0
+      },
+      "Dispute": {
+       "precision": 0.7179,
+       "recall": 0.4667,
+       "f1-score": 0.5657,
+       "support": 120.0
+      },
+      "Others": {
+       "precision": 0.6794,
+       "recall": 0.5634,
+       "f1-score": 0.616,
+       "support": 662.0
+      },
+      "accuracy": 0.6138,
+      "macro avg": {
+       "precision": 0.5992,
+       "recall": 0.6322,
+       "f1-score": 0.5921,
+       "support": 1463.0
+      },
+      "weighted avg": {
+       "precision": 0.6398,
+       "recall": 0.6138,
+       "f1-score": 0.6133,
+       "support": 1463.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        92,
+        2,
+        15,
+        18,
+        3,
+        59
+       ],
+       [
+        0,
+        45,
+        5,
+        2,
+        1,
+        8
+       ],
+       [
+        4,
+        3,
+        179,
+        3,
+        0,
+        39
+       ],
+       [
+        6,
+        4,
+        24,
+        153,
+        1,
+        15
+       ],
+       [
+        0,
+        3,
+        4,
+        2,
+        56,
+        55
+       ],
+       [
+        35,
+        70,
+        100,
+        67,
+        17,
+        373
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.8002,
+     "accuracy_ci95": [
+      0.5841,
+      0.6443
+     ],
+     "macro_f1_ci95": [
+      0.5479,
+      0.6346
+     ]
+    },
+    "gold_only": {
+     "n": 1121,
+     "classes_in_macro": [
+      "Payment",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.57,
+     "macro_precision": 0.549,
+     "macro_recall": 0.5474,
+     "macro_f1": 0.5268,
+     "weighted_f1": 0.5881,
+     "per_class": {
+      "Payment": {
+       "precision": 0.5056,
+       "recall": 0.375,
+       "f1-score": 0.4306,
+       "support": 120.0
+      },
+      "Confidentiality": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1-score": 0.0,
+       "support": 0.0
+      },
+      "Termination": {
+       "precision": 0.4573,
+       "recall": 0.781,
+       "f1-score": 0.5768,
+       "support": 137.0
+      },
+      "Liability": {
+       "precision": 0.5349,
+       "recall": 0.7244,
+       "f1-score": 0.6154,
+       "support": 127.0
+      },
+      "Dispute": {
+       "precision": 0.5116,
+       "recall": 0.2933,
+       "f1-score": 0.3729,
+       "support": 75.0
+      },
+      "Others": {
+       "precision": 0.7357,
+       "recall": 0.5634,
+       "f1-score": 0.6382,
+       "support": 662.0
+      },
+      "accuracy": 0.57,
+      "macro avg": {
+       "precision": 0.4575,
+       "recall": 0.4562,
+       "f1-score": 0.439,
+       "support": 1121.0
+      },
+      "weighted avg": {
+       "precision": 0.6393,
+       "recall": 0.57,
+       "f1-score": 0.5881,
+       "support": 1121.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        45,
+        2,
+        12,
+        10,
+        3,
+        48
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        3,
+        1,
+        107,
+        2,
+        0,
+        24
+       ],
+       [
+        6,
+        2,
+        14,
+        92,
+        1,
+        12
+       ],
+       [
+        0,
+        1,
+        1,
+        1,
+        22,
+        50
+       ],
+       [
+        35,
+        70,
+        100,
+        67,
+        17,
+        373
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.7654
+    }
+   },
+   "tfidf_logreg": {
+    "validation": {
+     "accuracy": 0.8884,
+     "macro_f1": 0.8778
+    },
+    "all": {
+     "n": 1463,
+     "classes_in_macro": [
+      "Payment",
+      "Confidentiality",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.8859,
+     "macro_precision": 0.901,
+     "macro_recall": 0.851,
+     "macro_f1": 0.8727,
+     "weighted_f1": 0.8858,
+     "per_class": {
+      "Payment": {
+       "precision": 0.8281,
+       "recall": 0.8413,
+       "f1-score": 0.8346,
+       "support": 189.0
+      },
+      "Confidentiality": {
+       "precision": 0.9362,
+       "recall": 0.7213,
+       "f1-score": 0.8148,
+       "support": 61.0
+      },
+      "Termination": {
+       "precision": 0.8083,
+       "recall": 0.8509,
+       "f1-score": 0.8291,
+       "support": 228.0
+      },
+      "Liability": {
+       "precision": 0.9505,
+       "recall": 0.8522,
+       "f1-score": 0.8987,
+       "support": 203.0
+      },
+      "Dispute": {
+       "precision": 0.9909,
+       "recall": 0.9083,
+       "f1-score": 0.9478,
+       "support": 120.0
+      },
+      "Others": {
+       "precision": 0.8916,
+       "recall": 0.932,
+       "f1-score": 0.9114,
+       "support": 662.0
+      },
+      "accuracy": 0.8859,
+      "macro avg": {
+       "precision": 0.901,
+       "recall": 0.851,
+       "f1-score": 0.8727,
+       "support": 1463.0
+      },
+      "weighted avg": {
+       "precision": 0.8886,
+       "recall": 0.8859,
+       "f1-score": 0.8858,
+       "support": 1463.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        159,
+        0,
+        9,
+        1,
+        0,
+        20
+       ],
+       [
+        0,
+        44,
+        1,
+        2,
+        0,
+        14
+       ],
+       [
+        7,
+        0,
+        194,
+        3,
+        1,
+        23
+       ],
+       [
+        9,
+        0,
+        12,
+        173,
+        0,
+        9
+       ],
+       [
+        1,
+        0,
+        1,
+        0,
+        109,
+        9
+       ],
+       [
+        16,
+        3,
+        23,
+        3,
+        0,
+        617
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.9768,
+     "accuracy_ci95": [
+      0.8591,
+      0.9097
+     ],
+     "macro_f1_ci95": [
+      0.8422,
+      0.8999
+     ]
+    },
+    "gold_only": {
+     "n": 1121,
+     "classes_in_macro": [
+      "Payment",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.9072,
+     "macro_precision": 0.8948,
+     "macro_recall": 0.8946,
+     "macro_f1": 0.8927,
+     "weighted_f1": 0.9095,
+     "per_class": {
+      "Payment": {
+       "precision": 0.7836,
+       "recall": 0.875,
+       "f1-score": 0.8268,
+       "support": 120.0
+      },
+      "Confidentiality": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1-score": 0.0,
+       "support": 0.0
+      },
+      "Termination": {
+       "precision": 0.7718,
+       "recall": 0.8394,
+       "f1-score": 0.8042,
+       "support": 137.0
+      },
+      "Liability": {
+       "precision": 0.9722,
+       "recall": 0.8268,
+       "f1-score": 0.8936,
+       "support": 127.0
+      },
+      "Dispute": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "f1-score": 1.0,
+       "support": 75.0
+      },
+      "Others": {
+       "precision": 0.9463,
+       "recall": 0.932,
+       "f1-score": 0.9391,
+       "support": 662.0
+      },
+      "accuracy": 0.9072,
+      "macro avg": {
+       "precision": 0.7457,
+       "recall": 0.7455,
+       "f1-score": 0.744,
+       "support": 1121.0
+      },
+      "weighted avg": {
+       "precision": 0.9141,
+       "recall": 0.9072,
+       "f1-score": 0.9095,
+       "support": 1121.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        105,
+        0,
+        5,
+        0,
+        0,
+        10
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        4,
+        0,
+        115,
+        0,
+        0,
+        18
+       ],
+       [
+        9,
+        0,
+        6,
+        105,
+        0,
+        7
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        75,
+        0
+       ],
+       [
+        16,
+        3,
+        23,
+        3,
+        0,
+        617
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.9826
+    }
+   },
+   "tfidf_linear_svm": {
+    "validation": {
+     "accuracy": 0.897,
+     "macro_f1": 0.8864
+    },
+    "all": {
+     "n": 1463,
+     "classes_in_macro": [
+      "Payment",
+      "Confidentiality",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.8954,
+     "macro_precision": 0.915,
+     "macro_recall": 0.8625,
+     "macro_f1": 0.8851,
+     "weighted_f1": 0.895,
+     "per_class": {
+      "Payment": {
+       "precision": 0.8571,
+       "recall": 0.8254,
+       "f1-score": 0.841,
+       "support": 189.0
+      },
+      "Confidentiality": {
+       "precision": 0.9783,
+       "recall": 0.7377,
+       "f1-score": 0.8411,
+       "support": 61.0
+      },
+      "Termination": {
+       "precision": 0.8151,
+       "recall": 0.8509,
+       "f1-score": 0.8326,
+       "support": 228.0
+      },
+      "Liability": {
+       "precision": 0.9609,
+       "recall": 0.8473,
+       "f1-score": 0.9005,
+       "support": 203.0
+      },
+      "Dispute": {
+       "precision": 0.9831,
+       "recall": 0.9667,
+       "f1-score": 0.9748,
+       "support": 120.0
+      },
+      "Others": {
+       "precision": 0.8957,
+       "recall": 0.9471,
+       "f1-score": 0.9207,
+       "support": 662.0
+      },
+      "accuracy": 0.8954,
+      "macro avg": {
+       "precision": 0.915,
+       "recall": 0.8625,
+       "f1-score": 0.8851,
+       "support": 1463.0
+      },
+      "weighted avg": {
+       "precision": 0.8978,
+       "recall": 0.8954,
+       "f1-score": 0.895,
+       "support": 1463.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        156,
+        0,
+        9,
+        2,
+        1,
+        21
+       ],
+       [
+        0,
+        45,
+        3,
+        1,
+        0,
+        12
+       ],
+       [
+        5,
+        0,
+        194,
+        2,
+        1,
+        26
+       ],
+       [
+        9,
+        0,
+        12,
+        172,
+        0,
+        10
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        116,
+        4
+       ],
+       [
+        12,
+        1,
+        20,
+        2,
+        0,
+        627
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.976,
+     "accuracy_ci95": [
+      0.8657,
+      0.9228
+     ],
+     "macro_f1_ci95": [
+      0.8556,
+      0.9109
+     ]
+    },
+    "gold_only": {
+     "n": 1121,
+     "classes_in_macro": [
+      "Payment",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.9144,
+     "macro_precision": 0.904,
+     "macro_recall": 0.8943,
+     "macro_f1": 0.8977,
+     "weighted_f1": 0.9152,
+     "per_class": {
+      "Payment": {
+       "precision": 0.8175,
+       "recall": 0.8583,
+       "f1-score": 0.8374,
+       "support": 120.0
+      },
+      "Confidentiality": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1-score": 0.0,
+       "support": 0.0
+      },
+      "Termination": {
+       "precision": 0.7877,
+       "recall": 0.8394,
+       "f1-score": 0.8127,
+       "support": 137.0
+      },
+      "Liability": {
+       "precision": 0.9722,
+       "recall": 0.8268,
+       "f1-score": 0.8936,
+       "support": 127.0
+      },
+      "Dispute": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "f1-score": 1.0,
+       "support": 75.0
+      },
+      "Others": {
+       "precision": 0.9429,
+       "recall": 0.9471,
+       "f1-score": 0.945,
+       "support": 662.0
+      },
+      "accuracy": 0.9144,
+      "macro avg": {
+       "precision": 0.7534,
+       "recall": 0.7453,
+       "f1-score": 0.7481,
+       "support": 1121.0
+      },
+      "weighted avg": {
+       "precision": 0.9176,
+       "recall": 0.9144,
+       "f1-score": 0.9152,
+       "support": 1121.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        103,
+        0,
+        5,
+        1,
+        0,
+        11
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        2,
+        0,
+        115,
+        0,
+        0,
+        20
+       ],
+       [
+        9,
+        0,
+        6,
+        105,
+        0,
+        7
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        75,
+        0
+       ],
+       [
+        12,
+        1,
+        20,
+        2,
+        0,
+        627
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.9825
+    }
+   },
+   "transformer_minilm": {
+    "validation": {
+     "accuracy": 0.8884,
+     "macro_f1": 0.8697
+    },
+    "all": {
+     "n": 1463,
+     "classes_in_macro": [
+      "Payment",
+      "Confidentiality",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.8968,
+     "macro_precision": 0.8899,
+     "macro_recall": 0.8808,
+     "macro_f1": 0.8839,
+     "weighted_f1": 0.8973,
+     "per_class": {
+      "Payment": {
+       "precision": 0.848,
+       "recall": 0.9153,
+       "f1-score": 0.8804,
+       "support": 189.0
+      },
+      "Confidentiality": {
+       "precision": 0.8868,
+       "recall": 0.7705,
+       "f1-score": 0.8246,
+       "support": 61.0
+      },
+      "Termination": {
+       "precision": 0.7809,
+       "recall": 0.8596,
+       "f1-score": 0.8184,
+       "support": 228.0
+      },
+      "Liability": {
+       "precision": 0.8995,
+       "recall": 0.8374,
+       "f1-score": 0.8673,
+       "support": 203.0
+      },
+      "Dispute": {
+       "precision": 0.9833,
+       "recall": 0.9833,
+       "f1-score": 0.9833,
+       "support": 120.0
+      },
+      "Others": {
+       "precision": 0.9412,
+       "recall": 0.9184,
+       "f1-score": 0.9297,
+       "support": 662.0
+      },
+      "accuracy": 0.8968,
+      "macro avg": {
+       "precision": 0.8899,
+       "recall": 0.8808,
+       "f1-score": 0.8839,
+       "support": 1463.0
+      },
+      "weighted avg": {
+       "precision": 0.8996,
+       "recall": 0.8968,
+       "f1-score": 0.8973,
+       "support": 1463.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        173,
+        0,
+        6,
+        5,
+        0,
+        5
+       ],
+       [
+        0,
+        47,
+        4,
+        2,
+        2,
+        6
+       ],
+       [
+        7,
+        0,
+        196,
+        6,
+        0,
+        19
+       ],
+       [
+        9,
+        1,
+        16,
+        170,
+        0,
+        7
+       ],
+       [
+        0,
+        0,
+        1,
+        0,
+        118,
+        1
+       ],
+       [
+        15,
+        5,
+        28,
+        6,
+        0,
+        608
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.9801,
+     "accuracy_ci95": [
+      0.8668,
+      0.9231
+     ],
+     "macro_f1_ci95": [
+      0.8519,
+      0.9125
+     ]
+    },
+    "gold_only": {
+     "n": 1121,
+     "classes_in_macro": [
+      "Payment",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.9063,
+     "macro_precision": 0.8863,
+     "macro_recall": 0.9053,
+     "macro_f1": 0.8942,
+     "weighted_f1": 0.9102,
+     "per_class": {
+      "Payment": {
+       "precision": 0.8175,
+       "recall": 0.9333,
+       "f1-score": 0.8716,
+       "support": 120.0
+      },
+      "Confidentiality": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1-score": 0.0,
+       "support": 0.0
+      },
+      "Termination": {
+       "precision": 0.7451,
+       "recall": 0.8321,
+       "f1-score": 0.7862,
+       "support": 137.0
+      },
+      "Liability": {
+       "precision": 0.9068,
+       "recall": 0.8425,
+       "f1-score": 0.8735,
+       "support": 127.0
+      },
+      "Dispute": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "f1-score": 1.0,
+       "support": 75.0
+      },
+      "Others": {
+       "precision": 0.962,
+       "recall": 0.9184,
+       "f1-score": 0.9397,
+       "support": 662.0
+      },
+      "accuracy": 0.9063,
+      "macro avg": {
+       "precision": 0.7386,
+       "recall": 0.7544,
+       "f1-score": 0.7452,
+       "support": 1121.0
+      },
+      "weighted avg": {
+       "precision": 0.9163,
+       "recall": 0.9063,
+       "f1-score": 0.9102,
+       "support": 1121.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        112,
+        0,
+        4,
+        2,
+        0,
+        2
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        2,
+        0,
+        114,
+        3,
+        0,
+        18
+       ],
+       [
+        8,
+        1,
+        7,
+        107,
+        0,
+        4
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        75,
+        0
+       ],
+       [
+        15,
+        5,
+        28,
+        6,
+        0,
+        608
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.9846
+    }
+   },
+   "transformer_legal-bert": {
+    "validation": {
+     "accuracy": 0.9247,
+     "macro_f1": 0.9185
+    },
+    "all": {
+     "n": 1463,
+     "classes_in_macro": [
+      "Payment",
+      "Confidentiality",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.9173,
+     "macro_precision": 0.9218,
+     "macro_recall": 0.8985,
+     "macro_f1": 0.9086,
+     "weighted_f1": 0.9176,
+     "per_class": {
+      "Payment": {
+       "precision": 0.8814,
+       "recall": 0.9048,
+       "f1-score": 0.893,
+       "support": 189.0
+      },
+      "Confidentiality": {
+       "precision": 0.9608,
+       "recall": 0.8033,
+       "f1-score": 0.875,
+       "support": 61.0
+      },
+      "Termination": {
+       "precision": 0.8163,
+       "recall": 0.8772,
+       "f1-score": 0.8457,
+       "support": 228.0
+      },
+      "Liability": {
+       "precision": 0.9574,
+       "recall": 0.8867,
+       "f1-score": 0.9207,
+       "support": 203.0
+      },
+      "Dispute": {
+       "precision": 0.975,
+       "recall": 0.975,
+       "f1-score": 0.975,
+       "support": 120.0
+      },
+      "Others": {
+       "precision": 0.9398,
+       "recall": 0.9441,
+       "f1-score": 0.942,
+       "support": 662.0
+      },
+      "accuracy": 0.9173,
+      "macro avg": {
+       "precision": 0.9218,
+       "recall": 0.8985,
+       "f1-score": 0.9086,
+       "support": 1463.0
+      },
+      "weighted avg": {
+       "precision": 0.9193,
+       "recall": 0.9173,
+       "f1-score": 0.9176,
+       "support": 1463.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        171,
+        0,
+        6,
+        2,
+        1,
+        9
+       ],
+       [
+        1,
+        49,
+        3,
+        0,
+        1,
+        7
+       ],
+       [
+        6,
+        0,
+        200,
+        3,
+        0,
+        19
+       ],
+       [
+        6,
+        0,
+        13,
+        180,
+        1,
+        3
+       ],
+       [
+        0,
+        0,
+        0,
+        1,
+        117,
+        2
+       ],
+       [
+        10,
+        2,
+        23,
+        2,
+        0,
+        625
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.987,
+     "accuracy_ci95": [
+      0.8917,
+      0.9394
+     ],
+     "macro_f1_ci95": [
+      0.8833,
+      0.9324
+     ]
+    },
+    "gold_only": {
+     "n": 1121,
+     "classes_in_macro": [
+      "Payment",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.9322,
+     "macro_precision": 0.9164,
+     "macro_recall": 0.9287,
+     "macro_f1": 0.9217,
+     "weighted_f1": 0.9339,
+     "per_class": {
+      "Payment": {
+       "precision": 0.8682,
+       "recall": 0.9333,
+       "f1-score": 0.8996,
+       "support": 120.0
+      },
+      "Confidentiality": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1-score": 0.0,
+       "support": 0.0
+      },
+      "Termination": {
+       "precision": 0.7933,
+       "recall": 0.8686,
+       "f1-score": 0.8293,
+       "support": 137.0
+      },
+      "Liability": {
+       "precision": 0.9661,
+       "recall": 0.8976,
+       "f1-score": 0.9306,
+       "support": 127.0
+      },
+      "Dispute": {
+       "precision": 0.9868,
+       "recall": 1.0,
+       "f1-score": 0.9934,
+       "support": 75.0
+      },
+      "Others": {
+       "precision": 0.9675,
+       "recall": 0.9441,
+       "f1-score": 0.9557,
+       "support": 662.0
+      },
+      "accuracy": 0.9322,
+      "macro avg": {
+       "precision": 0.7637,
+       "recall": 0.7739,
+       "f1-score": 0.7681,
+       "support": 1121.0
+      },
+      "weighted avg": {
+       "precision": 0.9367,
+       "recall": 0.9322,
+       "f1-score": 0.9339,
+       "support": 1121.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        112,
+        0,
+        3,
+        1,
+        0,
+        4
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        2,
+        0,
+        119,
+        1,
+        0,
+        15
+       ],
+       [
+        5,
+        0,
+        5,
+        114,
+        1,
+        2
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        75,
+        0
+       ],
+       [
+        10,
+        2,
+        23,
+        2,
+        0,
+        625
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.989
+    }
+   },
+   "ensemble_minilm_logreg": {
+    "validation": {
+     "accuracy": 0.9075,
+     "macro_f1": 0.8989
+    },
+    "all": {
+     "n": 1463,
+     "classes_in_macro": [
+      "Payment",
+      "Confidentiality",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.9064,
+     "macro_precision": 0.9172,
+     "macro_recall": 0.8819,
+     "macro_f1": 0.8968,
+     "weighted_f1": 0.9063,
+     "per_class": {
+      "Payment": {
+       "precision": 0.8763,
+       "recall": 0.8995,
+       "f1-score": 0.8877,
+       "support": 189.0
+      },
+      "Confidentiality": {
+       "precision": 0.9583,
+       "recall": 0.7541,
+       "f1-score": 0.844,
+       "support": 61.0
+      },
+      "Termination": {
+       "precision": 0.813,
+       "recall": 0.8772,
+       "f1-score": 0.8439,
+       "support": 228.0
+      },
+      "Liability": {
+       "precision": 0.9341,
+       "recall": 0.8374,
+       "f1-score": 0.8831,
+       "support": 203.0
+      },
+      "Dispute": {
+       "precision": 1.0,
+       "recall": 0.9833,
+       "f1-score": 0.9916,
+       "support": 120.0
+      },
+      "Others": {
+       "precision": 0.9215,
+       "recall": 0.9396,
+       "f1-score": 0.9304,
+       "support": 662.0
+      },
+      "accuracy": 0.9064,
+      "macro avg": {
+       "precision": 0.9172,
+       "recall": 0.8819,
+       "f1-score": 0.8968,
+       "support": 1463.0
+      },
+      "weighted avg": {
+       "precision": 0.9085,
+       "recall": 0.9064,
+       "f1-score": 0.9063,
+       "support": 1463.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        170,
+        0,
+        7,
+        2,
+        0,
+        10
+       ],
+       [
+        0,
+        46,
+        2,
+        2,
+        0,
+        11
+       ],
+       [
+        5,
+        0,
+        200,
+        3,
+        0,
+        20
+       ],
+       [
+        10,
+        1,
+        12,
+        170,
+        0,
+        10
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        118,
+        2
+       ],
+       [
+        9,
+        1,
+        25,
+        5,
+        0,
+        622
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.9818,
+     "accuracy_ci95": [
+      0.8775,
+      0.9305
+     ],
+     "macro_f1_ci95": [
+      0.8667,
+      0.9216
+     ]
+    },
+    "gold_only": {
+     "n": 1121,
+     "classes_in_macro": [
+      "Payment",
+      "Termination",
+      "Liability",
+      "Dispute",
+      "Others"
+     ],
+     "accuracy": 0.9224,
+     "macro_precision": 0.9086,
+     "macro_recall": 0.9153,
+     "macro_f1": 0.9101,
+     "weighted_f1": 0.924,
+     "per_class": {
+      "Payment": {
+       "precision": 0.8561,
+       "recall": 0.9417,
+       "f1-score": 0.8968,
+       "support": 120.0
+      },
+      "Confidentiality": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1-score": 0.0,
+       "support": 0.0
+      },
+      "Termination": {
+       "precision": 0.7727,
+       "recall": 0.8686,
+       "f1-score": 0.8179,
+       "support": 137.0
+      },
+      "Liability": {
+       "precision": 0.9545,
+       "recall": 0.8268,
+       "f1-score": 0.8861,
+       "support": 127.0
+      },
+      "Dispute": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "f1-score": 1.0,
+       "support": 75.0
+      },
+      "Others": {
+       "precision": 0.9599,
+       "recall": 0.9396,
+       "f1-score": 0.9496,
+       "support": 662.0
+      },
+      "accuracy": 0.9224,
+      "macro avg": {
+       "precision": 0.7572,
+       "recall": 0.7628,
+       "f1-score": 0.7584,
+       "support": 1121.0
+      },
+      "weighted avg": {
+       "precision": 0.928,
+       "recall": 0.9224,
+       "f1-score": 0.924,
+       "support": 1121.0
+      }
+     },
+     "confusion_matrix": {
+      "labels": [
+       "Payment",
+       "Confidentiality",
+       "Termination",
+       "Liability",
+       "Dispute",
+       "Others"
+      ],
+      "matrix": [
+       [
+        113,
+        0,
+        4,
+        0,
+        0,
+        3
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       [
+        1,
+        0,
+        119,
+        0,
+        0,
+        17
+       ],
+       [
+        9,
+        1,
+        6,
+        105,
+        0,
+        6
+       ],
+       [
+        0,
+        0,
+        0,
+        0,
+        75,
+        0
+       ],
+       [
+        9,
+        1,
+        25,
+        5,
+        0,
+        622
+       ]
+      ]
+     },
+     "roc_auc_macro_ovr": 0.9865
+    }
+   }
+  },
+  "paired_bootstrap": [
+   {
+    "comparison": "transformer_minilm - tfidf_logreg (macro F1, all test clauses)",
+    "observed": 0.0112,
+    "ci95": [
+     -0.0134,
+     0.0335
+    ],
+    "share_of_resamples_not_better": 0.172
+   },
+   {
+    "comparison": "ensemble_minilm_logreg - tfidf_logreg (macro F1, all test clauses)",
+    "observed": 0.0241,
+    "ci95": [
+     0.0081,
+     0.0411
+    ],
+    "share_of_resamples_not_better": 0.0
+   },
+   {
+    "comparison": "ensemble_minilm_logreg - transformer_minilm (macro F1, all test clauses)",
+    "observed": 0.0129,
+    "ci95": [
+     -0.0015,
+     0.031
+    ],
+    "share_of_resamples_not_better": 0.039
+   },
+   {
+    "comparison": "ensemble_minilm_logreg - tfidf_linear_svm (macro F1, all test clauses)",
+    "observed": 0.0117,
+    "ci95": [
+     -0.0011,
+     0.023
+    ],
+    "share_of_resamples_not_better": 0.036
+   }
+  ],
+  "transformer_models": {
+   "transformer_minilm": {
+    "base_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "path": "models\\transformers\\clause",
+    "best_epoch": 5,
+    "validation": {
+     "accuracy": 0.8884,
+     "macro_f1": 0.8697
+    },
+    "deployed": true
+   },
+   "transformer_legal-bert": {
+    "base_model": "nlpaueb/legal-bert-base-uncased",
+    "path": "models\\transformers\\experiments\\legal-bert_clause",
+    "best_epoch": 4,
+    "validation": {
+     "accuracy": 0.9247,
+     "macro_f1": 0.9185
+    },
+    "deployed": false
+   },
+   "ensemble_minilm_logreg": {
+    "transformer_weight": 0.3,
+    "deployed": false,
+    "selected_on": "validation macro F1"
+   }
+  },
+  "ood_reference_templates": {
+   "n": 31,
+   "note": "clauses of data/standard_documents/standard_*.txt with a manual category in categories.json",
+   "keyword_baseline": 0.9032,
+   "tfidf_logreg": 0.9677,
+   "transformer_minilm": 0.9032,
+   "ensemble_minilm_logreg": 0.9355
+  }
+ },
+ "risk": {
+  "labels": [
+   "Uncapped Liability",
+   "Non-Compete",
+   "Non-Solicitation",
+   "Exclusivity",
+   "Liquidated Damages",
+   "Change Of Control",
+   "Anti-Assignment",
+   "Termination For Convenience",
+   "Ip Ownership Assignment",
+   "Covenant Not To Sue",
+   "Minimum Commitment",
+   "Renewal Term"
+  ],
+  "test_clauses": 4034,
+  "test_positive_clauses": 347,
+  "test_contracts": 79,
+  "methods": {
+   "transformer_minilm": {
+    "micro_f1": 0.5985,
+    "macro_f1": 0.5626,
+    "micro_precision": 0.6047,
+    "micro_recall": 0.5924,
+    "per_label": {
+     "Uncapped Liability": {
+      "precision": 0.68,
+      "recall": 0.5667,
+      "f1": 0.6182,
+      "support": 30,
+      "roc_auc": 0.9484,
+      "average_precision": 0.6353
+     },
+     "Non-Compete": {
+      "precision": 0.5682,
+      "recall": 0.7576,
+      "f1": 0.6494,
+      "support": 33,
+      "roc_auc": 0.9904,
+      "average_precision": 0.6549
+     },
+     "Non-Solicitation": {
+      "precision": 0.6154,
+      "recall": 0.8,
+      "f1": 0.6957,
+      "support": 10,
+      "roc_auc": 0.9727,
+      "average_precision": 0.7203
+     },
+     "Exclusivity": {
+      "precision": 0.5588,
+      "recall": 0.413,
+      "f1": 0.475,
+      "support": 46,
+      "roc_auc": 0.9745,
+      "average_precision": 0.5021
+     },
+     "Liquidated Damages": {
+      "precision": 0.5556,
+      "recall": 0.3571,
+      "f1": 0.4348,
+      "support": 14,
+      "roc_auc": 0.9791,
+      "average_precision": 0.4066
+     },
+     "Change Of Control": {
+      "precision": 0.3636,
+      "recall": 0.1739,
+      "f1": 0.2353,
+      "support": 23,
+      "roc_auc": 0.97,
+      "average_precision": 0.2744
+     },
+     "Anti-Assignment": {
+      "precision": 0.8571,
+      "recall": 0.7407,
+      "f1": 0.7947,
+      "support": 81,
+      "roc_auc": 0.9755,
+      "average_precision": 0.8124
+     },
+     "Termination For Convenience": {
+      "precision": 0.3684,
+      "recall": 0.5385,
+      "f1": 0.4375,
+      "support": 26,
+      "roc_auc": 0.9498,
+      "average_precision": 0.3458
+     },
+     "Ip Ownership Assignment": {
+      "precision": 0.5094,
+      "recall": 0.6585,
+      "f1": 0.5745,
+      "support": 41,
+      "roc_auc": 0.9425,
+      "average_precision": 0.612
+     },
+     "Covenant Not To Sue": {
+      "precision": 0.7391,
+      "recall": 0.6071,
+      "f1": 0.6667,
+      "support": 28,
+      "roc_auc": 0.9297,
+      "average_precision": 0.6522
+     },
+     "Minimum Commitment": {
+      "precision": 0.5769,
+      "recall": 0.3846,
+      "f1": 0.4615,
+      "support": 39,
+      "roc_auc": 0.9709,
+      "average_precision": 0.4246
+     },
+     "Renewal Term": {
+      "precision": 0.561,
+      "recall": 0.9583,
+      "f1": 0.7077,
+      "support": 24,
+      "roc_auc": 0.9953,
+      "average_precision": 0.7412
+     }
+    },
+    "macro_roc_auc": 0.9666,
+    "macro_average_precision": 0.5651,
+    "any_risk_clause": {
+     "precision": 0.629,
+     "recall": 0.6744,
+     "f1": 0.6509,
+     "support": 347
+    },
+    "thresholds": {
+     "Uncapped Liability": 0.94,
+     "Non-Compete": 0.86,
+     "Non-Solicitation": 0.91,
+     "Exclusivity": 0.95,
+     "Liquidated Damages": 0.8,
+     "Change Of Control": 0.89,
+     "Anti-Assignment": 0.94,
+     "Termination For Convenience": 0.93,
+     "Ip Ownership Assignment": 0.85,
+     "Covenant Not To Sue": 0.85,
+     "Minimum Commitment": 0.95,
+     "Renewal Term": 0.86
+    },
+    "deployed": true,
+    "micro_f1_ci95": [
+     0.5595,
+     0.6361
+    ]
+   },
+   "tfidf_logreg_ovr": {
+    "micro_f1": 0.5821,
+    "macro_f1": 0.588,
+    "micro_precision": 0.5721,
+    "micro_recall": 0.5924,
+    "per_label": {
+     "Uncapped Liability": {
+      "precision": 0.9167,
+      "recall": 0.3667,
+      "f1": 0.5238,
+      "support": 30,
+      "roc_auc": 0.9956,
+      "average_precision": 0.7732
+     },
+     "Non-Compete": {
+      "precision": 0.4651,
+      "recall": 0.6061,
+      "f1": 0.5263,
+      "support": 33,
+      "roc_auc": 0.9808,
+      "average_precision": 0.566
+     },
+     "Non-Solicitation": {
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.8889,
+      "support": 10,
+      "roc_auc": 0.9767,
+      "average_precision": 0.8311
+     },
+     "Exclusivity": {
+      "precision": 0.4091,
+      "recall": 0.3913,
+      "f1": 0.4,
+      "support": 46,
+      "roc_auc": 0.955,
+      "average_precision": 0.4052
+     },
+     "Liquidated Damages": {
+      "precision": 0.8,
+      "recall": 0.2857,
+      "f1": 0.4211,
+      "support": 14,
+      "roc_auc": 0.9875,
+      "average_precision": 0.6605
+     },
+     "Change Of Control": {
+      "precision": 0.5294,
+      "recall": 0.3913,
+      "f1": 0.45,
+      "support": 23,
+      "roc_auc": 0.9926,
+      "average_precision": 0.4805
+     },
+     "Anti-Assignment": {
+      "precision": 0.9333,
+      "recall": 0.6914,
+      "f1": 0.7943,
+      "support": 81,
+      "roc_auc": 0.9892,
+      "average_precision": 0.8587
+     },
+     "Termination For Convenience": {
+      "precision": 0.5,
+      "recall": 0.5385,
+      "f1": 0.5185,
+      "support": 26,
+      "roc_auc": 0.9925,
+      "average_precision": 0.5835
+     },
+     "Ip Ownership Assignment": {
+      "precision": 0.6667,
+      "recall": 0.7317,
+      "f1": 0.6977,
+      "support": 41,
+      "roc_auc": 0.9633,
+      "average_precision": 0.7477
+     },
+     "Covenant Not To Sue": {
+      "precision": 0.85,
+      "recall": 0.6071,
+      "f1": 0.7083,
+      "support": 28,
+      "roc_auc": 0.9865,
+      "average_precision": 0.7479
+     },
+     "Minimum Commitment": {
+      "precision": 0.2812,
+      "recall": 0.6923,
+      "f1": 0.4,
+      "support": 39,
+      "roc_auc": 0.976,
+      "average_precision": 0.5675
+     },
+     "Renewal Term": {
+      "precision": 0.6452,
+      "recall": 0.8333,
+      "f1": 0.7273,
+      "support": 24,
+      "roc_auc": 0.9984,
+      "average_precision": 0.749
+     }
+    },
+    "macro_roc_auc": 0.9828,
+    "macro_average_precision": 0.6642,
+    "any_risk_clause": {
+     "precision": 0.624,
+     "recall": 0.6888,
+     "f1": 0.6548,
+     "support": 347
+    },
+    "thresholds": {
+     "Uncapped Liability": 0.98,
+     "Non-Compete": 0.48,
+     "Non-Solicitation": 0.8,
+     "Exclusivity": 0.83,
+     "Liquidated Damages": 0.79,
+     "Change Of Control": 0.79,
+     "Anti-Assignment": 0.83,
+     "Termination For Convenience": 0.83,
+     "Ip Ownership Assignment": 0.71,
+     "Covenant Not To Sue": 0.77,
+     "Minimum Commitment": 0.48,
+     "Renewal Term": 0.85
+    },
+    "micro_f1_ci95": [
+     0.5434,
+     0.6184
+    ]
+   },
+   "ensemble_minilm_logreg": {
+    "micro_f1": 0.5817,
+    "macro_f1": 0.5884,
+    "micro_precision": 0.5538,
+    "micro_recall": 0.6127,
+    "per_label": {
+     "Uncapped Liability": {
+      "precision": 0.9167,
+      "recall": 0.3667,
+      "f1": 0.5238,
+      "support": 30,
+      "roc_auc": 0.9938,
+      "average_precision": 0.7755
+     },
+     "Non-Compete": {
+      "precision": 0.4259,
+      "recall": 0.697,
+      "f1": 0.5287,
+      "support": 33,
+      "roc_auc": 0.9875,
+      "average_precision": 0.6519
+     },
+     "Non-Solicitation": {
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8,
+      "support": 10,
+      "roc_auc": 0.9762,
+      "average_precision": 0.8191
+     },
+     "Exclusivity": {
+      "precision": 0.5333,
+      "recall": 0.3478,
+      "f1": 0.4211,
+      "support": 46,
+      "roc_auc": 0.97,
+      "average_precision": 0.4478
+     },
+     "Liquidated Damages": {
+      "precision": 0.8333,
+      "recall": 0.3571,
+      "f1": 0.5,
+      "support": 14,
+      "roc_auc": 0.9885,
+      "average_precision": 0.658
+     },
+     "Change Of Control": {
+      "precision": 0.5294,
+      "recall": 0.3913,
+      "f1": 0.45,
+      "support": 23,
+      "roc_auc": 0.9927,
+      "average_precision": 0.5104
+     },
+     "Anti-Assignment": {
+      "precision": 0.8101,
+      "recall": 0.7901,
+      "f1": 0.8,
+      "support": 81,
+      "roc_auc": 0.9907,
+      "average_precision": 0.8725
+     },
+     "Termination For Convenience": {
+      "precision": 0.5909,
+      "recall": 0.5,
+      "f1": 0.5417,
+      "support": 26,
+      "roc_auc": 0.9916,
+      "average_precision": 0.5895
+     },
+     "Ip Ownership Assignment": {
+      "precision": 0.7778,
+      "recall": 0.6829,
+      "f1": 0.7273,
+      "support": 41,
+      "roc_auc": 0.9667,
+      "average_precision": 0.7595
+     },
+     "Covenant Not To Sue": {
+      "precision": 0.75,
+      "recall": 0.6429,
+      "f1": 0.6923,
+      "support": 28,
+      "roc_auc": 0.984,
+      "average_precision": 0.7438
+     },
+     "Minimum Commitment": {
+      "precision": 0.2328,
+      "recall": 0.6923,
+      "f1": 0.3484,
+      "support": 39,
+      "roc_auc": 0.9782,
+      "average_precision": 0.5847
+     },
+     "Renewal Term": {
+      "precision": 0.6452,
+      "recall": 0.8333,
+      "f1": 0.7273,
+      "support": 24,
+      "roc_auc": 0.9985,
+      "average_precision": 0.7879
+     }
+    },
+    "macro_roc_auc": 0.9849,
+    "macro_average_precision": 0.6834,
+    "any_risk_clause": {
+     "precision": 0.6093,
+     "recall": 0.7147,
+     "f1": 0.6578,
+     "support": 347
+    },
+    "thresholds": {
+     "Uncapped Liability": 0.98,
+     "Non-Compete": 0.47,
+     "Non-Solicitation": 0.53,
+     "Exclusivity": 0.86,
+     "Liquidated Damages": 0.69,
+     "Change Of Control": 0.77,
+     "Anti-Assignment": 0.58,
+     "Termination For Convenience": 0.86,
+     "Ip Ownership Assignment": 0.8,
+     "Covenant Not To Sue": 0.71,
+     "Minimum Commitment": 0.46,
+     "Renewal Term": 0.85
+    },
+    "transformer_weight": 0.2,
+    "deployed": false,
+    "micro_f1_ci95": [
+     0.5429,
+     0.6232
+    ]
+   }
+  },
+  "rule_mapped_types": {
+   "labels": [
+    "Uncapped Liability",
+    "Non-Compete",
+    "Liquidated Damages",
+    "Termination For Convenience",
+    "Covenant Not To Sue",
+    "Renewal Term"
+   ],
+   "rule_map": {
+    "Uncapped Liability": [
+     "broad_indemnity",
+     "indirect_loss_included",
+     "unlimited_liability"
+    ],
+    "Non-Compete": [
+     "post_term_restraint"
+    ],
+    "Liquidated Damages": [
+     "penalty_or_forfeiture"
+    ],
+    "Covenant Not To Sue": [
+     "waiver_of_legal_remedy"
+    ],
+    "Renewal Term": [
+     "auto_renewal"
+    ],
+    "Termination For Convenience": [
+     "one_sided_termination",
+     "termination_without_notice"
+    ]
+   },
+   "methods": {
+    "rules_original": {
+     "micro_f1": 0.1643,
+     "macro_f1": 0.2772,
+     "micro_precision": 0.1192,
+     "micro_recall": 0.2645,
+     "per_label": {
+      "Uncapped Liability": {
+       "precision": 0.0358,
+       "recall": 0.3333,
+       "f1": 0.0647,
+       "support": 30
+      },
+      "Non-Compete": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "f1": 0.0,
+       "support": 33
+      },
+      "Liquidated Damages": {
+       "precision": 0.3462,
+       "recall": 0.6429,
+       "f1": 0.45,
+       "support": 14
+      },
+      "Termination For Convenience": {
+       "precision": 0.2727,
+       "recall": 0.2308,
+       "f1": 0.25,
+       "support": 26
+      },
+      "Covenant Not To Sue": {
+       "precision": 1.0,
+       "recall": 0.1429,
+       "f1": 0.25,
+       "support": 28
+      },
+      "Renewal Term": {
+       "precision": 0.9231,
+       "recall": 0.5,
+       "f1": 0.6486,
+       "support": 24
+      }
+     },
+     "any_risk_clause": {
+      "precision": 0.1458,
+      "recall": 0.3356,
+      "f1": 0.2033,
+      "support": 146
+     }
+    },
+    "transformer_minilm": {
+     "micro_f1": 0.603,
+     "macro_f1": 0.5857,
+     "micro_precision": 0.5611,
+     "micro_recall": 0.6516,
+     "per_label": {
+      "Uncapped Liability": {
+       "precision": 0.68,
+       "recall": 0.5667,
+       "f1": 0.6182,
+       "support": 30
+      },
+      "Non-Compete": {
+       "precision": 0.5682,
+       "recall": 0.7576,
+       "f1": 0.6494,
+       "support": 33
+      },
+      "Liquidated Damages": {
+       "precision": 0.5556,
+       "recall": 0.3571,
+       "f1": 0.4348,
+       "support": 14
+      },
+      "Termination For Convenience": {
+       "precision": 0.3684,
+       "recall": 0.5385,
+       "f1": 0.4375,
+       "support": 26
+      },
+      "Covenant Not To Sue": {
+       "precision": 0.7391,
+       "recall": 0.6071,
+       "f1": 0.6667,
+       "support": 28
+      },
+      "Renewal Term": {
+       "precision": 0.561,
+       "recall": 0.9583,
+       "f1": 0.7077,
+       "support": 24
+      }
+     },
+     "any_risk_clause": {
+      "precision": 0.5754,
+      "recall": 0.7055,
+      "f1": 0.6338,
+      "support": 146
+     }
+    },
+    "tfidf_logreg_ovr": {
+     "micro_f1": 0.585,
+     "macro_f1": 0.5709,
+     "micro_precision": 0.6187,
+     "micro_recall": 0.5548,
+     "per_label": {
+      "Uncapped Liability": {
+       "precision": 0.9167,
+       "recall": 0.3667,
+       "f1": 0.5238,
+       "support": 30
+      },
+      "Non-Compete": {
+       "precision": 0.4651,
+       "recall": 0.6061,
+       "f1": 0.5263,
+       "support": 33
+      },
+      "Liquidated Damages": {
+       "precision": 0.8,
+       "recall": 0.2857,
+       "f1": 0.4211,
+       "support": 14
+      },
+      "Termination For Convenience": {
+       "precision": 0.5,
+       "recall": 0.5385,
+       "f1": 0.5185,
+       "support": 26
+      },
+      "Covenant Not To Sue": {
+       "precision": 0.85,
+       "recall": 0.6071,
+       "f1": 0.7083,
+       "support": 28
+      },
+      "Renewal Term": {
+       "precision": 0.6452,
+       "recall": 0.8333,
+       "f1": 0.7273,
+       "support": 24
+      }
+     },
+     "any_risk_clause": {
+      "precision": 0.635,
+      "recall": 0.5959,
+      "f1": 0.6148,
+      "support": 146
+     }
+    },
+    "ensemble_minilm_logreg": {
+     "micro_f1": 0.5921,
+     "macro_f1": 0.5856,
+     "micro_precision": 0.604,
+     "micro_recall": 0.5806,
+     "per_label": {
+      "Uncapped Liability": {
+       "precision": 0.9167,
+       "recall": 0.3667,
+       "f1": 0.5238,
+       "support": 30
+      },
+      "Non-Compete": {
+       "precision": 0.4259,
+       "recall": 0.697,
+       "f1": 0.5287,
+       "support": 33
+      },
+      "Liquidated Damages": {
+       "precision": 0.8333,
+       "recall": 0.3571,
+       "f1": 0.5,
+       "support": 14
+      },
+      "Termination For Convenience": {
+       "precision": 0.5909,
+       "recall": 0.5,
+       "f1": 0.5417,
+       "support": 26
+      },
+      "Covenant Not To Sue": {
+       "precision": 0.75,
+       "recall": 0.6429,
+       "f1": 0.6923,
+       "support": 28
+      },
+      "Renewal Term": {
+       "precision": 0.6452,
+       "recall": 0.8333,
+       "f1": 0.7273,
+       "support": 24
+      }
+     },
+     "any_risk_clause": {
+      "precision": 0.619,
+      "recall": 0.6233,
+      "f1": 0.6212,
+      "support": 146
+     }
+    }
+   }
+  },
+  "paired_bootstrap": [
+   {
+    "comparison": "transformer_minilm - tfidf_logreg_ovr (micro F1)",
+    "observed": 0.0164,
+    "ci95": [
+     -0.0254,
+     0.0579
+    ],
+    "share_of_resamples_not_better": 0.204
+   },
+   {
+    "comparison": "ensemble_minilm_logreg - tfidf_logreg_ovr (micro F1)",
+    "observed": -0.0004,
+    "ci95": [
+     -0.0169,
+     0.017
+    ],
+    "share_of_resamples_not_better": 0.504
+   },
+   {
+    "comparison": "ensemble_minilm_logreg - transformer_minilm (micro F1)",
+    "observed": -0.0168,
+    "ci95": [
+     -0.0551,
+     0.0245
+    ],
+    "share_of_resamples_not_better": 0.808
+   }
+  ]
+ },
+ "retrieval": {
+  "dataset": {
+   "val": {
+    "contracts": 80,
+    "queries": 2880,
+    "answerable": 691,
+    "answerable_with_located_segments": 676
+   },
+   "test": {
+    "contracts": 79,
+    "queries": 2844,
+    "answerable": 710,
+    "answerable_with_located_segments": 670
+   }
+  },
+  "rankers": {
+   "legacy_lsa (original ranking, LSA)": {
+    "val": {
+     "queries": 676,
+     "hit@1": 0.426,
+     "hit@3": 0.6183,
+     "hit@5": 0.7027,
+     "mrr@10": 0.5483,
+     "ndcg@5": 0.5354
+    },
+    "test": {
+     "queries": 670,
+     "hit@1": 0.403,
+     "hit@3": 0.6284,
+     "hit@5": 0.7194,
+     "mrr@10": 0.5344,
+     "ndcg@5": 0.5396,
+     "mrr@10_ci95": [
+      0.5006,
+      0.5721
+     ]
+    }
+   },
+   "legacy_minilm (original ranking, MiniLM)": {
+    "val": {
+     "queries": 676,
+     "hit@1": 0.4098,
+     "hit@3": 0.6154,
+     "hit@5": 0.7278,
+     "mrr@10": 0.5429,
+     "ndcg@5": 0.5331
+    },
+    "test": {
+     "queries": 670,
+     "hit@1": 0.4328,
+     "hit@3": 0.6104,
+     "hit@5": 0.7269,
+     "mrr@10": 0.5546,
+     "ndcg@5": 0.5475,
+     "mrr@10_ci95": [
+      0.5202,
+      0.5922
+     ]
+    }
+   },
+   "lsa_dense": {
+    "val": {
+     "queries": 676,
+     "hit@1": 0.4127,
+     "hit@3": 0.6405,
+     "hit@5": 0.75,
+     "mrr@10": 0.5467,
+     "ndcg@5": 0.5498
+    },
+    "test": {
+     "queries": 670,
+     "hit@1": 0.394,
+     "hit@3": 0.6209,
+     "hit@5": 0.7343,
+     "mrr@10": 0.5368,
+     "ndcg@5": 0.5386,
+     "mrr@10_ci95": [
+      0.498,
+      0.577
+     ]
+    }
+   },
+   "minilm_dense": {
+    "val": {
+     "queries": 676,
+     "hit@1": 0.3891,
+     "hit@3": 0.5873,
+     "hit@5": 0.6701,
+     "mrr@10": 0.514,
+     "ndcg@5": 0.5024
+    },
+    "test": {
+     "queries": 670,
+     "hit@1": 0.403,
+     "hit@3": 0.594,
+     "hit@5": 0.6821,
+     "mrr@10": 0.5251,
+     "ndcg@5": 0.5109,
+     "mrr@10_ci95": [
+      0.4915,
+      0.561
+     ]
+    }
+   },
+   "bm25": {
+    "val": {
+     "queries": 676,
+     "hit@1": 0.5399,
+     "hit@3": 0.7263,
+     "hit@5": 0.7973,
+     "mrr@10": 0.6499,
+     "ndcg@5": 0.6324
+    },
+    "test": {
+     "queries": 670,
+     "hit@1": 0.506,
+     "hit@3": 0.7194,
+     "hit@5": 0.8045,
+     "mrr@10": 0.6282,
+     "ndcg@5": 0.6214,
+     "mrr@10_ci95": [
+      0.599,
+      0.6607
+     ]
+    }
+   },
+   "hybrid_bm25_minilm (deployed)": {
+    "val": {
+     "queries": 676,
+     "hit@1": 0.5799,
+     "hit@3": 0.7604,
+     "hit@5": 0.8166,
+     "mrr@10": 0.6839,
+     "ndcg@5": 0.6632
+    },
+    "test": {
+     "queries": 670,
+     "hit@1": 0.5418,
+     "hit@3": 0.7657,
+     "hit@5": 0.8164,
+     "mrr@10": 0.663,
+     "ndcg@5": 0.6532,
+     "mrr@10_ci95": [
+      0.6347,
+      0.693
+     ]
+    }
+   },
+   "hybrid_bm25_lsa": {
+    "val": {
+     "queries": 676,
+     "hit@1": 0.5503,
+     "hit@3": 0.7337,
+     "hit@5": 0.8077,
+     "mrr@10": 0.6577,
+     "ndcg@5": 0.6434
+    },
+    "test": {
+     "queries": 670,
+     "hit@1": 0.5239,
+     "hit@3": 0.7269,
+     "hit@5": 0.806,
+     "mrr@10": 0.6434,
+     "ndcg@5": 0.6335,
+     "mrr@10_ci95": [
+      0.6102,
+      0.6781
+     ]
+    }
+   }
+  },
+  "selected_config": {
+   "sbert-all-MiniLM-L6-v2": {
+    "fusion": "weighted",
+    "alpha": 0.5,
+    "rrf_k": 60,
+    "category_boost": 0.0,
+    "answerability": {
+     "coef": [
+      0.5993,
+      0.5438,
+      0.4369
+     ],
+     "intercept": -1.4777,
+     "mean": [
+      0.4301,
+      0.7935,
+      0.318
+     ],
+     "scale": [
+      0.0968,
+      0.5529,
+      0.1694
+     ],
+     "features": [
+      "top dense cosine",
+      "top BM25 / query terms",
+      "query-term coverage"
+     ],
+     "threshold": 0.125,
+     "operating_point": "answer >= 90% of answerable validation questions",
+     "val_answered_when_answerable": 0.9001,
+     "val_not_found_when_unanswerable": 0.455,
+     "val_balanced_accuracy": 0.6775
+    }
+   },
+   "lsa-tfidf-svd": {
+    "fusion": "weighted",
+    "alpha": 0.3,
+    "rrf_k": 60,
+    "category_boost": 0.0,
+    "answerability": {
+     "coef": [
+      0.4821,
+      0.5887,
+      0.4893
+     ],
+     "intercept": -1.4459,
+     "mean": [
+      0.2506,
+      0.7935,
+      0.3272
+     ],
+     "scale": [
+      0.1342,
+      0.5529,
+      0.1724
+     ],
+     "features": [
+      "top dense cosine",
+      "top BM25 / query terms",
+      "query-term coverage"
+     ],
+     "threshold": 0.125,
+     "operating_point": "answer >= 90% of answerable validation questions",
+     "val_answered_when_answerable": 0.9117,
+     "val_not_found_when_unanswerable": 0.4491,
+     "val_balanced_accuracy": 0.6804
+    }
+   }
+  },
+  "decisions": {
+   "legacy_lsa (original)": {
+    "accuracy": 0.2736,
+    "balanced_accuracy": 0.5159,
+    "answered_when_answerable": 1.0,
+    "not_found_when_unanswerable": 0.0319,
+    "not_found_precision": 1.0,
+    "not_found_recall": 0.0319,
+    "not_found_f1": 0.0618,
+    "end_to_end_correct": 0.1744,
+    "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3"
+   },
+   "legacy_minilm": {
+    "accuracy": 0.2722,
+    "balanced_accuracy": 0.515,
+    "answered_when_answerable": 1.0,
+    "not_found_when_unanswerable": 0.03,
+    "not_found_precision": 1.0,
+    "not_found_recall": 0.03,
+    "not_found_f1": 0.0582,
+    "end_to_end_correct": 0.1687,
+    "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3"
+   },
+   "hybrid + uncalibrated rule": {
+    "accuracy": 0.2739,
+    "balanced_accuracy": 0.5162,
+    "answered_when_answerable": 1.0,
+    "not_found_when_unanswerable": 0.0323,
+    "not_found_precision": 1.0,
+    "not_found_recall": 0.0323,
+    "not_found_f1": 0.0626,
+    "end_to_end_correct": 0.2076,
+    "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3"
+   },
+   "hybrid + calibrated answerability (deployed)": {
+    "accuracy": 0.545,
+    "balanced_accuracy": 0.6649,
+    "answered_when_answerable": 0.9042,
+    "not_found_when_unanswerable": 0.4255,
+    "not_found_precision": 0.9303,
+    "not_found_recall": 0.4255,
+    "not_found_f1": 0.5839,
+    "end_to_end_correct": 0.4964,
+    "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3",
+    "roc_auc_p_answerable": 0.7899
+   }
+  },
+  "val_grid_minilm": [
+   {
+    "fusion": "weighted",
+    "alpha": 0.0,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.6499
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.0,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.6506
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.0,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.6482
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.0,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.6381
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.1,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.6536
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.1,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.6545
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.1,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.6524
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.1,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.6422
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.2,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.6607
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.2,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.6573
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.2,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.6554
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.2,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.6463
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.3,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.6708
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.3,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.6681
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.3,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.6635
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.3,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.6562
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.4,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.6811
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.4,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.6814
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.4,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.6739
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.4,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.6647
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.5,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.6839
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.5,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.6826
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.5,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.6765
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.5,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.6662
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.6,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.6786
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.6,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.6771
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.6,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.6689
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.6,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.6552
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.7,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.67
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.7,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.6697
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.7,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.6596
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.7,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.6381
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.8,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.6251
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.8,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.6284
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.8,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.6207
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.8,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.5901
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.9,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.5763
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.9,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.5761
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.9,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.5649
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 0.9,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.5413
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 1.0,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.514
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 1.0,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.5137
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 1.0,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.4974
+   },
+   {
+    "fusion": "weighted",
+    "alpha": 1.0,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.4793
+   },
+   {
+    "fusion": "rrf",
+    "alpha": 0.5,
+    "category_boost": 0.0,
+    "val_mrr@10": 0.6468
+   },
+   {
+    "fusion": "rrf",
+    "alpha": 0.5,
+    "category_boost": 0.1,
+    "val_mrr@10": 0.4977
+   },
+   {
+    "fusion": "rrf",
+    "alpha": 0.5,
+    "category_boost": 0.2,
+    "val_mrr@10": 0.4977
+   },
+   {
+    "fusion": "rrf",
+    "alpha": 0.5,
+    "category_boost": 0.3,
+    "val_mrr@10": 0.4977
+   }
+  ]
+ },
+ "speed": {
+  "clauses": 512,
+  "tfidf_logreg_cpu_ms_per_clause": 0.1707,
+  "transformer_minilm_cuda_ms_per_clause": 2.6442,
+  "transformer_minilm_cpu_ms_per_clause": 48.7463,
+  "transformer_legal-bert_cuda_ms_per_clause": 20.9097,
+  "transformer_legal-bert_cpu_ms_per_clause": 360.5828,
+  "transformer_legal-bert_encoder_mb": 218.9867,
+  "transformer_minilm_encoder_mb": 45.4378,
+  "cpu": "Intel64 Family 6 Model 141 Stepping 1, GenuineIntel",
+  "gpu": "NVIDIA GeForce GTX 1650 with Max-Q Design"
+ },
+ "training": {
+  "clause": {
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 0.896,
+     "val": {
+      "accuracy": 0.8593,
+      "macro_f1": 0.852
+     },
+     "epoch_seconds": 144.6,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.2705,
+     "val": {
+      "accuracy": 0.8738,
+      "macro_f1": 0.8685
+     },
+     "epoch_seconds": 143.8,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.166,
+     "val": {
+      "accuracy": 0.8791,
+      "macro_f1": 0.866
+     },
+     "epoch_seconds": 146.9,
+     "best": false
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.1137,
+     "val": {
+      "accuracy": 0.8824,
+      "macro_f1": 0.8673
+     },
+     "epoch_seconds": 146.3,
+     "best": false
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.0807,
+     "val": {
+      "accuracy": 0.889,
+      "macro_f1": 0.8719
+     },
+     "epoch_seconds": 147.8,
+     "best": true
+    }
+   ],
+   "steps": [
+    {
+     "epoch": 1,
+     "batch": 25,
+     "batches": 186,
+     "loss": 1.7768,
+     "lr": 1.3440860215053763e-05,
+     "elapsed_s": 22.0
+    },
+    {
+     "epoch": 1,
+     "batch": 50,
+     "batches": 186,
+     "loss": 1.6088,
+     "lr": 2.6881720430107527e-05,
+     "elapsed_s": 34.5
+    },
+    {
+     "epoch": 1,
+     "batch": 75,
+     "batches": 186,
+     "loss": 1.1923,
+     "lr": 4.032258064516129e-05,
+     "elapsed_s": 50.8
+    },
+    {
+     "epoch": 1,
+     "batch": 100,
+     "batches": 186,
+     "loss": 0.6388,
+     "lr": 4.9581839904420555e-05,
+     "elapsed_s": 70.1
+    },
+    {
+     "epoch": 1,
+     "batch": 125,
+     "batches": 186,
+     "loss": 0.4418,
+     "lr": 4.80884109916368e-05,
+     "elapsed_s": 87.9
+    },
+    {
+     "epoch": 1,
+     "batch": 150,
+     "batches": 186,
+     "loss": 0.4677,
+     "lr": 4.659498207885305e-05,
+     "elapsed_s": 105.3
+    },
+    {
+     "epoch": 1,
+     "batch": 175,
+     "batches": 186,
+     "loss": 0.3564,
+     "lr": 4.51015531660693e-05,
+     "elapsed_s": 124.8
+    },
+    {
+     "epoch": 1,
+     "batch": 186,
+     "batches": 186,
+     "loss": 0.3877,
+     "lr": 4.4444444444444447e-05,
+     "elapsed_s": 133.2
+    },
+    {
+     "epoch": 2,
+     "batch": 25,
+     "batches": 186,
+     "loss": 0.2806,
+     "lr": 4.295101553166069e-05,
+     "elapsed_s": 161.8
+    },
+    {
+     "epoch": 2,
+     "batch": 50,
+     "batches": 186,
+     "loss": 0.2208,
+     "lr": 4.145758661887694e-05,
+     "elapsed_s": 180.7
+    },
+    {
+     "epoch": 2,
+     "batch": 75,
+     "batches": 186,
+     "loss": 0.3132,
+     "lr": 3.996415770609319e-05,
+     "elapsed_s": 199.7
+    },
+    {
+     "epoch": 2,
+     "batch": 100,
+     "batches": 186,
+     "loss": 0.2434,
+     "lr": 3.847072879330944e-05,
+     "elapsed_s": 217.6
+    },
+    {
+     "epoch": 2,
+     "batch": 125,
+     "batches": 186,
+     "loss": 0.2394,
+     "lr": 3.697729988052569e-05,
+     "elapsed_s": 235.2
+    },
+    {
+     "epoch": 2,
+     "batch": 150,
+     "batches": 186,
+     "loss": 0.2995,
+     "lr": 3.548387096774194e-05,
+     "elapsed_s": 253.0
+    },
+    {
+     "epoch": 2,
+     "batch": 175,
+     "batches": 186,
+     "loss": 0.3112,
+     "lr": 3.399044205495819e-05,
+     "elapsed_s": 271.4
+    },
+    {
+     "epoch": 2,
+     "batch": 186,
+     "batches": 186,
+     "loss": 0.2615,
+     "lr": 3.3333333333333335e-05,
+     "elapsed_s": 278.1
+    },
+    {
+     "epoch": 3,
+     "batch": 25,
+     "batches": 186,
+     "loss": 0.1623,
+     "lr": 3.183990442054958e-05,
+     "elapsed_s": 309.6
+    },
+    {
+     "epoch": 3,
+     "batch": 50,
+     "batches": 186,
+     "loss": 0.1703,
+     "lr": 3.034647550776583e-05,
+     "elapsed_s": 327.5
+    },
+    {
+     "epoch": 3,
+     "batch": 75,
+     "batches": 186,
+     "loss": 0.1628,
+     "lr": 2.885304659498208e-05,
+     "elapsed_s": 346.8
+    },
+    {
+     "epoch": 3,
+     "batch": 100,
+     "batches": 186,
+     "loss": 0.1628,
+     "lr": 2.735961768219833e-05,
+     "elapsed_s": 364.2
+    },
+    {
+     "epoch": 3,
+     "batch": 125,
+     "batches": 186,
+     "loss": 0.1953,
+     "lr": 2.586618876941458e-05,
+     "elapsed_s": 384.0
+    },
+    {
+     "epoch": 3,
+     "batch": 150,
+     "batches": 186,
+     "loss": 0.1448,
+     "lr": 2.4372759856630826e-05,
+     "elapsed_s": 403.5
+    },
+    {
+     "epoch": 3,
+     "batch": 175,
+     "batches": 186,
+     "loss": 0.1697,
+     "lr": 2.2879330943847073e-05,
+     "elapsed_s": 420.1
+    },
+    {
+     "epoch": 3,
+     "batch": 186,
+     "batches": 186,
+     "loss": 0.1213,
+     "lr": 2.2222222222222223e-05,
+     "elapsed_s": 427.1
+    },
+    {
+     "epoch": 4,
+     "batch": 25,
+     "batches": 186,
+     "loss": 0.1299,
+     "lr": 2.072879330943847e-05,
+     "elapsed_s": 451.4
+    },
+    {
+     "epoch": 4,
+     "batch": 50,
+     "batches": 186,
+     "loss": 0.0867,
+     "lr": 1.923536439665472e-05,
+     "elapsed_s": 475.6
+    },
+    {
+     "epoch": 4,
+     "batch": 75,
+     "batches": 186,
+     "loss": 0.1241,
+     "lr": 1.774193548387097e-05,
+     "elapsed_s": 494.1
+    },
+    {
+     "epoch": 4,
+     "batch": 100,
+     "batches": 186,
+     "loss": 0.0916,
+     "lr": 1.6248506571087216e-05,
+     "elapsed_s": 511.8
+    },
+    {
+     "epoch": 4,
+     "batch": 125,
+     "batches": 186,
+     "loss": 0.1265,
+     "lr": 1.4755077658303465e-05,
+     "elapsed_s": 533.8
+    },
+    {
+     "epoch": 4,
+     "batch": 150,
+     "batches": 186,
+     "loss": 0.0993,
+     "lr": 1.3261648745519714e-05,
+     "elapsed_s": 551.4
+    },
+    {
+     "epoch": 4,
+     "batch": 175,
+     "batches": 186,
+     "loss": 0.1235,
+     "lr": 1.1768219832735962e-05,
+     "elapsed_s": 568.4
+    },
+    {
+     "epoch": 4,
+     "batch": 186,
+     "batches": 186,
+     "loss": 0.1358,
+     "lr": 1.1111111111111112e-05,
+     "elapsed_s": 574.4
+    },
+    {
+     "epoch": 5,
+     "batch": 25,
+     "batches": 186,
+     "loss": 0.1018,
+     "lr": 9.61768219832736e-06,
+     "elapsed_s": 610.5
+    },
+    {
+     "epoch": 5,
+     "batch": 50,
+     "batches": 186,
+     "loss": 0.0813,
+     "lr": 8.124253285543608e-06,
+     "elapsed_s": 630.7
+    },
+    {
+     "epoch": 5,
+     "batch": 75,
+     "batches": 186,
+     "loss": 0.0622,
+     "lr": 6.630824372759857e-06,
+     "elapsed_s": 649.7
+    },
+    {
+     "epoch": 5,
+     "batch": 100,
+     "batches": 186,
+     "loss": 0.0443,
+     "lr": 5.137395459976105e-06,
+     "elapsed_s": 665.5
+    },
+    {
+     "epoch": 5,
+     "batch": 125,
+     "batches": 186,
+     "loss": 0.0783,
+     "lr": 3.643966547192354e-06,
+     "elapsed_s": 678.6
+    },
+    {
+     "epoch": 5,
+     "batch": 150,
+     "batches": 186,
+     "loss": 0.1015,
+     "lr": 2.1505376344086023e-06,
+     "elapsed_s": 695.9
+    },
+    {
+     "epoch": 5,
+     "batch": 175,
+     "batches": 186,
+     "loss": 0.0934,
+     "lr": 6.571087216248507e-07,
+     "elapsed_s": 714.4
+    },
+    {
+     "epoch": 5,
+     "batch": 186,
+     "batches": 186,
+     "loss": 0.0923,
+     "lr": 0.0,
+     "elapsed_s": 723.3
+    }
+   ],
+   "best_epoch": 5,
+   "training": {
+    "task": "clause",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "tag": null,
+    "out": null,
+    "epochs": 5,
+    "batch_size": 32,
+    "grad_accum": 1,
+    "lr": 5e-05,
+    "weight_decay": 0.01,
+    "warmup": 0.1,
+    "max_length": 256,
+    "dropout": 0.1,
+    "seed": 42,
+    "device": "cuda",
+    "no_amp": false,
+    "fast_attention": false,
+    "save_fp32": false,
+    "limit": 0,
+    "log_every": 25,
+    "amp": true,
+    "train_examples": 5933,
+    "val_examples": 1514,
+    "parameters": 22715526,
+    "steps_per_epoch": 186,
+    "truncated_train_fraction": 0.026,
+    "loss": "cross-entropy, balanced class weights",
+    "class_weights": {
+     "Payment": 1.201,
+     "Confidentiality": 5.957,
+     "Termination": 1.152,
+     "Liability": 1.383,
+     "Dispute": 2.268,
+     "Others": 0.337
+    },
+    "selection_metric": "validation macro_f1",
+    "data_sha256": {
+     "train": "fb4c4c49ef12a0ffdc2f01551d79eec5bd3aed1026fed146a13108c421243ede",
+     "val": "6274510b7c44240eecbe238bcd2b3982611fc83bb18db12741e6161a34ff9049"
+    },
+    "total_seconds": 742.0
+   },
+   "validation": {
+    "accuracy": 0.8884,
+    "macro_f1": 0.8697
+   }
+  },
+  "risk": {
+   "history": [
+    {
+     "epoch": 1,
+     "train_loss": 0.6229,
+     "val": {
+      "macro_ap": 0.3619,
+      "micro_f1": 0.2166,
+      "macro_f1": 0.2119
+     },
+     "epoch_seconds": 326.2,
+     "best": true
+    },
+    {
+     "epoch": 2,
+     "train_loss": 0.3598,
+     "val": {
+      "macro_ap": 0.4492,
+      "micro_f1": 0.256,
+      "macro_f1": 0.2604
+     },
+     "epoch_seconds": 236.2,
+     "best": true
+    },
+    {
+     "epoch": 3,
+     "train_loss": 0.2682,
+     "val": {
+      "macro_ap": 0.5217,
+      "micro_f1": 0.2919,
+      "macro_f1": 0.2889
+     },
+     "epoch_seconds": 230.6,
+     "best": true
+    },
+    {
+     "epoch": 4,
+     "train_loss": 0.2212,
+     "val": {
+      "macro_ap": 0.5258,
+      "micro_f1": 0.3389,
+      "macro_f1": 0.3354
+     },
+     "epoch_seconds": 230.5,
+     "best": true
+    },
+    {
+     "epoch": 5,
+     "train_loss": 0.194,
+     "val": {
+      "macro_ap": 0.5402,
+      "micro_f1": 0.3441,
+      "macro_f1": 0.3445
+     },
+     "epoch_seconds": 230.8,
+     "best": true
+    }
+   ],
+   "steps": [
+    {
+     "epoch": 1,
+     "batch": 25,
+     "batches": 140,
+     "loss": 0.8355,
+     "lr": 1.785714285714286e-05,
+     "elapsed_s": 116.8
+    },
+    {
+     "epoch": 1,
+     "batch": 50,
+     "batches": 140,
+     "loss": 0.7459,
+     "lr": 3.571428571428572e-05,
+     "elapsed_s": 147.9
+    },
+    {
+     "epoch": 1,
+     "batch": 75,
+     "batches": 140,
+     "loss": 0.5868,
+     "lr": 4.960317460317461e-05,
+     "elapsed_s": 177.2
+    },
+    {
+     "epoch": 1,
+     "batch": 100,
+     "batches": 140,
+     "loss": 0.5442,
+     "lr": 4.761904761904762e-05,
+     "elapsed_s": 210.7
+    },
+    {
+     "epoch": 1,
+     "batch": 125,
+     "batches": 140,
+     "loss": 0.5102,
+     "lr": 4.563492063492064e-05,
+     "elapsed_s": 244.1
+    },
+    {
+     "epoch": 1,
+     "batch": 140,
+     "batches": 140,
+     "loss": 0.4472,
+     "lr": 4.4444444444444447e-05,
+     "elapsed_s": 264.5
+    },
+    {
+     "epoch": 2,
+     "batch": 25,
+     "batches": 140,
+     "loss": 0.4059,
+     "lr": 4.2460317460317464e-05,
+     "elapsed_s": 365.3
+    },
+    {
+     "epoch": 2,
+     "batch": 50,
+     "batches": 140,
+     "loss": 0.3472,
+     "lr": 4.047619047619048e-05,
+     "elapsed_s": 393.3
+    },
+    {
+     "epoch": 2,
+     "batch": 75,
+     "batches": 140,
+     "loss": 0.3383,
+     "lr": 3.84920634920635e-05,
+     "elapsed_s": 425.6
+    },
+    {
+     "epoch": 2,
+     "batch": 100,
+     "batches": 140,
+     "loss": 0.3714,
+     "lr": 3.650793650793651e-05,
+     "elapsed_s": 456.6
+    },
+    {
+     "epoch": 2,
+     "batch": 125,
+     "batches": 140,
+     "loss": 0.365,
+     "lr": 3.4523809523809526e-05,
+     "elapsed_s": 484.3
+    },
+    {
+     "epoch": 2,
+     "batch": 140,
+     "batches": 140,
+     "loss": 0.3035,
+     "lr": 3.3333333333333335e-05,
+     "elapsed_s": 502.9
+    },
+    {
+     "epoch": 3,
+     "batch": 25,
+     "batches": 140,
+     "loss": 0.2789,
+     "lr": 3.134920634920635e-05,
+     "elapsed_s": 597.0
+    },
+    {
+     "epoch": 3,
+     "batch": 50,
+     "batches": 140,
+     "loss": 0.2737,
+     "lr": 2.9365079365079366e-05,
+     "elapsed_s": 625.4
+    },
+    {
+     "epoch": 3,
+     "batch": 75,
+     "batches": 140,
+     "loss": 0.2818,
+     "lr": 2.7380952380952383e-05,
+     "elapsed_s": 659.6
+    },
+    {
+     "epoch": 3,
+     "batch": 100,
+     "batches": 140,
+     "loss": 0.2475,
+     "lr": 2.5396825396825397e-05,
+     "elapsed_s": 688.1
+    },
+    {
+     "epoch": 3,
+     "batch": 125,
+     "batches": 140,
+     "loss": 0.2778,
+     "lr": 2.3412698412698414e-05,
+     "elapsed_s": 721.3
+    },
+    {
+     "epoch": 3,
+     "batch": 140,
+     "batches": 140,
+     "loss": 0.2472,
+     "lr": 2.2222222222222223e-05,
+     "elapsed_s": 739.1
+    },
+    {
+     "epoch": 4,
+     "batch": 25,
+     "batches": 140,
+     "loss": 0.203,
+     "lr": 2.023809523809524e-05,
+     "elapsed_s": 827.9
+    },
+    {
+     "epoch": 4,
+     "batch": 50,
+     "batches": 140,
+     "loss": 0.2274,
+     "lr": 1.8253968253968254e-05,
+     "elapsed_s": 861.6
+    },
+    {
+     "epoch": 4,
+     "batch": 75,
+     "batches": 140,
+     "loss": 0.2431,
+     "lr": 1.626984126984127e-05,
+     "elapsed_s": 893.9
+    },
+    {
+     "epoch": 4,
+     "batch": 100,
+     "batches": 140,
+     "loss": 0.1901,
+     "lr": 1.4285714285714285e-05,
+     "elapsed_s": 918.9
+    },
+    {
+     "epoch": 4,
+     "batch": 125,
+     "batches": 140,
+     "loss": 0.2285,
+     "lr": 1.2301587301587301e-05,
+     "elapsed_s": 951.3
+    },
+    {
+     "epoch": 4,
+     "batch": 140,
+     "batches": 140,
+     "loss": 0.2647,
+     "lr": 1.1111111111111112e-05,
+     "elapsed_s": 972.6
+    },
+    {
+     "epoch": 5,
+     "batch": 25,
+     "batches": 140,
+     "loss": 0.1838,
+     "lr": 9.126984126984127e-06,
+     "elapsed_s": 1061.7
+    },
+    {
+     "epoch": 5,
+     "batch": 50,
+     "batches": 140,
+     "loss": 0.1915,
+     "lr": 7.142857142857143e-06,
+     "elapsed_s": 1090.9
+    },
+    {
+     "epoch": 5,
+     "batch": 75,
+     "batches": 140,
+     "loss": 0.1841,
+     "lr": 5.158730158730159e-06,
+     "elapsed_s": 1119.6
+    },
+    {
+     "epoch": 5,
+     "batch": 100,
+     "batches": 140,
+     "loss": 0.2251,
+     "lr": 3.1746031746031746e-06,
+     "elapsed_s": 1154.4
+    },
+    {
+     "epoch": 5,
+     "batch": 125,
+     "batches": 140,
+     "loss": 0.2016,
+     "lr": 1.1904761904761904e-06,
+     "elapsed_s": 1187.1
+    },
+    {
+     "epoch": 5,
+     "batch": 140,
+     "batches": 140,
+     "loss": 0.1893,
+     "lr": 0.0,
+     "elapsed_s": 1205.3
+    }
+   ],
+   "best_epoch": 5,
+   "training": {
+    "task": "risk",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "tag": null,
+    "out": null,
+    "epochs": 5,
+    "batch_size": 32,
+    "grad_accum": 1,
+    "lr": 5e-05,
+    "weight_decay": 0.01,
+    "warmup": 0.1,
+    "max_length": 256,
+    "dropout": 0.1,
+    "seed": 42,
+    "device": "cuda",
+    "no_amp": false,
+    "fast_attention": false,
+    "save_fp32": false,
+    "limit": 0,
+    "log_every": 25,
+    "amp": true,
+    "train_examples": 4449,
+    "val_examples": 4327,
+    "parameters": 22717836,
+    "steps_per_epoch": 140,
+    "truncated_train_fraction": 0.2466,
+    "loss": "BCE with pos_weight (clipped to [1, 10])",
+    "class_weights": {
+     "Uncapped Liability": 10.0,
+     "Non-Compete": 10.0,
+     "Non-Solicitation": 10.0,
+     "Exclusivity": 10.0,
+     "Liquidated Damages": 10.0,
+     "Change Of Control": 10.0,
+     "Anti-Assignment": 10.0,
+     "Termination For Convenience": 10.0,
+     "Ip Ownership Assignment": 10.0,
+     "Covenant Not To Sue": 10.0,
+     "Minimum Commitment": 10.0,
+     "Renewal Term": 10.0
+    },
+    "selection_metric": "validation macro_ap",
+    "data_sha256": {
+     "train": "e6c1a869bbfb06bd503d2434c9e54fd67d7d306ae122aa9f34963cb0edb80551",
+     "val": "2a08b64752efa6c985f160f729c87afc361c018020a4ef21d8c01eb6ac61cfe5"
+    },
+    "total_seconds": 1293.4
+   },
+   "validation": {
+    "at_0.5": {
+     "macro_ap": 0.5402,
+     "micro_f1": 0.3443,
+     "macro_f1": 0.3448
+    },
+    "at_tuned_thresholds": {
+     "macro_ap": 0.5402,
+     "micro_f1": 0.6062,
+     "macro_f1": 0.5869
+    },
+    "note": "thresholds are tuned on this split, so tuned-threshold scores are optimistic"
+   }
+  }
+ },
+ "bootstrap_resamples": 1000,
+ "seconds": 774
+}

@@ -9,3 +9,8 @@ cache/documents/
 cache/llm/
 reports/*.pdf
 frontend/node_modules/
+/dist/
+# resumable training checkpoints (optimizer state) and experiment-only models (e.g. Legal-BERT, ~220 MB)
+models/transformers/**/_checkpoint/
+models/transformers/experiments/*/encoder/
+models/transformers/experiments/*/head.safetensors

@@ -1,0 +1,75 @@
+{
+  "created_at": "2026-10-01T14:29:50+00:00",
+  "fitted_on": "CUAD validation contracts (data/datasets/contract_split/retrieval_val.jsonl)",
+  "selection_metric": "validation MRR@10; answerability threshold maximises validation balanced accuracy",
+  "backends": {
+    "sbert-all-MiniLM-L6-v2": {
+      "fusion": "weighted",
+      "alpha": 0.5,
+      "rrf_k": 60,
+      "category_boost": 0.1,
+      "answerability": {
+        "coef": [
+          0.6019,
+          0.5327,
+          0.4518
+        ],
+        "intercept": -1.4803,
+        "mean": [
+          0.4301,
+          0.7935,
+          0.3167
+        ],
+        "scale": [
+          0.0968,
+          0.5529,
+          0.1697
+        ],
+        "features": [
+          "top dense cosine",
+          "top BM25 / query terms",
+          "query-term coverage"
+        ],
+        "threshold": 0.12,
+        "operating_point": "answer >= 90% of answerable validation questions",
+        "val_answered_when_answerable": 0.9103,
+        "val_not_found_when_unanswerable": 0.4381,
+        "val_balanced_accuracy": 0.6742
+      }
+    },
+    "lsa-tfidf-svd": {
+      "fusion": "weighted",
+      "alpha": 0.3,
+      "rrf_k": 60,
+      "category_boost": 0.0,
+      "answerability": {
+        "coef": [
+          0.4821,
+          0.5887,
+          0.4893
+        ],
+        "intercept": -1.4459,
+        "mean": [
+          0.2506,
+          0.7935,
+          0.3272
+        ],
+        "scale": [
+          0.1342,
+          0.5529,
+          0.1724
+        ],
+        "features": [
+          "top dense cosine",
+          "top BM25 / query terms",
+          "query-term coverage"
+        ],
+        "threshold": 0.125,
+        "operating_point": "answer >= 90% of answerable validation questions",
+        "val_answered_when_answerable": 0.9117,
+        "val_not_found_when_unanswerable": 0.4491,
+        "val_balanced_accuracy": 0.6804
+      }
+    }
+  }
+}
