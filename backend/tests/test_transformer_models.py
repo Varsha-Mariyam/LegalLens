@@ -37,24 +37,39 @@ def test_clause_probabilities_are_valid_and_primary():
         assert abs(sum(o["probs"].values()) - 1) < 1e-3 and 0 <= o["confidence"] <= 1
     r = classifier.classify_batch([{"text": "Either party may terminate this Agreement on 60 days' written notice.", "title": None}])[0]
     assert r["method"].startswith(("transformer:", "ensemble:")) and r["details"]["transformer"]["label"] == "Termination"
-    assert {"keyword", "embedding", "ml", "transformer"} <= set(r["details"]) and r["category"] == "Termination"
+    assert {"keyword", "embedding", "transformer"} <= set(r["details"]) and r["category"] == "Termination"
 
 
 @needs_models
-def test_ensembles_use_validation_weights(monkeypatch):
+def test_transformer_alone_is_deployed_by_default(monkeypatch):
+    monkeypatch.setattr(settings, "CLASSIFIER_BACKEND", "transformer")
+    monkeypatch.setattr(settings, "RISK_MODEL", "transformer")
+    tm.reload()
+    r = classifier.classify_batch([{"text": "The Distributor shall pay the Company a royalty of 4% of net sales.", "title": None}])[0]
+    assert r["method"].startswith("transformer:") and r["category"] == "Payment"
+    assert "ml" not in r["details"] and "ensemble" not in r["details"]  # Logistic Regression is not consulted
+    assert r["confidence"] == r["details"]["transformer"]["confidence"]
+    assert tm.risk_detector_mode() == "transformer"
+    assert tm.detect_risks(["The term renews automatically for one year."]) is not None
+    assert "risk_logreg" not in tm._extras  # the TF-IDF risk model was never loaded for inference
+    st = classifier.status()
+    assert st["primary"] == "transformer" and st["transformer"]["ensemble_weight"] is None
+    assert tm.status()["risk"]["ensemble_weight"] is None
+
+
+@needs_models
+def test_legacy_ensemble_and_logreg_modes(monkeypatch):
     w = tm.ensemble_weight("clause")
     if w is None:
         pytest.skip("run scripts/fit_ensembles.py")
+    monkeypatch.setattr(settings, "CLASSIFIER_BACKEND", "auto")
+    monkeypatch.setattr(settings, "RISK_MODEL", "auto")
+    tm.reload()
     r = classifier.classify_batch([{"text": "The Distributor shall pay the Company a royalty of 4% of net sales.", "title": None}])[0]
     assert r["method"].startswith("ensemble:") and r["details"]["ensemble"]["transformer_weight"] == w
     tr, lr = r["details"]["transformer"]["confidence"], r["details"]["ml"]["confidence"]
     assert r["category"] == "Payment" and min(tr, lr) - 1e-3 <= r["confidence"] <= max(tr, lr) + 1e-3
     assert classifier.status()["primary"] == "ensemble" and tm.risk_detector_mode() == "ensemble"
-    monkeypatch.setattr(settings, "CLASSIFIER_BACKEND", "transformer")
-    monkeypatch.setattr(settings, "RISK_MODEL", "transformer")
-    tm.reload()
-    assert classifier.classify_batch([{"text": "Fees are due within 30 days.", "title": None}])[0]["method"].startswith("transformer:")
-    assert tm.risk_detector_mode() == "transformer"
     monkeypatch.setattr(settings, "RISK_MODEL", "logreg")
     tm.reload()
     assert tm.risk_detector_mode() == "logreg" and tm.detect_risks(["The term renews automatically for one year."]) is not None

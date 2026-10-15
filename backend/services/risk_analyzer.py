@@ -1,8 +1,9 @@
 """Risk analysis (guide section 12): transparent rule signals + learned risk detector + optional LLM assessment.
 
-Learned detector (added in the Transformer upgrade): a fine-tuned MiniLM averaged with a TF-IDF model (weight and
-per-type thresholds chosen on validation contracts; either model alone when the other is unavailable) recognises 12
-risk-relevant CUAD clause types; each detection is added as evidence with the level set by MODEL_RISK_POLICY below.
+Learned detector (added in the Transformer upgrade): a fine-tuned MiniLM Transformer (per-type thresholds chosen on
+validation contracts; a TF-IDF model only as fallback when it is unavailable, or averaged with it in the legacy
+RISK_MODEL=auto ensemble) recognises 12 risk-relevant CUAD clause types; each detection is added as evidence with the
+level set by MODEL_RISK_POLICY below.
 Nothing ever lowers a rule level: the final level is the highest of the rule, detector and (optional) LLM levels.
 
 Every rule produces evidence (what was found, why it matters, the reference it relies on). The rules run
@@ -20,7 +21,7 @@ from backend.services.llm_service import SYSTEM_PROMPT, LLMError, get_client, pa
 
 LEVELS = {"LOW": 0, "MEDIUM": 1, "HIGH": 2}
 ICA = "Indian Contract Act, 1872"
-MODEL_SOURCE = "Learned risk detector (fine-tuned MiniLM + TF-IDF ensemble, trained on CUAD v1 expert labels)"
+MODEL_SOURCE = "Learned risk detector (fine-tuned MiniLM Transformer, trained on CUAD v1 expert labels)"
 MUTUAL = re.compile(r"\b(either party|each party|both parties|mutual(ly)?|each of the parties)\b", re.I)
 _AUTO = object()
 # Learned detector: CUAD clause type -> (level, why it matters, precaution, level when the wording is mutual or None).

@@ -17,8 +17,8 @@ BM25 + dense hybrid retrieval with a calibrated "not found" for Q&A.
 
 | Held-out test contracts | Original approach | Upgraded (deployed) |
 |---|---|---|
-| Clause classification, macro F1 | 0.873 (TF-IDF + LogReg, retrained on the same split) | **0.897** (ensemble) |
-| Risk types, micro F1 on the 6 types the rules target | 0.164 (rules) | **0.596** (rules + detector) |
+| Clause classification, macro F1 | 0.873 (TF-IDF + LogReg, retrained on the same split) | **0.884** (fine-tuned MiniLM; the legacy MiniLM + LogReg ensemble scored 0.897) |
+| Risk types, micro F1 on the 6 types the rules target | 0.164 (rules) | **0.603** (rules + fine-tuned MiniLM detector; legacy ensemble 0.592) |
 | Q&A retrieval, MRR@10 | 0.534 (original ranking, LSA) | **0.666** (hybrid) |
 | Says "not found" for unanswerable questions | 3% | **41%** (while answering 90% of answerable ones) |
 
@@ -69,8 +69,8 @@ Without Tesseract, digital PDFs/DOCX/TXT still work; scanned files report a clea
 | Component | Default (no keys, no extra services) | Upgrade path |
 |---|---|---|
 | Text generation (explanations, summaries, persona, Q&A) | Deterministic rule-based / extractive mode | Set `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` (any OpenAI-compatible server) or `OLLAMA_MODEL` (local, free) in `.env` |
-| Clause classifier | Fine-tuned MiniLM (`models/transformers/clause`) + TF-IDF Logistic Regression ensemble, CPU or GPU | Logistic Regression alone if torch/transformers are missing; `CLASSIFIER_BACKEND=transformer` or `logreg` to use one model |
-| Risk | Rule signals + learned detector (fine-tuned MiniLM `models/transformers/risk` + TF-IDF `models/risk_logreg.joblib`) | `RISK_MODEL=transformer`, `logreg`, or `off` for rules only |
+| Clause classifier | Fine-tuned MiniLM Transformer alone (`models/transformers/clause`), CPU or GPU | TF-IDF Logistic Regression only if the Transformer cannot be loaded (e.g. torch missing); `CLASSIFIER_BACKEND=auto` restores the legacy MiniLM + LogReg ensemble, `logreg` forces Logistic Regression |
+| Risk | Rule signals + learned detector (fine-tuned MiniLM Transformer alone, `models/transformers/risk`) | TF-IDF `models/risk_logreg.joblib` only if the Transformer cannot be loaded; `RISK_MODEL=auto` (legacy ensemble), `logreg`, or `off` for rules only |
 | Embeddings | Sentence Transformers `all-MiniLM-L6-v2` (downloaded from Hugging Face on first use, ~90 MB) | falls back to LSA (TF-IDF + SVD) offline; `python scripts/download_models.py` stores MiniLM in `models/` for offline use |
 | Q&A retrieval | Hybrid BM25 + MiniLM, "not found" calibrated on held-out contracts | `QA_RETRIEVAL=legacy` restores the original ranking |
 | Vector DB | ChromaDB (persistent, `vector_db/`) | NumPy fallback if ChromaDB is not installed |
@@ -92,7 +92,7 @@ python scripts/prepare_datasets.py      # contract-level CUAD split -> data/data
 python scripts/train_classifier.py      # TF-IDF + Logistic Regression fallback (+ SVM, keyword, embedding baselines)
 python scripts/train_transformer.py --task clause   # fine-tuned MiniLM clause classifier -> models/transformers/clause
 python scripts/train_transformer.py --task risk     # fine-tuned MiniLM risk detector    -> models/transformers/risk
-python scripts/fit_ensembles.py         # TF-IDF risk model + MiniLM/TF-IDF ensemble weights and thresholds (validation only)
+python scripts/fit_ensembles.py         # TF-IDF risk fallback model + legacy MiniLM/TF-IDF ensemble config (rollback only; validation split)
 python scripts/evaluate_models.py       # all models on the held-out test contracts -> reports/evaluation/ (+ Q&A calibration)
 python scripts/compare_sample_documents.py  # risk profile of every raw document, fallback vs upgraded configuration
 python scripts/build_vector_db.py --force

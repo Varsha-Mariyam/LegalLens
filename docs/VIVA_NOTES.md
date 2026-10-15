@@ -7,12 +7,12 @@ template and produces a consolidated report.
 
 ## Demo script (≈5 minutes)
 1. System page — show which components are active (LLM or rule-based, embeddings, ChromaDB, cache, OCR, the
-   MiniLM + Logistic Regression ensemble classifier, the risk detector, hybrid Q&A) and the three evaluation tables
+   fine-tuned MiniLM Transformer classifier, the risk detector, hybrid Q&A) and the three evaluation tables
    (classification, risk detector, retrieval — all on held-out contracts).
 2. Upload `employment_agreement_sample.pdf` → processing steps.
 3. Clauses tab — click the red segments on the risk rail: Termination (7 vs 90 days), Liability (unlimited), Non-compete.
    Point out evidence tagged "model" (learned detector) next to the rule evidence. Open "Show retrieved reference
-   knowledge" to show the RAG chunks and every classifier's output (ensemble, Transformer, LogReg, keyword, embedding).
+   knowledge" to show the RAG chunks and every classifier's output (fine-tuned Transformer, keyword, embedding; LogReg only in fallback mode).
    The Summary tab shows the extractive key sentences with links to their clauses.
 4. Reference comparison — the guide's table: 30 days vs 7 days, Limited vs Unlimited; expand a row.
 5. Persona — Employee, then Business: same document, different focus.
@@ -36,11 +36,13 @@ withholding, excessive deposit vs Model Tenancy Act benchmark, post-employment n
 arbitrator appointment, etc.). Each rule produces a level, reason, precaution and source. With an LLM configured, the
 LLM also assesses the clause but can only raise the level. Wording is always "potential risk".
 
-**How good is the classifier?** On 1,463 clauses of 79 contracts never seen in training: deployed ensemble
-(fine-tuned MiniLM × 0.3 + TF-IDF Logistic Regression × 0.7) macro F1 **0.897** [95% CI 0.867–0.922], Logistic
-Regression alone 0.873, keyword baseline 0.694. The ensemble's gain over Logistic Regression (+0.024, CI
-+0.008…+0.041) is statistically clear. Legal-BERT reaches 0.909 but is 5× larger and 7× slower on CPU, so it is an
-evaluated option, not the default.
+**How good is the classifier?** On 1,463 clauses of 79 contracts never seen in training: the deployed fine-tuned
+MiniLM Transformer (encoder + classification head, no separate classical classifier) macro F1 **0.884** [95% CI
+0.852–0.912], Logistic Regression alone 0.873, keyword baseline 0.694. Its gain over Logistic Regression (+0.011, CI
+−0.013…+0.034) is inside the noise. The earlier MiniLM × 0.3 + Logistic Regression × 0.7 ensemble scored 0.897
+(+0.013 over MiniLM alone, CI −0.002…+0.031); it was replaced by the single Transformer for a simpler, pure
+Transformer pipeline and stays available for rollback (`CLASSIFIER_BACKEND=auto`). Legal-BERT reaches 0.909 but is
+5× larger and 7× slower on CPU, so it is an evaluated option, not the default.
 
 **Why is the old 0.878 not in your comparison?** It was measured on a random split by clause, so clauses of the same
 contract were in train and test, plus 131 clauses we wrote ourselves — an optimistic setting. The sandbox's 0.864 was a

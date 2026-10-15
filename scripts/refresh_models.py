@@ -4,8 +4,9 @@ Pickled scikit-learn models are only guaranteed to load in the same scikit-learn
 automatically. It needs only the files shipped in the project (no downloads):
   1. re-fits the LSA embedder (models/lsa_embedder.joblib) from the local corpus,
   2. re-trains the Logistic Regression clause classifier from data/datasets/contract_split/,
-  3. re-trains the TF-IDF risk model and re-fits the ensemble settings on validation (scripts/fit_ensembles.py) when
-     the fine-tuned Transformer models are present (they are PyTorch files and do not depend on scikit-learn),
+  3. re-trains the TF-IDF risk fallback model and re-fits the legacy ensemble settings (scripts/fit_ensembles.py,
+     kept for rollback; the deployed models are the fine-tuned Transformers alone, which are PyTorch files and do
+     not depend on scikit-learn) when the Transformer models are present,
   4. rebuilds the vector DB (embeddings changed).
 Usage: python scripts/refresh_models.py [--force]
 """

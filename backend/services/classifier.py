@@ -5,9 +5,12 @@ Classifiers, as in the guide plus the Transformer upgrade:
   2. embedding similarity against category descriptions,
   3. a trained ML classifier (TF-IDF + Logistic Regression) — trained by scripts/train_classifier.py,
   4. a fine-tuned Transformer (MiniLM encoder + classification head) — trained by scripts/train_transformer.py.
-The final label comes from the Transformer when it is available; otherwise from Logistic Regression; otherwise
-from the baselines. Low-confidence predictions defer to a clear section heading. Every method's result is kept so
-it can be shown and evaluated. CLASSIFIER_BACKEND=logreg disables the Transformer.
+The deployed model is the fine-tuned Transformer alone (CLASSIFIER_BACKEND=transformer, the default): the final
+label comes from it, and Logistic Regression is neither run nor shown unless the Transformer cannot be loaded, in
+which case Logistic Regression takes over (then the baselines). Low-confidence predictions defer to a clear section
+heading. The baselines' results are always kept so they can be shown and evaluated. CLASSIFIER_BACKEND=auto restores
+the legacy probability-average ensemble of the two models (weight from scripts/fit_ensembles.py); =logreg disables
+the Transformer.
 """
 from __future__ import annotations
 
@@ -170,11 +173,13 @@ def classify_batch(items: list[dict]) -> list[dict]:
     texts = [f"{(i.get('title') or '')} {i['text']}".strip() for i in items]
     emb = embedding_classify_batch(texts)
     tr = transformer_models.classify(texts)
-    ml_p = ml_proba(texts)
+    # Logistic Regression runs only as the fallback when the Transformer is unavailable, or in the legacy
+    # ensemble mode (CLASSIFIER_BACKEND=auto); the deployed Transformer-only model never consults it.
+    ml_p = ml_proba(texts) if tr is None or settings.CLASSIFIER_BACKEND == "auto" else None
     ml = None if ml_p is None else [(CATEGORIES[int(np.argmax(p))], round(float(np.max(p)), 3)) for p in ml_p]
     tr_method = _transformer_method() if tr else None
     w = transformer_models.ensemble_weight("clause") if settings.CLASSIFIER_BACKEND == "auto" else None
-    if tr and ml and w is not None:  # probability average, weight chosen on validation (scripts/fit_ensembles.py)
+    if tr and ml and w is not None:  # legacy ensemble: probability average, weight chosen on validation
         ens = w * np.array([[t["probs"][c] for c in CATEGORIES] for t in tr]) + (1 - w) * ml_p
         tr = [{**t, "label": CATEGORIES[int(np.argmax(p))], "confidence": round(float(np.max(p)), 3),
                "transformer_label": t["label"], "transformer_confidence": t["confidence"]} for t, p in zip(tr, ens)]

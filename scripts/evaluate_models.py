@@ -181,9 +181,10 @@ def evaluate_classification(enc: Encoders, n_boot: int) -> dict:
         P_va = w * m.predict_proba(X_va, batch_size=64)[:, [m.labels.index(c) for c in LABELS]] + (1 - w) * lr.predict_proba(X_va)[:, cols]
         preds["ensemble_minilm_logreg"] = ([LABELS[i] for i in P_te.argmax(1)], P_te)
         val_scores["ensemble_minilm_logreg"] = cls_metrics(y_va, [LABELS[i] for i in P_va.argmax(1)])
-        model_info["ensemble_minilm_logreg"] = {"transformer_weight": w, "deployed": True,
+        ensemble_deployed = settings.CLASSIFIER_BACKEND == "auto"  # legacy mode; the default deploys MiniLM alone
+        model_info["ensemble_minilm_logreg"] = {"transformer_weight": w, "deployed": ensemble_deployed,
                                                 "selected_on": ens_cfg.get("selection_metric")}
-        model_info["transformer_minilm"]["deployed"] = False
+        model_info["transformer_minilm"]["deployed"] = not ensemble_deployed
         del m
     for name in ("keyword_baseline",):
         val_scores[name] = cls_metrics(y_va, [classifier.keyword_classify(t)[0] for t in X_va])
@@ -303,9 +304,10 @@ def evaluate_risk(n_boot: int) -> dict:
     preds["transformer_minilm"] = (P >= thr).astype(int)
     methods["transformer_minilm"] = risk_scores(Y_te, preds["transformer_minilm"], P, labels)
     methods["transformer_minilm"]["thresholds"] = {l: r4(t) for l, t in zip(labels, thr)}
+    methods["transformer_minilm"]["deployed"] = settings.RISK_MODEL != "auto"  # MiniLM alone is the default
 
     lr_model, ens = tm.risk_logreg(), tm.ensemble_config().get("risk", {})
-    if lr_model is not None and ens.get("logreg_thresholds"):  # the deployed model (scripts/fit_ensembles.py)
+    if lr_model is not None and ens.get("logreg_thresholds"):  # the fallback model (scripts/fit_ensembles.py)
         pipe, lr_labels = lr_model["pipeline"], lr_model["labels"]
         assert lr_labels == labels
         thr_lr = np.array([ens["logreg_thresholds"][l] for l in labels])
@@ -325,7 +327,7 @@ def evaluate_risk(n_boot: int) -> dict:
         preds["ensemble_minilm_logreg"] = (P_ens >= thr_e).astype(int)
         methods["ensemble_minilm_logreg"] = risk_scores(Y_te, preds["ensemble_minilm_logreg"], P_ens, labels)
         methods["ensemble_minilm_logreg"].update({"thresholds": {l: r4(t) for l, t in zip(labels, thr_e)},
-                                                  "transformer_weight": w, "deployed": True})
+                                                  "transformer_weight": w, "deployed": settings.RISK_MODEL == "auto"})
 
     # original rule engine: clause category from the deployed classifier, exactly as in the app
     cats = [c["category"] for c in classifier.classify_batch([{"text": r["text"], "title": r["title"] or None} for r in te_rows])]
@@ -637,7 +639,7 @@ def main() -> None:
                           | ({"roc_auc_macro_ovr": v["all"]["roc_auc_macro_ovr"]} if "roc_auc_macro_ovr" in v["all"] else {}),
                           "gold_only": {kk: v["gold_only"][kk] for kk in ("accuracy", "macro_f1", "n")}}
                       for k, v in cls["methods"].items()},
-          "deployed_model": next((k for k in ("ensemble_minilm_logreg", "transformer_minilm") if k in cls["methods"]), "tfidf_logreg"),
+          "deployed_model": next((k for k, v in cls["transformer_models"].items() if v.get("deployed")), "tfidf_logreg"),
           "fallback_model": "tfidf_logreg", "paired_bootstrap": cls["paired_bootstrap"],
           "risk_detector": {k: {kk: v[kk] for kk in ("micro_f1", "macro_f1", "macro_roc_auc", "macro_average_precision") if kk in v}
                             for k, v in risk["methods"].items()},

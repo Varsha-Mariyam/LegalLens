@@ -9,6 +9,10 @@ Saved layout (models/transformers/<task>/, written by scripts/train_transformer.
     head.safetensors     linear classification head
     model_config.json    task, labels, max_length, base model, thresholds, validation metrics, training settings
 
+The fine-tuned Transformers alone are the deployed models (CLASSIFIER_BACKEND / RISK_MODEL = transformer). The
+TF-IDF + Logistic Regression models are loaded only as a fallback when a Transformer is unavailable, or in the legacy
+ensemble mode (= auto, models/ensemble_config.json from scripts/fit_ensembles.py) kept for rollback and comparison.
+
 torch/transformers are imported lazily, so LegalLens still starts without them. Loading failures are recorded
 (status()) and every caller falls back to the classical models, so a missing or broken model never stops analysis.
 """
@@ -266,11 +270,15 @@ def classify(texts: list[str]) -> list[dict] | None:
 
 
 def risk_detector_mode() -> str | None:
-    """"ensemble" (Transformer + TF-IDF, weight/thresholds from validation), "transformer", "logreg", or None."""
+    """"transformer" (the deployed fine-tuned MiniLM alone), "ensemble" (legacy Transformer + TF-IDF average, only
+    with RISK_MODEL=auto), "logreg" (TF-IDF fallback when the Transformer is unavailable), or None."""
     if settings.RISK_MODEL in ("off", "none", "rules"):
         return None
-    tr, lr, cfg = get("risk"), risk_logreg(), ensemble_config().get("risk", {})
-    if tr is not None and lr is not None and cfg.get("thresholds") and settings.RISK_MODEL == "auto":
+    tr = get("risk")
+    if tr is not None and settings.RISK_MODEL != "auto":
+        return "transformer"  # the TF-IDF model is not even loaded
+    lr, cfg = risk_logreg(), ensemble_config().get("risk", {})
+    if tr is not None and lr is not None and cfg.get("thresholds"):
         return "ensemble"
     if tr is not None:
         return "transformer"
@@ -286,7 +294,6 @@ def risk_probabilities(texts: list[str]) -> tuple[list[str], np.ndarray, np.ndar
     if mode is None:
         return None
     cfg = ensemble_config().get("risk", {})
-    lr = risk_logreg()
     p_tr = None
     if mode in ("ensemble", "transformer"):
         model = get("risk")
@@ -296,11 +303,12 @@ def risk_probabilities(texts: list[str]) -> tuple[list[str], np.ndarray, np.ndar
         except Exception as exc:  # noqa: BLE001
             log.warning("risk transformer inference failed: %s", exc)
             _errors["risk"] = f"inference failed ({type(exc).__name__}: {exc})"
-            if lr is None or not cfg.get("logreg_thresholds"):
+            if risk_logreg() is None or not cfg.get("logreg_thresholds"):
                 return None
             mode = "logreg"
         if mode == "transformer":
             return labels, p_tr, model.thresholds, mode
+    lr = risk_logreg()  # fallback or legacy ensemble partner; loaded only when actually needed
     lr_labels = lr["labels"]
     p_lr = lr["pipeline"].predict_proba(texts) if texts else np.zeros((0, len(lr_labels)))
     if mode == "logreg":
@@ -330,7 +338,8 @@ def status() -> dict:
         model = get(task)
         out[task] = model.info() if model else {"available": False}
         out[task]["error"] = _errors.get(task)
-        out[task]["ensemble_weight"] = ensemble_weight(task)
+        flag = settings.CLASSIFIER_BACKEND if task == "clause" else settings.RISK_MODEL
+        out[task]["ensemble_weight"] = ensemble_weight(task) if flag == "auto" else None  # legacy ensemble only
     out["risk"]["detector"] = risk_detector_mode()
     out["risk"]["logreg_available"] = risk_logreg() is not None
     return out

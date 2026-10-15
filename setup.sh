@@ -18,7 +18,7 @@ if [ "$1" = "--rebuild" ]; then
   python scripts/train_classifier.py        # TF-IDF + Logistic Regression fallback
   python scripts/train_transformer.py --task clause
   python scripts/train_transformer.py --task risk
-  python scripts/fit_ensembles.py           # MiniLM + TF-IDF ensembles (weights/thresholds from validation)
+  python scripts/fit_ensembles.py           # TF-IDF risk fallback + legacy MiniLM/TF-IDF ensemble config (rollback only)
   python scripts/evaluate_models.py         # test-set evaluation, figures, Q&A retrieval calibration
   python scripts/build_vector_db.py --force
 else

@@ -1,5 +1,5 @@
 {
-  "trained_at": "2026-10-01T14:31:19+00:00",
+  "trained_at": "2026-10-15T12:44:16+00:00",
   "dataset": "contract_split",
   "split": "filing-company groups, stratified by contract type, 70/15/15 by contract count",
   "train_size": 5933,
@@ -1080,7 +1080,7 @@
       }
     }
   },
-  "deployed_model": "ensemble_minilm_logreg",
+  "deployed_model": "transformer_minilm",
   "fallback_model": "tfidf_logreg",
   "paired_bootstrap": [
     {
@@ -1128,41 +1128,41 @@
       "macro_average_precision": 0.5651
     },
     "tfidf_logreg_ovr": {
-      "micro_f1": 0.5849,
-      "macro_f1": 0.591,
-      "macro_roc_auc": 0.9827,
-      "macro_average_precision": 0.6613
+      "micro_f1": 0.5821,
+      "macro_f1": 0.588,
+      "macro_roc_auc": 0.9828,
+      "macro_average_precision": 0.6642
     },
     "ensemble_minilm_logreg": {
-      "micro_f1": 0.5908,
-      "macro_f1": 0.5929,
-      "macro_roc_auc": 0.9848,
-      "macro_average_precision": 0.6815
+      "micro_f1": 0.5817,
+      "macro_f1": 0.5884,
+      "macro_roc_auc": 0.9849,
+      "macro_average_precision": 0.6834
     }
   },
   "retrieval": {
     "Original ranking + LSA (original system)": {
       "queries": 670,
       "hit@1": 0.403,
-      "hit@3": 0.6194,
-      "hit@5": 0.7149,
-      "mrr@10": 0.5338,
-      "ndcg@5": 0.5384,
+      "hit@3": 0.6284,
+      "hit@5": 0.7194,
+      "mrr@10": 0.5344,
+      "ndcg@5": 0.5396,
       "mrr@10_ci95": [
-        0.4985,
-        0.5739
+        0.5006,
+        0.5721
       ]
     },
     "Original ranking + MiniLM": {
       "queries": 670,
-      "hit@1": 0.4269,
-      "hit@3": 0.606,
-      "hit@5": 0.7239,
-      "mrr@10": 0.5506,
-      "ndcg@5": 0.5437,
+      "hit@1": 0.4328,
+      "hit@3": 0.6104,
+      "hit@5": 0.7269,
+      "mrr@10": 0.5546,
+      "ndcg@5": 0.5475,
       "mrr@10_ci95": [
-        0.5155,
-        0.5886
+        0.5202,
+        0.5922
       ]
     },
     "LSA dense": {
@@ -1203,26 +1203,26 @@
     },
     "Hybrid BM25 + MiniLM (deployed)": {
       "queries": 670,
-      "hit@1": 0.5388,
-      "hit@3": 0.7716,
-      "hit@5": 0.8239,
-      "mrr@10": 0.6659,
-      "ndcg@5": 0.6563,
+      "hit@1": 0.5418,
+      "hit@3": 0.7657,
+      "hit@5": 0.8164,
+      "mrr@10": 0.663,
+      "ndcg@5": 0.6532,
       "mrr@10_ci95": [
-        0.6373,
-        0.6956
+        0.6347,
+        0.693
       ]
     },
     "Hybrid BM25 + LSA": {
       "queries": 670,
-      "hit@1": 0.5299,
-      "hit@3": 0.7358,
-      "hit@5": 0.8119,
-      "mrr@10": 0.6483,
-      "ndcg@5": 0.6399,
+      "hit@1": 0.5239,
+      "hit@3": 0.7269,
+      "hit@5": 0.806,
+      "mrr@10": 0.6434,
+      "ndcg@5": 0.6335,
       "mrr@10_ci95": [
-        0.6139,
-        0.6841
+        0.6102,
+        0.6781
       ]
     }
   },
@@ -1235,18 +1235,18 @@
       "not_found_precision": 1.0,
       "not_found_recall": 0.0319,
       "not_found_f1": 0.0618,
-      "end_to_end_correct": 0.1723,
+      "end_to_end_correct": 0.1744,
       "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3"
     },
     "legacy_minilm": {
-      "accuracy": 0.2729,
-      "balanced_accuracy": 0.5155,
+      "accuracy": 0.2722,
+      "balanced_accuracy": 0.515,
       "answered_when_answerable": 1.0,
-      "not_found_when_unanswerable": 0.0309,
+      "not_found_when_unanswerable": 0.03,
       "not_found_precision": 1.0,
-      "not_found_recall": 0.0309,
-      "not_found_f1": 0.06,
-      "end_to_end_correct": 0.1683,
+      "not_found_recall": 0.03,
+      "not_found_f1": 0.0582,
+      "end_to_end_correct": 0.1687,
       "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3"
     },
     "hybrid + uncalibrated rule": {
@@ -1257,20 +1257,20 @@
       "not_found_precision": 1.0,
       "not_found_recall": 0.0323,
       "not_found_f1": 0.0626,
-      "end_to_end_correct": 0.209,
+      "end_to_end_correct": 0.2076,
       "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3"
     },
     "hybrid + calibrated answerability (deployed)": {
-      "accuracy": 0.5334,
-      "balanced_accuracy": 0.6571,
+      "accuracy": 0.545,
+      "balanced_accuracy": 0.6649,
       "answered_when_answerable": 0.9042,
-      "not_found_when_unanswerable": 0.41,
-      "not_found_precision": 0.9279,
-      "not_found_recall": 0.41,
-      "not_found_f1": 0.5687,
-      "end_to_end_correct": 0.485,
+      "not_found_when_unanswerable": 0.4255,
+      "not_found_precision": 0.9303,
+      "not_found_recall": 0.4255,
+      "not_found_f1": 0.5839,
+      "end_to_end_correct": 0.4964,
       "end_to_end_note": "unanswerable: said 'not found'; answerable: answered with a relevant clause in the top 3",
-      "roc_auc_p_answerable": 0.7893
+      "roc_auc_p_answerable": 0.7899
     }
   },
   "report": "reports/evaluation/RESULTS.md"

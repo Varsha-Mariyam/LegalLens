@@ -41,9 +41,9 @@ Logistic Regression, retrained — is trained on the same training contracts and
 | Method | Val macro F1 | Test accuracy | **Test macro F1** [95% CI] | Gold macro F1 | ROC-AUC |
 |---|---|---|---|---|---|
 | Fine-tuned Legal-BERT (experiment, not deployed) | 0.918 | 0.917 | **0.909** [0.883, 0.932] | 0.922 | 0.987 |
-| **Ensemble: MiniLM × 0.3 + LogReg × 0.7 (deployed)** | 0.899 | 0.906 | **0.897** [0.867, 0.922] | 0.910 | 0.982 |
+| Ensemble: MiniLM × 0.3 + LogReg × 0.7 (legacy, rollback via `CLASSIFIER_BACKEND=auto`) | 0.899 | 0.906 | **0.897** [0.867, 0.922] | 0.910 | 0.982 |
 | TF-IDF + Linear SVM | 0.886 | 0.895 | **0.885** [0.856, 0.911] | 0.898 | 0.976 |
-| Fine-tuned MiniLM alone | 0.870 | 0.897 | **0.884** [0.852, 0.912] | 0.894 | 0.980 |
+| **Fine-tuned MiniLM alone (deployed)** | 0.870 | 0.897 | **0.884** [0.852, 0.912] | 0.894 | 0.980 |
 | TF-IDF + Logistic Regression (fallback) | 0.878 | 0.886 | **0.873** [0.842, 0.900] | 0.893 | 0.977 |
 | Keyword baseline | 0.661 | 0.658 | **0.694** [0.652, 0.729] | 0.640 | – |
 | Embedding similarity (MiniLM) | – | 0.614 | **0.592** [0.548, 0.635] | 0.527 | 0.800 |
@@ -56,8 +56,11 @@ ensemble − SVM +0.012 [−0.001, +0.023].
 
 What this shows:
 * The fine-tuned **MiniLM on its own is not clearly better** than TF-IDF models (inside the noise; worse on validation).
-* The **ensemble chosen on validation is clearly better than Logistic Regression** (+2.4 points macro F1) and is the
-  deployed classifier. The confusion matrices show why it works: MiniLM rarely pushes Payment, Confidentiality and
+* The **deployed model is the fine-tuned MiniLM alone** (a Transformer with a trainable classification head, no
+  classical classifier in the prediction path; Logistic Regression is loaded only if the Transformer cannot be).
+  This trades about 1.3 points of macro F1 against the earlier ensemble (CI includes 0) for a single, simpler model.
+* The **ensemble chosen on validation is clearly better than Logistic Regression** (+2.4 points macro F1) and remains
+  available as the legacy configuration. The confusion matrices show why it worked: MiniLM rarely pushes Payment, Confidentiality and
   Dispute clauses into "Others" (Logistic Regression does so 20, 14 and 9 times), while Logistic Regression confuses
   fewer "Others" clauses with Termination — different mistakes average out.
 * **Legal-BERT is the most accurate model** (validation and test agree), see the trade-off below.
@@ -68,7 +71,7 @@ What this shows:
 
 ### Legal-BERT: why it is not deployed (yet)
 
-| | Deployed ensemble (MiniLM + LogReg) | Legal-BERT (`nlpaueb/legal-bert-base-uncased`) |
+| | Legacy ensemble (MiniLM + LogReg) | Legal-BERT (`nlpaueb/legal-bert-base-uncased`) |
 |---|---|---|
 | Validation / test macro F1 | 0.899 / 0.897 | **0.918 / 0.909** |
 | Parameters / model file | 22.7 M / 45 MB (+3 MB LogReg) | 109.5 M / 219 MB |
@@ -78,7 +81,7 @@ What this shows:
 | Licence of the base model | Apache 2.0 | CC BY-SA 4.0 (fine-tuned weights must be shared alike) |
 
 Legal-BERT gains about 1–2 points of macro F1, at 5× the size and 7× the CPU time (a 100-clause contract: ~5 s vs
-~34 s of classification on CPU). The app keeps the lighter MiniLM ensemble; switching is one retraining command:
+~34 s of classification on CPU). The app keeps the lighter MiniLM; switching is one retraining command:
 
 ```bash
 python scripts/train_transformer.py --task clause --model nlpaueb/legal-bert-base-uncased --lr 3e-5 --epochs 4 --batch-size 8 --grad-accum 4
@@ -94,18 +97,18 @@ tuned on validation.
 
 | Method | Micro P | Micro R | **Micro F1** [95% CI] | Macro F1 | Macro ROC-AUC | Macro avg. precision |
 |---|---|---|---|---|---|---|
-| **Ensemble MiniLM × 0.2 + TF-IDF × 0.8 (deployed)** | 0.566 | 0.618 | **0.591** [0.552, 0.631] | 0.593 | **0.985** | **0.681** |
-| Fine-tuned MiniLM alone | 0.605 | 0.592 | **0.599** [0.559, 0.636] | 0.563 | 0.967 | 0.565 |
-| TF-IDF + Logistic Regression (one-vs-rest) | 0.573 | 0.598 | **0.585** [0.546, 0.621] | 0.591 | 0.983 | 0.661 |
+| Ensemble MiniLM × 0.2 + TF-IDF × 0.8 (legacy, rollback via `RISK_MODEL=auto`) | 0.554 | 0.613 | **0.582** [0.543, 0.623] | 0.588 | **0.985** | **0.683** |
+| **Fine-tuned MiniLM alone (deployed)** | 0.605 | 0.592 | **0.599** [0.559, 0.636] | 0.563 | 0.967 | 0.565 |
+| TF-IDF + Logistic Regression (one-vs-rest) | 0.572 | 0.592 | **0.582** [0.543, 0.618] | 0.588 | 0.983 | 0.664 |
 
 On the 6 types that one of the original rules targets: original rules micro F1 **0.164** (P 0.119, R 0.265) vs
-**0.596** for the deployed ensemble; 6 types have no rule at all (exclusivity, change of control, anti-assignment,
+**0.603** for the deployed MiniLM detector (0.592 for the legacy ensemble); 6 types have no rule at all (exclusivity, change of control, anti-assignment,
 IP ownership assignment, minimum commitment, non-solicitation).
 
 What this shows: every learned detector is far better than the hand-written rules at recognising CUAD's risk-relevant
 clause types (expected — the rules target Indian consumer contracts). Between the learned detectors, micro-F1
-differences are inside the noise (paired 95% CIs include 0); the ensemble has the best ranking quality (macro average
-precision 0.681, chosen on validation), so it is deployed. Per-type F1 ranges from 0.38 (Minimum Commitment) to 0.80
+differences are inside the noise (paired 95% CIs include 0); the legacy ensemble has the best ranking quality (macro
+average precision 0.683); the fine-tuned MiniLM alone is deployed (highest micro F1, lower macro F1 and ranking quality). Per-type F1 ranges from 0.38 (Minimum Commitment) to 0.80
 (Anti-Assignment, Non-Solicitation); types with 10–14 test positives are noisy.
 
 ## 3. Q&A retrieval
