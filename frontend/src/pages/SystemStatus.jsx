@@ -86,31 +86,6 @@ export default function SystemStatus() {
               </tbody>
             </table>
           </div>
-          <div className="table-wrap">
-            <table className="metrics">
-              <thead><tr><th>Category</th><th>Precision</th><th>Recall</th><th>F1</th><th>Test clauses</th></tr></thead>
-              <tbody>
-                {Object.entries(m.classifier.per_class || {}).map(([k, v]) => (
-                  <tr key={k}><td>{k}</td><td>{fmt(v.precision)}</td><td>{fmt(v.recall)}</td><td>{fmt(v["f1-score"])}</td><td>{v.support}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          {m.classifier.confusion_matrix && (
-            <div className="table-wrap">
-              <table className="metrics">
-                <thead><tr><th>Actual ↓ / predicted →</th>{m.classifier.confusion_matrix.labels.map((l) => <th key={l}>{l}</th>)}</tr></thead>
-                <tbody>
-                  {m.classifier.confusion_matrix.matrix.map((row, i) => (
-                    <tr key={m.classifier.confusion_matrix.labels[i]}>
-                      <td>{m.classifier.confusion_matrix.labels[i]}</td>
-                      {row.map((n, j) => <td key={j} className={i === j ? "best" : ""}>{n}</td>)}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
           <p className="muted small metrics-note">
             {m.dataset === "contract_split"
               ? `${m.test_size} test clauses from ${m.test_contracts} contracts never seen in training (split by contract); metrics are computed from the deployed model's own predictions. Gold labels = CUAD expert annotations (heading-derived weak labels excluded). Full report, including the comparison with other methods: ${m.report}.`
